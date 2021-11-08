@@ -1,3 +1,3 @@
 <template>
-  <div>Arco Design Pro for Vue</div>
+  <router-view></router-view>
 </template>
