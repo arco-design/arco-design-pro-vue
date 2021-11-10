@@ -24,33 +24,18 @@ module.exports = {
   ],
   settings: {
     'import/resolver': {
-      // typescirpt: {
-      //   project: './tsconfig.json',
-      // },
-      node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.vue'],
-        moduleDirectory: ['node_modules', 'src/'],
-      },
-      // vite: {
-      //   config: 'vite.config.js',
-      // },
-    },
+      typescript: {
+        project: './tsconfig.json'
+      }
+    }
   },
   rules: {
     'prettier/prettier': 1,
-    'import/no-extraneous-dependencies': 0,
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-console': ['error', { allow: ['warn', 'error'] }],
     'import/extensions': [
       'error',
       'ignorePackages',
-      {
-        js: 'never',
-        jsx: 'never',
-        ts: 'never',
-        tsx: 'never',
-        json: 'never',
-      },
-    ],
-    'import/no-unresolved': 'off',
-  },
+      { js: 'never', jsx: 'never', ts: 'never', tsx: 'never' }
+    ]
+  }
 };
