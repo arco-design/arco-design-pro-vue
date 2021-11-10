@@ -13,7 +13,8 @@ export default {
   'settings.alertContent':
     '配置之后仅是临时生效，要想真正作用于项目，点击下方的 "复制配置" 按钮，将配置替换到 settings.json 中即可。',
   'settings.copySettings': '复制配置',
-  'settings.copySettings.message': '复制成功，请粘贴到 src/settings.json 文件中',
+  'settings.copySettings.message':
+    '复制成功，请粘贴到 src/settings.json 文件中',
   'settings.close': '关闭',
   'settings.color.tooltip':
     '根据主题颜色生成的 10 个梯度色（将配置复制到项目中，主题色才能对亮色 / 暗黑模式同时生效）',

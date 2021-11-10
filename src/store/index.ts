@@ -1,18 +1,22 @@
 // store.ts
 import { InjectionKey } from 'vue';
 import { createStore, useStore as baseUseStore, Store } from 'vuex';
+import appStore, { IDefaultSetting } from './modules/app';
+import userStore, { IUserState } from './modules/user';
 
-export interface State {
-  count: number;
+export interface IState {
+  app: IDefaultSetting;
+  user: IUserState;
 }
 
-// eslint-disable-next-line symbol-description
-export const key: InjectionKey<Store<State>> = Symbol();
+export const key: InjectionKey<Store<IState>> = Symbol('store');
 
-const store = createStore<State>({
-  state: {
-    count: 0,
+const store = createStore<IState>({
+  modules: {
+    app: appStore,
+    user: userStore,
   },
+  // state: {},
 });
 export default store;
 // 定义自己的 `useStore` 组合式函数

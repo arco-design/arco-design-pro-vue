@@ -1,4 +1,5 @@
 {
+  "theme": "light",
   "colorWeek": false,
   "navbar": true,
   "menu": true,

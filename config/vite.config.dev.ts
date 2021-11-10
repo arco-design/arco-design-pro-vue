@@ -30,9 +30,14 @@ export default defineConfig({
         replacement: resolve(__dirname, '../src'), // 不晓得全局配置是啥~
       },
       {
+        find: 'assets',
+        replacement: resolve(__dirname, '../src/assets'),
+      },
+      {
         find: 'vue-i18n',
         replacement: 'vue-i18n/dist/vue-i18n.cjs.js', // 解决i18n警告问题
       },
     ],
+    extensions: ['.ts', '.js'],
   },
 });

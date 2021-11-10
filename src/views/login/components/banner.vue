@@ -1,0 +1,86 @@
+<template>
+  <div class="banner">
+    <div class="banner-inner">
+      <a-carousel class="carousel" animation-name="fade">
+        <a-carousel-item v-for="item in carouselItem" :key="item.slogan">
+          <div :key="item.slogan" class="carousel-item">
+            <div class="carousel-title">{{ item.slogan }}</div>
+            <div class="carousel-sub-title">{{ item.subSlogan }}</div>
+            <img class="carousel-image" :src="item.image" />
+          </div>
+        </a-carousel-item>
+      </a-carousel>
+    </div>
+  </div>
+</template>
+<script lang="ts">
+import bannerImage from '@/assets/login-banner.png';
+
+export default {
+  setup() {
+    const carouselItem = [
+      {
+        slogan: '开箱即用的高质量模板',
+        subSlogan: '丰富的的页面模板，覆盖大多数典型业务场景',
+        image: bannerImage,
+      },
+      {
+        slogan: '内置了常见问题的解决方案',
+        subSlogan: '国际化，路由配置，状态管理应有尽有',
+        image: bannerImage,
+      },
+      {
+        slogan: '接入可视化增强工具AUX',
+        subSlogan: '实现灵活的区块式开发',
+        image: bannerImage,
+      },
+    ];
+    // console.log(props);
+    return {
+      carouselItem,
+    };
+  },
+};
+</script>
+<style lang="less" scoped>
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &-inner {
+    height: 100%;
+    flex: 1;
+  }
+}
+.carousel {
+  height: 100%;
+
+  &-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  &-title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    color: var(--color-fill-1);
+  }
+
+  &-sub-title {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 22px;
+    color: var(--color-text-3);
+  }
+
+  &-image {
+    margin-top: 30px;
+    width: 320px;
+  }
+}
+</style>

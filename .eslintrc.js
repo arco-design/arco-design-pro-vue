@@ -52,5 +52,7 @@ module.exports = {
       },
     ],
     'import/no-unresolved': 'off',
+    'import/prefer-default-export': 'off',
+    'no-shadow': 'off',
   },
 };

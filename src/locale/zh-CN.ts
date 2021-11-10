@@ -1,4 +1,4 @@
-// import localeSettings from './zh-CN/settings';
+import localeSettings from './zh-CN/settings';
 // import localeMessageBox from '../components/MessageBox/locale/zh-CN';
 // import localeWorkplace from '../pages/workplace/locale/zh-CN';
 // import localeSearchTable from '../pages/search-table/locale/zh-CN';
@@ -27,7 +27,7 @@ export default {
   'menu.visualization': '数据可视化',
   'menu.user': '个人中心',
   'navbar.docs': '文档中心',
-  // ...localeSettings,
+  ...localeSettings,
   // ...localeMessageBox,
   // ...localeWorkplace,
   // ...localeSearchTable,

@@ -1,4 +1,4 @@
-// import localeSettings from './en-US/settings';
+import localeSettings from './en-US/settings';
 // import localeMessageBox from '../components/MessageBox/locale/en-US';
 // import localeWorkplace from '../pages/workplace/locale/en-US';
 // import localeSearchTable from '../pages/search-table/locale/en-US';
@@ -27,4 +27,5 @@ export default {
   'menu.visualization': 'Data Visualization',
   'menu.user': 'User Center',
   'navbar.docs': 'Docs',
+  ...localeSettings,
 };
