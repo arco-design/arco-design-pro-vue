@@ -14,9 +14,10 @@
   </div>
 </template>
 <script lang="ts">
+import { defineComponent } from 'vue';
 import bannerImage from '@/assets/login-banner.png';
 
-export default {
+export default defineComponent({
   setup() {
     const carouselItem = [
       {
@@ -35,12 +36,11 @@ export default {
         image: bannerImage,
       },
     ];
-    // console.log(props);
     return {
       carouselItem,
     };
   },
-};
+});
 </script>
 <style lang="less" scoped>
 .banner {

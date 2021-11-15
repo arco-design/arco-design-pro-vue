@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="logo">
-      <img src="../../assets/logo.svg" />
+      <img src="src/assets/logo.svg" />
       <div class="logo-text">Arco Design Pro</div>
     </div>
     <LoginBanner />
@@ -17,8 +17,7 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
-// eslint-disable-next-line import/extensions
-import { useStore } from '@/store/index';
+// import { useStore } from '@/store';
 import LoginBanner from './components/banner.vue';
 import LoginForm from './components/login-form.vue';
 import Footer from '@/components/footer/index.vue';
@@ -30,13 +29,7 @@ export default defineComponent({
     Footer,
   },
   setup() {
-    const store = useStore();
-    console.log(store.state.app.theme, 2222);
-  },
-  methods: {
-    aa() {
-      console.log(this.$store.state.user);
-    },
+    // const store = useStore();
   },
 });
 </script>

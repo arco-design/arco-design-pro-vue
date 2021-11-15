@@ -40,4 +40,7 @@ export default defineConfig({
     ],
     extensions: ['.ts', '.js'],
   },
+  define: {
+    'process.env': {},
+  },
 });

@@ -479,6 +479,11 @@
   "resolved" "http://bnpm.byted.org/@types/minimist/-/minimist-1.2.2.tgz"
   "version" "1.2.2"
 
+"@types/mockjs@^1.0.4":
+  "integrity" "sha1-5waVHV4ztPCku3Ox+LEk4m8IHeA="
+  "resolved" "https://registry.npmmirror.com/@types/mockjs/download/@types/mockjs-1.0.4.tgz"
+  "version" "1.0.4"
+
 "@types/node@*":
   "integrity" "sha512-ua7PgUoeQFjmWPcoo9khiPum3Pd60k4/2ZGXt18sm2Slk0W0xZTqt5Y0Ny1NyBiN1EVQ/+FaF9NcY4Qe6rwk5w=="
   "resolved" "http://bnpm.byted.org/@types/node/-/node-16.11.6.tgz"
@@ -3554,7 +3559,7 @@
 
 "mockjs@^1.1.0":
   "integrity" "sha1-5qDDeOkZBtuv8gkRzAJzs8fXWwY="
-  "resolved" "http://bnpm.byted.org/mockjs/-/mockjs-1.1.0.tgz"
+  "resolved" "https://registry.npmmirror.com/mockjs/download/mockjs-1.1.0.tgz"
   "version" "1.1.0"
   dependencies:
     "commander" "*"

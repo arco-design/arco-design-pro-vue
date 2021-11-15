@@ -2,13 +2,12 @@
   <div></div>
 </template>
 <script>
-export default {
-  setup(props) {
-    console.log(props);
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  setup() {
+    // console.log(props);
   },
-  mounted() {
-    // console.log(this.$store.);
-  },
-};
+});
 </script>
 <style scoped></style>

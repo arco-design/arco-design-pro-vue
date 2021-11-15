@@ -2,11 +2,13 @@
   <a-layout-footer class="footer">Arco Design Pro</a-layout-footer>
 </template>
 <script lang="ts">
-export default {
+import { defineComponent } from 'vue';
+
+export default defineComponent({
   setup() {
     // console.log(props);
   },
-};
+});
 </script>
 <style lang="less" scoped>
 .footer {

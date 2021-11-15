@@ -7,17 +7,23 @@
     </div>
     <template #content>
       <a-menu class="message-box">
-        <!-- <DropContent /> -->
+        <drop-content />
       </a-menu>
     </template>
   </a-dropdown>
 </template>
 <script lang="ts">
-export default {
-  setup(props) {
-    console.log(props);
+import { defineComponent } from 'vue';
+import DropContent from './drop-content.vue';
+
+export default defineComponent({
+  components: {
+    DropContent,
   },
-};
+  setup() {
+    // console.log(props);
+  },
+});
 </script>
 <style scoped lang="less">
 .message-box-trigger {
@@ -36,12 +42,12 @@ export default {
   min-width: 352px;
   max-height: 800px;
 
-  :global(.arco-tabs-header-nav) {
+  :global(.arco-tabs-nav) {
     padding: 8px 0 12px 0;
     border-bottom: 1px solid var(--color-neutral-3);
   }
 
-  :global(.arco-tabs-header) {
+  :global(.arco-tabs-nav-tab-list) {
     margin: 0 auto;
   }
 

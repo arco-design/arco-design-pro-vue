@@ -1,6 +1,6 @@
 import localeSettings from './en-US/settings';
-// import localeMessageBox from '../components/MessageBox/locale/en-US';
-// import localeWorkplace from '../pages/workplace/locale/en-US';
+import localeMessageBox from '@/components/message-box/locale/en-US';
+import localeWorkplace from '@/views/dashboard/workplace/locale/en-US';
 // import localeSearchTable from '../pages/search-table/locale/en-US';
 // import localeSuccess from '../pages/success/locale/en-US';
 // import locale403 from '../pages/403/locale/en-US';
@@ -14,7 +14,7 @@ import localeSettings from './en-US/settings';
 // import localeGroupForm from '../pages/group-form/locale/en-US';
 // import localeUserInfo from '../pages/user-info/locale/en-US';
 // import localeUserSetting from '../pages/user-setting/locale/en-US';
-// import localeMonitor from '../pages/monitor/locale/en-US';
+import localeMonitor from '@/views/dashboard/monitor/locale/en-US';
 // import localeBasicProfile from '../pages/basic-profile/locale/en-US';
 
 export default {
@@ -28,4 +28,21 @@ export default {
   'menu.user': 'User Center',
   'navbar.docs': 'Docs',
   ...localeSettings,
+  ...localeMessageBox,
+  ...localeWorkplace,
+  // ...localeSearchTable,
+  // ...localeSuccess,
+  // ...locale403,
+  // ...locale404,
+  // ...locale500,
+  // ...localeStepForm,
+  // ...localeDataAnalysis,
+  // ...localeMultiDAnalysis,
+  // ...localeCardList,
+  // ...localeError,
+  // ...localeGroupForm,
+  // ...localeUserInfo,
+  // ...localeUserSetting,
+  ...localeMonitor,
+  // ...localeBasicProfile,
 };

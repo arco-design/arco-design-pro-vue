@@ -31,7 +31,8 @@ module.exports = {
   },
   rules: {
     'prettier/prettier': 1,
-    'no-console': ['error', { allow: ['warn', 'error'] }],
+    'no-console': 'warn',
+    // 'no-console': ['error', { allow: ['warn', 'error'] }],
     'import/extensions': [
       'error',
       'ignorePackages',
@@ -46,5 +47,9 @@ module.exports = {
     'import/no-unresolved': 'off',
     'import/prefer-default-export': 'off',
     'no-shadow': 'off',
+    'import/no-extraneous-dependencies': 0,
+    '@typescript-eslint/no-unused-vars': 'warn',
+    '@typescript-eslint/no-empty-function': 'warn',
+    'no-param-reassign': 'off',
   },
 };

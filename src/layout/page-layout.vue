@@ -1,40 +1,78 @@
 <template>
-  <a-layout class="layout" style="height: 400px">
-    <div class="layout-navbar">
+  <a-layout class="layout">
+    <div v-if="navbar" class="layout-navbar">
       <NavBar />
     </div>
     <a-layout>
       <a-layout>
-        <a-layout-sider class="layout-sider">
+        <a-layout-sider
+          v-if="menu"
+          class="layout-sider"
+          :style="{ width: menuWidth, paddingTop: navbar ? '60px' : '' }"
+        >
           <div class="menu-wrapper">
-            <Menu :routers="[]" />
+            <Menu :routes="appRoutes" :style="{ width: menuWidth }" />
           </div>
         </a-layout-sider>
         <a-layout>
           <a-layout-content class="layout-content">
             <router-view />
           </a-layout-content>
-          <Footer />
+          <Footer v-if="footer" />
         </a-layout>
       </a-layout>
     </a-layout>
   </a-layout>
 </template>
 <script lang="ts">
+import { defineComponent, computed } from 'vue';
+import { useRouter } from 'vue-router';
+import baseStore, { useStore } from '@/store';
 import NavBar from '@/components/navbar/index.vue';
 import Menu from '@/components/menu/index.vue';
 import Footer from '@/components/footer/index.vue';
+import { A_USER_INFO } from '@/store/modules/action-type';
 
-export default {
+export default defineComponent({
   components: {
     NavBar,
     Menu,
     Footer,
   },
-  setup(props) {
-    console.log(props);
+  beforeRouteEnter(to, from, next) {
+    baseStore.dispatch(A_USER_INFO).then(
+      () => {
+        next();
+      },
+      () => {
+        next({
+          name: 'login',
+          query: {
+            redirect: to.name,
+            ...to.query,
+          },
+        });
+      }
+    );
   },
-};
+  setup() {
+    const router = useRouter();
+    const appRoute = router.getRoutes().find((el) => el.path === '/app');
+    const store = useStore();
+    const appState = store.state.app;
+    const navbar = computed(() => appState.navbar);
+    const menu = computed(() => appState.menu);
+    const footer = computed(() => appState.footer);
+    const menuWidth = computed(() => `${appState.menuWidth}px`);
+    return {
+      appRoutes: appRoute?.children || [],
+      navbar,
+      menu,
+      footer,
+      menuWidth,
+    };
+  },
+});
 </script>
 <style scoped lang="less">
 @nav-size-height: 60px;

@@ -16,7 +16,11 @@
         <a>{{ $t('navbar.docs') }}</a>
       </li>
       <li>
-        <a-select :options="locales"></a-select>
+        <a-select
+          :model-value="currentLocale"
+          :options="locales"
+          @change="changeLocale"
+        ></a-select>
       </li>
       <li>
         <a-tooltip
@@ -26,7 +30,11 @@
               : $t('settings.navbar.theme.toLight')
           "
         >
-          <a-button type="text" :style="{ fontSize: '20px' }">
+          <a-button
+            type="text"
+            :style="{ fontSize: '20px' }"
+            @click="toggleTheme"
+          >
             <template #icon>
               <icon-moon-fill v-if="theme === 'light'" />
               <icon-sun-fill v-else />
@@ -42,7 +50,9 @@
           <a-typography-text class="username">{{ name }}</a-typography-text>
           <template #content>
             <a-menu class="message-box">
-              <a-menu-item key="logout">登出</a-menu-item>
+              <a-menu-item key="logout" @click="logout('login')"
+                >登出</a-menu-item
+              >
             </a-menu>
           </template>
         </a-dropdown>
@@ -51,33 +61,42 @@
   </div>
 </template>
 <script lang="ts">
-import { computed } from 'vue';
+import { defineComponent, computed } from 'vue';
 import MessageBox from '../message-box/index.vue';
-// eslint-disable-next-line import/extensions
 import { useStore } from '@/store';
+import { M_TOGGLE_THEME } from '@/store/modules/mutation-type';
+import { LOCALE_OPTIONS } from '@/locale';
+import useLocale from '@/hooks/locale';
+import useUser from '@/hooks/user';
 
-export default {
+export default defineComponent({
   components: {
     MessageBox,
   },
   setup() {
-    const locales = [
-      { label: '中文', value: 'zh-CN' },
-      { label: 'English', value: 'en-US' },
-    ];
-    const theme = computed(() => {
-      return 'light';
-    });
     const store = useStore();
-    const { avatar, name = 'Meshy' } = store.state.user;
+    const { logout } = useUser();
+    const { avatar, name } = store.state.user;
+    const { currentLocale, changeLocale } = useLocale();
+    const locales = [...LOCALE_OPTIONS];
+    const theme = computed(() => {
+      return store.state.app.theme;
+    });
+    const toggleTheme = () => {
+      store.commit(M_TOGGLE_THEME);
+    };
     return {
       locales,
       theme,
       avatar,
       name,
+      currentLocale,
+      changeLocale,
+      logout,
+      toggleTheme,
     };
   },
-};
+});
 </script>
 <style scoped lang="less">
 .navbar {

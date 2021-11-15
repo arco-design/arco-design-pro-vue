@@ -19,6 +19,7 @@
 			"@/*": ["src/*"]
 		},
     "typeRoots": ["./node_modules/@types/", "./types"],
+    "isolatedModules": true,
   },
   "include": [
     "src/**/*"

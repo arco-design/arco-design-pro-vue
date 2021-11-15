@@ -3,22 +3,20 @@
     <h5 class="title">{{ title }}</h5>
     <div v-for="option in options" :key="option.name" class="switch-wrapper">
       <span>{{ $t(option.name) }}</span>
-      <a-input-number
-        v-if="option.type === 'number'"
-        :style="{ width: '80px' }"
-        size="small"
-      />
-      <a-switch
-        v-else
-        :default-checked="!!option.value"
-        size="small"
+      <form-wrapper
+        :type="option.type || 'switch'"
+        :name="option.key"
+        :default-value="option.defaultVal"
         @change="handleChange"
       />
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import { withDefaults } from 'vue';
+import { withDefaults, defineProps } from 'vue';
+import store from '@/store';
+import { M_APP_UPDATE_SETTING } from '@/store/modules/mutation-type';
+import FormWrapper from './form-wrapper.vue';
 
 interface Props {
   title: string;
@@ -28,13 +26,13 @@ interface Props {
     type?: string;
   }[];
 }
-// eslint-disable-next-line no-undef
+
 withDefaults(defineProps<Props>(), {
   title: '',
   options: () => [],
 });
-const handleChange = (val: boolean) => {
-  console.log(val);
+const handleChange = ({ key, value }) => {
+  store.commit(M_APP_UPDATE_SETTING, { key, value });
 };
 </script>
 <style scoped lang="less">

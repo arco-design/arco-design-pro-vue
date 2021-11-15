@@ -6,6 +6,7 @@ import router from './router';
 
 import store, { key } from './store';
 import i18n from './locale';
+import './mock';
 
 import App from './App.vue';
 

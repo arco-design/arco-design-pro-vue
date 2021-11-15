@@ -1,4 +1,3 @@
-// store.ts
 import { InjectionKey } from 'vue';
 import { createStore, useStore as baseUseStore, Store } from 'vuex';
 import appStore, { IDefaultSetting } from './modules/app';
@@ -16,7 +15,6 @@ const store = createStore<IState>({
     app: appStore,
     user: userStore,
   },
-  // state: {},
 });
 export default store;
 // 定义自己的 `useStore` 组合式函数

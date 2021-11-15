@@ -20,40 +20,52 @@
   </div>
 </template>
 <script lang="ts">
+import { defineComponent, ref } from 'vue';
+import { useStore } from '@/store';
 import Block from './block.vue';
 
-export default {
+export default defineComponent({
   components: {
     Block,
   },
-  setup(props) {
-    console.log(props);
-  },
-  data() {
+  setup() {
+    const visible = ref(false);
+    const store = useStore();
+    const contentOpts = [
+      { name: 'settings.navbar', key: 'navbar', defaultVal: true },
+      { name: 'settings.menu', key: 'menu', defaultVal: true },
+      { name: 'settings.footer', key: 'footer', defaultVal: true },
+      {
+        name: 'settings.menuWidth',
+        key: 'menuWidth',
+        defaultVal: store.state.app.menuWidth,
+        type: 'number',
+      },
+    ];
+    const othersOpts = [
+      { name: 'settings.colorWeek', value: 'colorWeek', defaultVal: true },
+    ];
+
+    const setVisible = () => {
+      visible.value = true;
+    };
+    const cancel = () => {
+      visible.value = false;
+    };
+
+    const ok = () => {
+      //
+    };
     return {
-      visible: false,
-      contentOpts: [
-        { name: 'settings.navbar', value: 'navbar' },
-        { name: 'settings.menu', value: 'menu' },
-        { name: 'settings.footer', value: 'footer' },
-        { name: 'settings.menuWidth', value: 'menuWidth', type: 'number' },
-      ],
-      othersOpts: [{ name: 'settings.colorWeek', value: 'colorWeek' }],
+      visible,
+      contentOpts,
+      othersOpts,
+      setVisible,
+      ok,
+      cancel,
     };
   },
-  methods: {
-    setVisible() {
-      this.visible = true;
-    },
-    ok() {
-      console.log('ok');
-    },
-    cancel() {
-      this.visible = false;
-      console.log('cancel');
-    },
-  },
-};
+});
 </script>
 <style scoped lang="less">
 .btn {
