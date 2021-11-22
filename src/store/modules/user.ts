@@ -77,9 +77,15 @@ const actions = {
     });
   },
 };
+const getters = {
+  userInfo(state: IUserState) {
+    return { ...state };
+  },
+};
 export default {
   // namespaced: true,
   state: initialState,
   mutations,
   actions,
+  getters,
 };

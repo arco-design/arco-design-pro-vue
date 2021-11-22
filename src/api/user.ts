@@ -1,10 +1,12 @@
+import { AxiosPromise } from 'axios';
+
 import request, { HttpResponse } from '@/utils/request';
 
 export interface ILoginData {
   username: string;
   password: string;
 }
-export function login(data: ILoginData): Promise<HttpResponse> {
+export function login(data: ILoginData): AxiosPromise<HttpResponse> {
   return request({
     url: '/api/user/login',
     method: 'post',
@@ -12,14 +14,14 @@ export function login(data: ILoginData): Promise<HttpResponse> {
   });
 }
 
-export function logout() {
+export function logout(): AxiosPromise<HttpResponse> {
   return request({
     url: '/api/user/logout',
     method: 'post',
   });
 }
 
-export function getUserInfo(): Promise<HttpResponse> {
+export function getUserInfo(): AxiosPromise<HttpResponse> {
   return request({
     url: '/api/user/info',
     method: 'post',

@@ -3,16 +3,16 @@
 
 
 "@arco-design/color@^0.4.0":
-  "integrity" "sha1-b7RqMzpqHF5MVjL3WPGAeZAYKAw="
-  "resolved" "http://bnpm.byted.org/@arco-design/color/-/color-0.4.0.tgz"
+  "integrity" "sha1-Ut20DTGO5t8QV8qMZTzBZ1Ajko8="
+  "resolved" "https://registry.npmmirror.com/@arco-design/color/download/@arco-design/color-0.4.0.tgz"
   "version" "0.4.0"
   dependencies:
     "color" "^3.1.3"
 
-"@arco-design/web-vue@^2.0.3":
-  "integrity" "sha512-dc96EMA9C1bxPCoLeZqk1SRMKoMAdtl2dxEgBpi+FCv5H+pd2U0VGeCD4eHU5myt5dHa8Yc2X7b6sBBmloLUxQ=="
-  "resolved" "http://bnpm.byted.org/@arco-design/web-vue/-/web-vue-2.0.3.tgz"
-  "version" "2.0.3"
+"@arco-design/web-vue@^2.3.0":
+  "integrity" "sha512-NPQH0HASDBOckNT1gc6hrWzyO8ILsCYGGAzmsDVRSB7mi4WoOA3ZvqEUv/hiMrFxvtaFvCtXT03yX3ZStoFxjQ=="
+  "resolved" "https://registry.npmmirror.com/@arco-design/web-vue/download/@arco-design/web-vue-2.3.0.tgz"
+  "version" "2.3.0"
   dependencies:
     "@arco-design/color" "^0.4.0"
     "b-tween" "^0.3.3"
@@ -444,6 +444,13 @@
   "resolved" "http://bnpm.byted.org/@trysound/sax/-/sax-0.2.0.tgz"
   "version" "0.2.0"
 
+"@types/echarts@^4.9.12":
+  "integrity" "sha1-ybOfC6LovpmmBjphNoMWHn9Hosw="
+  "resolved" "https://registry.npmmirror.com/@types/echarts/download/@types/echarts-4.9.12.tgz"
+  "version" "4.9.12"
+  dependencies:
+    "@types/zrender" "*"
+
 "@types/glob@^7.1.1":
   "integrity" "sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA=="
   "resolved" "http://bnpm.byted.org/@types/glob/-/glob-7.2.0.tgz"
@@ -494,6 +501,11 @@
   "resolved" "http://bnpm.byted.org/@types/normalize-package-data/-/normalize-package-data-2.4.1.tgz"
   "version" "2.4.1"
 
+"@types/nprogress@^0.2.0":
+  "integrity" "sha1-hsWTaC1BmSEqBQnMPE1WK7vW5F8="
+  "resolved" "https://registry.npmmirror.com/@types/nprogress/download/@types/nprogress-0.2.0.tgz"
+  "version" "0.2.0"
+
 "@types/parse-json@^4.0.0":
   "integrity" "sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA=="
   "resolved" "http://bnpm.byted.org/@types/parse-json/-/parse-json-4.0.0.tgz"
@@ -519,6 +531,11 @@
     "@types/node" "*"
     "@types/unist" "*"
     "@types/vfile-message" "*"
+
+"@types/zrender@*":
+  "integrity" "sha1-YoDEAgeSfOCGviS0OR1mjNMw6VY="
+  "resolved" "https://registry.npmmirror.com/@types/zrender/download/@types/zrender-4.0.1.tgz"
+  "version" "4.0.1"
 
 "@typescript-eslint/eslint-plugin@^5.3.0":
   "integrity" "sha512-ARUEJHJrq85aaiCqez7SANeahDsJTD3AEua34EoQN9pHS6S5Bq9emcIaGGySt/4X2zSi+vF5hAH52sEen7IO7g=="
@@ -1016,13 +1033,13 @@
     "follow-redirects" "^1.14.4"
 
 "b-tween@^0.3.3":
-  "integrity" "sha512-oEHegcRpA7fAuc9KC4nktucuZn2aS8htymCPcP3qkEGPqiBH+GfqtqoG2l7LxHngg6O0HFM7hOeOYExl1Oz4ZA=="
-  "resolved" "http://bnpm.byted.org/b-tween/-/b-tween-0.3.3.tgz"
+  "integrity" "sha1-epPtGZyYzUGjO6THEaD6fobbP6I="
+  "resolved" "https://registry.npmmirror.com/b-tween/download/b-tween-0.3.3.tgz"
   "version" "0.3.3"
 
 "b-validate@^1.2.3":
-  "integrity" "sha512-1O7CPZcLbU+gP84qpmJ+mtHfaJf7p9um8uQnZU4UJXZF60tW50z+FUx8VdFZmZXGhJvjT0v7dMyW4HD9/hX4WA=="
-  "resolved" "http://bnpm.byted.org/b-validate/-/b-validate-1.2.5.tgz"
+  "integrity" "sha1-n1IZWN9Klgf8EXuIoI/Ou1MXeFA="
+  "resolved" "https://registry.npmmirror.com/b-validate/download/b-validate-1.2.5.tgz"
   "version" "1.2.5"
   dependencies:
     "lodash.isequal" "^4.5.0"
@@ -1344,16 +1361,16 @@
   "version" "1.1.3"
 
 "color-string@^1.6.0":
-  "integrity" "sha512-c/hGS+kRWJutUBEngKKmk4iH3sD59MBkoxVapS/0wgpCz2u7XsNloxknyvBhzwEs1IbV36D9PwqLPJ2DTu3vMA=="
-  "resolved" "http://bnpm.byted.org/color-string/-/color-string-1.6.0.tgz"
+  "integrity" "sha1-w5FfYf4mdnLLfh4GTJ1pIhn2wxI="
+  "resolved" "https://registry.npmmirror.com/color-string/download/color-string-1.6.0.tgz"
   "version" "1.6.0"
   dependencies:
     "color-name" "^1.0.0"
     "simple-swizzle" "^0.2.2"
 
 "color@^3.1.3":
-  "integrity" "sha512-aBl7dZI9ENN6fUGC7mWpMTPNHmWUSNan9tuWN6ahh5ZLNk9baLJOnSMlrQkHcrfFgz2/RigjUVAjdx36VcemKA=="
-  "resolved" "http://bnpm.byted.org/color/-/color-3.2.1.tgz"
+  "integrity" "sha1-NUTcGYyvRJDD7MmnkLVP6f9F4WQ="
+  "resolved" "https://registry.npmmirror.com/color/download/color-3.2.1.tgz"
   "version" "3.2.1"
   dependencies:
     "color-convert" "^1.9.3"
@@ -1386,7 +1403,7 @@
 
 "compute-scroll-into-view@^1.0.17":
   "integrity" "sha1-aojxis2dQunPS6pr7H4FImB6t6s="
-  "resolved" "http://bnpm.byted.org/compute-scroll-into-view/-/compute-scroll-into-view-1.0.17.tgz"
+  "resolved" "https://registry.npmmirror.com/compute-scroll-into-view/download/compute-scroll-into-view-1.0.17.tgz"
   "version" "1.0.17"
 
 "concat-map@0.0.1":
@@ -1504,9 +1521,9 @@
   dependencies:
     "array-find-index" "^1.0.1"
 
-"dayjs@^1.10.3":
-  "integrity" "sha512-P6twpd70BcPK34K26uJ1KT3wlhpuOAPoMwJzpsIWUxHZ7wpmbdZL/hQqBDfz7hGurYSa5PhzdhDHtt319hL3ig=="
-  "resolved" "http://bnpm.byted.org/dayjs/-/dayjs-1.10.7.tgz"
+"dayjs@^1.10.3", "dayjs@^1.10.7":
+  "integrity" "sha1-LPX5Gt0oEWdIRAhmoKHSbzps5Gg="
+  "resolved" "https://registry.npmmirror.com/dayjs/download/dayjs-1.10.7.tgz"
   "version" "1.10.7"
 
 "debug@^2.2.0":
@@ -1701,9 +1718,9 @@
   dependencies:
     "is-obj" "^2.0.0"
 
-"echarts@^5.2.2":
-  "integrity" "sha512-yxuBfeIH5c+0FsoRP60w4De6omXhA06c7eUYBsC1ykB6Ys2yK5fSteIYWvkJ4xJVLQgCvAdO8C4mN6MLeJpBaw=="
-  "resolved" "http://bnpm.byted.org/echarts/-/echarts-5.2.2.tgz"
+"echarts@^5.1.2", "echarts@^5.2.2":
+  "integrity" "sha1-7DyLKhUcu6cbo8LHz5svIEfOQ3A="
+  "resolved" "https://registry.npmmirror.com/echarts/download/echarts-5.2.2.tgz"
   "version" "5.2.2"
   dependencies:
     "tslib" "2.3.0"
@@ -2229,6 +2246,11 @@
   dependencies:
     "to-regex-range" "^5.0.1"
 
+"filter-obj@^1.1.0":
+  "integrity" "sha1-mzERErxsYSehbgFsbF1/GeCAXFs="
+  "resolved" "https://registry.npmmirror.com/filter-obj/download/filter-obj-1.1.0.tgz"
+  "version" "1.1.0"
+
 "find-up@^2.0.0", "find-up@^2.1.0":
   "integrity" "sha1-RdG35QbHF93UgndaK3eSCjwMV6c="
   "resolved" "http://bnpm.byted.org/find-up/-/find-up-2.1.0.tgz"
@@ -2725,8 +2747,8 @@
   "version" "0.2.1"
 
 "is-arrayish@^0.3.1":
-  "integrity" "sha512-eVRqCvVlZbuw3GrM63ovNSNAeA1K16kaR/LRY/92w0zxQ5/1YzwblUX652i4Xs9RwAGjW9d9y6X88t8OaAJfWQ=="
-  "resolved" "http://bnpm.byted.org/is-arrayish/-/is-arrayish-0.3.2.tgz"
+  "integrity" "sha1-RXSirlb3qyBolvtDHq7tBm/fjwM="
+  "resolved" "https://registry.npmmirror.com/is-arrayish/download/is-arrayish-0.3.2.tgz"
   "version" "0.3.2"
 
 "is-bigint@^1.0.1":
@@ -3260,7 +3282,7 @@
 
 "lodash.isequal@^4.5.0":
   "integrity" "sha1-QVxEePK8wwEgwizhDtMib30+GOA="
-  "resolved" "http://bnpm.byted.org/lodash.isequal/-/lodash.isequal-4.5.0.tgz"
+  "resolved" "https://registry.npmmirror.com/lodash.isequal/download/lodash.isequal-4.5.0.tgz?cache=0&sync_timestamp=1632754310509&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Flodash.isequal%2Fdownload%2Flodash.isequal-4.5.0.tgz"
   "version" "4.5.0"
 
 "lodash.merge@^4.6.2":
@@ -3274,8 +3296,8 @@
   "version" "4.4.2"
 
 "lodash@^4.17.10", "lodash@^4.17.11", "lodash@^4.17.14", "lodash@^4.17.15", "lodash@^4.17.21", "lodash@^4.17.4":
-  "integrity" "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg=="
-  "resolved" "http://bnpm.byted.org/lodash/-/lodash-4.17.21.tgz"
+  "integrity" "sha1-Z5WRxWTDv/quhFTPCz3zcMPWkRw="
+  "resolved" "https://registry.npmmirror.com/lodash/download/lodash-4.17.21.tgz"
   "version" "4.17.21"
 
 "log-symbols@^2.0.0", "log-symbols@^2.2.0":
@@ -3657,6 +3679,11 @@
   dependencies:
     "path-key" "^3.0.0"
 
+"nprogress@^0.2.0":
+  "integrity" "sha1-y480xTIT2JVyP8urkH6UIq28r7E="
+  "resolved" "https://registry.npmmirror.com/nprogress/download/nprogress-0.2.0.tgz"
+  "version" "0.2.0"
+
 "nth-check@^2.0.0":
   "integrity" "sha512-it1vE95zF6dTT9lBsYbxvqh0Soy4SPowchj0UBGj/V6cTPnXXtQOPUbhZ6CmGzAD/rW22LQK6E96pcdJXk4A4w=="
   "resolved" "http://bnpm.byted.org/nth-check/-/nth-check-2.0.1.tgz"
@@ -3670,8 +3697,8 @@
   "version" "1.2.2"
 
 "number-precision@^1.5.0":
-  "integrity" "sha512-JdTfhUHd1aUL4svSaJXlv3CKNz92js2z0+HS/9AX8euw+akompBz/QEZ7e3y7eTuJxvRqXBZP6mapUlTtLoTsA=="
-  "resolved" "http://bnpm.byted.org/number-precision/-/number-precision-1.5.1.tgz"
+  "integrity" "sha1-6jQ5kECdhzRkB0NT/LMKwQWpDmE="
+  "resolved" "https://registry.npmmirror.com/number-precision/download/number-precision-1.5.1.tgz"
   "version" "1.5.1"
 
 "object-assign@^4.1.1":
@@ -4256,6 +4283,16 @@
   "resolved" "http://bnpm.byted.org/punycode/-/punycode-2.1.1.tgz"
   "version" "2.1.1"
 
+"query-string@^7.0.1":
+  "integrity" "sha1-Rb0UnPWGqqWC3/x+x6itl90C910="
+  "resolved" "https://registry.npmmirror.com/query-string/download/query-string-7.0.1.tgz"
+  "version" "7.0.1"
+  dependencies:
+    "decode-uri-component" "^0.2.0"
+    "filter-obj" "^1.1.0"
+    "split-on-first" "^1.0.0"
+    "strict-uri-encode" "^2.0.0"
+
 "queue-microtask@^1.2.2":
   "integrity" "sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A=="
   "resolved" "http://bnpm.byted.org/queue-microtask/-/queue-microtask-1.2.3.tgz"
@@ -4443,9 +4480,14 @@
   "resolved" "http://bnpm.byted.org/require-from-string/-/require-from-string-2.0.2.tgz"
   "version" "2.0.2"
 
+"resize-detector@^0.3.0":
+  "integrity" "sha1-/klREuGEaVUAqPUeA4nxV3TLHPw="
+  "resolved" "https://registry.npmmirror.com/resize-detector/download/resize-detector-0.3.0.tgz"
+  "version" "0.3.0"
+
 "resize-observer-polyfill@^1.5.1":
-  "integrity" "sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg=="
-  "resolved" "http://bnpm.byted.org/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz"
+  "integrity" "sha1-DpAg3T0hAkRY1OvSfiPkAmmBBGQ="
+  "resolved" "https://registry.npmmirror.com/resize-observer-polyfill/download/resize-observer-polyfill-1.5.1.tgz"
   "version" "1.5.1"
 
 "resolve-from@^3.0.0":
@@ -4557,8 +4599,8 @@
   "version" "1.2.4"
 
 "scroll-into-view-if-needed@^2.2.28":
-  "integrity" "sha512-8LuxJSuFVc92+0AdNv4QOxRL4Abeo1DgLnGNkn1XlaujPH/3cCFz3QI60r2VNu4obJJROzgnIUw5TKQkZvZI1w=="
-  "resolved" "http://bnpm.byted.org/scroll-into-view-if-needed/-/scroll-into-view-if-needed-2.2.28.tgz"
+  "integrity" "sha1-WhWy9YpSZCyIyOylhGROAXA9ZFo="
+  "resolved" "https://registry.npmmirror.com/scroll-into-view-if-needed/download/scroll-into-view-if-needed-2.2.28.tgz"
   "version" "2.2.28"
   dependencies:
     "compute-scroll-into-view" "^1.0.17"
@@ -4628,7 +4670,7 @@
 
 "simple-swizzle@^0.2.2":
   "integrity" "sha1-pNprY1/8zMoz9w0Xy5JZLeleVXo="
-  "resolved" "http://bnpm.byted.org/simple-swizzle/-/simple-swizzle-0.2.2.tgz"
+  "resolved" "https://registry.npmmirror.com/simple-swizzle/download/simple-swizzle-0.2.2.tgz"
   "version" "0.2.2"
   dependencies:
     "is-arrayish" "^0.3.1"
@@ -4772,6 +4814,11 @@
   "resolved" "http://bnpm.byted.org/specificity/-/specificity-0.4.1.tgz"
   "version" "0.4.1"
 
+"split-on-first@^1.0.0":
+  "integrity" "sha1-9hCv7uOxK84dDDBCXnY5i3gkml8="
+  "resolved" "https://registry.npmmirror.com/split-on-first/download/split-on-first-1.1.0.tgz"
+  "version" "1.1.0"
+
 "split-string@^3.0.1", "split-string@^3.0.2":
   "integrity" "sha1-fLCd2jqGWFcFxks5pkZgOGguj+I="
   "resolved" "http://bnpm.byted.org/split-string/-/split-string-3.1.0.tgz"
@@ -4801,6 +4848,11 @@
   dependencies:
     "define-property" "^0.2.5"
     "object-copy" "^0.1.0"
+
+"strict-uri-encode@^2.0.0":
+  "integrity" "sha1-ucczDHBChi9rFC3CdLvMWGbONUY="
+  "resolved" "https://registry.npmmirror.com/strict-uri-encode/download/strict-uri-encode-2.0.0.tgz"
+  "version" "2.0.0"
 
 "string_decoder@^1.1.1":
   "integrity" "sha512-hkRX8U1WjJFd8LsDJ2yQ/wWWxaopEsABU1XfkM8A+j0+85JAGppt16cr1Whg6KIbb4okU6Mql6BOj+uup/wKeA=="
@@ -5666,6 +5718,19 @@
     "vscode-pug-languageservice" "^0.27.24"
     "vscode-typescript-languageservice" "^0.27.25"
 
+"vue-demi@^0.11.2":
+  "integrity" "sha1-YQGZL+RyTPVjQBihbpU/MFLpTio="
+  "resolved" "https://registry.npmmirror.com/vue-demi/download/vue-demi-0.11.4.tgz"
+  "version" "0.11.4"
+
+"vue-echarts@^6.0.0":
+  "integrity" "sha1-SAJj/G7SEluIa7G38Fv5Jz7e5VI="
+  "resolved" "https://registry.npmmirror.com/vue-echarts/download/vue-echarts-6.0.0.tgz"
+  "version" "6.0.0"
+  dependencies:
+    "resize-detector" "^0.3.0"
+    "vue-demi" "^0.11.2"
+
 "vue-eslint-parser@^7.10.0":
   "integrity" "sha512-qh3VhDLeh773wjgNTl7ss0VejY9bMMa0GoDG2fQVyDzRFdiU3L7fw74tWZDHNQXdZqxO3EveQroa9ct39D2nqg=="
   "resolved" "http://bnpm.byted.org/vue-eslint-parser/-/vue-eslint-parser-7.11.0.tgz"
@@ -5703,7 +5768,7 @@
   dependencies:
     "vscode-vue-languageservice" "^0.27.0"
 
-"vue@^3.0.0", "vue@^3.0.2", "vue@^3.1.0", "vue@^3.2.16", "vue@3.2.21":
+"vue@^2.6.12 || ^3.1.1", "vue@^3.0.0", "vue@^3.0.0-0 || ^2.6.0", "vue@^3.0.2", "vue@^3.1.0", "vue@^3.2.16", "vue@3.2.21":
   "integrity" "sha512-jpy7ckXdyclfRzqLjL4mtq81AkzQleE54KjZsJg/9OorNVurAxdlU5XpD49GpjKdnftuffKUvx2C5jDOrgc/zg=="
   "resolved" "http://bnpm.byted.org/vue/-/vue-3.2.21.tgz"
   "version" "3.2.21"

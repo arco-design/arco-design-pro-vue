@@ -86,7 +86,7 @@ export default defineComponent({
             const { redirect, ...othersQuery } =
               router.currentRoute.value.query;
             router.push({
-              name: redirect || 'login',
+              name: redirect || 'workplace',
               query: {
                 ...othersQuery,
               },
@@ -98,7 +98,6 @@ export default defineComponent({
           });
       } else {
         errorMessage.value = Object.entries(errors)[0].message;
-        // console.log(errorMessage);
       }
     };
     const setRememberPassword = () => {

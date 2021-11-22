@@ -1,5 +1,5 @@
 import Mock from 'mockjs';
-import setupMock from '@/utils/setup-mock';
+import setupMock, { successResponseWrap } from '@/utils/setup-mock';
 
 interface IMessage {
   id: number;
@@ -79,23 +79,13 @@ const getMessageList = () => {
 setupMock({
   setup: () => {
     Mock.mock(new RegExp('/api/message/list'), () => {
-      return {
-        data: getMessageList(),
-        status: 'ok',
-        msg: '请求成功',
-        code: 20000,
-      };
+      return successResponseWrap(getMessageList());
     });
 
     Mock.mock(new RegExp('/api/message/read'), (params: { body: string }) => {
       const { ids } = JSON.parse(params.body);
       haveReadIds.push(...(ids || []));
-      return {
-        data: true,
-        status: 'ok',
-        msg: '请求成功',
-        code: 20000,
-      };
+      return successResponseWrap(true);
     });
   },
 });

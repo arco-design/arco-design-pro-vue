@@ -2,16 +2,21 @@ import Mock from 'mockjs';
 
 import './user';
 import './message-box';
-// import '../pages/card-list/mock';
-// import '../pages/step-form/mock';
-// import '../pages/group-form/mock';
-// import '../pages/data-analysis/mock';
-// import '../pages/multi-dimension-data-analysis/mock';
-// import '../pages/monitor/mock';
-// import '../pages/basic-profile/mock';
-// import '../pages/search-table/mock';
-import '@/views/user-info/mock';
-// import '../pages/user-setting/mock';
+
+import '@/views/dashboard/monitor/mock';
+
+import '@/views/list/card/mock';
+import '@/views/list/search-table/mock';
+
+import '@/views/form/step/mock';
+
+import '@/views/profile/basic/mock';
+
+import '@/views/visualization/data-analysis/mock';
+import '@/views/visualization/multi-dimension-data-analysis/mock';
+
+import '@/views/user/info/mock';
+import '@/views/user/setting/mock';
 
 Mock.setup({
   timeout: '200-600',

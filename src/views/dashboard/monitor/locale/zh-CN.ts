@@ -16,7 +16,7 @@ export default {
   'monitor.list.tip.rest': '，节目单观众不可见',
   'monitor.list.tag.auditFailed': '审核未通过',
   'monitor.tab.title.liveMethod': '直播方式',
-  'monitor.tab.title.virtualPopulation': '虚拟人数',
+  'monitor.tab.title.onlinePopulation': '在线人数',
   'monitor.liveMethod.normal': '普通直播',
   'monitor.liveMethod.flowControl': '控流直播',
   'monitor.liveMethod.video': '视频直播',

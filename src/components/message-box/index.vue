@@ -48,6 +48,7 @@ export default defineComponent({
   }
 
   :global(.arco-tabs-nav-tab-list) {
+    // 消费记录会影响到 message与其互斥。TODO：解决样式写法
     margin: 0 auto;
   }
 

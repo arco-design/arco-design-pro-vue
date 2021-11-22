@@ -1,0 +1,16 @@
+export default {
+  'menu.list.searchTable': 'Search Table',
+  'searchTable.addPolicy': 'add Policy',
+  'searchTable.placeholder.name': 'Please enter policy name / ID',
+  'searchTable.columns.name': 'Policy name / policy ID',
+  'searchTable.columns.workflow': 'Workflow name / ID',
+  'searchTable.columns.period': 'Statistical period',
+  'searchTable.columns.statistic': 'Statistics',
+  'searchTable.columns.status': 'Status',
+  'searchTable.columns.createdTime': 'CreatedTime',
+  'searchTable.columns.deadline': 'Deadline',
+  'searchTable.columns.operations': 'Operations',
+  'searchTable.columns.operations.view': 'View',
+  'searchTable.columns.operations.update': 'Update',
+  'searchTable.columns.operations.delete': 'Delete',
+};

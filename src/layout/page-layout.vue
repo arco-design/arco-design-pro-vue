@@ -11,11 +11,11 @@
           :style="{ width: menuWidth, paddingTop: navbar ? '60px' : '' }"
         >
           <div class="menu-wrapper">
-            <Menu :routes="appRoutes" :style="{ width: menuWidth }" />
+            <Menu :style="{ width: menuWidth }" />
           </div>
         </a-layout-sider>
-        <a-layout>
-          <a-layout-content class="layout-content">
+        <a-layout class="layout-content" :style="paddingStyle">
+          <a-layout-content>
             <router-view />
           </a-layout-content>
           <Footer v-if="footer" />
@@ -26,7 +26,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
-import { useRouter } from 'vue-router';
+// import { useRouter } from 'vue-router';
 import baseStore, { useStore } from '@/store';
 import NavBar from '@/components/navbar/index.vue';
 import Menu from '@/components/menu/index.vue';
@@ -56,20 +56,28 @@ export default defineComponent({
     );
   },
   setup() {
-    const router = useRouter();
-    const appRoute = router.getRoutes().find((el) => el.path === '/app');
+    // const router = useRouter();
+    // const appRoute = router.getRoutes().find((el) => el.path === '/app');
     const store = useStore();
     const appState = store.state.app;
+    const navbarHeight = `60px`;
     const navbar = computed(() => appState.navbar);
     const menu = computed(() => appState.menu);
     const footer = computed(() => appState.footer);
     const menuWidth = computed(() => `${appState.menuWidth}px`);
+    const paddingStyle = computed(() => {
+      const paddingLeft = menu.value ? { paddingLeft: menuWidth.value } : {};
+      const paddingTop = navbar.value ? { paddingTop: navbarHeight } : {};
+      return { ...paddingLeft, ...paddingTop };
+    });
+
     return {
-      appRoutes: appRoute?.children || [],
+      // appRoutes: appRoute?.children || [],
       navbar,
       menu,
       footer,
       menuWidth,
+      paddingStyle,
     };
   },
 });

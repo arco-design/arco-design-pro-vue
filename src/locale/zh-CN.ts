@@ -1,21 +1,29 @@
 import localeSettings from './zh-CN/settings';
 import localeMessageBox from '@/components/message-box/locale/zh-CN';
+
 import localeWorkplace from '@/views/dashboard/workplace/locale/zh-CN';
-// import localeSearchTable from '../pages/search-table/locale/zh-CN';
-// import localeSuccess from '../pages/success/locale/zh-CN';
-// import locale403 from '../pages/403/locale/zh-CN';
-// import locale404 from '../pages/404/locale/zh-CN';
-// import locale500 from '../pages/500/locale/zh-CN';
-// import localeStepForm from '../pages/step-form/locale/zh-CN';
-// import localeDataAnalysis from '../pages/data-analysis/locale/zh-CN';
-// import localeMultiDAnalysis from '../pages/multi-dimension-data-analysis/locale/zh-CN';
-// import localeCardList from '../pages/card-list/locale/zh-CN';
-// import localeError from '../pages/error/locale/zh-CN';
-// import localeGroupForm from '../pages/group-form/locale/zh-CN';
-// import localeUserInfo from '../pages/user-info/locale/zh-CN';
-// import localeUserSetting from '../pages/user-setting/locale/zh-CN';
 import localeMonitor from '@/views/dashboard/monitor/locale/zh-CN';
-// import localeBasicProfile from '../pages/basic-profile/locale/zh-CN';
+
+import localeSearchTable from '@/views/list/search-table/locale/zh-CN';
+import localeCardList from '@/views/list/card/locale/zh-CN';
+
+import localeStepForm from '@/views/form/step/locale/zh-CN';
+import localeGroupForm from '@/views/form/group/locale/zh-CN';
+
+import localeBasicProfile from '@/views/profile/basic/locale/zh-CN';
+
+import localeDataAnalysis from '@/views/visualization/data-analysis/locale/zh-CN';
+import localeMultiDAnalysis from '@/views/visualization/multi-dimension-data-analysis/locale/zh-CN';
+
+import localeSuccess from '@/views/result/success/locale/zh-CN';
+import localeError from '@/views/result/error/locale/zh-CN';
+
+import locale403 from '@/views/exception/403/locale/zh-CN';
+import locale404 from '@/views/exception/404/locale/zh-CN';
+import locale500 from '@/views/exception/500/locale/zh-CN';
+
+import localeUserInfo from '@/views/user/info/locale/zh-CN';
+import localeUserSetting from '@/views/user/setting/locale/zh-CN';
 
 export default {
   'menu.dashboard': '仪表盘',
@@ -30,19 +38,19 @@ export default {
   ...localeSettings,
   ...localeMessageBox,
   ...localeWorkplace,
-  // ...localeSearchTable,
-  // ...localeSuccess,
-  // ...locale403,
-  // ...locale404,
-  // ...locale500,
-  // ...localeStepForm,
-  // ...localeDataAnalysis,
-  // ...localeMultiDAnalysis,
-  // ...localeCardList,
-  // ...localeError,
-  // ...localeGroupForm,
-  // ...localeUserInfo,
-  // ...localeUserSetting,
   ...localeMonitor,
-  // ...localeBasicProfile,
+  ...localeSearchTable,
+  ...localeCardList,
+  ...localeStepForm,
+  ...localeGroupForm,
+  ...localeBasicProfile,
+  ...localeDataAnalysis,
+  ...localeMultiDAnalysis,
+  ...localeSuccess,
+  ...localeError,
+  ...locale403,
+  ...locale404,
+  ...locale500,
+  ...localeUserInfo,
+  ...localeUserSetting,
 };

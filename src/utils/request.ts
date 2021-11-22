@@ -1,14 +1,14 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Message } from '@arco-design/web-vue';
 // import store from '@/store';
-import { getToken } from '@/utils/auth';
+// import { getToken } from '@/utils/auth';
 
 export interface HttpResponse {
   status: number;
-  statusText: string;
+  // statusText: string;
+  msg: string;
+  code: number;
   data: {
-    code: number;
-    desc: string;
     [key: string]: unknown;
   };
 }
@@ -41,7 +41,7 @@ service.interceptors.request.use(
 
 // response interceptor
 service.interceptors.response.use(
-  (response: AxiosResponse) => {
+  (response: AxiosResponse<HttpResponse>) => {
     const res = response.data;
     console.log(res);
     // if the custom code is not 20000, it is judged as an error.

@@ -16,7 +16,7 @@ export default {
   'monitor.list.tip.rest': ', The program list is not visible to viewers',
   'monitor.list.tag.auditFailed': 'Audit Failed',
   'monitor.tab.title.liveMethod': 'Live Method',
-  'monitor.tab.title.virtualPopulation': 'Virtual Population',
+  'monitor.tab.title.onlinePopulation': 'Online Population',
   'monitor.liveMethod.normal': 'Normal Live',
   'monitor.liveMethod.flowControl': 'Flow Control Live',
   'monitor.liveMethod.video': 'Video Live',

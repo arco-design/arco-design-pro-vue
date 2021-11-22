@@ -1,13 +1,9 @@
 <template>
-  <div></div>
+  <router-view />
 </template>
 <script>
 import { defineComponent } from 'vue';
 
-export default defineComponent({
-  setup() {
-    // console.log(props);
-  },
-});
+export default defineComponent({});
 </script>
 <style scoped></style>

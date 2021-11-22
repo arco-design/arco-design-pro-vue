@@ -7,5 +7,7 @@ declare module 'vue-router' {
     // 每个路由都必须声明
     requiresAuth: boolean;
     icon?: string;
+    // 菜单选中项
+    menuSelectKey?: string;
   }
 }

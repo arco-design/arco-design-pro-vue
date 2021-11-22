@@ -1,0 +1,47 @@
+<template>
+  <a-card :bordered="false">
+    <a-typography-title style="margin: 0 0 16px 0" :heading="6">
+      {{ $t('monitor.title.studioInfo') }}
+    </a-typography-title>
+    <a-form :model="info" layout="vertical">
+      <a-form-item :label="$t('monitor.studioInfo.label.studioTitle')" required>
+        <a-input
+          :placeholder="`王立群${$t(
+            'monitor.studioInfo.placeholder.studioTitle'
+          )}`"
+        />
+      </a-form-item>
+      <a-form-item
+        :label="$t('monitor.studioInfo.label.onlineNotification')"
+        required
+      >
+        <a-textarea />
+      </a-form-item>
+      <a-form-item
+        :label="$t('monitor.studioInfo.label.studioCategory')"
+        required
+      >
+        <a-input-search />
+      </a-form-item>
+      <a-form-item
+        :label="$t('monitor.studioInfo.label.studioCategory')"
+        required
+      >
+        <a-input-search />
+      </a-form-item>
+    </a-form>
+    <a-button type="primary">更新</a-button>
+  </a-card>
+</template>
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  setup() {
+    return {
+      info: {},
+    };
+  },
+});
+</script>
+<style scoped lang="less"></style>
