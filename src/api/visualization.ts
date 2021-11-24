@@ -1,28 +1,33 @@
-import { AxiosPromise } from 'axios';
+import request from '@/utils/request';
 
-import request, { HttpResponse } from '@/utils/request';
+export interface FeedBackSearchParams {
+  page: number;
+  pageSize: number;
+  roomNumber: number;
+  startTime: string;
+  endTime: string;
+}
 
-export function queryFeedbackList(): AxiosPromise<HttpResponse> {
+export function queryFeedbackList(data: FeedBackSearchParams) {
   return request({
     url: '/api/feedback/list',
     method: 'post',
+    data,
   });
 }
 
-export function queryReportStuckRate(): AxiosPromise<HttpResponse> {
+export function queryReportStuckRate() {
   return request({
     url: '/api/report-stuck-rate',
     method: 'post',
   });
 }
 
-export interface IDataChainGrowth {
+export interface DataChainGrowth {
   quota: string;
 }
 
-export function queryDataChainGrowth(
-  data: IDataChainGrowth
-): AxiosPromise<HttpResponse> {
+export function queryDataChainGrowth(data: DataChainGrowth) {
   return request({
     url: '/api/data-chain-growth',
     method: 'post',
@@ -30,13 +35,11 @@ export function queryDataChainGrowth(
   });
 }
 
-export interface IDownloadHistory {
+export interface DownloadHistoryParams {
   time: string[];
   showCompetitor: string;
 }
-export function queryDownloadHistory(
-  formData: IDownloadHistory
-): AxiosPromise<HttpResponse> {
+export function queryDownloadHistory(formData: DownloadHistoryParams) {
   return request({
     url: '/api/download-history',
     method: 'get',

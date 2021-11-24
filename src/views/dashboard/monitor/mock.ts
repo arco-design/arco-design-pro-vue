@@ -1,10 +1,14 @@
 import Mock from 'mockjs';
 
-import setupMock, { successResponseWrap } from '@/utils/setup-mock';
+import setupMock, {
+  successResponseWrap,
+  // failResponseWrap,
+} from '@/utils/setup-mock';
 
 setupMock({
   setup() {
     Mock.mock(new RegExp('/api/chat/list'), () => {
+      // return failResponseWrap(null, 50008, '重新登陆');
       const data = Mock.mock({
         'data|4-6': [
           {

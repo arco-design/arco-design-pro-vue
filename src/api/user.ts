@@ -1,27 +1,29 @@
-import { AxiosPromise } from 'axios';
+import request from '@/utils/request';
 
-import request, { HttpResponse } from '@/utils/request';
-
-export interface ILoginData {
+export interface LoginData {
   username: string;
   password: string;
 }
-export function login(data: ILoginData): AxiosPromise<HttpResponse> {
-  return request({
+
+export interface LoginRes {
+  token: string;
+}
+export function login(data: LoginData) {
+  return request<LoginRes>({
     url: '/api/user/login',
     method: 'post',
     data,
   });
 }
 
-export function logout(): AxiosPromise<HttpResponse> {
+export function logout() {
   return request({
     url: '/api/user/logout',
     method: 'post',
   });
 }
 
-export function getUserInfo(): AxiosPromise<HttpResponse> {
+export function getUserInfo() {
   return request({
     url: '/api/user/info',
     method: 'post',

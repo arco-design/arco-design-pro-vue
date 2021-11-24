@@ -26,7 +26,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 
-export interface IChatItem {
+export interface ChatItemRecord {
   id: string;
   username: string;
   content: string;
@@ -37,7 +37,7 @@ export interface IChatItem {
 export default defineComponent({
   props: {
     itemData: {
-      type: Object as PropType<IChatItem>,
+      type: Object as PropType<ChatItemRecord>,
       default() {
         return {};
       },

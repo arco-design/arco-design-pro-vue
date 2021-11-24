@@ -2,12 +2,12 @@ import 'vue-router';
 
 declare module 'vue-router' {
   interface RouteMeta {
-    // 是可选的
+    // options
     isAdmin?: boolean;
-    // 每个路由都必须声明
+    // every route must declare
     requiresAuth: boolean;
     icon?: string;
-    // 菜单选中项
+    // menu select key
     menuSelectKey?: string;
   }
 }

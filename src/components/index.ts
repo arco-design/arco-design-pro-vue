@@ -8,8 +8,7 @@ import { GridComponent, TooltipComponent } from 'echarts/components';
 import walden from '@/config/echarts-theme/walden.json';
 import Chart from './chart/index.vue';
 
-// echarts.regs
-// 手动引入 ECharts 各模块来减小打包体积
+// Manually introduce ECharts modules to reduce packing size
 echarts.registerTheme('walden', walden);
 
 use([

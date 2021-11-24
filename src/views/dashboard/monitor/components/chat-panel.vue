@@ -48,16 +48,17 @@ export default defineComponent({
   setup() {
     const { loading, toggle, setLoading } = useLoading(true);
     const chatList = ref([]);
-    const init = () => {
-      queryChatList()
-        .then((res) => {
-          chatList.value = res.data;
-        })
-        .finally(() => {
-          setLoading(false);
-        });
+    const fetchData = async () => {
+      try {
+        const { data } = await queryChatList();
+        chatList.value = data;
+      } catch (err) {
+        // you can report use errorHandler or other
+      } finally {
+        setLoading(false);
+      }
     };
-    init();
+    fetchData();
     return {
       loading,
       toggle,

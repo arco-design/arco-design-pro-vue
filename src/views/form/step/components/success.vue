@@ -24,7 +24,6 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   emits: ['changeStep'],
   setup(props, ctx) {
-    //
     const oneMore = () => {
       ctx.emit('changeStep', 1);
     };

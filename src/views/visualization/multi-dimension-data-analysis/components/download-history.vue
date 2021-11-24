@@ -36,7 +36,10 @@ import dayjs from 'dayjs';
 
 import useLoading from '@/hooks/loading';
 import useChartOption from '@/hooks/chart-option';
-import { queryDownloadHistory, IDownloadHistory } from '@/api/visualization';
+import {
+  queryDownloadHistory,
+  DownloadHistoryParams,
+} from '@/api/visualization';
 
 const DATE_FORMAT = 'YYYY-MM-DD';
 
@@ -102,31 +105,31 @@ export default defineComponent({
       ],
       showCompetitor: false,
     });
-    const fetchData = (formData: IDownloadHistory) => {
+    const fetchData = async (formData: DownloadHistoryParams) => {
       setLoading(true);
-      queryDownloadHistory(formData)
-        .then((res) => {
-          chartOption.value.xAxis.data = [];
-          chartOption.value.series.forEach((el) => {
-            el.data = [];
-          });
-          res.data.forEach((el) => {
-            if (el.name === '开发者') {
-              chartOption.value.xAxis.data.push(el.x);
-              chartOption.value.series[0].data.push(el.y);
-            } else if (el.name === '设计师') {
-              chartOption.value.series[1].data.push(el.y);
-            } else if (el.name === '竞品-设计师') {
-              chartOption.value.series[2].data.push(el.y);
-            } else if (el.name === '竞品-开发者') {
-              chartOption.value.series[3].data.push(el.y);
-            }
-          });
-          setLoading(false);
-        })
-        .finally(() => {
-          setLoading(false);
+      try {
+        const { data } = await queryDownloadHistory(formData);
+        chartOption.value.xAxis.data = [];
+        chartOption.value.series.forEach((el) => {
+          el.data = [];
         });
+        data.forEach((el) => {
+          if (el.name === '开发者') {
+            chartOption.value.xAxis.data.push(el.x);
+            chartOption.value.series[0].data.push(el.y);
+          } else if (el.name === '设计师') {
+            chartOption.value.series[1].data.push(el.y);
+          } else if (el.name === '竞品-设计师') {
+            chartOption.value.series[2].data.push(el.y);
+          } else if (el.name === '竞品-开发者') {
+            chartOption.value.series[3].data.push(el.y);
+          }
+        });
+      } catch (err) {
+        // you can report use errorHandler or other
+      } finally {
+        setLoading(false);
+      }
     };
     watch(
       formData,

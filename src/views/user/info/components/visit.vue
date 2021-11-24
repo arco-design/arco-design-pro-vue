@@ -33,15 +33,14 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { queryVisits } from '@/api/user-center';
+import { queryVisits, VisitsRecord } from '@/api/user-center';
 
 export default defineComponent({
   setup() {
-    const visitsList = ref([]);
-    const fetchData = () => {
-      queryVisits().then((res) => {
-        visitsList.value = res.data;
-      });
+    const visitsList = ref<VisitsRecord[]>([]);
+    const fetchData = async () => {
+      const { data } = await queryVisits();
+      visitsList.value = data;
     };
     fetchData();
     return {

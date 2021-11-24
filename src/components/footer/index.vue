@@ -4,11 +4,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 
-export default defineComponent({
-  setup() {
-    // console.log(props);
-  },
-});
+export default defineComponent({});
 </script>
 <style lang="less" scoped>
 .footer {

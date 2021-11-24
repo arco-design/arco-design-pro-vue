@@ -1,7 +1,7 @@
 import Mock from 'mockjs';
 import qs from 'query-string';
 import setupMock, { successResponseWrap } from '@/utils/setup-mock';
-import { IOptions, IGetParams } from '@/types/global';
+import { Options, GetParams } from '@/types/global';
 
 setupMock({
   setup() {
@@ -63,9 +63,9 @@ setupMock({
     });
 
     // 线路
-    Mock.mock(new RegExp('/api/line/list'), (params: IGetParams) => {
+    Mock.mock(new RegExp('/api/line/list'), (params: GetParams) => {
       const { cluster } = qs.parseUrl(params.url).query;
-      let res: IOptions[] = [];
+      let res: Options[] = [];
       if (cluster) {
         res = [
           {

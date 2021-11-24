@@ -1,8 +1,6 @@
-import { AxiosPromise } from 'axios';
+import request from '@/utils/request';
 
-import request, { HttpResponse } from '@/utils/request';
-
-export interface IStepFormRes {
+export interface StepFormRes {
   name: string;
   purpose: string;
   cluster: string[];
@@ -13,23 +11,21 @@ export interface IStepFormRes {
   strategy: string;
 }
 
-// type IStepRes = HttpResponse<IStepFormRes>;
-
-export function queryStepForm(): AxiosPromise<HttpResponse> {
-  return request({
+export function queryStepForm() {
+  return request<StepFormRes>({
     url: '/api/step-form',
     method: 'post',
   });
 }
 
-export function queryClusterList(): AxiosPromise<HttpResponse> {
+export function queryClusterList() {
   return request({
     url: '/api/cluster/list',
     method: 'post',
   });
 }
 
-export function queryLineList(params: string): AxiosPromise<HttpResponse> {
+export function queryLineList(params: string) {
   return request({
     url: '/api/line/list',
     method: 'get',

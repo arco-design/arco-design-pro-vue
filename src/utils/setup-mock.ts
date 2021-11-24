@@ -4,7 +4,7 @@ export default (config: { mock?: boolean; setup: () => void }) => {
   setup();
 };
 
-export const successResponseWrap = (data: any) => {
+export const successResponseWrap = (data: unknown) => {
   return {
     data,
     status: 'ok',
@@ -13,7 +13,7 @@ export const successResponseWrap = (data: any) => {
   };
 };
 
-export const failResponseWrap = (data: any, code = 50000, msg: string) => {
+export const failResponseWrap = (data: unknown, code = 50000, msg: string) => {
   return {
     data,
     status: 'fail',

@@ -76,13 +76,14 @@ import { Message } from '@arco-design/web-vue';
 import useLoading from '@/hooks/loading';
 import { saveUserInfo } from '@/api/user-center';
 import { useStore } from '@/store';
+import { UserState } from '@/store/modules/user';
 
 export default defineComponent({
   setup() {
     const { loading, setLoading } = useLoading();
     const formRef = ref(null);
     const avatar = ref('');
-    const formData = ref({});
+    const formData = ref<UserState>({});
     const store = useStore();
     const file = {
       uid: '-2',
@@ -96,25 +97,23 @@ export default defineComponent({
         ...store.getters.userInfo,
       };
     };
-    const save = () => {
-      saveUserInfo()
-        .then(() => {
-          Message.success('保存成功');
-        })
-        .finally(() => {
-          setLoading(false);
-        });
+    const save = async () => {
+      setLoading(true);
+      try {
+        await saveUserInfo();
+        Message.success('保存成功');
+      } catch (err) {
+        // you can report use errorHandler or other
+      } finally {
+        setLoading(false);
+      }
     };
     const onAvatarChange = () => {
       //
     };
-    const onSaveBtnClick = () => {
-      formRef.value.validate().then((res) => {
-        if (!res) {
-          setLoading(true);
-          save();
-        }
-      });
+    const onSaveBtnClick = async () => {
+      const res = await formRef.value.validate();
+      if (!res) save();
     };
     const onCancelBtnClick = () => {
       // avatar.value = store.getters.userInfo.avatar;
@@ -144,7 +143,7 @@ export default defineComponent({
   }
 
   &-avatar {
-    :global(.arco-avatar-trigger-icon-button) {
+    :deep(.arco-avatar-trigger-icon-button) {
       color: rgb(var(--arcoblue-6));
     }
   }

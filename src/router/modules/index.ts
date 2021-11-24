@@ -1,4 +1,4 @@
-import Dashborad from './dashboard';
+import Dashboard from './dashboard';
 import List from './list';
 import Form from './form';
 import Profile from './profile';
@@ -8,7 +8,7 @@ import Exception from './exception';
 import User from './user';
 
 export default [
-  Dashborad,
+  Dashboard,
   List,
   Form,
   Profile,

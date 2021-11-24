@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <a-breadcrumb style="margin-bottom: 20px">
+    <a-breadcrumb class="container-breadcrumb">
       <a-breadcrumb-item>{{ $t('menu.result') }}</a-breadcrumb-item>
       <a-breadcrumb-item>{{ $t('menu.result.success') }}</a-breadcrumb-item>
     </a-breadcrumb>
@@ -53,17 +53,9 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 
-export default defineComponent({
-  setup() {
-    //
-  },
-});
+export default defineComponent({});
 </script>
 <style scoped lang="less">
-// .container {
-//   padding: 20px;
-// }
-
 .wrapper {
   padding: 24px 150px;
   background-color: var(--color-bg-2);

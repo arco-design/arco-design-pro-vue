@@ -2,7 +2,7 @@ import {
   login as userLogin,
   logout as userLogout,
   getUserInfo,
-  ILoginData,
+  LoginData,
 } from '@/api/user';
 
 import { A_USER_LOGIN, A_USER_INFO, A_USER_LOGOUT } from './action-type';
@@ -10,34 +10,37 @@ import { M_USER_SET_INFO, M_USER_RESET_INFO } from './mutation-type';
 
 import { setToken, clearToken } from '@/utils/auth';
 
-export interface IUserState {
+export interface UserState {
   name?: string;
   avatar?: string;
   job?: string;
   organization?: string;
   location?: string;
   email?: string;
+  introduction?: string;
+  personalWebsite?: string;
 }
 
-const initialState: IUserState = {};
+const initialState: UserState = {};
 const mutations = {
-  [M_USER_SET_INFO](state: IUserState, userInfo: IUserState) {
+  [M_USER_SET_INFO](state: UserState, userInfo: UserState) {
     Object.keys(userInfo).forEach((key) => {
-      state[key] = userInfo[key];
+      state[key as keyof UserState] = userInfo[key as keyof UserState];
     });
   },
-  [M_USER_RESET_INFO](state: IUserState) {
-    state = {};
+  [M_USER_RESET_INFO](state: UserState) {
+    Object.keys(state).forEach((key) => {
+      state[key as keyof UserState] = '';
+    });
   },
 };
 const actions = {
   // user login
-  [A_USER_LOGIN]({ commit }, loginForm: ILoginData) {
-    // const router = useRouter(); // 如果放外侧会进行警告
+  [A_USER_LOGIN]({ commit }, loginForm: LoginData) {
     return new Promise((resolve, reject) => {
       userLogin(loginForm).then(
         (res) => {
-          setToken(res.data.token as string);
+          setToken(res.data.token);
           resolve(res);
         },
         (err) => {
@@ -77,11 +80,14 @@ const actions = {
     });
   },
 };
-const getters = {
-  userInfo(state: IUserState) {
+export const getters = {
+  userInfo(state: UserState) {
     return { ...state };
   },
 };
+
+export const moduleName = 'USER';
+
 export default {
   // namespaced: true,
   state: initialState,

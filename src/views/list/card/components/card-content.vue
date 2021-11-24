@@ -11,7 +11,7 @@
         </a-tabs>
       </a-col>
       <a-col :span="10">
-        <a-space style="justify-content: 'flex-end'; width: 100%">
+        <a-space style="justify-content: flex-end; width: 100%">
           <a-radio-group default-value="grid" type="button">
             <a-radio value="list">
               <icon-menu />
@@ -78,4 +78,18 @@ export default defineComponent({
   },
 });
 </script>
-<style scoped lang="less"></style>
+<style scoped lang="less">
+:deep(.arco-list-col) {
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+:deep(.arco-list-item) {
+  width: 33%;
+}
+:deep(.block-title) {
+  margin: 0 0 12px 0;
+  font-size: 14;
+}
+</style>

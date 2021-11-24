@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <a-breadcrumb style="margin-bottom: 20px">
+    <a-breadcrumb class="container-breadcrumb">
       <a-breadcrumb-item>{{ $t('menu.visualization') }}</a-breadcrumb-item>
       <a-breadcrumb-item>
         {{ $t('menu.visualization.dataAnalysis') }}
@@ -41,9 +41,6 @@ export default defineComponent({
     PublicOpinion,
     ReportStuckRate,
     DetailTable,
-  },
-  setup() {
-    //
   },
 });
 </script>

@@ -1443,6 +1443,13 @@
   "resolved" "http://bnpm.byted.org/copy-descriptor/-/copy-descriptor-0.1.1.tgz"
   "version" "0.1.1"
 
+"copy-to-clipboard@^3.3.1":
+  "integrity" "sha1-EVqhqZmP+rYZb5MHatbaO5E2Yq4="
+  "resolved" "https://registry.npmmirror.com/copy-to-clipboard/download/copy-to-clipboard-3.3.1.tgz"
+  "version" "3.3.1"
+  dependencies:
+    "toggle-selection" "^1.0.6"
+
 "cosmiconfig@^5.0.0":
   "integrity" "sha512-H65gsXo1SKjf8zmrJ67eJk8aIRKV5ff2D4uKZIBZShbhGSpEmsQOPW/SKMKYhSTrqR7ufy6RP69rPogdaPh/kA=="
   "resolved" "http://bnpm.byted.org/cosmiconfig/-/cosmiconfig-5.2.1.tgz"
@@ -5229,6 +5236,11 @@
     "extend-shallow" "^3.0.2"
     "regex-not" "^1.0.2"
     "safe-regex" "^1.1.0"
+
+"toggle-selection@^1.0.6":
+  "integrity" "sha1-bkWxJj8gF/oKzH2J14sVuL932jI="
+  "resolved" "https://registry.npmmirror.com/toggle-selection/download/toggle-selection-1.0.6.tgz"
+  "version" "1.0.6"
 
 "token-stream@1.0.0":
   "integrity" "sha1-zCAOqyYT9BZtJ/+a/HylbUnfbrQ="

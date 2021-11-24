@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <a-breadcrumb style="margin-bottom: 20px">
+    <a-breadcrumb class="container-breadcrumb">
       <a-breadcrumb-item>{{ $t('menu.form') }}</a-breadcrumb-item>
       <a-breadcrumb-item>{{ $t('menu.form.step') }}</a-breadcrumb-item>
     </a-breadcrumb>
@@ -53,16 +53,17 @@ export default defineComponent({
     const { loading, setLoading } = useLoading(true);
     const step = ref(1);
     const sourceData = ref({});
-    const init = () => {
-      queryStepForm()
-        .then((res) => {
-          sourceData.value = res.data;
-        })
-        .finally(() => {
-          setLoading(false);
-        });
+    const fetchData = async () => {
+      try {
+        const { data } = await queryStepForm();
+        sourceData.value = data;
+      } catch (err) {
+        // you can report use errorHandler or other
+      } finally {
+        setLoading(false);
+      }
     };
-    init();
+    fetchData();
     const changeStep = (direction: string | number) => {
       if (typeof direction === 'number') {
         step.value = direction;

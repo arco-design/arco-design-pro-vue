@@ -17,7 +17,6 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
-// import { useStore } from '@/store';
 import LoginBanner from './components/banner.vue';
 import LoginForm from './components/login-form.vue';
 import Footer from '@/components/footer/index.vue';
@@ -27,9 +26,6 @@ export default defineComponent({
     LoginBanner,
     LoginForm,
     Footer,
-  },
-  setup() {
-    // const store = useStore();
   },
 });
 </script>

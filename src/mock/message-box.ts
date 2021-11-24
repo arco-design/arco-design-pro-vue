@@ -1,15 +1,6 @@
 import Mock from 'mockjs';
 import setupMock, { successResponseWrap } from '@/utils/setup-mock';
 
-interface IMessage {
-  id: number;
-  type: string;
-  title: string;
-  subTitle: string;
-  avatar: string;
-  content: string;
-  timer: string;
-}
 const haveReadIds: number[] = [];
 const getMessageList = () => {
   return [

@@ -1,36 +1,56 @@
-import { AxiosPromise } from 'axios';
+import request from '@/utils/request';
 
-import request, { HttpResponse } from '@/utils/request';
-
-export function queryLatestProjectList(): AxiosPromise<HttpResponse> {
-  return request({
+export interface LastestProjectRecord {
+  id: number;
+  name: string;
+  description: string;
+  contributors: {
+    name: string;
+    email: string;
+    avatar: string;
+  }[];
+}
+export function queryLatestProjectList() {
+  return request<LastestProjectRecord[]>({
     url: '/api/user/latest-project/list',
     method: 'post',
   });
 }
 
-export function queryLatestActivity(): AxiosPromise<HttpResponse> {
-  return request({
+export interface LatestActivity {
+  id: number;
+  title: string;
+  description: string;
+  avatar: string;
+}
+export function queryLatestActivity() {
+  return request<LatestActivity>({
     url: '/api/user/latest-activity',
     method: 'post',
   });
 }
 
-export function queryVisits(): AxiosPromise<HttpResponse> {
-  return request({
+export interface VisitsRecord {
+  name: string;
+  visits: number;
+  growth: number;
+}
+
+export function queryVisits() {
+  return request<VisitsRecord[]>({
     url: '/api/user/visits',
     method: 'post',
   });
 }
 
-export function queryProjectAndTeamList(): AxiosPromise<HttpResponse> {
+export function queryProjectAndTeamList() {
   return request({
     url: '/api/user/project-and-team/list',
     method: 'post',
   });
 }
 
-export function saveUserInfo(): AxiosPromise<HttpResponse> {
+export function saveUserInfo() {
   return request({
     url: '/api/user/save-info',
     method: 'post',

@@ -11,13 +11,17 @@
 import { defineComponent, ref } from 'vue';
 import { queryProjectAndTeamList } from '@/api/user-center';
 
+interface ProjectRecord {
+  id: number;
+  content: string;
+}
+
 export default defineComponent({
   setup() {
-    const list = ref([]);
-    const fetchData = () => {
-      queryProjectAndTeamList().then((res) => {
-        list.value = res.data;
-      });
+    const list = ref<ProjectRecord[]>([]);
+    const fetchData = async () => {
+      const { data } = await queryProjectAndTeamList();
+      list.value = data;
     };
     fetchData();
     return {

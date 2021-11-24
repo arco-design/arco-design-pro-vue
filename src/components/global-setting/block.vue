@@ -32,6 +32,12 @@ withDefaults(defineProps<Props>(), {
   options: () => [],
 });
 const handleChange = ({ key, value }) => {
+  if (value && key === 'colorWeek') {
+    document.body.style.filter = 'invert(80%)';
+  }
+  if (!value && key === 'colorWeek') {
+    document.body.style.filter = 'none';
+  }
   store.commit(M_APP_UPDATE_SETTING, { key, value });
 };
 </script>

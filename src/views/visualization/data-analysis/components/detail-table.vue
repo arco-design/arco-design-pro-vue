@@ -53,15 +53,7 @@ import { useI18n } from 'vue-i18n';
 import omit from 'lodash/omit';
 
 import useLoading from '@/hooks/loading';
-import { queryFeedbackList } from '@/api/visualization';
-
-interface ISearchParams {
-  page: number;
-  pageSize: number;
-  roomNumber: number;
-  startTime: string;
-  endTime: string;
-}
+import { queryFeedbackList, FeedBackSearchParams } from '@/api/visualization';
 
 export default defineComponent({
   setup() {
@@ -69,7 +61,7 @@ export default defineComponent({
     const { loading, setLoading } = useLoading(true);
     const tableData = ref({ list: [], total: 0 });
 
-    const searchParams: ISearchParams = ref({
+    const searchParams: FeedBackSearchParams = ref({
       page: 1,
       pageSize: 10,
       roomNumber: '#3032',
@@ -111,15 +103,16 @@ export default defineComponent({
       roomNumber: searchParams.value.roomNumber,
       time: [searchParams.value.startTime, searchParams.value.endTime],
     });
-    const search = (params: ISearchParams) => {
+    const search = async (params: FeedBackSearchParams) => {
       setLoading(true);
-      queryFeedbackList(params)
-        .then((res) => {
-          tableData.value = res.data;
-        })
-        .finally(() => {
-          setLoading(false);
-        });
+      try {
+        const { data } = await queryFeedbackList(params);
+        tableData.value = data;
+      } catch (err) {
+        // you can report use errorHandler or other
+      } finally {
+        setLoading(false);
+      }
     };
     const formatFormValues = (values) => {
       const time = values.time || [];

@@ -17,7 +17,7 @@ function changeTheme(newTheme: string) {
   }
 }
 
-export interface IDefaultSetting {
+export interface DefaultSetting {
   theme: string;
   colorWeek: boolean;
   navbar: boolean;
@@ -27,19 +27,19 @@ export interface IDefaultSetting {
   menuWidth: number;
   [key: string]: unknown;
 }
-export interface ISettingPayload {
+export interface SettingPayload {
   key: string;
   value: unknown;
 }
-const initialState: IDefaultSetting = {
+const initialState: DefaultSetting = {
   ...defaultSettings,
 };
 const mutations = {
-  [M_APP_UPDATE_SETTING](state: IDefaultSetting, payload: ISettingPayload) {
+  [M_APP_UPDATE_SETTING](state: DefaultSetting, payload: SettingPayload) {
     const { key, value } = payload;
     state[key] = value;
   },
-  [M_TOGGLE_THEME](state: IDefaultSetting) {
+  [M_TOGGLE_THEME](state: DefaultSetting) {
     const theme = state.theme === 'light' ? 'dark' : 'light';
     state.theme = theme;
     changeTheme(theme);

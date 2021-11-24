@@ -9,7 +9,7 @@
       :visible="visible"
       :cancel-text="$t('settings.close')"
       :ok-text="$t('settings.copySettings')"
-      @ok="ok"
+      @ok="copySettings"
       @cancel="cancel"
     >
       <template #title> {{ $t('settings.title') }} </template>
@@ -21,6 +21,9 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import { Message } from '@arco-design/web-vue';
+import { useI18n } from 'vue-i18n';
+import copy from 'copy-to-clipboard';
 import { useStore } from '@/store';
 import Block from './block.vue';
 
@@ -31,6 +34,7 @@ export default defineComponent({
   setup() {
     const visible = ref(false);
     const store = useStore();
+    const { t } = useI18n();
     const contentOpts = [
       { name: 'settings.navbar', key: 'navbar', defaultVal: true },
       { name: 'settings.menu', key: 'menu', defaultVal: true },
@@ -43,7 +47,7 @@ export default defineComponent({
       },
     ];
     const othersOpts = [
-      { name: 'settings.colorWeek', value: 'colorWeek', defaultVal: true },
+      { name: 'settings.colorWeek', key: 'colorWeek', defaultVal: true },
     ];
 
     const setVisible = () => {
@@ -53,15 +57,16 @@ export default defineComponent({
       visible.value = false;
     };
 
-    const ok = () => {
-      //
+    const copySettings = () => {
+      copy(JSON.stringify(store.state.app, null, 2));
+      Message.success(t('settings.copySettings.message'));
     };
     return {
       visible,
       contentOpts,
       othersOpts,
       setVisible,
-      ok,
+      copySettings,
       cancel,
     };
   },

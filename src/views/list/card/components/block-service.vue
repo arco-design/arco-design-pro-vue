@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a-typography-title style="margin: 0 0 12px 0; font-size: 14" :heading="6">
+    <a-typography-title class="block-title" :heading="6">
       {{ title }}
     </a-typography-title>
     <a-list
@@ -47,7 +47,8 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, PropType } from 'vue';
+import { ServiceRecord } from '@/api/list';
 
 export default defineComponent({
   props: {
@@ -56,7 +57,7 @@ export default defineComponent({
       default: '',
     },
     renderData: {
-      type: Array,
+      type: Array as PropType<ServiceRecord[]>,
       default() {
         return [];
       },

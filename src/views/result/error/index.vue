@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <a-breadcrumb style="margin-bottom: 20px">
+    <a-breadcrumb class="container-breadcrumb">
       <a-breadcrumb-item>{{ $t('menu.result') }}</a-breadcrumb-item>
       <a-breadcrumb-item>{{ $t('menu.result.error') }}</a-breadcrumb-item>
     </a-breadcrumb>
@@ -43,11 +43,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 
-export default defineComponent({
-  setup() {
-    //
-  },
-});
+export default defineComponent({});
 </script>
 <style scoped lang="less">
 .wrapper {

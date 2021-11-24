@@ -71,12 +71,12 @@
 <script lang="ts">
 import { defineComponent, ref, watch, PropType } from 'vue';
 import useLoading from '@/hooks/loading';
-import { IStepFormRes } from '@/api/form';
+import { StepFormRes } from '@/api/form';
 
 export default defineComponent({
   props: {
     sourceData: {
-      type: Object as PropType<IStepFormRes>,
+      type: Object as PropType<StepFormRes>,
       default() {
         return {};
       },
@@ -85,7 +85,7 @@ export default defineComponent({
   emits: ['changeStep'],
   setup(props, ctx) {
     const { loading, setLoading } = useLoading();
-    const formData = ref<IStepFormRes>({});
+    const formData = ref<StepFormRes>({});
     const formRef = ref(null);
     const goPrev = () => {
       ctx.emit('changeStep', 'backward');

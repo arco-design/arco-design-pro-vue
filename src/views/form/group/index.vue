@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <a-breadcrumb style="margin-bottom: 20px">
+    <a-breadcrumb class="container-breadcrumb">
       <a-breadcrumb-item>{{ $t('menu.form') }}</a-breadcrumb-item>
       <a-breadcrumb-item>{{ $t('menu.form.group') }}</a-breadcrumb-item>
     </a-breadcrumb>
@@ -265,7 +265,7 @@ export default defineComponent({
   padding: 20px;
   overflow: hidden;
 
-  :global(.arco-card-body) {
+  :deep(.arco-card-body) {
     padding: 36px;
   }
 }

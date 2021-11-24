@@ -1,21 +1,17 @@
-import { AxiosPromise } from 'axios';
+import request from '@/utils/request';
 
-import request, { HttpResponse } from '@/utils/request';
-
-export function queryMessageList(): AxiosPromise<HttpResponse> {
+export function queryMessageList() {
   return request({
     url: '/api/message/list',
     method: 'post',
   });
 }
 
-interface IMessageStatus {
+interface MessageStatus {
   ids: number;
 }
 
-export function setMessageStatus(
-  data: IMessageStatus
-): AxiosPromise<HttpResponse> {
+export function setMessageStatus(data: MessageStatus) {
   return request({
     url: '/api/message/read',
     method: 'post',
@@ -23,7 +19,7 @@ export function setMessageStatus(
   });
 }
 
-export function queryChatList(): AxiosPromise<HttpResponse> {
+export function queryChatList() {
   return request({
     url: '/api/chat/list',
     method: 'post',

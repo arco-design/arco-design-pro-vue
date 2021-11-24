@@ -51,5 +51,6 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'warn',
     '@typescript-eslint/no-empty-function': 'warn',
     'no-param-reassign': 'off',
+    'import/no-cycle': 'off',
   },
 };

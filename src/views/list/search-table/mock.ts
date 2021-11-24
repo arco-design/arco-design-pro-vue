@@ -2,7 +2,7 @@ import Mock from 'mockjs';
 import qs from 'query-string';
 import setupMock, { successResponseWrap } from '@/utils/setup-mock';
 // import { IPolicyParams } from '@/api/list';
-import { IGetParams } from '@/types/global';
+import { GetParams } from '@/types/global';
 
 const { Random } = Mock;
 
@@ -23,7 +23,7 @@ const data = Mock.mock({
 
 setupMock({
   setup() {
-    Mock.mock(new RegExp('/api/list/policy'), (params: IGetParams) => {
+    Mock.mock(new RegExp('/api/list/policy'), (params: GetParams) => {
       const { page = 1, pageSize = 10 } = qs.parseUrl(params.url).query;
       const p = page as number;
       const ps = pageSize as number;

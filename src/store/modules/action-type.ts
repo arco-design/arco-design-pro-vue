@@ -4,6 +4,6 @@
 // app
 
 // user
-export const A_USER_LOGIN = 'user/USER_LOGIN';
-export const A_USER_LOGOUT = 'user/USER_LOGOUT';
-export const A_USER_INFO = 'user/USER_INFO';
+export const A_USER_LOGIN = 'USER/USER_LOGIN';
+export const A_USER_LOGOUT = 'USER/USER_LOGOUT';
+export const A_USER_INFO = 'USER/USER_INFO';

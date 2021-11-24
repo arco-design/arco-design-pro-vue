@@ -1,13 +1,17 @@
-export interface IAnyObject {
+export interface AnyObject {
   [key: string]: unknown;
 }
 
-export interface IOptions {
+export interface Options {
   value: unknown;
   label: string;
 }
 
-export interface IGetParams {
+export interface NodeOptions extends Options {
+  children?: NodeOptions[];
+}
+
+export interface GetParams {
   body: null;
   type: string;
   url: string;

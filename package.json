@@ -24,6 +24,7 @@
     "@arco-design/web-vue": "^2.3.0",
     "@types/echarts": "^4.9.12",
     "axios": "^0.24.0",
+    "copy-to-clipboard": "^3.3.1",
     "dayjs": "^1.10.7",
     "echarts": "^5.2.2",
     "lodash": "^4.17.21",

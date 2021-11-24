@@ -28,15 +28,14 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { queryLatestActivity } from '@/api/user-center';
+import { queryLatestActivity, LatestActivity } from '@/api/user-center';
 
 export default defineComponent({
   setup() {
-    const activityList = ref([]);
-    const fetchData = () => {
-      queryLatestActivity().then((res) => {
-        activityList.value = res.data;
-      });
+    const activityList = ref<LatestActivity[]>([]);
+    const fetchData = async () => {
+      const { data } = await queryLatestActivity();
+      activityList.value = data;
     };
     fetchData();
     return {

@@ -4,35 +4,22 @@ import { Message } from '@arco-design/web-vue';
 import { useStore } from '@/store';
 import { A_USER_LOGOUT } from '@/store/modules/action-type';
 
-interface IUSERHOOK {
-  toPageName?: string;
-}
-export default function useUser(config: IUSERHOOK) {
+export default function useUser() {
   const router = useRouter();
   const store = useStore();
-  const login = () => {
-    // userLogin(params).then(() => {
-    //   router.push({
-    //     name: 'workplace',
-    //   });
-    //   localStorage.setItem('userStatus', 'login');
-    // });
-  };
-  const currentRoute = router.currentRoute.value;
-  const logout = () => {
-    store.dispatch(A_USER_LOGOUT).then(() => {
-      Message.success('登出成功');
-      router.push({
-        name: config?.toPageName || 'login',
-        query: {
-          ...router.currentRoute.value.query,
-          redirect: currentRoute.name,
-        },
-      });
+  const logout = async (logoutTo?: string) => {
+    await store.dispatch(A_USER_LOGOUT);
+    const currentRoute = router.currentRoute.value;
+    Message.success('登出成功');
+    router.push({
+      name: logoutTo && typeof logoutTo === 'string' ? logoutTo : 'login',
+      query: {
+        ...router.currentRoute.value.query,
+        redirect: currentRoute.name as string,
+      },
     });
   };
   return {
-    login,
     logout,
   };
 }

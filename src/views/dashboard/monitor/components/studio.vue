@@ -51,7 +51,7 @@ export default defineComponent({
 <style scoped lang="less">
 .studio {
   // &-wrapper {
-  //   :global(.arco-card-body) {
+  //   :deep(.arco-card-body) {
   //     padding-top: 0 !important;
   //   }
   // }

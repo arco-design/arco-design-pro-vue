@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <a-breadcrumb style="margin-bottom: 20px">
+    <a-breadcrumb class="container-breadcrumb">
       <a-breadcrumb-item>{{ $t('menu.profile') }}</a-breadcrumb-item>
       <a-breadcrumb-item>{{ $t('menu.profile.basic') }}</a-breadcrumb-item>
     </a-breadcrumb>
@@ -58,23 +58,25 @@ export default defineComponent({
     const currentData = ref({});
     const preData = ref({});
     const step = ref(2);
-    const fetchCurrentData = () => {
-      queryProfileBasic()
-        .then((res) => {
-          currentData.value = res.data;
-        })
-        .finally(() => {
-          setLoading(false);
-        });
+    const fetchCurrentData = async () => {
+      try {
+        const { data } = await queryProfileBasic();
+        currentData.value = data;
+      } catch (err) {
+        // you can report use errorHandler or other
+      } finally {
+        setLoading(false);
+      }
     };
-    const fetchPreData = () => {
-      queryProfileBasic()
-        .then((res) => {
-          preData.value = res.data;
-        })
-        .finally(() => {
-          preSetLoading(false);
-        });
+    const fetchPreData = async () => {
+      try {
+        const { data } = await queryProfileBasic();
+        preData.value = data;
+      } catch (err) {
+        // you can report use errorHandler or other
+      } finally {
+        preSetLoading(false);
+      }
     };
     fetchCurrentData();
     fetchPreData();

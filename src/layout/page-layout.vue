@@ -39,25 +39,21 @@ export default defineComponent({
     Menu,
     Footer,
   },
-  beforeRouteEnter(to, from, next) {
-    baseStore.dispatch(A_USER_INFO).then(
-      () => {
-        next();
-      },
-      () => {
-        next({
-          name: 'login',
-          query: {
-            redirect: to.name,
-            ...to.query,
-          },
-        });
-      }
-    );
+  async beforeRouteEnter(to, from, next) {
+    try {
+      await baseStore.dispatch(A_USER_INFO);
+      next();
+    } catch (error) {
+      next({
+        name: 'login',
+        query: {
+          redirect: to.name,
+          ...to.query,
+        },
+      });
+    }
   },
   setup() {
-    // const router = useRouter();
-    // const appRoute = router.getRoutes().find((el) => el.path === '/app');
     const store = useStore();
     const appState = store.state.app;
     const navbarHeight = `60px`;
@@ -72,7 +68,6 @@ export default defineComponent({
     });
 
     return {
-      // appRoutes: appRoute?.children || [],
       navbar,
       menu,
       footer,
@@ -120,28 +115,8 @@ export default defineComponent({
     background-color: var(--color-border);
   }
 
-  > :global(.arco-layout-sider-children) {
+  > :deep(.arco-layout-sider-children) {
     overflow-y: hidden;
-  }
-
-  .collapseBtn {
-    height: 24px;
-    width: 24px;
-    background-color: var(--color-fill-1);
-    color: var(--color-text-3);
-    border-radius: 2px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    // 位置
-    position: absolute;
-    bottom: 12px;
-    right: 12px;
-
-    &:hover {
-      background-color: var(--color-fill-3);
-    }
   }
 }
 
@@ -158,11 +133,7 @@ export default defineComponent({
   box-sizing: border-box;
 }
 
-.spin {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 400px;
+:deep(.container-breadcrumb) {
+  margin-bottom: 20px;
 }
 </style>

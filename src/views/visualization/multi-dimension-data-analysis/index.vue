@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <a-breadcrumb style="margin-bottom: 20px">
+    <a-breadcrumb class="container-breadcrumb">
       <a-breadcrumb-item>{{ $t('menu.visualization') }}</a-breadcrumb-item>
       <a-breadcrumb-item>
         {{ $t('menu.visualization.multiDimensionDataAnalysis') }}

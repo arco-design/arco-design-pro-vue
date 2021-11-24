@@ -38,9 +38,6 @@ export default defineComponent({
   components: {
     DataStatisticList,
   },
-  setup() {
-    //
-  },
 });
 </script>
 <style scoped lang="less">

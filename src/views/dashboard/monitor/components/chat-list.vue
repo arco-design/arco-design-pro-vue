@@ -6,7 +6,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import ChatItem, { IChatItem } from './chat-item.vue';
+import ChatItem, { ChatItemRecord } from './chat-item.vue';
 
 export default defineComponent({
   components: {
@@ -14,7 +14,7 @@ export default defineComponent({
   },
   props: {
     renderList: {
-      type: Array as PropType<IChatItem[]>,
+      type: Array as PropType<ChatItemRecord[]>,
       default() {
         return [];
       },

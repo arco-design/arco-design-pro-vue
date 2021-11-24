@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <a-breadcrumb style="margin-bottom: 20px">
+    <a-breadcrumb class="container-breadcrumb">
       <a-breadcrumb-item>{{ $t('menu.list') }}</a-breadcrumb-item>
       <a-breadcrumb-item>{{ $t('menu.list.searchTable') }}</a-breadcrumb-item>
     </a-breadcrumb>
@@ -23,7 +23,7 @@
         row-key="id"
         :loading="loading"
         :pagination="pagination"
-        :data="data"
+        :data="renderData"
         @pageChange="onPageChange"
       >
         <template #columns>
@@ -67,13 +67,13 @@
 import { defineComponent, computed, ref, reactive } from 'vue';
 import { useI18n } from 'vue-i18n';
 import useLoading from '@/hooks/loading';
-import { queryPolicyList } from '@/api/list';
+import { queryPolicyList, PolicyRecord } from '@/api/list';
 
 export default defineComponent({
   setup() {
     const { loading, setLoading } = useLoading(true);
     const { t } = useI18n();
-    const data = ref([]);
+    const renderData = ref<PolicyRecord[]>([]);
     const basePagination = {
       page: 1,
       pageSize: 20,
@@ -111,32 +111,30 @@ export default defineComponent({
         dataIndex: 'operations',
       },
     ]);
-    const api = (params = { page: 1, pageSize: 20 }) => {
+    const fetchData = async (params = { page: 1, pageSize: 20 }) => {
       setLoading(true);
-      queryPolicyList(params)
-        .then((res) => {
-          data.value = res.data.list;
-          pagination.page = params.page;
-          pagination.total = res.data.total;
-        })
-        .finally(() => {
-          setLoading(false);
-        });
+      try {
+        const { data } = await queryPolicyList();
+        renderData.value = data.list;
+        pagination.page = params.page;
+        pagination.total = data.total;
+      } catch (err) {
+        // you can report use errorHandler or other
+      } finally {
+        setLoading(false);
+      }
     };
     const onDateChange = () => {
-      api();
+      fetchData();
     };
     const onSearch = (keyword) => {
-      api({ ...basePagination, keyword });
+      fetchData({ ...basePagination, keyword });
     };
     const onPageChange = (page: number) => {
-      api({ ...basePagination, page });
+      fetchData({ ...basePagination, page });
     };
 
-    const init = () => {
-      api();
-    };
-    init();
+    fetchData();
 
     return {
       loading,
@@ -144,7 +142,7 @@ export default defineComponent({
       onSearch,
       onPageChange,
       columns,
-      data,
+      renderData,
       pagination,
     };
   },

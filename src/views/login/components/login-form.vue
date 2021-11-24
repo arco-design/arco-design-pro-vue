@@ -65,37 +65,37 @@ import { defineComponent, ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { Message } from '@arco-design/web-vue';
 import { useStore } from '@/store';
+import useLoading from '@/hooks/loading';
 import { A_USER_LOGIN } from '@/store/modules/action-type';
 
 export default defineComponent({
   setup() {
     const router = useRouter();
     const errorMessage = ref('');
-    const loading = ref(false);
+    const { loading, setLoading } = useLoading();
     const store = useStore();
     const userInfo = reactive({
       username: 'admin',
       password: 'admin',
     });
-    const handleSubmit = ({ errors, values }) => {
+    const handleSubmit = async ({ errors, values }) => {
       if (!errors) {
-        loading.value = true;
-        store
-          .dispatch(A_USER_LOGIN, values)
-          .then(() => {
-            const { redirect, ...othersQuery } =
-              router.currentRoute.value.query;
-            router.push({
-              name: redirect || 'workplace',
-              query: {
-                ...othersQuery,
-              },
-            });
-            Message.success('欢迎使用');
-          })
-          .finally(() => {
-            loading.value = false;
+        setLoading(true);
+        try {
+          await store.dispatch(A_USER_LOGIN, values);
+          const { redirect, ...othersQuery } = router.currentRoute.value.query;
+          router.push({
+            name: redirect || 'workplace',
+            query: {
+              ...othersQuery,
+            },
           });
+          Message.success('欢迎使用');
+        } catch (err) {
+          // you can report use errorHandler or other
+        } finally {
+          setLoading(false);
+        }
       } else {
         errorMessage.value = Object.entries(errors)[0].message;
       }

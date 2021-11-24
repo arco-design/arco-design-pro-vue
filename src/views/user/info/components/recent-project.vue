@@ -36,15 +36,17 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { queryLatestProjectList } from '@/api/user-center';
+import {
+  queryLatestProjectList,
+  LastestProjectRecord,
+} from '@/api/user-center';
 
 export default defineComponent({
   setup() {
-    const projectList = ref([]);
-    const fetchData = () => {
-      queryLatestProjectList().then((res) => {
-        projectList.value = res.data;
-      });
+    const projectList = ref<LastestProjectRecord[]>([]);
+    const fetchData = async () => {
+      const { data } = await queryLatestProjectList();
+      projectList.value = data;
     };
     fetchData();
     return {

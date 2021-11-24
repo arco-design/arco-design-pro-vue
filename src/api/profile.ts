@@ -1,8 +1,6 @@
-import { AxiosPromise } from 'axios';
+import request from '@/utils/request';
 
-import request, { HttpResponse } from '@/utils/request';
-
-export function queryProfileBasic(): AxiosPromise<HttpResponse> {
+export function queryProfileBasic() {
   return request({
     url: '/api/profile/basic',
     method: 'post',

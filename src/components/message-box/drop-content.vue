@@ -4,8 +4,8 @@
       <a-tab-pane v-for="item in tabList" :key="item.key">
         <template #title>
           <span>
-            <component :is="item.titleIcon" />{{ item.title
-            }}{{ formatUnreadLength(item.key) }}
+            <component :is="item.titleIcon" />
+            {{ item.title }}{{ formatUnreadLength(item.key) }}
           </span>
         </template>
         <List
@@ -22,8 +22,9 @@ import { defineComponent, ref, reactive, toRefs, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { queryMessageList, setMessageStatus } from '@/api/message';
 import List, { MessageListType } from './list.vue';
+import useLoading from '@/hooks/loading';
 
-interface ITabItem {
+interface TabItem {
   key: string;
   title: string;
   titleIcon: string;
@@ -34,7 +35,7 @@ export default defineComponent({
     List,
   },
   setup() {
-    const loading = ref(false);
+    const { loading, setLoading } = useLoading(true);
     const messageType = ref('message');
     const unReadLength = ref(0);
     const { t } = useI18n();
@@ -43,7 +44,7 @@ export default defineComponent({
       messageList: [],
     });
     const refData = toRefs(messageData);
-    const tabList: ITabItem = [
+    const tabList: TabItem = [
       {
         key: 'message',
         title: t('messageBox.tab.title.message'),
@@ -60,21 +61,21 @@ export default defineComponent({
         titleIcon: 'icon-file',
       },
     ];
-    function fetchSourceData(showLoading = true) {
-      loading.value = showLoading;
-      queryMessageList()
-        .then((res) => {
-          messageData.messageList = res.data;
-        })
-        .finally(() => {
-          loading.value = false;
-        });
+    async function fetchSourceData() {
+      setLoading(true);
+      try {
+        const { data } = await queryMessageList();
+        messageData.messageList = data;
+      } catch (err) {
+        // you can report use errorHandler or other
+      } finally {
+        setLoading(false);
+      }
     }
-    function readMessage(data: MessageListType) {
+    async function readMessage(data: MessageListType) {
       const ids = data.map((item) => item.id);
-      setMessageStatus({ ids }).then(() => {
-        fetchSourceData();
-      });
+      await setMessageStatus({ ids });
+      fetchSourceData();
     }
     const renderList = computed(() => {
       return messageData.messageList.filter(

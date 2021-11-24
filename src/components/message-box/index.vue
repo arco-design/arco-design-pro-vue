@@ -20,9 +20,6 @@ export default defineComponent({
   components: {
     DropContent,
   },
-  setup() {
-    // console.log(props);
-  },
 });
 </script>
 <style scoped lang="less">
@@ -42,17 +39,16 @@ export default defineComponent({
   min-width: 352px;
   max-height: 800px;
 
-  :global(.arco-tabs-nav) {
+  :deep(.arco-tabs-nav) {
     padding: 8px 0 12px 0;
     border-bottom: 1px solid var(--color-neutral-3);
   }
 
-  :global(.arco-tabs-nav-tab-list) {
-    // 消费记录会影响到 message与其互斥。TODO：解决样式写法
+  :deep(.arco-tabs-nav-tab-list) {
     margin: 0 auto;
   }
 
-  :global(.arco-list-item-meta) {
+  :deep(.arco-list-item-meta) {
     align-items: flex-start;
   }
 }

@@ -1,20 +1,22 @@
-//
-export const installDirective = (app) => {
+import { App } from 'vue';
+
+export const installDirective = (app: App) => {
   app.directive('my-directive', {
-    // 指令是具有一组生命周期的钩子：
-    // 在绑定元素的 attribute 或事件监听器被应用之前调用
+    // Directive has a set of lifecycle hooks:
+    // called before bound element's attributes or event listeners are applied
     created() {},
-    // 在绑定元素的父组件挂载之前调用
+    // called before bound element's parent component is mounted
     beforeMount() {},
-    // 绑定元素的父组件被挂载时调用
+    // called when bound element's parent component is mounted
     mounted() {},
-    // 在包含组件的 VNode 更新之前调用
+    // called before the containing component's VNode is updated
     beforeUpdate() {},
-    // 在包含组件的 VNode 及其子组件的 VNode 更新之后调用
+    // called after the containing component's VNode and the VNodes of its
+    // children have updated
     updated() {},
-    // 在绑定元素的父组件卸载之前调用
+    // called before the bound element's parent component is unmounted
     beforeUnmount() {},
-    // 卸载绑定元素的父组件时调用
+    // called when the bound element's parent component is unmounted
     unmounted() {},
   });
 };

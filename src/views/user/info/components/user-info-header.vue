@@ -36,14 +36,6 @@ import { useRouter } from 'vue-router';
 import { useStore } from '@/store';
 
 export default defineComponent({
-  // props: {
-  //   userInfo: {
-  //     type: Object,
-  //     default() {
-  //       return {};
-  //     },
-  //   },
-  // },
   setup() {
     const router = useRouter();
     const store = useStore();
@@ -69,10 +61,10 @@ export default defineComponent({
   align-items: center;
   color: var(--color-white);
 
-  :global(.arco-avatar-trigger-icon-button) {
+  :deep(.arco-avatar-trigger-icon-button) {
     color: rgb(var(--arcoblue-6));
 
-    :global(.arco-icon) {
+    :deep(.arco-icon) {
       vertical-align: -1px;
     }
   }

@@ -1,7 +1,7 @@
 import Mock from 'mockjs';
 import qs from 'query-string';
 import setupMock, { successResponseWrap } from '@/utils/setup-mock';
-import { IGetParams } from '@/types/global';
+import { GetParams } from '@/types/global';
 
 setupMock({
   setup() {
@@ -19,7 +19,7 @@ setupMock({
       ]);
     });
 
-    Mock.mock(new RegExp('/api/feedback/list'), (params: IGetParams) => {
+    Mock.mock(new RegExp('/api/feedback/list'), (params: GetParams) => {
       const { page = 1, pageSize = 10 } = qs.parseUrl(params.url)
         .query as unknown as {
         page: number;

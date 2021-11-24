@@ -4,7 +4,7 @@ import setupMock, {
   failResponseWrap,
 } from '@/utils/setup-mock';
 
-import { IMockParams } from '@/types/mock';
+import { MockParams } from '@/types/mock';
 import { isLogin } from '@/utils/auth';
 
 setupMock({
@@ -33,7 +33,7 @@ setupMock({
     });
 
     // 登录
-    Mock.mock(new RegExp('/api/user/login'), (params: IMockParams) => {
+    Mock.mock(new RegExp('/api/user/login'), (params: MockParams) => {
       const { username, password } = JSON.parse(params.body);
       if (!username) {
         return failResponseWrap(null, 50000, '用户名不能为空');

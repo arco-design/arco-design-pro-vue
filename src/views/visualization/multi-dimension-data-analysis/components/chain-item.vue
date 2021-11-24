@@ -4,7 +4,7 @@
       <div class="content">
         <a-statistic
           :title="title"
-          :value="data.count"
+          :value="renderData.count"
           :show-group-separator="true"
         >
           <template #suffix>
@@ -18,7 +18,7 @@
             {{ $t('multiDAnalysis.lastMonth') }}
           </a-typography-text>
           <a-typography-text type="danger">
-            {{ data.growth }}
+            {{ renderData.growth }}
             <icon-arrow-rise />
           </a-typography-text>
         </div>
@@ -34,7 +34,7 @@ import { defineComponent, ref } from 'vue';
 
 import useLoading from '@/hooks/loading';
 import useChartOption from '@/hooks/chart-option';
-import { queryDataChainGrowth, IDataChainGrowth } from '@/api/visualization';
+import { queryDataChainGrowth, DataChainGrowth } from '@/api/visualization';
 
 // type ChartType = 'line' | 'bar';
 
@@ -55,7 +55,7 @@ export default defineComponent({
   },
   setup(props) {
     const { loading, setLoading } = useLoading(true);
-    const data = ref({
+    const renderData = ref({
       count: 0,
       growth: 0,
       chartData: [],
@@ -98,27 +98,28 @@ export default defineComponent({
         },
       ],
     });
-    const fetchData = (params: IDataChainGrowth) => {
-      queryDataChainGrowth(params)
-        .then((res) => {
-          const { chartData } = res.data;
-          data.value = res.data;
-          chartData.forEach((el) => {
-            if (el.name === '2021') {
-              chartOption.value.series[0].data.push(el.y);
-            } else {
-              chartOption.value.series[1].data.push(el.y);
-            }
-          });
-        })
-        .finally(() => {
-          setLoading(false);
+    const fetchData = async (params: DataChainGrowth) => {
+      try {
+        const { data } = await queryDataChainGrowth(params);
+        const { chartData } = data;
+        renderData.value = data;
+        chartData.forEach((el) => {
+          if (el.name === '2021') {
+            chartOption.value.series[0].data.push(el.y);
+          } else {
+            chartOption.value.series[1].data.push(el.y);
+          }
         });
+      } catch (err) {
+        // you can report use errorHandler or other
+      } finally {
+        setLoading(false);
+      }
     };
     fetchData(props.quota);
     return {
       loading,
-      data,
+      renderData,
       chartOption,
     };
   },

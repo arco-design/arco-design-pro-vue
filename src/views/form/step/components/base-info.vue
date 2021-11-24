@@ -121,12 +121,13 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref, watch, PropType } from 'vue';
-import { queryClusterList, queryLineList, IStepFormRes } from '@/api/form';
+import { queryClusterList, queryLineList, StepFormRes } from '@/api/form';
+import { Options, NodeOptions } from '@/types/global';
 
 export default defineComponent({
   props: {
     sourceData: {
-      type: Object as PropType<IStepFormRes>,
+      type: Object as PropType<StepFormRes>,
       default() {
         return {};
       },
@@ -135,14 +136,13 @@ export default defineComponent({
   emits: ['changeStep'],
   setup(props, ctx) {
     const activeKeys = ['baseConfig'];
-    const clusterOptions = ref([]);
-    const lineOptions = ref([]);
+    const clusterOptions = ref<NodeOptions[]>([]);
+    const lineOptions = ref<Options[]>([]);
     const formRef = ref(null);
-    const formData = ref<IStepFormRes>({});
-    const fetchLineOptions = () => {
-      queryLineList({ cluster: formData.value.cluster }).then((res) => {
-        lineOptions.value = res.data;
-      });
+    const formData = ref<StepFormRes>({});
+    const fetchLineOptions = async () => {
+      const { data } = await queryLineList({ cluster: formData.value.cluster });
+      lineOptions.value = data;
     };
     watch(
       () => props.sourceData,
@@ -160,18 +160,14 @@ export default defineComponent({
       }
     );
 
-    const init = () => {
-      queryClusterList().then((res) => {
-        clusterOptions.value = res.data;
-      });
+    const fetchData = async () => {
+      const { data } = await queryClusterList();
+      clusterOptions.value = data;
     };
 
-    const onNextClick = () => {
-      formRef.value.validate().then((res) => {
-        if (!res) {
-          ctx.emit('changeStep', 'forward');
-        }
-      });
+    const onNextClick = async () => {
+      const res = await formRef.value.validate();
+      if (!res) ctx.emit('changeStep', 'forward');
     };
     const onCollapseChange = () => {
       //
@@ -183,7 +179,7 @@ export default defineComponent({
         lineOptions.value = [];
       }
     };
-    init();
+    fetchData();
     return {
       formRef,
       activeKeys,

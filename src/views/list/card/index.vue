@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <a-breadcrumb style="margin-bottom: 20px">
+    <a-breadcrumb class="container-breadcrumb">
       <a-breadcrumb-item>{{ $t('menu.list') }}</a-breadcrumb-item>
       <a-breadcrumb-item>{{ $t('menu.list.cardList') }}</a-breadcrumb-item>
     </a-breadcrumb>
@@ -38,11 +38,11 @@ export default defineComponent({
 .container {
   padding: 20px;
 
-  :global(.arco-list-content) {
+  :deep(.arco-list-content) {
     overflow-x: hidden;
   }
 
-  :global(.arco-card-meta-title) {
+  :deep(.arco-card-meta-title) {
     font-size: 14px;
   }
 }

@@ -50,9 +50,7 @@
           <a-typography-text class="username">{{ name }}</a-typography-text>
           <template #content>
             <a-menu class="message-box">
-              <a-menu-item key="logout" @click="logout('login')"
-                >登出</a-menu-item
-              >
+              <a-menu-item key="logout" @click="logout">登出</a-menu-item>
             </a-menu>
           </template>
         </a-dropdown>

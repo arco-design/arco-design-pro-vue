@@ -20,6 +20,7 @@ export default {
   'multiDAnalysis.productEvaluation.design': 'Design',
   'multiDAnalysis.productEvaluation.community': 'Community',
   'multiDAnalysis.productEvaluation.ecology': 'Ecology',
-  'multiDAnalysis.card.title.userDistributionGeo': 'User geographical distribution',
+  'multiDAnalysis.card.title.userDistributionGeo':
+    'User geographical distribution',
   'multiDAnalysis.card.title.userDistributionType': 'User distribution',
 };

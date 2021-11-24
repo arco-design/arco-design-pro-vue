@@ -25,12 +25,9 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  // NProgress.start();
-  // NProgress.done();
+  NProgress.start();
   next();
-  // setTimeout(() => {
-
-  // }, 100);
+  NProgress.done();
 });
 
 export default router;

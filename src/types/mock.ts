@@ -1,4 +1,4 @@
-export interface IMockParams {
+export interface MockParams {
   url: string;
   type: string;
   body: string;
