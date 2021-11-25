@@ -1,4 +1,5 @@
 import request from '@/utils/request';
+import { UserStateTypes } from '@/store/interface';
 
 export interface LoginData {
   username: string;
@@ -24,7 +25,7 @@ export function logout() {
 }
 
 export function getUserInfo() {
-  return request({
+  return request<UserStateTypes>({
     url: '/api/user/info',
     method: 'post',
   });

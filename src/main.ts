@@ -15,6 +15,7 @@ import './mock';
 import App from './App.vue';
 
 import '@arco-design/web-vue/dist/arco.css';
+import '@/assets/style/global.less';
 
 const app = createApp(App);
 
