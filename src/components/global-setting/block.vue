@@ -12,34 +12,51 @@
     </div>
   </div>
 </template>
-<script setup lang="ts">
-import { withDefaults, defineProps } from 'vue';
-import store from '@/store';
-import { M_APP_UPDATE_SETTING } from '@/store/modules/mutation-type';
+<script lang="ts">
+import { defineComponent, PropType } from 'vue';
+import { useStore } from '@/store';
+import { MutationTypes } from '@/store/modules/app/mutation-types';
 import FormWrapper from './form-wrapper.vue';
 
-interface Props {
-  title: string;
-  options: {
-    name: string;
-    value: string;
-    type?: string;
-  }[];
+interface OptionsProps {
+  name: string;
+  key: string;
+  type?: string;
+  defaultVal?: boolean | string | number;
 }
 
-withDefaults(defineProps<Props>(), {
-  title: '',
-  options: () => [],
+export default defineComponent({
+  components: {
+    FormWrapper,
+  },
+  props: {
+    title: {
+      type: String,
+      default: '',
+    },
+    options: {
+      type: Array as PropType<OptionsProps[]>,
+      default() {
+        return [];
+      },
+    },
+  },
+  setup() {
+    const store = useStore();
+    const handleChange = ({ key, value }: { key: string; value: boolean }) => {
+      if (value && key === 'colorWeek') {
+        document.body.style.filter = 'invert(80%)';
+      }
+      if (!value && key === 'colorWeek') {
+        document.body.style.filter = 'none';
+      }
+      store.commit(MutationTypes.APP_UPDATE_SETTING, { key, value });
+    };
+    return {
+      handleChange,
+    };
+  },
 });
-const handleChange = ({ key, value }) => {
-  if (value && key === 'colorWeek') {
-    document.body.style.filter = 'invert(80%)';
-  }
-  if (!value && key === 'colorWeek') {
-    document.body.style.filter = 'none';
-  }
-  store.commit(M_APP_UPDATE_SETTING, { key, value });
-};
 </script>
 <style scoped lang="less">
 .block {

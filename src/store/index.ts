@@ -1,31 +1,40 @@
 import { InjectionKey } from 'vue';
 import {
   createStore,
-  useStore as baseUseStore,
-  Store,
+  useStore as VuexUseStore,
   createLogger,
+  Store as VuexStore,
 } from 'vuex';
+import { RootState, AppStateTypes, UserStateTypes } from './interface';
+import { UserStoreModuleTypes } from './modules/user/types';
+import { AppStoreModuleTypes } from './modules/app/types';
 import { debug } from '@/utils/env';
-import appStore, { DefaultSetting } from './modules/app';
-import userStore, { UserState } from './modules/user';
 
+import modules from './modules/index';
+
+export type StoreModules = {
+  user: UserStoreModuleTypes;
+  app: AppStoreModuleTypes;
+};
 export interface StateModuler {
-  app: DefaultSetting;
-  user: UserState;
+  app: AppStateTypes;
+  user: UserStateTypes;
 }
-
-export const key: InjectionKey<Store<StateModuler>> = Symbol('store');
-
-const store = createStore<StateModuler>({
-  modules: {
-    app: appStore,
-    user: userStore,
-  },
+const store = createStore<RootState>({
+  modules,
   strict: debug,
   plugins: debug ? [createLogger()] : [],
 });
 export default store;
-// 定义自己的 `useStore` 组合式函数
-export function useStore() {
-  return baseUseStore(key);
+
+// Note: since i am spreading types, in case of same action/mutation types might override.
+// we can prevent this by using namespace or completely avoiding this.
+
+export type Store = UserStoreModuleTypes<Pick<StoreModules, 'user'>> &
+  AppStoreModuleTypes<Pick<StoreModules, 'app'>>;
+
+export const key: InjectionKey<VuexStore<StoreModules>> = Symbol('store');
+
+export function useStore(): Store {
+  return VuexUseStore(key) as unknown as Store;
 }

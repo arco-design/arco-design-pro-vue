@@ -38,7 +38,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import ChatList from './chat-list.vue';
-import { queryChatList } from '@/api/message';
+import { queryChatList, ChatRecord } from '@/api/message';
 import useLoading from '@/hooks/loading';
 
 export default defineComponent({
@@ -46,8 +46,8 @@ export default defineComponent({
     ChatList,
   },
   setup() {
-    const { loading, toggle, setLoading } = useLoading(true);
-    const chatList = ref([]);
+    const { loading, setLoading } = useLoading(true);
+    const chatList = ref<ChatRecord[]>([]);
     const fetchData = async () => {
       try {
         const { data } = await queryChatList();
@@ -61,7 +61,6 @@ export default defineComponent({
     fetchData();
     return {
       loading,
-      toggle,
       chatList,
     };
   },

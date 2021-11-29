@@ -63,12 +63,6 @@ export default defineComponent({
       },
     },
   },
-  setup() {
-    // const data = [];
-    // return {
-    //   data,
-    // };
-  },
 });
 </script>
 <style scoped lang="less"></style>

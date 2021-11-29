@@ -8,7 +8,10 @@ import { defineComponent, ref } from 'vue';
 import useLoading from '@/hooks/loading';
 import useChartOption from '@/hooks/chart-option';
 
-import { queryReportStuckRate } from '@/api/visualization';
+import {
+  queryReportStuckRate,
+  ReportStuckRateRecord,
+} from '@/api/visualization';
 
 export default defineComponent({
   setup() {
@@ -50,7 +53,7 @@ export default defineComponent({
       setLoading(true);
       try {
         const { data: chartData } = await queryReportStuckRate();
-        chartData.forEach((el) => {
+        chartData.forEach((el: ReportStuckRateRecord) => {
           if (el.name === 'A类型') {
             chartOption.value.xAxis.data.push(el.x);
             chartOption.value.series[0].data.push(el.y);

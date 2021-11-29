@@ -8,7 +8,7 @@
         <a-row justify="space-between" style="width: 100%">
           <a-col :span="12">
             <a-form-item no-style field="time">
-              <a-range-picker v-model="formData.time" />
+              <a-range-picker v-model="formData.time" :allow-clear="false" />
             </a-form-item>
           </a-col>
           <a-col :span="12" style="text-align: right">
@@ -39,6 +39,7 @@ import useChartOption from '@/hooks/chart-option';
 import {
   queryDownloadHistory,
   DownloadHistoryParams,
+  DownloadHistoryRecord,
 } from '@/api/visualization';
 
 const DATE_FORMAT = 'YYYY-MM-DD';
@@ -98,7 +99,7 @@ export default defineComponent({
         },
       ],
     });
-    const formData = reactive({
+    const formData = reactive<DownloadHistoryParams>({
       time: [
         dayjs().subtract(1, 'day').format(DATE_FORMAT),
         dayjs().format(DATE_FORMAT),
@@ -113,7 +114,7 @@ export default defineComponent({
         chartOption.value.series.forEach((el) => {
           el.data = [];
         });
-        data.forEach((el) => {
+        data.forEach((el: DownloadHistoryRecord) => {
           if (el.name === '开发者') {
             chartOption.value.xAxis.data.push(el.x);
             chartOption.value.series[0].data.push(el.y);
@@ -132,7 +133,7 @@ export default defineComponent({
       }
     };
     watch(
-      formData,
+      () => formData,
       () => {
         fetchData(formData);
       },

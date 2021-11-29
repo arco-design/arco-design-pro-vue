@@ -17,7 +17,7 @@
         </a-row>
       </div>
       <div class="right-side">
-        <a-space style="100%" direction="vertical" :size="12">
+        <a-space style="width: 100%" direction="vertical" :size="12">
           <QuickOperation />
           <Carousel />
           <Docs />

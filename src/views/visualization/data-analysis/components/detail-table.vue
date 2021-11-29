@@ -53,15 +53,23 @@ import { useI18n } from 'vue-i18n';
 import omit from 'lodash/omit';
 
 import useLoading from '@/hooks/loading';
-import { queryFeedbackList, FeedBackSearchParams } from '@/api/visualization';
+import {
+  queryFeedbackList,
+  FeedBackSearchParams,
+  FeedBackSearchRes,
+} from '@/api/visualization';
 
+interface FormModel {
+  roomNumber: string;
+  time: [string, string];
+}
 export default defineComponent({
   setup() {
     const { t } = useI18n();
     const { loading, setLoading } = useLoading(true);
-    const tableData = ref({ list: [], total: 0 });
+    const tableData = ref<FeedBackSearchRes>({ list: [], total: 0 });
 
-    const searchParams: FeedBackSearchParams = ref({
+    const searchParams = ref<FeedBackSearchParams>({
       page: 1,
       pageSize: 10,
       roomNumber: '#3032',
@@ -99,7 +107,7 @@ export default defineComponent({
         },
       },
     ]);
-    const formModel = reactive({
+    const formModel = reactive<FormModel>({
       roomNumber: searchParams.value.roomNumber,
       time: [searchParams.value.startTime, searchParams.value.endTime],
     });
@@ -114,7 +122,7 @@ export default defineComponent({
         setLoading(false);
       }
     };
-    const formatFormValues = (values) => {
+    const formatFormValues = (values: FormModel) => {
       const time = values.time || [];
 
       return {
@@ -123,17 +131,23 @@ export default defineComponent({
         endTime: time[1],
       };
     };
-    const onTableChange = ({ current, pageSize }) => {
+    const onTableChange = ({
+      current: page,
+      pageSize,
+    }: {
+      current: number;
+      pageSize: number;
+    }) => {
       searchParams.value = {
-        ...searchParams,
-        page: current,
+        ...searchParams.value,
+        page,
         pageSize,
       };
     };
     watch(searchParams, (pre, cur) => search(cur));
     watch(formModel, (pre, cur) => {
       searchParams.value = {
-        ...searchParams,
+        ...searchParams.value,
         ...formatFormValues(cur),
         page: 1,
       };

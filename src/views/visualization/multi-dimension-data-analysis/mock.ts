@@ -2,7 +2,7 @@ import Mock from 'mockjs';
 import qs from 'query-string';
 import setupMock, { successResponseWrap } from '@/utils/setup-mock';
 import { GetParams } from '@/types/global';
-import { IDownloadHistory } from '@/api/visualization';
+import { DownloadHistoryParams } from '@/api/visualization';
 
 setupMock({
   setup() {
@@ -24,7 +24,7 @@ setupMock({
 
     Mock.mock(new RegExp('/api/download-history'), (params: GetParams) => {
       const { showCompetitor } = qs.parseUrl(params.url)
-        .query as unknown as IDownloadHistory;
+        .query as unknown as DownloadHistoryParams;
       const year = new Date().getFullYear();
       const getLineData = (name: string) => {
         return new Array(12).fill(0).map((_item, index) => ({

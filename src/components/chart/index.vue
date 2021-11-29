@@ -25,7 +25,7 @@ export default defineComponent({
       return '';
     });
     const renderChart = ref(false);
-    // 容器宽度没展开。
+    // wait container expand
     nextTick(() => {
       renderChart.value = true;
     });

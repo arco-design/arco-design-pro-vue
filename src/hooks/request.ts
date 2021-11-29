@@ -1,12 +1,11 @@
 import { ref } from 'vue';
-import { AxiosPromise } from 'axios';
 import { HttpResponse } from '@/utils/request';
 import useLoading from './loading';
 
 // use to fetch list
 // Don't use async function. It doesn't work in async function.
 export default function useRequest(
-  api: () => AxiosPromise<HttpResponse>,
+  api: () => Promise<HttpResponse>,
   isLoading = true
 ) {
   const { loading, setLoading } = useLoading(isLoading);

@@ -2,6 +2,7 @@ import Mock from 'mockjs';
 import qs from 'query-string';
 import setupMock, { successResponseWrap } from '@/utils/setup-mock';
 import { GetParams } from '@/types/global';
+import { FeedBackSearchParams } from '@/api/visualization';
 
 setupMock({
   setup() {
@@ -21,13 +22,7 @@ setupMock({
 
     Mock.mock(new RegExp('/api/feedback/list'), (params: GetParams) => {
       const { page = 1, pageSize = 10 } = qs.parseUrl(params.url)
-        .query as unknown as {
-        page: number;
-        pageSize: number;
-        roomNumber: string;
-        startTime: string;
-        endTime: string;
-      };
+        .query as unknown as FeedBackSearchParams;
       const total = 55;
       const start = (page - 1) * pageSize;
       const end = Math.min(start + +pageSize, total);

@@ -1,7 +1,8 @@
 import axios, { AxiosRequestConfig, AxiosResponse, AxiosPromise } from 'axios';
 import { Message, Modal } from '@arco-design/web-vue';
 import store from '@/store';
-import { A_USER_LOGOUT } from '@/store/modules/action-type';
+import { ActionTypes } from '@/store/modules/user/action-types';
+
 // import useUser from '@/hooks/user';
 export interface HttpResponse<T = unknown> {
   status: number;
@@ -30,12 +31,6 @@ service.interceptors.request.use(
   }
 );
 
-// interface ResolvedFn<T=any> {
-//   (val: T): T | Promise<T>
-// }
-// interface MixInterceptor<T> extends AxiosResponse {
-//   // response: ResolvedFn<AxiosResponse>
-// }
 // response interceptor
 
 service.interceptors.response.use(
@@ -59,7 +54,7 @@ service.interceptors.response.use(
             'You have been logged out, you can cancel to stay on this page, or log in again',
           okText: 'Re-Login',
           async onOk() {
-            await store.dispatch(A_USER_LOGOUT);
+            await store.dispatch(ActionTypes.USER_LOGOUT);
             window.location.reload();
           },
         });

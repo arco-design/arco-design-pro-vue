@@ -70,6 +70,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref, watch, PropType } from 'vue';
+import { FormInstance } from '@arco-design/web-vue/es/form';
 import useLoading from '@/hooks/loading';
 import { StepFormRes } from '@/api/form';
 
@@ -77,16 +78,14 @@ export default defineComponent({
   props: {
     sourceData: {
       type: Object as PropType<StepFormRes>,
-      default() {
-        return {};
-      },
+      required: true,
     },
   },
   emits: ['changeStep'],
   setup(props, ctx) {
     const { loading, setLoading } = useLoading();
-    const formData = ref<StepFormRes>({});
-    const formRef = ref(null);
+    const formData = ref<StepFormRes>({} as StepFormRes);
+    const formRef = ref<FormInstance>();
     const goPrev = () => {
       ctx.emit('changeStep', 'backward');
     };
@@ -106,12 +105,12 @@ export default defineComponent({
       return new Promise((resolve) => {
         setTimeout(() => {
           ctx.emit('changeStep', 'forward');
-          resolve();
+          resolve({});
         }, 500);
       });
     };
     const onSubmitClick = async () => {
-      const res = await formRef.value.validate();
+      const res = await formRef.value?.validate();
       if (!res) {
         setLoading(true);
         await mockApi();

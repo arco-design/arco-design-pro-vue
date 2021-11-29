@@ -31,7 +31,7 @@ import baseStore, { useStore } from '@/store';
 import NavBar from '@/components/navbar/index.vue';
 import Menu from '@/components/menu/index.vue';
 import Footer from '@/components/footer/index.vue';
-import { A_USER_INFO } from '@/store/modules/action-type';
+import { ActionTypes } from '@/store/modules/user/action-types';
 
 export default defineComponent({
   components: {
@@ -41,7 +41,7 @@ export default defineComponent({
   },
   async beforeRouteEnter(to, from, next) {
     try {
-      await baseStore.dispatch(A_USER_INFO);
+      await baseStore.dispatch(ActionTypes.USER_INFO);
       next();
     } catch (error) {
       next({

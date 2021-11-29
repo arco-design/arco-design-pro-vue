@@ -21,71 +21,71 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, computed } from 'vue';
+import { defineComponent, computed, PropType } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { ProfileBasicRes } from '@/api/profile';
 
+type BlockList = {
+  title: string;
+  data: {
+    label: string;
+    value: string;
+  }[];
+}[];
 export default defineComponent({
   props: {
     title: {
       type: String,
       default: '',
     },
-    data: {
-      type: Object,
-      default() {
-        return {};
-      },
+    renderData: {
+      type: Object as PropType<ProfileBasicRes>,
+      required: true,
     },
   },
   setup(props) {
     const { t } = useI18n();
-    const blockDataList: {
-      title: string;
-      data: {
-        label: string;
-        value: string;
-      }[];
-    }[] = computed(() => {
-      const { data } = props;
+    const blockDataList = computed<BlockList>(() => {
+      const { renderData } = props;
       const result = [];
       result.push({
         title: t('basicProfile.title.video'),
         data: [
           {
             label: t('basicProfile.label.video.mode'),
-            value: data?.video?.mode || '-',
+            value: renderData?.video?.mode || '-',
           },
           {
             label: t('basicProfile.label.video.acquisition.resolution'),
-            value: data?.video?.acquisition.resolution || '-',
+            value: renderData?.video?.acquisition.resolution || '-',
           },
           {
             label: t('basicProfile.label.video.acquisition.frameRate'),
-            value: `${data?.video?.acquisition.frameRate || '-'} fps`,
+            value: `${renderData?.video?.acquisition.frameRate || '-'} fps`,
           },
           {
             label: t('basicProfile.label.video.encoding.resolution'),
-            value: data?.video?.encoding.resolution || '-',
+            value: renderData?.video?.encoding.resolution || '-',
           },
           {
             label: t('basicProfile.label.video.encoding.rate.min'),
-            value: `${data?.video?.encoding.rate.min || '-'} bps`,
+            value: `${renderData?.video?.encoding.rate.min || '-'} bps`,
           },
           {
             label: t('basicProfile.label.video.encoding.rate.max'),
-            value: `${data?.video?.encoding.rate.max || '-'} bps`,
+            value: `${renderData?.video?.encoding.rate.max || '-'} bps`,
           },
           {
             label: t('basicProfile.label.video.encoding.rate.default'),
-            value: `${data?.video?.encoding.rate.default || '-'} bps`,
+            value: `${renderData?.video?.encoding.rate.default || '-'} bps`,
           },
           {
             label: t('basicProfile.label.video.encoding.frameRate'),
-            value: `${data?.video?.encoding.frameRate || '-'} fpx`,
+            value: `${renderData?.video?.encoding.frameRate || '-'} fpx`,
           },
           {
             label: t('basicProfile.label.video.encoding.profile'),
-            value: data?.video?.encoding.profile || '-',
+            value: renderData?.video?.encoding.profile || '-',
           },
         ],
       });
@@ -95,27 +95,27 @@ export default defineComponent({
         data: [
           {
             label: t('basicProfile.label.audio.mode'),
-            value: data?.audio?.mode || '-',
+            value: renderData?.audio?.mode || '-',
           },
           {
             label: t('basicProfile.label.audio.acquisition.channels'),
-            value: `${data?.audio?.acquisition.channels || '-'} ${t(
+            value: `${renderData?.audio?.acquisition.channels || '-'} ${t(
               'basicProfile.unit.audio.channels'
             )}`,
           },
           {
             label: t('basicProfile.label.audio.encoding.channels'),
-            value: `${data?.audio?.encoding.channels || '-'} ${t(
+            value: `${renderData?.audio?.encoding.channels || '-'} ${t(
               'basicProfile.unit.audio.channels'
             )}`,
           },
           {
             label: t('basicProfile.label.audio.encoding.rate'),
-            value: `${data?.audio?.encoding.rate || '-'} kbps`,
+            value: `${renderData?.audio?.encoding.rate || '-'} kbps`,
           },
           {
             label: t('basicProfile.label.audio.encoding.profile'),
-            value: data?.audio?.encoding.profile || '-',
+            value: renderData?.audio?.encoding.profile || '-',
           },
         ],
       });

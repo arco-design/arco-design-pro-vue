@@ -20,8 +20,13 @@
 <script lang="ts">
 import { defineComponent, ref, reactive, toRefs, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { queryMessageList, setMessageStatus } from '@/api/message';
-import List, { MessageListType } from './list.vue';
+import {
+  queryMessageList,
+  setMessageStatus,
+  MessageRecord,
+  MessageListType,
+} from '@/api/message';
+import List from './list.vue';
 import useLoading from '@/hooks/loading';
 
 interface TabItem {
@@ -39,12 +44,15 @@ export default defineComponent({
     const messageType = ref('message');
     const unReadLength = ref(0);
     const { t } = useI18n();
-    const messageData = reactive({
+    const messageData = reactive<{
+      renderList: MessageRecord[];
+      messageList: MessageRecord[];
+    }>({
       renderList: [],
       messageList: [],
     });
     const refData = toRefs(messageData);
-    const tabList: TabItem = [
+    const tabList: TabItem[] = [
       {
         key: 'message',
         title: t('messageBox.tab.title.message'),
@@ -85,20 +93,20 @@ export default defineComponent({
     const unreadCount = computed(() => {
       return renderList.value.filter((item) => !item.status).length;
     });
-    const getUnreadList = (type) => {
+    const getUnreadList = (type: string) => {
       const list = messageData.messageList.filter(
         (item) => item.type === type && !item.status
       );
       return list;
     };
-    const formatUnreadLength = (type) => {
+    const formatUnreadLength = (type: string) => {
       const list = getUnreadList(type);
       return list.length ? `(${list.length})` : ``;
     };
-    const handleItemClick = (items) => {
+    const handleItemClick = (items: MessageListType) => {
       readMessage([...items]);
     };
-    const tabChange = (val) => {
+    const tabChange = (val: string) => {
       messageType.value = val;
     };
     fetchSourceData();

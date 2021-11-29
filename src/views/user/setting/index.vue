@@ -67,7 +67,7 @@ export default defineComponent({
       },
     ]);
     const selectedKeys = ref([menuList.value[0].key]);
-    const onClickMenuItem = (name) => {
+    const onClickMenuItem = (name: string) => {
       selectedKeys.value = [name];
     };
     const renderComponent = computed(() => {

@@ -24,7 +24,7 @@ export interface LatestActivity {
   avatar: string;
 }
 export function queryLatestActivity() {
-  return request<LatestActivity>({
+  return request<LatestActivity[]>({
     url: '/api/user/latest-activity',
     method: 'post',
   });
@@ -43,8 +43,13 @@ export function queryVisits() {
   });
 }
 
+export interface ProjectRecord {
+  id: number;
+  content: string;
+}
+
 export function queryProjectAndTeamList() {
-  return request({
+  return request<ProjectRecord[]>({
     url: '/api/user/project-and-team/list',
     method: 'post',
   });

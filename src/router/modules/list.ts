@@ -9,7 +9,7 @@ export default {
   },
   children: [
     {
-      path: 'search-table', // 中划线的路径符合seo规范，所以与name字段的驼峰区分开
+      path: 'search-table', // The midline path complies with SEO specifications
       name: 'searchTable',
       component: () => import('@/views/list/search-table/index.vue'),
       meta: {

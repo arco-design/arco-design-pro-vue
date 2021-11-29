@@ -73,17 +73,18 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { Message } from '@arco-design/web-vue';
+import { FormInstance } from '@arco-design/web-vue/es/form';
 import useLoading from '@/hooks/loading';
 import { saveUserInfo } from '@/api/user-center';
 import { useStore } from '@/store';
-import { UserState } from '@/store/modules/user';
+import { UserStateTypes } from '@/store/interface';
 
 export default defineComponent({
   setup() {
     const { loading, setLoading } = useLoading();
-    const formRef = ref(null);
+    const formRef = ref<FormInstance>();
     const avatar = ref('');
-    const formData = ref<UserState>({});
+    const formData = ref<UserStateTypes>({});
     const store = useStore();
     const file = {
       uid: '-2',
@@ -92,7 +93,7 @@ export default defineComponent({
     };
     const fileList = ref([file]);
     const init = () => {
-      avatar.value = store.getters.userInfo.avatar;
+      avatar.value = store.getters.userInfo.avatar || '';
       formData.value = {
         ...store.getters.userInfo,
       };
@@ -112,7 +113,7 @@ export default defineComponent({
       //
     };
     const onSaveBtnClick = async () => {
-      const res = await formRef.value.validate();
+      const res = await formRef.value?.validate();
       if (!res) save();
     };
     const onCancelBtnClick = () => {

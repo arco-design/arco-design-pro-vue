@@ -16,3 +16,11 @@ export interface GetParams {
   type: string;
   url: string;
 }
+
+export interface Pagination {
+  page: number;
+  pageSize: number;
+  total?: number;
+}
+
+export type TimeRanger = [string, string];

@@ -62,7 +62,7 @@
 import { defineComponent, computed } from 'vue';
 import MessageBox from '../message-box/index.vue';
 import { useStore } from '@/store';
-import { M_TOGGLE_THEME } from '@/store/modules/mutation-type';
+import { MutationTypes } from '@/store/modules/app/mutation-types';
 import { LOCALE_OPTIONS } from '@/locale';
 import useLocale from '@/hooks/locale';
 import useUser from '@/hooks/user';
@@ -81,7 +81,7 @@ export default defineComponent({
       return store.state.app.theme;
     });
     const toggleTheme = () => {
-      store.commit(M_TOGGLE_THEME);
+      store.commit(MutationTypes.TOGGLE_THEME);
     };
     return {
       locales,

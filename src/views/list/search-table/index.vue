@@ -10,8 +10,13 @@
           <a-button type="primary">{{ $t('searchTable.addPolicy') }}</a-button>
         </div>
         <div>
-          <a-range-picker style="margin-right: 8px" @change="onDateChange" />
+          <a-range-picker
+            v-model="time"
+            style="margin-right: 8px"
+            @change="onDateChange"
+          />
           <a-input-search
+            v-model="keyword"
             style="width: 300px"
             search-button
             :placeholder="$t('searchTable.placeholder.name')"
@@ -67,14 +72,17 @@
 import { defineComponent, computed, ref, reactive } from 'vue';
 import { useI18n } from 'vue-i18n';
 import useLoading from '@/hooks/loading';
-import { queryPolicyList, PolicyRecord } from '@/api/list';
+import { queryPolicyList, PolicyRecord, PolicyParams } from '@/api/list';
+import { Pagination, TimeRanger } from '@/types/global';
 
 export default defineComponent({
   setup() {
     const { loading, setLoading } = useLoading(true);
     const { t } = useI18n();
     const renderData = ref<PolicyRecord[]>([]);
-    const basePagination = {
+    const keyword = ref('');
+    const time = ref([]);
+    const basePagination: Pagination = {
       page: 1,
       pageSize: 20,
     };
@@ -111,10 +119,12 @@ export default defineComponent({
         dataIndex: 'operations',
       },
     ]);
-    const fetchData = async (params = { page: 1, pageSize: 20 }) => {
+    const fetchData = async (
+      params: PolicyParams = { page: 1, pageSize: 20 }
+    ) => {
       setLoading(true);
       try {
-        const { data } = await queryPolicyList();
+        const { data } = await queryPolicyList(params);
         renderData.value = data.list;
         pagination.page = params.page;
         pagination.total = data.total;
@@ -124,11 +134,23 @@ export default defineComponent({
         setLoading(false);
       }
     };
-    const onDateChange = () => {
-      fetchData();
+    const onDateChange = (date: TimeRanger | undefined) => {
+      const [createdTimeStart, createdTimeEnd] = date ?? [undefined, undefined];
+      fetchData({
+        ...basePagination,
+        keyword: keyword.value,
+        createdTimeStart,
+        createdTimeEnd,
+      });
     };
-    const onSearch = (keyword) => {
-      fetchData({ ...basePagination, keyword });
+    const onSearch = (keyword: string) => {
+      const [createdTimeStart, createdTimeEnd] = time.value;
+      fetchData({
+        ...basePagination,
+        keyword,
+        createdTimeStart,
+        createdTimeEnd,
+      });
     };
     const onPageChange = (page: number) => {
       fetchData({ ...basePagination, page });
@@ -144,6 +166,8 @@ export default defineComponent({
       columns,
       renderData,
       pagination,
+      keyword,
+      time,
     };
   },
 });

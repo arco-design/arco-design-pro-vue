@@ -47,7 +47,7 @@ export default defineComponent({
       },
     ];
     const othersOpts = [
-      { name: 'settings.colorWeek', key: 'colorWeek', defaultVal: true },
+      { name: 'settings.colorWeek', key: 'colorWeek', defaultVal: false },
     ];
 
     const setVisible = () => {

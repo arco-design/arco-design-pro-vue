@@ -68,7 +68,6 @@ export default defineComponent({
           center: ['50%', '50%'],
           data: [
             {
-              key: 't1',
               value: [1700, 1400, 2400, 2800, 3900, 1900],
             },
           ],

@@ -6,7 +6,8 @@
 </template>
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import ChatItem, { ChatItemRecord } from './chat-item.vue';
+import ChatItem from './chat-item.vue';
+import { ChatRecord } from '@/api/message';
 
 export default defineComponent({
   components: {
@@ -14,7 +15,7 @@ export default defineComponent({
   },
   props: {
     renderList: {
-      type: Array as PropType<ChatItemRecord[]>,
+      type: Array as PropType<ChatRecord[]>,
       default() {
         return [];
       },

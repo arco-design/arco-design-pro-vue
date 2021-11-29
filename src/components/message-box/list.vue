@@ -50,26 +50,13 @@
 </template>
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-
-export interface MessageItemData {
-  id: string;
-  title: string;
-  subTitle: string;
-  avatar: string;
-  content: string;
-  time: string;
-  status: number;
-}
-
-export type MessageListType = MessageItemData[];
+import { MessageRecord, MessageListType } from '@/api/message';
 
 export default defineComponent({
   props: {
     renderList: {
       type: Array as PropType<MessageListType>,
-      default() {
-        return [];
-      },
+      required: true,
     },
     unreadCount: {
       type: Number,
@@ -82,7 +69,7 @@ export default defineComponent({
       context.emit('itemClick', [...props.renderList]);
     };
 
-    const onItemClick = (item) => {
+    const onItemClick = (item: MessageRecord) => {
       if (!item.status) {
         context.emit('itemClick', [item]);
       }

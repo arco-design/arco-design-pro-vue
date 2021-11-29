@@ -39,17 +39,17 @@ export default defineComponent({
           center: ['50%', '50%'],
           data: [
             {
-              value: 64,
+              value: [64],
               name: '开发者',
               type: 'pie',
             },
             {
-              value: 33,
+              value: [33],
               name: '设计师',
               type: 'pie',
             },
             {
-              value: 5,
+              value: [5],
               name: '其他',
               type: 'pie',
             },

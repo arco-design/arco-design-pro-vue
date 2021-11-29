@@ -121,6 +121,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref, watch, PropType } from 'vue';
+import { FormInstance } from '@arco-design/web-vue/es/form';
 import { queryClusterList, queryLineList, StepFormRes } from '@/api/form';
 import { Options, NodeOptions } from '@/types/global';
 
@@ -128,9 +129,7 @@ export default defineComponent({
   props: {
     sourceData: {
       type: Object as PropType<StepFormRes>,
-      default() {
-        return {};
-      },
+      required: true,
     },
   },
   emits: ['changeStep'],
@@ -138,8 +137,8 @@ export default defineComponent({
     const activeKeys = ['baseConfig'];
     const clusterOptions = ref<NodeOptions[]>([]);
     const lineOptions = ref<Options[]>([]);
-    const formRef = ref(null);
-    const formData = ref<StepFormRes>({});
+    const formRef = ref<FormInstance>();
+    const formData = ref<StepFormRes>({} as StepFormRes);
     const fetchLineOptions = async () => {
       const { data } = await queryLineList({ cluster: formData.value.cluster });
       lineOptions.value = data;
@@ -166,15 +165,15 @@ export default defineComponent({
     };
 
     const onNextClick = async () => {
-      const res = await formRef.value.validate();
+      const res = await formRef.value?.validate();
       if (!res) ctx.emit('changeStep', 'forward');
     };
     const onCollapseChange = () => {
       //
     };
-    const onClusterChange = (cluster) => {
+    const onClusterChange = (cluster: string) => {
       if (cluster) {
-        fetchLineOptions(cluster);
+        fetchLineOptions();
       } else {
         lineOptions.value = [];
       }

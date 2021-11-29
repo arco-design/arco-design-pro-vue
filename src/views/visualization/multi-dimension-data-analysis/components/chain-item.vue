@@ -34,7 +34,11 @@ import { defineComponent, ref } from 'vue';
 
 import useLoading from '@/hooks/loading';
 import useChartOption from '@/hooks/chart-option';
-import { queryDataChainGrowth, DataChainGrowth } from '@/api/visualization';
+import {
+  queryDataChainGrowth,
+  DataChainGrowth,
+  DataChainGrowthRes,
+} from '@/api/visualization';
 
 // type ChartType = 'line' | 'bar';
 
@@ -55,7 +59,7 @@ export default defineComponent({
   },
   setup(props) {
     const { loading, setLoading } = useLoading(true);
-    const renderData = ref({
+    const renderData = ref<DataChainGrowthRes>({
       count: 0,
       growth: 0,
       chartData: [],
@@ -86,7 +90,7 @@ export default defineComponent({
           type: props.chartType,
           showSymbol: false,
           barWidth: 4,
-          barGap: 0,
+          barGap: '0',
         },
         {
           name: '2002',
@@ -94,7 +98,7 @@ export default defineComponent({
           type: props.chartType,
           showSymbol: false,
           barWidth: 4,
-          barGap: 0,
+          barGap: '0',
         },
       ],
     });
@@ -116,7 +120,7 @@ export default defineComponent({
         setLoading(false);
       }
     };
-    fetchData(props.quota);
+    fetchData({ quota: props.quota });
     return {
       loading,
       renderData,

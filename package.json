@@ -37,6 +37,7 @@
     "vuex": "^4.0.2"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.177",
     "@types/mockjs": "^1.0.4",
     "@types/nprogress": "^0.2.0",
     "@typescript-eslint/eslint-plugin": "^5.3.0",

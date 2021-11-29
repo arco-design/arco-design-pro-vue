@@ -9,12 +9,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { queryProjectAndTeamList } from '@/api/user-center';
-
-interface ProjectRecord {
-  id: number;
-  content: string;
-}
+import { queryProjectAndTeamList, ProjectRecord } from '@/api/user-center';
 
 export default defineComponent({
   setup() {

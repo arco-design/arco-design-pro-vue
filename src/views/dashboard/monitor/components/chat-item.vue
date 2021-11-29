@@ -25,19 +25,12 @@
 </template>
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-
-export interface ChatItemRecord {
-  id: string;
-  username: string;
-  content: string;
-  time: string;
-  isCollect: boolean;
-}
+import { ChatRecord } from '@/api/message';
 
 export default defineComponent({
   props: {
     itemData: {
-      type: Object as PropType<ChatItemRecord>,
+      type: Object as PropType<ChatRecord>,
       default() {
         return {};
       },

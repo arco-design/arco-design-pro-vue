@@ -64,9 +64,11 @@
 import { defineComponent, ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { Message } from '@arco-design/web-vue';
+import { ValidatedError } from '@arco-design/web-vue/es/form/interface';
 import { useStore } from '@/store';
 import useLoading from '@/hooks/loading';
-import { A_USER_LOGIN } from '@/store/modules/action-type';
+import { ActionTypes } from '@/store/modules/user/action-types';
+import { LoginData } from '@/api/user';
 
 export default defineComponent({
   setup() {
@@ -78,26 +80,30 @@ export default defineComponent({
       username: 'admin',
       password: 'admin',
     });
-    const handleSubmit = async ({ errors, values }) => {
+    const handleSubmit = async ({
+      errors,
+      values,
+    }: {
+      errors: Record<string, ValidatedError> | undefined;
+      values: LoginData;
+    }) => {
       if (!errors) {
         setLoading(true);
         try {
-          await store.dispatch(A_USER_LOGIN, values);
+          await store.dispatch(ActionTypes.USER_LOGIN, values);
           const { redirect, ...othersQuery } = router.currentRoute.value.query;
           router.push({
-            name: redirect || 'workplace',
+            name: (redirect as string) || 'workplace',
             query: {
               ...othersQuery,
             },
           });
           Message.success('欢迎使用');
         } catch (err) {
-          // you can report use errorHandler or other
+          errorMessage.value = (err as Error).message;
         } finally {
           setLoading(false);
         }
-      } else {
-        errorMessage.value = Object.entries(errors)[0].message;
       }
     };
     const setRememberPassword = () => {

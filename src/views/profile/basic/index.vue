@@ -28,14 +28,14 @@
         </a-steps>
         <ProfileItem
           :title="$t('basicProfile.title.currentParams')"
-          :data="currentData"
+          :render-data="currentData"
           style="margin-top: 24px"
         />
       </a-spin>
       <a-spin :loading="preLoading" style="width: 100%">
         <ProfileItem
           :title="$t('basicProfile.title.originParams')"
-          :data="preData"
+          :render-data="preData"
           style="margin-top: 24px"
         />
       </a-spin>
@@ -45,7 +45,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import useLoading from '@/hooks/loading';
-import { queryProfileBasic } from '@/api/profile';
+import { queryProfileBasic, ProfileBasicRes } from '@/api/profile';
 import ProfileItem from './components/profile-item.vue';
 
 export default defineComponent({
@@ -55,8 +55,8 @@ export default defineComponent({
   setup() {
     const { loading, setLoading } = useLoading(true);
     const { loading: preLoading, setLoading: preSetLoading } = useLoading(true);
-    const currentData = ref({});
-    const preData = ref({});
+    const currentData = ref<ProfileBasicRes>({} as ProfileBasicRes);
+    const preData = ref<ProfileBasicRes>({} as ProfileBasicRes);
     const step = ref(2);
     const fetchCurrentData = async () => {
       try {
