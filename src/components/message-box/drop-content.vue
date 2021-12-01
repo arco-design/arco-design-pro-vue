@@ -1,6 +1,6 @@
 <template>
   <a-spin style="width: 100%" :loading="loading">
-    <a-tabs type="rounded" destroy-on-hide @change="tabChange">
+    <a-tabs v-model:activeKey="messageType" type="rounded" destroy-on-hide>
       <a-tab-pane v-for="item in tabList" :key="item.key">
         <template #title>
           <span>
@@ -106,20 +106,17 @@ export default defineComponent({
     const handleItemClick = (items: MessageListType) => {
       readMessage([...items]);
     };
-    const tabChange = (val: string) => {
-      messageType.value = val;
-    };
     fetchSourceData();
     return {
       loading,
       tabList,
       ...refData,
       renderList,
-      tabChange,
       handleItemClick,
       unReadLength,
       formatUnreadLength,
       unreadCount,
+      messageType,
     };
   },
 });

@@ -21,7 +21,7 @@
         </a-col>
       </a-row>
       <a-spin :loading="loading" style="width: 100%">
-        <a-steps :current="step" line-less class="steps">
+        <a-steps v-model:current="step" line-less class="steps">
           <a-step>{{ $t('basicProfile.steps.commit') }}</a-step>
           <a-step>{{ $t('basicProfile.steps.approval') }}</a-step>
           <a-step>{{ $t('basicProfile.steps.finish') }}</a-step>

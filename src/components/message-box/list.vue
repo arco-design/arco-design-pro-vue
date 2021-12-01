@@ -39,7 +39,7 @@
         </a-list-item-meta>
       </div>
     </a-list-item>
-    <template v-if="unreadCount" #footer>
+    <template v-if="!unreadCount" #footer>
       <div class="footer-wrap">
         <a-button type="text" @click="allRead">
           {{ $t('messageBox.allRead') }}

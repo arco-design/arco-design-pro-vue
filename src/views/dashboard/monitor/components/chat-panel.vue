@@ -13,7 +13,7 @@
         <a-input-search
           :placeholder="$t('monitor.chat.placeholder.searchCategory')"
         />
-        <a-button type="text" icon-only>
+        <a-button type="text">
           <icon-download />
         </a-button>
       </a-space>

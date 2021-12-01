@@ -6,7 +6,11 @@
     </a-breadcrumb>
     <a-spin :loading="loading" style="width: 100%">
       <div class="wrapper">
-        <a-steps label-placement="vertical" class="steps" :current="step">
+        <a-steps
+          v-model:current="step"
+          label-placement="vertical"
+          class="steps"
+        >
           <a-step
             :title="$t('stepForm.step.title.baseInfo')"
             :description="$t('stepForm.step.subTitle.baseInfo')"
@@ -38,7 +42,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import useLoading from '@/hooks/loading';
-import { queryStepForm } from '@/api/form';
+import { queryStepForm, StepFormRes } from '@/api/form';
 import BaseInfo from './components/base-info.vue';
 import Service from './components/service.vue';
 import Success from './components/success.vue';
@@ -52,7 +56,7 @@ export default defineComponent({
   setup() {
     const { loading, setLoading } = useLoading(true);
     const step = ref(1);
-    const sourceData = ref({});
+    const sourceData = ref<StepFormRes>({} as StepFormRes);
     const fetchData = async () => {
       try {
         const { data } = await queryStepForm();

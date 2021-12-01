@@ -20,13 +20,24 @@
 <script lang="ts">
 import { defineComponent, computed, h, compile } from 'vue';
 import { useI18n } from 'vue-i18n';
+import {
+  TableColumn,
+  TableData,
+} from '@arco-design/web-vue/es/table/interface.d';
 
 import previewImage from '@/assets/monitor-studio-preview.png';
 
+interface PreviewRecord {
+  cover: string;
+  name: string;
+  duration: string;
+  id: string;
+  status: number;
+}
 export default defineComponent({
   setup() {
     const { t } = useI18n();
-    const data = [
+    const data: PreviewRecord[] = [
       {
         cover: previewImage,
         name: '视频直播',
@@ -35,7 +46,7 @@ export default defineComponent({
         status: -1,
       },
     ];
-    const renderTag = (status) => {
+    const renderTag = (status: number) => {
       if (status === -1) {
         return `<a-tag  color="red" class='data-statistic-list-cover-tag'>
             ${t('monitor.list.tag.auditFailed')}
@@ -43,20 +54,33 @@ export default defineComponent({
       }
       return '';
     };
-    // table自定义的一种用法
-    // 使用render函数 比模板更加灵活。缺点，无法绑定上下文。同时局部作用域丢失
+    // Using the Render function is more flexible than using templates.
+    // But, cannot bind context and local scopes are also lost
+
     const columns = computed(() => {
       return [
         {
           title: t('monitor.list.title.order'),
-          render({ column }) {
-            const tmp = `<span>${column.dataIndex}</span>`;
+          render({
+            rowIndex,
+          }: {
+            record: TableData;
+            column: TableColumn;
+            rowIndex: number;
+          }) {
+            const tmp = `<span>${rowIndex + 1}</span>`;
             return h(compile(tmp));
           },
         },
         {
           title: t('monitor.list.title.cover'),
-          render({ record }) {
+          render({
+            record,
+          }: {
+            record: TableData;
+            column: TableColumn;
+            rowIndex: number;
+          }) {
             const tmp = `<div class='data-statistic-list-cover-wrapper'>
               <img src=${record.cover} />
               ${renderTag(record.status)}

@@ -6,30 +6,23 @@
       </a-typography-title>
       <a-tag color="green">{{ $t('monitor.studioStatus.smooth') }}</a-tag>
     </a-space>
-    <a-descriptions
-      colon=": "
-      layout="horizontal"
-      :data="dataStatus"
-      :column="2"
-    >
-      <!-- <template #label>
-        <span>
+    <a-descriptions layout="horizontal" :data="dataStatus" :column="2">
+      <template #label="{ label }">
+        <span
+          v-if="['mainstream', 'hotStandby', 'coldStandby'].includes(label)"
+        >
           <a-typography-text style="padding-right: 8px">
-            {{ $t('monitor.studioStatus.mainstream') }}
+            {{ $t(`monitor.studioStatus.${label}`) }}
           </a-typography-text>
           {{ $t('monitor.studioStatus.bitRate') }}
         </span>
-      </template> -->
+        <span v-else>{{ label }}</span>
+      </template>
     </a-descriptions>
     <a-typography-title style="margin-bottom: 16px" :heading="6">
       {{ $t('monitor.studioStatus.title.pictureInfo') }}
     </a-typography-title>
-    <a-descriptions
-      colon=": "
-      layout="horizontal"
-      :data="dataPicture"
-      :column="2"
-    />
+    <a-descriptions layout="horizontal" :data="dataPicture" :column="2" />
   </a-card>
 </template>
 <script lang="ts">
@@ -41,9 +34,7 @@ export default defineComponent({
     const { t } = useI18n();
     const dataStatus = computed(() => [
       {
-        renderLabel: true,
-        category: 'monitor.studioStatus.mainstream',
-        bitRate: 'monitor.studioStatus.bitRate',
+        label: 'mainstream',
         value: '6 Mbps',
       },
       {
@@ -51,8 +42,20 @@ export default defineComponent({
         value: '60',
       },
       {
-        renderLabel: true,
+        label: 'hotStandby',
         value: '6 Mbps',
+      },
+      {
+        label: t('monitor.studioStatus.frameRate'),
+        value: '60',
+      },
+      {
+        label: 'coldStandby',
+        value: '6 Mbps',
+      },
+      {
+        label: t('monitor.studioStatus.frameRate'),
+        value: '60',
       },
     ]);
     const dataPicture = computed(() => [
@@ -80,4 +83,8 @@ export default defineComponent({
   },
 });
 </script>
-<style scoped lang="less"></style>
+<style scoped lang="less">
+:deep(.arco-descriptions-item-label) {
+  padding-right: 6px;
+}
+</style>

@@ -2,7 +2,7 @@
   <router-view></router-view>
   <global-setting />
 </template>
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import GlobalSetting from '@/components/global-setting/index.vue';
 

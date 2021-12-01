@@ -8,15 +8,15 @@
               <img alt="avatar" :src="item.avatar" />
             </a-avatar>
           </template>
-          <template #actions>
-            <a-button size="mini" type="text">
-              <icon-edit />
-            </a-button>
-            <a-button size="mini" type="text">
-              <icon-delete />
-            </a-button>
-          </template>
         </a-list-item-meta>
+        <template #actions>
+          <a-button size="mini" type="text">
+            <icon-edit />
+          </a-button>
+          <a-button size="mini" type="text">
+            <icon-delete />
+          </a-button>
+        </template>
       </a-list-item>
     </a-list>
     <div style="text-align: center" @click="toggle">
