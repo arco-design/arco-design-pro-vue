@@ -50,12 +50,6 @@ export default defineComponent({
 </script>
 <style scoped lang="less">
 .studio {
-  // &-wrapper {
-  //   :deep(.arco-card-body) {
-  //     padding-top: 0 !important;
-  //   }
-  // }
-
   &-preview {
     max-width: 100%;
     display: block;

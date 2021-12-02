@@ -16,11 +16,15 @@
         <a-card>
           <template #actions>
             <a-link>{{ $t('cardList.detail') }}</a-link>
-            <!-- <a-dropdown-button type="secondary">
-              {{ item.enable ? $t('cardList.disable') : $t('cardList.enable') }}
-              <template #icon>
+            <a-dropdown>
+              <a-button>
+                {{
+                  item.enable ? $t('cardList.disable') : $t('cardList.enable')
+                }}
+              </a-button>
+              <!-- <template #icon>
                 <icon-down />
-              </template>
+              </template> -->
               <template #content>
                 <a-menu>
                   <a-menu-item key="action">
@@ -28,7 +32,7 @@
                   </a-menu-item>
                 </a-menu>
               </template>
-            </a-dropdown-button> -->
+            </a-dropdown>
           </template>
           <a-space align="start">
             <a-avatar
@@ -65,4 +69,13 @@ export default defineComponent({
   },
 });
 </script>
-<style scoped lang="less"></style>
+<style scoped lang="less">
+:deep(.arco-space) {
+  width: 100%;
+  .arco-space-item {
+    &:last-child {
+      flex: 1;
+    }
+  }
+}
+</style>

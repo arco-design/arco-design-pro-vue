@@ -11,18 +11,15 @@
           label-placement="vertical"
           class="steps"
         >
-          <a-step
-            :title="$t('stepForm.step.title.baseInfo')"
-            :description="$t('stepForm.step.subTitle.baseInfo')"
-          />
-          <a-step
-            :title="$t('stepForm.step.title.target')"
-            :description="$t('stepForm.step.subTitle.target')"
-          />
-          <a-step
-            :title="$t('stepForm.step.title.finish')"
-            :description="$t('stepForm.step.subTitle.finish')"
-          />
+          <a-step :description="$t('stepForm.step.subTitle.baseInfo')">
+            {{ $t('stepForm.step.title.baseInfo') }}
+          </a-step>
+          <a-step :description="$t('stepForm.step.subTitle.target')">
+            {{ $t('stepForm.step.title.target') }}
+          </a-step>
+          <a-step :description="$t('stepForm.step.subTitle.finish')">
+            {{ $t('stepForm.step.title.finish') }}
+          </a-step>
         </a-steps>
         <BaseInfo
           v-if="step === 1"

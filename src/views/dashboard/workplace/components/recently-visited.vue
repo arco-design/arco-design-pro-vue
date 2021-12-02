@@ -29,9 +29,6 @@ export default defineComponent({
   components: {
     Content,
   },
-  setup() {
-    //
-  },
 });
 </script>
 <style scoped lang="less"></style>

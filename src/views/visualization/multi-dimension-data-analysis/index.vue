@@ -60,9 +60,6 @@ export default defineComponent({
     ProductEvaluation,
     ActiveContributors,
   },
-  setup() {
-    //
-  },
 });
 </script>
 <style scoped lang="less">

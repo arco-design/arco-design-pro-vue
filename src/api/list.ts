@@ -1,7 +1,7 @@
 import request from '@/utils/request';
 
 export interface PolicyParams {
-  page: number;
+  current: number;
   pageSize: number;
   createdTimeStart?: string;
   createdTimeEnd?: string;

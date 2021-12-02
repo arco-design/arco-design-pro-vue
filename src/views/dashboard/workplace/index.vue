@@ -52,9 +52,6 @@ export default defineComponent({
     Carousel,
     Docs,
   },
-  setup() {
-    //
-  },
 });
 </script>
 <style scoped lang="less">

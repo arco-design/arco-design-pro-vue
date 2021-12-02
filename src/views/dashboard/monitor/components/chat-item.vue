@@ -36,11 +36,6 @@ export default defineComponent({
       },
     },
   },
-  setup() {
-    return {
-      // cs,
-    };
-  },
 });
 </script>
 <style scoped lang="less">

@@ -26,7 +26,6 @@
 </template>
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
-// import { useRouter } from 'vue-router';
 import baseStore, { useStore } from '@/store';
 import NavBar from '@/components/navbar/index.vue';
 import Menu from '@/components/menu/index.vue';

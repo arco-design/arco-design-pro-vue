@@ -17,7 +17,6 @@ import useChartOption from '@/hooks/chart-option';
 // eslint-disable-next-line import/extensions
 import worldJson from '@/assets/world.json';
 
-// 坚决维护中国主权与领土完整！！！中国一点都不能少！！！
 echarts.registerMap('world', worldJson);
 
 export default defineComponent({

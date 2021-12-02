@@ -40,9 +40,6 @@ export default defineComponent({
   components: {
     ChainItem,
   },
-  setup() {
-    //
-  },
 });
 </script>
 <style scoped lang="less"></style>

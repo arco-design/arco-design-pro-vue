@@ -18,7 +18,7 @@ export interface GetParams {
 }
 
 export interface Pagination {
-  page: number;
+  current: number;
   pageSize: number;
   total?: number;
 }

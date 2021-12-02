@@ -50,7 +50,7 @@ export default defineComponent({
       if (!value && key === 'colorWeek') {
         document.body.style.filter = 'none';
       }
-      store.commit(MutationTypes.APP_UPDATE_SETTING, { key, value });
+      store.commit(MutationTypes.APP_UPDATE_SETTING, { [key]: value });
     };
     return {
       handleChange,

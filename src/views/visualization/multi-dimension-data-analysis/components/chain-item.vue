@@ -40,8 +40,6 @@ import {
   DataChainGrowthRes,
 } from '@/api/visualization';
 
-// type ChartType = 'line' | 'bar';
-
 export default defineComponent({
   props: {
     title: {

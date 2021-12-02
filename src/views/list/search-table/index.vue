@@ -83,7 +83,7 @@ export default defineComponent({
     const keyword = ref('');
     const time = ref([]);
     const basePagination: Pagination = {
-      page: 1,
+      current: 1,
       pageSize: 20,
     };
     const pagination = reactive({
@@ -120,13 +120,13 @@ export default defineComponent({
       },
     ]);
     const fetchData = async (
-      params: PolicyParams = { page: 1, pageSize: 20 }
+      params: PolicyParams = { current: 1, pageSize: 20 }
     ) => {
       setLoading(true);
       try {
         const { data } = await queryPolicyList(params);
         renderData.value = data.list;
-        pagination.page = params.page;
+        pagination.current = params.current;
         pagination.total = data.total;
       } catch (err) {
         // you can report use errorHandler or other
@@ -152,12 +152,11 @@ export default defineComponent({
         createdTimeEnd,
       });
     };
-    const onPageChange = (page: number) => {
-      fetchData({ ...basePagination, page });
+    const onPageChange = (current: number) => {
+      fetchData({ ...basePagination, current });
     };
 
     fetchData();
-
     return {
       loading,
       onDateChange,

@@ -27,6 +27,4 @@ app.use(store, key);
 app.use(i18n);
 app.use(globalComponents);
 
-// app.config.globalProperties.echarts = echarts;
-
 app.mount('#app');

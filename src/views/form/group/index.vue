@@ -241,16 +241,18 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 import useLoading from '@/hooks/loading';
 
 export default defineComponent({
   setup() {
-    //
-    const formData = {};
-    const { loading } = useLoading();
+    const formData = ref({});
+    const { loading, setLoading } = useLoading();
     const onSubmitClick = () => {
-      //
+      setLoading(true);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
     };
     return {
       loading,

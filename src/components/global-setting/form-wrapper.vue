@@ -14,6 +14,8 @@
   />
 </template>
 <script lang="ts">
+import { SetupContext } from 'vue';
+
 export default {
   props: {
     type: {
@@ -30,8 +32,8 @@ export default {
     },
   },
   emits: ['change'],
-  setup(props, { emit }) {
-    const handleChange = (value) => {
+  setup(props, { emit }: SetupContext) {
+    const handleChange = (value: string | boolean | number) => {
       emit('change', {
         value,
         key: props.name,
