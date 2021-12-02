@@ -1,25 +1,24 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "useDefineForClassFields": true,
     "module": "ES2020",
     "moduleResolution": "node",
     "strict": true,
     "jsx": "preserve",
     "sourceMap": true,
     "resolveJsonModule": true,
+    "isolatedModules": true,
     "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
     "lib": [
       "es2020",
       "dom"
-    ],
-    "experimentalDecorators": true,
-    "baseUrl": ".",
-    "paths": {
-			"@/*": ["src/*"]
-		},
-    "typeRoots": ["./node_modules/@types/", "./types"],
-    "isolatedModules": true,
+    ]
   },
   "include": [
     "src/**/*",
