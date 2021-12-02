@@ -6,14 +6,20 @@
   "author": "ArcoDesign Team",
   "license": "MIT",
   "scripts": {
+    "prepare": "husky install",
     "dev": "vite --config ./config/vite.config.dev.ts",
     "build": "vue-tsc --noEmit && vite build --config ./config/vite.config.prod.ts",
     "lint-staged": "npx lint-staged"
   },
   "lint-staged": {
-    "*.{js,ts,jsx,tsx,vue}": [
-      "eslint --fix",
-      "prettier --write"
+    "*.{js,ts,jsx,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.vue": [
+      "stylelint --fix",
+      "prettier --write",
+      "eslint --fix"
     ],
     "*.{less,css}": [
       "stylelint --fix",
@@ -37,6 +43,8 @@
   },
   "devDependencies": {
     "@arco-design/web-vue": "^2.7.0",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^12.0.1",
     "@types/lodash": "^4.14.177",
     "@types/mockjs": "^1.0.4",
     "@types/nprogress": "^0.2.0",

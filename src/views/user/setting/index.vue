@@ -22,6 +22,7 @@
     </div>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent, ref, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -85,6 +86,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .container {
   padding: 20px;
@@ -104,6 +106,7 @@ export default defineComponent({
     padding: 20px 24px;
   }
 }
+
 :deep(.section-title) {
   margin-top: 0;
   margin-bottom: 16px;

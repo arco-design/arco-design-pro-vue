@@ -12,6 +12,7 @@
     </div>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 import { useStore } from '@/store';
@@ -58,21 +59,22 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .block {
   margin-bottom: 24px;
 }
 
 .title {
-  font-size: 14px;
-  padding: 0;
   margin: 10px 0;
+  padding: 0;
+  font-size: 14px;
 }
 
 .switch-wrapper {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   height: 32px;
 }
 </style>

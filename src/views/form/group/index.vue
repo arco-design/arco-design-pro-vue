@@ -8,7 +8,7 @@
       <a-form ref="formRef" layout="vertical" :model="formData">
         <a-typography-title
           :heading="6"
-          style="margin: 0 0 16px 0; font-size: 14"
+          style="margin: 0 0 16px 0; font-size: 14px"
         >
           {{ $t('groupForm.title.video') }}
         </a-typography-title>
@@ -150,7 +150,7 @@
 
         <a-typography-title
           :heading="6"
-          style="margin: 0 0 16px 0; font-size: 14"
+          style="margin: 0 0 16px 0; font-size: 14px"
         >
           {{ $t('groupForm.title.audio') }}
         </a-typography-title>
@@ -215,7 +215,7 @@
 
         <a-typography-title
           :heading="6"
-          style="margin: 0 0 16px 0; font-size: 14"
+          style="margin: 0 0 16px 0; font-size: 14px"
         >
           {{ $t('groupForm.title.approvers') }}
         </a-typography-title>
@@ -240,6 +240,7 @@
     </a-card>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import useLoading from '@/hooks/loading';
@@ -262,6 +263,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .container {
   padding: 20px;

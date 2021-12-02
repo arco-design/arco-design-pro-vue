@@ -34,6 +34,7 @@
     </div>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import {
@@ -55,12 +56,13 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .latest-project {
   &-header {
     display: flex;
-    justify-content: space-between;
     align-items: flex-start;
+    justify-content: space-between;
   }
 
   &-title {

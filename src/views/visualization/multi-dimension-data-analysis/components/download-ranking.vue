@@ -29,6 +29,7 @@
     </a-list>
   </a-card>
 </template>
+
 <script lang="ts">
 import { defineComponent } from 'vue';
 
@@ -77,6 +78,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .list {
   &-item {
@@ -84,15 +86,15 @@ export default defineComponent({
       display: inline-block;
       width: 16px;
       height: 16px;
-      line-height: 16px;
-      border-radius: 50%;
       margin-right: 8px;
+      color: rgb(var(--gray-6));
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
       text-align: center;
       vertical-align: middle;
-      color: rgb(var(--gray-6));
       background-color: rgb(var(--gray-2));
-      font-size: 12px;
-      font-weight: 500;
+      border-radius: 50%;
 
       &&--active {
         color: rgb(var(--arcoblue-6));

@@ -19,7 +19,7 @@
       <a-list-item
         v-for="(item, idx) in renderData"
         :key="idx"
-        style="padding: 0; margin-bottom: 16px"
+        style="margin-bottom: 16px; padding: 0"
       >
         <a-card>
           <a-space align="start">
@@ -31,6 +31,7 @@
     </a-list>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 import { DocRecord } from '@/api/list';
@@ -50,4 +51,3 @@ export default defineComponent({
   },
 });
 </script>
-<style scoped lang="less"></style>

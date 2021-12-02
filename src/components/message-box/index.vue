@@ -12,6 +12,7 @@
     </template>
   </a-dropdown>
 </template>
+
 <script lang="ts">
 import { defineComponent } from 'vue';
 import DropContent from './drop-content.vue';
@@ -22,13 +23,14 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .message-box-trigger {
-  padding: 16px 0;
   width: 20px;
+  padding: 16px 0;
+  color: var(--color-text-1);
   text-align: center;
   cursor: pointer;
-  color: var(--color-text-1);
 
   &:hover {
     color: rgb(var(--arcoblue-6));

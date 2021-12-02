@@ -30,6 +30,7 @@
     </div>
   </a-card>
 </template>
+
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import { useStore } from '@/store';
@@ -48,18 +49,19 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .studio {
   &-preview {
-    max-width: 100%;
     display: block;
+    max-width: 100%;
     margin: 0 auto;
   }
 
   &-bar {
-    margin-top: 16px;
     display: flex;
     justify-content: space-between;
+    margin-top: 16px;
   }
 }
 </style>

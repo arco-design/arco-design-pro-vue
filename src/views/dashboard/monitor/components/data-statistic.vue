@@ -30,6 +30,7 @@
     </div>
   </a-card>
 </template>
+
 <script lang="ts">
 import { defineComponent } from 'vue';
 import DataStatisticList from './data-statistic-list.vue';
@@ -40,6 +41,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .data-statistic {
   &-content {
@@ -48,9 +50,9 @@ export default defineComponent({
 
   &-list {
     &-header {
-      margin-top: 16px;
       display: flex;
       justify-content: space-between;
+      margin-top: 16px;
     }
 
     &-content {

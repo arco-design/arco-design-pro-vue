@@ -26,6 +26,7 @@
     </div>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Banner from './components/banner.vue';
@@ -54,11 +55,13 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .content {
-  padding: 20px;
   display: flex;
+  padding: 20px;
 }
+
 .left-side {
   flex: 1;
 }
@@ -67,9 +70,10 @@ export default defineComponent({
   width: 280px;
   margin-left: 12px;
 }
+
 .panel {
-  background-color: var(--color-bg-2);
   margin-bottom: 12px;
+  background-color: var(--color-bg-2);
   border-radius: 2px;
 }
 </style>

@@ -19,6 +19,7 @@
     </div>
   </a-card>
 </template>
+
 <script lang="ts">
 import { defineComponent } from 'vue';
 
@@ -42,7 +43,13 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
+.text {
+  font-size: 12px;
+  text-align: center;
+}
+
 .wrapper {
   text-align: center;
   cursor: pointer;
@@ -53,20 +60,16 @@ export default defineComponent({
     }
   }
 }
+
 .icon {
   display: inline-block;
   width: 24px;
   height: 24px;
+  margin-bottom: 8px;
+  color: #fff;
   line-height: 24px;
   text-align: center;
   background-color: rgb(var(--cyan-6));
-  color: #fff;
   border-radius: 4px;
-  margin-bottom: 8px;
-}
-
-.text {
-  text-align: center;
-  font-size: 12px;
 }
 </style>

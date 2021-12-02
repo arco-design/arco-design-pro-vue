@@ -8,6 +8,7 @@
     </div>
   </a-card>
 </template>
+
 <script lang="ts">
 import { defineComponent } from 'vue';
 import useChartOption from '@/hooks/chart-option';
@@ -63,4 +64,3 @@ export default defineComponent({
   },
 });
 </script>
-<style scoped lang="less"></style>

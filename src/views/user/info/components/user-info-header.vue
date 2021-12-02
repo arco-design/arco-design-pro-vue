@@ -30,6 +30,7 @@
     </a-space>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import { useRouter } from 'vue-router';
@@ -52,14 +53,15 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .header {
-  height: 204px;
-  background-color: rgb(var(--arcoblue-6));
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  height: 204px;
   color: var(--color-white);
+  background-color: rgb(var(--arcoblue-6));
 
   :deep(.arco-avatar-trigger-icon-button) {
     color: rgb(var(--arcoblue-6));
@@ -83,14 +85,14 @@ export default defineComponent({
 
   .user-edit-btn {
     color: #fff;
-    border-color: #fff;
     background: transparent;
+    border-color: #fff;
 
-    :hover,
-    :active {
+    &:hover,
+    &:active {
       color: #fff;
-      border-color: #fff;
       background: transparent;
+      border-color: #fff;
     }
   }
 }

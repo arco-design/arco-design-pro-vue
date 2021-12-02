@@ -19,6 +19,7 @@
     </a-drawer>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { Message } from '@arco-design/web-vue';
@@ -72,22 +73,23 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .btn {
   position: fixed;
-  right: 0;
   top: 50%;
-  transform: translateY(-50%);
+  right: 0;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 40px;
   height: 40px;
-  background-color: rgb(var(--arcoblue-6));
-  font-size: 24px;
   color: #fff;
+  font-size: 24px;
+  background-color: rgb(var(--arcoblue-6));
   border-radius: 4px 0 0 4px;
+  transform: translateY(-50%);
   cursor: pointer;
-  z-index: 100;
 }
 </style>

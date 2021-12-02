@@ -3,6 +3,7 @@
     <Chart style="width: 100%; height: 230px" :option="chartOption" />
   </a-spin>
 </template>
+
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import useLoading from '@/hooks/loading';
@@ -76,6 +77,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .chart-box {
   width: 100%;

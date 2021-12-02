@@ -6,9 +6,9 @@
     <a-result status="404" :subtitle="$t('cardList.announcement.noData')" />
   </a-card>
 </template>
+
 <script lang="ts">
 import { defineComponent } from 'vue';
 
 export default defineComponent({});
 </script>
-<style scoped lang="less"></style>

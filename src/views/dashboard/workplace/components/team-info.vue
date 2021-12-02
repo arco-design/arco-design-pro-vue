@@ -31,6 +31,7 @@
     </div>
   </a-card>
 </template>
+
 <script lang="ts">
 import { defineComponent } from 'vue';
 import useLoading from '@/hooks/loading';
@@ -53,4 +54,3 @@ export default defineComponent({
   },
 });
 </script>
-<style scoped lang="less"></style>

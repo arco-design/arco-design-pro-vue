@@ -20,6 +20,7 @@
     </div>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent, computed, PropType } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -129,6 +130,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .item-container {
   padding: 24px;

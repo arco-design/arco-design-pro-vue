@@ -33,6 +33,7 @@
     <a-button type="primary">更新</a-button>
   </a-card>
 </template>
+
 <script lang="ts">
 import { defineComponent } from 'vue';
 
@@ -44,4 +45,3 @@ export default defineComponent({
   },
 });
 </script>
-<style scoped lang="less"></style>

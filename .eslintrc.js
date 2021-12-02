@@ -18,6 +18,7 @@ module.exports = {
     // Airbnb JavaScript Style Guide https://github.com/airbnb/javascript
     'airbnb-base',
     'plugin:@typescript-eslint/recommended',
+    'plugin:import/recommended',
     'plugin:import/typescript',
     'plugin:vue/vue3-recommended',
     'plugin:prettier/recommended',
@@ -31,26 +32,35 @@ module.exports = {
   },
   rules: {
     'prettier/prettier': 1,
-    'no-console': 'warn',
-    // 'no-console': ['error', { allow: ['warn', 'error'] }],
+    // Vue: Recommended rules to be closed or modify
+    'vue/require-default-prop': 0,
+    'vue/singleline-html-element-content-newline': 0,
+    'vue/max-attributes-per-line': 0,
+    // Vue: Add extra rules
+    'vue/custom-event-name-casing': [2, 'camelCase'],
+    'vue/no-v-text': 1,
+    'vue/padding-line-between-blocks': 1,
+    'vue/require-direct-export': 1,
+    // Allow @ts-ignore comment
+    '@typescript-eslint/ban-ts-comment': 0,
+    '@typescript-eslint/no-unused-vars': 1,
+    '@typescript-eslint/no-empty-function': 1,
     'import/extensions': [
-      'error',
+      2,
       'ignorePackages',
       {
         js: 'never',
         jsx: 'never',
         ts: 'never',
         tsx: 'never',
-        json: 'never',
       },
     ],
-    'import/no-unresolved': 'off',
-    'import/prefer-default-export': 'off',
-    'no-shadow': 'off',
+    'import/prefer-default-export': 0,
     'import/no-extraneous-dependencies': 0,
-    '@typescript-eslint/no-unused-vars': 'warn',
-    '@typescript-eslint/no-empty-function': 'warn',
-    'no-param-reassign': 'off',
-    'import/no-cycle': 'off',
+    'no-console': 1,
+    'no-shadow': 0,
+    'no-param-reassign': 0,
+    // TODO: Remove
+    'import/no-cycle': 0,
   },
 };

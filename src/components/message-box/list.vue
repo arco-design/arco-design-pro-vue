@@ -48,6 +48,7 @@
     </template>
   </a-list>
 </template>
+
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 import { MessageRecord, MessageListType } from '@/api/message';
@@ -81,10 +82,12 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .item-wrap {
   cursor: pointer;
 }
+
 .footer-wrap {
   text-align: center;
 }

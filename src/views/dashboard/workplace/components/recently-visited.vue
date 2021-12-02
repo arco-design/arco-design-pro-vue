@@ -21,6 +21,7 @@
     </a-row>
   </a-card>
 </template>
+
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Content from './recently-visited-content.vue';
@@ -31,4 +32,3 @@ export default defineComponent({
   },
 });
 </script>
-<style scoped lang="less"></style>

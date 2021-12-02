@@ -17,6 +17,7 @@
     </a-typography-text>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent, computed, h, compile } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -109,14 +110,15 @@ export default defineComponent({
   },
 });
 </script>
+
 <style lang="less">
 // 此处是全局样式！！！
 .data-statistic {
   &-list {
     &-cover {
       &-wrapper {
-        height: 68px;
         position: relative;
+        height: 68px;
 
         img {
           height: 100%;
