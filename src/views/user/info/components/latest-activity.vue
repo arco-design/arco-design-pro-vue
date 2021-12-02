@@ -26,6 +26,7 @@
     </a-list>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { queryLatestActivity, LatestActivity } from '@/api/user-center';
@@ -44,12 +45,13 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .latest-activity {
   &-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
   }
 }
 </style>

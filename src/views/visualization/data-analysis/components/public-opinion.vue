@@ -21,6 +21,7 @@
     </div>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -66,16 +67,17 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .list {
-  width: 100%;
   display: flex;
   justify-content: space-between;
+  width: 100%;
 }
 
 .box {
-  height: 98px;
   box-sizing: border-box;
+  height: 98px;
   padding-right: 16px;
 
   &:last-child {
@@ -83,21 +85,21 @@ export default defineComponent({
   }
 
   &-inner {
+    padding: 16px;
     border: 1px solid var(--color-border);
     border-radius: 4px;
-    padding: 16px;
   }
 
   &__icon {
+    display: inline-block;
     width: 14.4px;
     height: 12.96px;
+    color: var(--color-white);
+    font-size: 10px;
     line-height: 12.96px;
     text-align: center;
-    font-size: 10px;
-    color: var(--color-white);
-    display: inline-block;
-    border-radius: 2px;
     vertical-align: middle;
+    border-radius: 2px;
   }
 
   &--up {

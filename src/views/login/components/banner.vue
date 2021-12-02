@@ -13,6 +13,7 @@
     </div>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent } from 'vue';
 import bannerImage from '@/assets/login-banner.png';
@@ -42,45 +43,47 @@ export default defineComponent({
   },
 });
 </script>
+
 <style lang="less" scoped>
 .banner {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 
   &-inner {
-    height: 100%;
     flex: 1;
+    height: 100%;
   }
 }
+
 .carousel {
   height: 100%;
 
   &-item {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     height: 100%;
   }
 
   &-title {
+    color: var(--color-fill-1);
     font-weight: 500;
     font-size: 20px;
     line-height: 28px;
-    color: var(--color-fill-1);
   }
 
   &-sub-title {
     margin-top: 8px;
+    color: var(--color-text-3);
     font-size: 14px;
     line-height: 22px;
-    color: var(--color-text-3);
   }
 
   &-image {
-    margin-top: 30px;
     width: 320px;
+    margin-top: 30px;
   }
 }
 </style>

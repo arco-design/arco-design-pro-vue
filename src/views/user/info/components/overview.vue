@@ -4,6 +4,7 @@
     <LatestActivity />
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent } from 'vue';
 import RecentProject from './recent-project.vue';
@@ -16,4 +17,3 @@ export default defineComponent({
   },
 });
 </script>
-<style scoped lang="less"></style>

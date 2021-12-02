@@ -48,6 +48,7 @@
     </a-spin>
   </a-card>
 </template>
+
 <script lang="ts">
 import { defineComponent } from 'vue';
 import useRequest from '@/hooks/request';
@@ -78,16 +79,19 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 :deep(.arco-list-col) {
-  flex-direction: row;
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
+
 :deep(.arco-list-item) {
   width: 33%;
 }
+
 :deep(.block-title) {
   margin: 0 0 12px 0;
   font-size: 14;

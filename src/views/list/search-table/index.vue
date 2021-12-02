@@ -68,6 +68,7 @@
     </a-card>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent, computed, ref, reactive } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -171,6 +172,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .toolbar {
   display: flex;

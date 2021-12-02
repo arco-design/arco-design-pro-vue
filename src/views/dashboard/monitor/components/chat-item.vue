@@ -23,6 +23,7 @@
     </a-space>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 import { ChatRecord } from '@/api/message';
@@ -38,17 +39,18 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .chat-item {
+  padding: 8px;
   font-size: 12px;
   line-height: 20px;
-  padding: 8px;
   border-radius: 2px;
 
   &-footer {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
   }
 
   &-actions {
@@ -56,15 +58,15 @@ export default defineComponent({
     opacity: 0;
 
     &-item {
-      margin-right: 4px;
-      font-size: 14px;
-      color: var(--color-text-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 20px;
       height: 20px;
+      margin-right: 4px;
+      color: var(--color-text-3);
+      font-size: 14px;
       border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       cursor: pointer;
 
       &:hover {

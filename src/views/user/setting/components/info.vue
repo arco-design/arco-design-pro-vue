@@ -70,6 +70,7 @@
     </a-space>
   </a-form>
 </template>
+
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { Message } from '@arco-design/web-vue';
@@ -137,6 +138,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .info {
   &-form {

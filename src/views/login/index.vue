@@ -15,6 +15,7 @@
     </div>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent } from 'vue';
 import LoginBanner from './components/banner.vue';
@@ -29,6 +30,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style lang="less" scoped>
 .container {
   display: flex;
@@ -40,34 +42,35 @@ export default defineComponent({
   }
 
   .content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
-    padding-bottom: 40px;
     position: relative;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 40px;
   }
 
   .footer {
-    width: 100%;
     position: absolute;
-    bottom: 0;
     right: 0;
+    bottom: 0;
+    width: 100%;
   }
 }
+
 .logo {
   position: fixed;
   top: 24px;
   left: 22px;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
-  z-index: 1;
 
   &-text {
-    margin-left: 4px;
     margin-right: 4px;
-    font-size: 20px;
+    margin-left: 4px;
     color: var(--color-fill-1);
+    font-size: 20px;
   }
 }
 </style>

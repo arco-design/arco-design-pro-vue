@@ -17,6 +17,7 @@
     </a-row>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent } from 'vue';
 import CardContent from './components/card-content.vue';
@@ -34,6 +35,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .container {
   padding: 20px;
@@ -49,9 +51,9 @@ export default defineComponent({
 
 .right-content {
   display: flex;
-  height: 100%;
   flex-direction: column;
   align-items: stretch;
+  height: 100%;
 
   &__item {
     &:last-child {

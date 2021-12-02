@@ -40,30 +40,34 @@
     </div>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent } from 'vue';
 
 export default defineComponent({});
 </script>
+
 <style scoped lang="less">
 .wrapper {
+  box-sizing: border-box;
   padding: 24px 150px;
   background-color: var(--color-bg-2);
-  box-sizing: border-box;
 }
 
 .result {
   margin: 150px 0 36px 0;
 }
+
 .operation-wrap {
   margin-bottom: 40px;
   text-align: center;
 }
+
 .details-wrapper {
+  box-sizing: border-box;
   width: 100%;
+  margin-bottom: 150px;
   padding: 20px;
   background-color: var(--color-fill-2);
-  box-sizing: border-box;
-  margin-bottom: 150px;
 }
 </style>

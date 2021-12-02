@@ -31,6 +31,7 @@
     </a-space>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { queryVisits, VisitsRecord } from '@/api/user-center';
@@ -49,6 +50,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .visits {
   &-item {
@@ -56,13 +58,13 @@ export default defineComponent({
   }
 
   &-unit {
-    font-size: 12px;
     padding-left: 8px;
+    font-size: 12px;
   }
 
   &-label {
-    font-size: 12px;
     padding-right: 8px;
+    font-size: 12px;
   }
 }
 </style>

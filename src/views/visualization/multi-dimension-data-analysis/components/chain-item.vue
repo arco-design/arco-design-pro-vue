@@ -29,6 +29,7 @@
     </a-card>
   </a-spin>
 </template>
+
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 
@@ -127,26 +128,27 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .content {
-  width: 130px;
   display: inline-block;
+  width: 130px;
 }
 
 .chart {
-  height: 80px;
-  width: calc(100% - 130px);
   display: inline-block;
+  width: calc(100% - 130px);
+  height: 80px;
   vertical-align: bottom;
 }
 
 .unit {
-  font-size: 12px;
   padding-left: 8px;
+  font-size: 12px;
 }
 
 .label {
-  font-size: 12px;
   padding-right: 8px;
+  font-size: 12px;
 }
 </style>

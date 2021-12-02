@@ -30,6 +30,7 @@
     </a-card>
   </a-spin>
 </template>
+
 <script lang="ts">
 import { defineComponent, reactive, watch } from 'vue';
 import dayjs from 'dayjs';
@@ -148,6 +149,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .chart {
   height: 248px;

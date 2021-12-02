@@ -27,6 +27,7 @@
     </a-row>
   </a-card>
 </template>
+
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -90,17 +91,18 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .statistic-prefix {
   display: inline-block;
-  margin-right: 4px;
   width: 14px;
   height: 12px;
-  line-height: 12px;
-  border-radius: 2px;
+  margin-right: 4px;
   color: var(--color-white);
   font-size: 10px;
+  line-height: 12px;
   text-align: center;
   vertical-align: middle;
+  border-radius: 2px;
 }
 </style>

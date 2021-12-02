@@ -30,6 +30,7 @@
     </div>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent } from 'vue';
 import PublicOpinion from './components/public-opinion.vue';
@@ -44,6 +45,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .container {
   padding: 16px;
@@ -53,6 +55,7 @@ export default defineComponent({
   padding: 20px;
   background-color: var(--color-bg-2);
 }
+
 .title-fix {
   margin: 0 0 12px 0;
   font-size: 14;

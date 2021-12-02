@@ -1,6 +1,6 @@
 import request from '@/utils/request';
 
-export interface LastestProjectRecord {
+export interface LatestProjectRecord {
   id: number;
   name: string;
   description: string;
@@ -11,7 +11,7 @@ export interface LastestProjectRecord {
   }[];
 }
 export function queryLatestProjectList() {
-  return request<LastestProjectRecord[]>({
+  return request<LatestProjectRecord[]>({
     url: '/api/user/latest-project/list',
     method: 'post',
   });

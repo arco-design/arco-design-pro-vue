@@ -24,6 +24,7 @@
     </a-layout>
   </a-layout>
 </template>
+
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import baseStore, { useStore } from '@/store';
@@ -76,9 +77,14 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 @nav-size-height: 60px;
 @layout-max-width: 1100px;
+
+:deep(.container-breadcrumb) {
+  margin-bottom: 20px;
+}
 
 .layout {
   width: 100%;
@@ -87,31 +93,31 @@ export default defineComponent({
 
 .layout-navbar {
   position: fixed;
-  width: 100%;
-  min-width: @layout-max-width;
   top: 0;
   left: 0;
-  height: @nav-size-height;
   z-index: 100;
+  width: 100%;
+  min-width: @layout-max-width;
+  height: @nav-size-height;
 }
 
 .layout-sider {
   position: fixed;
-  height: 100%;
   top: 0;
   left: 0;
   z-index: 99;
   box-sizing: border-box;
+  height: 100%;
 
   &::after {
-    content: '';
-    display: block;
     position: absolute;
     top: 0;
     right: -1px;
+    display: block;
     width: 1px;
     height: 100%;
     background-color: var(--color-border);
+    content: '';
   }
 
   > :deep(.arco-layout-sider-children) {
@@ -120,19 +126,15 @@ export default defineComponent({
 }
 
 .menu-wrapper {
-  overflow: auto;
   height: 100%;
+  overflow: auto;
 }
 
 .layout-content {
-  background-color: var(--color-fill-2);
+  box-sizing: border-box;
   min-width: @layout-max-width;
   min-height: 100vh;
+  background-color: var(--color-fill-2);
   transition: padding-left 0.2s;
-  box-sizing: border-box;
-}
-
-:deep(.container-breadcrumb) {
-  margin-bottom: 20px;
 }
 </style>

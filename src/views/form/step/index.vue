@@ -36,6 +36,7 @@
     </a-spin>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import useLoading from '@/hooks/loading';
@@ -85,17 +86,18 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .container {
   padding: 20px;
 }
 
 .wrapper {
-  background-color: var(--color-bg-2);
-  padding: 64px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 64px 0;
+  background-color: var(--color-bg-2);
 }
 
 .steps {
@@ -111,8 +113,8 @@ export default defineComponent({
 }
 
 .actions {
-  text-align: right;
   padding: 15px 0;
+  text-align: right;
 
   > button {
     margin-left: 8px;

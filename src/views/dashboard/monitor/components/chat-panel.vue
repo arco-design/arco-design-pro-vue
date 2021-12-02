@@ -35,6 +35,7 @@
     </div>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import ChatList from './chat-list.vue';
@@ -66,19 +67,20 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .chat-panel {
-  height: 100%;
-  background-color: var(--color-bg-2);
-  padding: 16px;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 16px;
+  background-color: var(--color-bg-2);
 
   &-content {
     flex: 1;
-    margin: 20px 0;
     box-sizing: border-box;
+    margin: 20px 0;
   }
 }
 </style>

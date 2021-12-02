@@ -25,6 +25,7 @@
     <a-descriptions layout="horizontal" :data="dataPicture" :column="2" />
   </a-card>
 </template>
+
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -83,6 +84,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 :deep(.arco-descriptions-item-label) {
   padding-right: 6px;

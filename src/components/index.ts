@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import { App } from 'vue';
 import * as echarts from 'echarts';
 import { use } from 'echarts/core';

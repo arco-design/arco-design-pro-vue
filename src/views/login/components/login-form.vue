@@ -60,6 +60,7 @@
     </a-form>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent, ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
@@ -119,6 +120,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style lang="less" scoped>
 .login-form {
   &-wrapper {
@@ -126,22 +128,22 @@ export default defineComponent({
   }
 
   &-title {
-    font-size: 24px;
-    font-weight: 500;
     color: var(--color-text-1);
+    font-weight: 500;
+    font-size: 24px;
     line-height: 32px;
   }
 
   &-sub-title {
+    color: var(--color-text-3);
     font-size: 16px;
     line-height: 24px;
-    color: var(--color-text-3);
   }
 
   &-error-msg {
     height: 32px;
-    line-height: 32px;
     color: rgb(var(--red-6));
+    line-height: 32px;
   }
 
   &-password-actions {

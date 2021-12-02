@@ -37,6 +37,7 @@
     </a-col>
   </a-row>
 </template>
+
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import { useStore } from '@/store';
@@ -57,9 +58,10 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .banner {
-  background-color: var(--color-bg-2);
   padding: 20px;
+  background-color: var(--color-bg-2);
 }
 </style>

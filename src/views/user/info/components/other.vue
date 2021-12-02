@@ -7,6 +7,7 @@
     </a-list>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { queryProjectAndTeamList, ProjectRecord } from '@/api/user-center';
@@ -25,6 +26,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .other-wrapper {
   background-color: var(--color-bg-2);

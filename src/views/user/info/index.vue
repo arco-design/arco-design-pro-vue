@@ -29,6 +29,7 @@
     </div>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -75,27 +76,25 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .container {
   padding: 20px;
 }
 
 .content {
-  margin-top: 12px;
   display: flex;
+  margin-top: 12px;
 
   &-left {
     flex: 1;
     margin-right: 12px;
     overflow: hidden;
+    background-color: var(--color-bg-2);
   }
 
   &-right {
     width: 332px;
-  }
-
-  &-left {
-    background-color: var(--color-bg-2);
   }
 
   .tab-pane-wrapper {

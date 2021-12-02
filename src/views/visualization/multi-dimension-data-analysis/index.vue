@@ -38,6 +38,7 @@
     </a-space>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent } from 'vue';
 import DataOverview from './components/data-overview.vue';
@@ -62,15 +63,18 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .container {
   padding: 16px;
 }
+
 :deep(.section-titile) {
   margin-top: 0;
   margin-bottom: 16px;
   font-size: 14px;
 }
+
 :deep(.chart-wrap) {
   height: 264px;
 }

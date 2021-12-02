@@ -1,6 +1,7 @@
 <template>
   <VCharts v-if="renderChart" :option="options" :theme="theme" />
 </template>
+
 <script lang="ts">
 import { defineComponent, ref, computed, nextTick } from 'vue';
 import VCharts from 'vue-echarts';
@@ -36,6 +37,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .chart-box {
   width: 100%;

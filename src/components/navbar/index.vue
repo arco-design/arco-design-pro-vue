@@ -58,6 +58,7 @@
     </ul>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import MessageBox from '../message-box/index.vue';
@@ -96,14 +97,15 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped lang="less">
 .navbar {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid var(--color-border);
   box-sizing: border-box;
-  background-color: var(--color-bg-2);
   height: 100%;
+  background-color: var(--color-bg-2);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .left-side {
@@ -114,18 +116,18 @@ export default defineComponent({
 
 .right-side {
   display: flex;
-  list-style: none;
   padding-right: 20px;
+  list-style: none;
 
   li {
-    padding: 0 10px;
     display: flex;
     align-items: center;
+    padding: 0 10px;
   }
 
   a {
-    text-decoration: none;
     color: var(--color-text-1);
+    text-decoration: none;
   }
 }
 

@@ -13,6 +13,7 @@
     @change="handleChange"
   />
 </template>
+
 <script lang="ts">
 import { SetupContext } from 'vue';
 
@@ -45,4 +46,3 @@ export default {
   },
 };
 </script>
-<style scoped lang="less"></style>

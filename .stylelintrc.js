@@ -19,10 +19,10 @@ module.exports = {
         except: ['after-single-line-comment', 'first-nested'],
       },
     ],
-    'selector-pseudo-element-no-unknown': [
+    'selector-pseudo-class-no-unknown': [
       true,
       {
-        ignorePseudoElements: ['v-deep'],
+        ignorePseudoClasses: ['deep'],
       },
     ],
   },

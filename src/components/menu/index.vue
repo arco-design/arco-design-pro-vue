@@ -15,6 +15,7 @@
     </a-sub-menu>
   </a-menu>
 </template>
+
 <script lang="ts">
 import { defineComponent, ref, watch } from 'vue';
 import {
@@ -61,4 +62,3 @@ export default defineComponent({
   },
 });
 </script>
-<style scoped lang="less"></style>
