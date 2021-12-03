@@ -92,9 +92,9 @@ export default defineComponent({
     };
     watch(
       () => props.sourceData,
-      () => {
+      (newVal) => {
         formData.value = {
-          ...props.sourceData,
+          ...newVal,
         };
       },
       {

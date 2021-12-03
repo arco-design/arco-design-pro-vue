@@ -64,4 +64,8 @@ export default defineComponent({
   padding: 20px;
   background-color: var(--color-bg-2);
 }
+
+:deep(.arco-icon-home) {
+  margin-right: 6px;
+}
 </style>

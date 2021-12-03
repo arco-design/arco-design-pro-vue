@@ -15,6 +15,7 @@ export interface AppStateTypes {
   colorWeek: boolean;
   navbar: boolean;
   menu: boolean;
+  menuCollapse: boolean;
   footer: boolean;
   themeColor: string;
   menuWidth: number;

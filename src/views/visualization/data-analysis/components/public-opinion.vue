@@ -102,6 +102,10 @@ export default defineComponent({
     border-radius: 2px;
   }
 
+  &__icon {
+    margin-right: 6px;
+  }
+
   &--up {
     .box__icon {
       background-color: #175dff;

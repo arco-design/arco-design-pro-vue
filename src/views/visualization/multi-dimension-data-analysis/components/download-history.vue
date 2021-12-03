@@ -44,61 +44,64 @@ import {
 
 const DATE_FORMAT = 'YYYY-MM-DD';
 
+const generateOptions = () => {
+  return {
+    grid: {
+      left: 40,
+      right: 0,
+      top: 20,
+      bottom: 20,
+    },
+    xAxis: {
+      type: 'category',
+      data: [] as string[],
+      show: true,
+    },
+    yAxis: {
+      show: true,
+      splitNumber: 4,
+      axisLabel: {
+        formatter(value: number) {
+          return `${value / 1000}K`;
+        },
+      },
+    },
+    tooltip: {
+      show: true,
+      trigger: 'axis',
+    },
+    series: [
+      {
+        name: '开发者',
+        data: [] as number[],
+        type: 'line',
+        symbol: 'circle',
+      },
+      {
+        name: '设计师',
+        data: [] as number[],
+        type: 'line',
+        symbol: 'circle',
+      },
+      {
+        name: '竞品-开发者',
+        data: [] as number[],
+        type: 'line',
+        symbol: 'circle',
+      },
+      {
+        name: '竞品-设计师',
+        data: [] as number[],
+        type: 'line',
+        symbol: 'circle',
+      },
+    ],
+  };
+};
 export default defineComponent({
   setup() {
     const { loading, setLoading } = useLoading();
-    const chartOption = ref({
-      grid: {
-        left: 40,
-        right: 0,
-        top: 20,
-        bottom: 20,
-      },
-      xAxis: {
-        type: 'category',
-        data: [] as string[],
-        show: true,
-      },
-      yAxis: {
-        show: true,
-        splitNumber: 4,
-        axisLabel: {
-          formatter(value: number) {
-            return `${value / 1000}K`;
-          },
-        },
-      },
-      tooltip: {
-        show: true,
-        trigger: 'axis',
-      },
-      series: [
-        {
-          name: '开发者',
-          data: [] as number[],
-          type: 'line',
-          symbol: 'circle',
-        },
-        {
-          name: '设计师',
-          data: [] as number[],
-          type: 'line',
-          symbol: 'circle',
-        },
-        {
-          name: '竞品-开发者',
-          data: [] as number[],
-          type: 'line',
-          symbol: 'circle',
-        },
-        {
-          name: '竞品-设计师',
-          data: [] as number[],
-          type: 'line',
-          symbol: 'circle',
-        },
-      ],
-    });
+    const chartOption = ref(generateOptions());
     const formData = reactive<DownloadHistoryParams>({
       time: [
         dayjs().subtract(1, 'day').format(DATE_FORMAT),
@@ -110,22 +113,20 @@ export default defineComponent({
       setLoading(true);
       try {
         const { data } = await queryDownloadHistory(formData);
-        chartOption.value.xAxis.data = [];
-        chartOption.value.series.forEach((el) => {
-          el.data = [];
-        });
+        const newOptions = generateOptions();
         data.forEach((el: DownloadHistoryRecord) => {
           if (el.name === '开发者') {
-            chartOption.value.xAxis.data.push(el.x);
-            chartOption.value.series[0].data.push(el.y);
+            newOptions.xAxis.data.push(el.x);
+            newOptions.series[0].data.push(el.y);
           } else if (el.name === '设计师') {
-            chartOption.value.series[1].data.push(el.y);
+            newOptions.series[1].data.push(el.y);
           } else if (el.name === '竞品-设计师') {
-            chartOption.value.series[2].data.push(el.y);
+            newOptions.series[2].data.push(el.y);
           } else if (el.name === '竞品-开发者') {
-            chartOption.value.series[3].data.push(el.y);
+            newOptions.series[3].data.push(el.y);
           }
         });
+        chartOption.value = newOptions;
       } catch (err) {
         // you can report use errorHandler or other
       } finally {
@@ -134,12 +135,11 @@ export default defineComponent({
     };
     watch(
       () => formData,
-      () => {
-        fetchData(formData);
+      (newVal) => {
+        fetchData(newVal);
       },
       { deep: true, immediate: true }
     );
-    // fetchData();
     return {
       loading,
       chartOption,

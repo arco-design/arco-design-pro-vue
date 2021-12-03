@@ -5,7 +5,7 @@
         {{ $t('monitor.title.chatPanel') }}
       </a-typography-title>
       <a-space :size="8">
-        <a-select style="width: 80px" default-value="all">
+        <a-select style="width: 86px" default-value="all">
           <a-option value="all">
             {{ $t('monitor.chat.options.all') }}
           </a-option>

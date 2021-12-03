@@ -61,7 +61,9 @@ export default defineComponent({
     const navbar = computed(() => appState.navbar);
     const menu = computed(() => appState.menu);
     const footer = computed(() => appState.footer);
-    const menuWidth = computed(() => `${appState.menuWidth}px`);
+    const menuWidth = computed(() => {
+      return appState.menuCollapse ? '48px' : `${appState.menuWidth}px`;
+    });
     const paddingStyle = computed(() => {
       const paddingLeft = menu.value ? { paddingLeft: menuWidth.value } : {};
       const paddingTop = navbar.value ? { paddingTop: navbarHeight } : {};
@@ -129,12 +131,14 @@ export default defineComponent({
 .menu-wrapper {
   height: 100%;
   overflow: auto;
+  overflow-x: hidden;
 }
 
 .layout-content {
   box-sizing: border-box;
   min-width: @layout-max-width;
   min-height: 100vh;
+  overflow-y: hidden;
   background-color: var(--color-fill-2);
   transition: padding-left 0.2s;
 }

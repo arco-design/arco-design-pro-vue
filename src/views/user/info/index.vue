@@ -91,6 +91,10 @@ export default defineComponent({
     margin-right: 12px;
     overflow: hidden;
     background-color: var(--color-bg-2);
+
+    :deep(.arco-tabs-nav-tab) {
+      margin-left: 16px;
+    }
   }
 
   &-right {

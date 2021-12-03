@@ -576,8 +576,8 @@
 
 "@types/echarts@^4.9.12":
   version "4.9.12"
-  resolved "https://registry.yarnpkg.com/@types/echarts/-/echarts-4.9.12.tgz#c9b39f0ba2e8be99a6063a613683161e7f47a2cc"
-  integrity sha512-yi5yzCRQCZDXeMcTD0W1sRENILJ98PjwG0UH/gZwADU2wsGt523RmocXakbpUOch6FHJqWwwJijsoSGNhGp4kA==
+  resolved "https://registry.npmmirror.com/@types/echarts/download/@types/echarts-4.9.12.tgz#c9b39f0ba2e8be99a6063a613683161e7f47a2cc"
+  integrity sha1-ybOfC6LovpmmBjphNoMWHn9Hosw=
   dependencies:
     "@types/zrender" "*"
 

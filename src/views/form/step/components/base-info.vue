@@ -47,11 +47,12 @@
             />
           </a-form-item>
           <a-form-item
+            v-if="clusterOptions.length"
             :label="$t('stepForm.form.label.cluster')"
             field="cluster"
           >
             <a-cascader
-              :model-value="formData.cluster"
+              v-model:modelValue="formData.cluster"
               :placeholder="$t('stepForm.placeholder.cluster')"
               :options="clusterOptions"
               @change="onClusterChange"

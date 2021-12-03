@@ -20,11 +20,11 @@ export interface FeedBackSearchRes {
   total: number;
 }
 
-export function queryFeedbackList(data: FeedBackSearchParams) {
+export function queryFeedbackList(params: FeedBackSearchParams) {
   return request<FeedBackSearchRes>({
     url: '/api/feedback/list',
-    method: 'post',
-    data,
+    method: 'get',
+    params,
   });
 }
 export interface ReportStuckRateRecord {

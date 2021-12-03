@@ -1,5 +1,10 @@
 <template>
-  <VCharts v-if="renderChart" :option="options" :theme="theme" />
+  <VCharts
+    v-if="renderChart"
+    :option="options"
+    :theme="theme"
+    :autoresize="autoresize"
+  />
 </template>
 
 <script lang="ts">
@@ -17,6 +22,10 @@ export default defineComponent({
       default() {
         return {};
       },
+    },
+    autoresize: {
+      type: Boolean,
+      default: true,
     },
   },
   setup() {

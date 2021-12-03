@@ -1,5 +1,10 @@
 <template>
-  <a-menu show-collapse-button :auto-open="true" :selected-keys="selectedKey">
+  <a-menu
+    show-collapse-button
+    :auto-open="true"
+    :selected-keys="selectedKey"
+    @collapse="setCollapse"
+  >
     <a-sub-menu v-for="route in appRoute.children" :key="route.name">
       <template #title
         ><component :is="route?.meta?.icon" />{{
@@ -24,9 +29,13 @@ import {
   RouteRecordRaw,
   RouteRecordNormalized,
 } from 'vue-router';
+import { useStore } from '@/store';
+import { MutationTypes } from '@/store/modules/app/mutation-types';
 
 export default defineComponent({
+  emit: ['collapse'],
   setup() {
+    const store = useStore();
     const router = useRouter();
     const route = useRoute();
     const appRoute = router
@@ -43,9 +52,9 @@ export default defineComponent({
     };
     watch(
       route,
-      () => {
-        if (route.meta.requiresAuth) {
-          const key = route.matched[2].name as string;
+      (newVal) => {
+        if (newVal.meta.requiresAuth) {
+          const key = newVal.matched[2].name as string;
           selectedKey.value = [key];
         }
       },
@@ -53,10 +62,14 @@ export default defineComponent({
         immediate: true,
       }
     );
+    const setCollapse = (val: boolean) => {
+      store.commit(MutationTypes.APP_UPDATE_SETTING, { menuCollapse: val });
+    };
     return {
       goto,
       selectedKey,
       appRoute,
+      setCollapse,
     };
   },
 });

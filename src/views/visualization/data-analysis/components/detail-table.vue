@@ -34,7 +34,8 @@
         pageSize: searchParams.pageSize,
         showPageSize: true,
       }"
-      @page-change="onTableChange"
+      @page-change="onPageChange"
+      @page-size-change="onPageSizeChange"
     />
   </div>
 </template>
@@ -132,35 +133,42 @@ export default defineComponent({
         endTime: time[1],
       };
     };
-    const onTableChange = ({
-      current: page,
-      pageSize,
-    }: {
-      current: number;
-      pageSize: number;
-    }) => {
+    const onPageChange = (page: number) => {
       searchParams.value = {
         ...searchParams.value,
         page,
+      };
+    };
+    const onPageSizeChange = (pageSize: number) => {
+      searchParams.value = {
+        ...searchParams.value,
         pageSize,
       };
     };
-    watch(searchParams, (pre, cur) => search(cur));
-    watch(formModel, (pre, cur) => {
+    watch(
+      searchParams,
+      (newVal) => {
+        search(newVal);
+      },
+      {
+        immediate: true,
+      }
+    );
+    watch(formModel, (newVal) => {
       searchParams.value = {
         ...searchParams.value,
-        ...formatFormValues(cur),
+        ...formatFormValues(newVal),
         page: 1,
       };
     });
-    search(searchParams.value);
     return {
       loading,
       searchParams,
       columns,
       tableData,
       formModel,
-      onTableChange,
+      onPageChange,
+      onPageSizeChange,
     };
   },
 });
