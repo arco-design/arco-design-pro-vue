@@ -7,7 +7,7 @@
         :type="option.type || 'switch'"
         :name="option.key"
         :default-value="option.defaultVal"
-        @change="handleChange"
+        @inputChange="handleChange"
       />
     </div>
   </div>
@@ -44,7 +44,7 @@ export default defineComponent({
   },
   setup() {
     const store = useStore();
-    const handleChange = ({ key, value }: { key: string; value: boolean }) => {
+    const handleChange = ({ key, value }: { key: string; value: unknown }) => {
       if (value && key === 'colorWeek') {
         document.body.style.filter = 'invert(80%)';
       }

@@ -7,7 +7,6 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import useLoading from '@/hooks/loading';
-import useChartOption from '@/hooks/chart-option';
 
 import {
   queryReportStuckRate,
@@ -17,8 +16,7 @@ import {
 export default defineComponent({
   setup() {
     const { loading, setLoading } = useLoading(true);
-    const chartRef = ref(null);
-    const { chartOption } = useChartOption({
+    const chartOption = ref({
       grid: {
         left: '3%',
         right: 0,
@@ -27,7 +25,7 @@ export default defineComponent({
       },
       xAxis: {
         type: 'category',
-        data: [],
+        data: [] as string[],
       },
       yAxis: {
         type: 'value',
@@ -41,11 +39,11 @@ export default defineComponent({
       },
       series: [
         {
-          data: [],
+          data: [] as number[],
           type: 'line',
         },
         {
-          data: [],
+          data: [] as number[],
           type: 'line',
         },
       ],
@@ -71,7 +69,6 @@ export default defineComponent({
     fetchData();
     return {
       loading,
-      chartRef,
       chartOption,
     };
   },

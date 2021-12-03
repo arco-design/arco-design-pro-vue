@@ -27,6 +27,7 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
+import { LocationQueryRaw } from 'vue-router';
 import baseStore, { useStore } from '@/store';
 import NavBar from '@/components/navbar/index.vue';
 import Menu from '@/components/menu/index.vue';
@@ -49,7 +50,7 @@ export default defineComponent({
         query: {
           redirect: to.name,
           ...to.query,
-        },
+        } as LocationQueryRaw,
       });
     }
   },

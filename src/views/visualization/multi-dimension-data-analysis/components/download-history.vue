@@ -32,11 +32,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, watch } from 'vue';
+import { defineComponent, reactive, ref, watch } from 'vue';
 import dayjs from 'dayjs';
 
 import useLoading from '@/hooks/loading';
-import useChartOption from '@/hooks/chart-option';
 import {
   queryDownloadHistory,
   DownloadHistoryParams,
@@ -48,7 +47,7 @@ const DATE_FORMAT = 'YYYY-MM-DD';
 export default defineComponent({
   setup() {
     const { loading, setLoading } = useLoading();
-    const { chartOption } = useChartOption({
+    const chartOption = ref({
       grid: {
         left: 40,
         right: 0,
@@ -57,14 +56,14 @@ export default defineComponent({
       },
       xAxis: {
         type: 'category',
-        data: [],
+        data: [] as string[],
         show: true,
       },
       yAxis: {
         show: true,
         splitNumber: 4,
         axisLabel: {
-          formatter(value) {
+          formatter(value: number) {
             return `${value / 1000}K`;
           },
         },
@@ -76,25 +75,25 @@ export default defineComponent({
       series: [
         {
           name: '开发者',
-          data: [],
+          data: [] as number[],
           type: 'line',
           symbol: 'circle',
         },
         {
           name: '设计师',
-          data: [],
+          data: [] as number[],
           type: 'line',
           symbol: 'circle',
         },
         {
           name: '竞品-开发者',
-          data: [],
+          data: [] as number[],
           type: 'line',
           symbol: 'circle',
         },
         {
           name: '竞品-设计师',
-          data: [],
+          data: [] as number[],
           type: 'line',
           symbol: 'circle',
         },

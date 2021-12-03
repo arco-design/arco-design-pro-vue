@@ -34,7 +34,6 @@
 import { defineComponent, ref } from 'vue';
 
 import useLoading from '@/hooks/loading';
-import useChartOption from '@/hooks/chart-option';
 import {
   queryDataChainGrowth,
   DataChainGrowth,
@@ -63,7 +62,7 @@ export default defineComponent({
       growth: 0,
       chartData: [],
     });
-    const { chartOption } = useChartOption({
+    const chartOption = ref({
       grid: {
         left: 0,
         right: 0,
@@ -72,7 +71,6 @@ export default defineComponent({
       },
       xAxis: {
         type: 'category',
-        // data: [],
         show: false,
       },
       yAxis: {
@@ -85,7 +83,7 @@ export default defineComponent({
       series: [
         {
           name: '2001',
-          data: [],
+          data: [] as number[],
           type: props.chartType,
           showSymbol: false,
           barWidth: 4,
@@ -93,7 +91,7 @@ export default defineComponent({
         },
         {
           name: '2002',
-          data: [],
+          data: [] as number[],
           type: props.chartType,
           showSymbol: false,
           barWidth: 4,

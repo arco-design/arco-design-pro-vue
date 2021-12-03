@@ -37,14 +37,11 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import {
-  queryLatestProjectList,
-  LastestProjectRecord,
-} from '@/api/user-center';
+import { queryLatestProjectList, LatestProjectRecord } from '@/api/user-center';
 
 export default defineComponent({
   setup() {
-    const projectList = ref<LastestProjectRecord[]>([]);
+    const projectList = ref<LatestProjectRecord[]>([]);
     const fetchData = async () => {
       const { data } = await queryLatestProjectList();
       projectList.value = data;

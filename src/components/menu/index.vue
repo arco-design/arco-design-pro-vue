@@ -2,15 +2,15 @@
   <a-menu show-collapse-button :auto-open="true" :selected-keys="selectedKey">
     <a-sub-menu v-for="route in appRoute.children" :key="route.name">
       <template #title
-        ><component :is="route.meta.icon" />{{
-          $t(route.meta.locale)
+        ><component :is="route?.meta?.icon" />{{
+          $t(route?.meta?.locale || '')
         }}</template
       >
       <a-menu-item
-        v-for="_route in route.children"
+        v-for="_route in route.children || []"
         :key="_route.name"
         @click="goto(_route)"
-        >{{ $t(_route.meta.locale) }}</a-menu-item
+        >{{ $t(_route?.meta?.locale || '') }}</a-menu-item
       >
     </a-sub-menu>
   </a-menu>
@@ -21,10 +21,9 @@ import { defineComponent, ref, watch } from 'vue';
 import {
   useRouter,
   useRoute,
-  RouteRecord,
+  RouteRecordRaw,
   RouteRecordNormalized,
 } from 'vue-router';
-// import routerList from '@/router/modules';
 
 export default defineComponent({
   setup() {
@@ -37,7 +36,7 @@ export default defineComponent({
     // You can expand as needed
 
     const selectedKey = ref<string[]>([]);
-    const goto = (item: RouteRecord) => {
+    const goto = (item: RouteRecordRaw) => {
       router.push({
         name: item.name,
       });

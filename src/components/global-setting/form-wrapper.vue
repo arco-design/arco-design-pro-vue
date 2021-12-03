@@ -15,9 +15,9 @@
 </template>
 
 <script lang="ts">
-import { SetupContext } from 'vue';
+import { defineComponent } from 'vue';
 
-export default {
+export default defineComponent({
   props: {
     type: {
       type: String,
@@ -32,10 +32,10 @@ export default {
       default: '',
     },
   },
-  emits: ['change'],
-  setup(props, { emit }: SetupContext) {
-    const handleChange = (value: string | boolean | number) => {
-      emit('change', {
+  emits: ['inputChange'],
+  setup(props, { emit }) {
+    const handleChange = (value: unknown) => {
+      emit('inputChange', {
         value,
         key: props.name,
       });
@@ -44,5 +44,5 @@ export default {
       handleChange,
     };
   },
-};
+});
 </script>

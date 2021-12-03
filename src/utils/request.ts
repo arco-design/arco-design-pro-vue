@@ -3,7 +3,6 @@ import { Message, Modal } from '@arco-design/web-vue';
 import store from '@/store';
 import { ActionTypes } from '@/store/modules/user/action-types';
 
-// import useUser from '@/hooks/user';
 export interface HttpResponse<T = unknown> {
   status: number;
   msg: string;
