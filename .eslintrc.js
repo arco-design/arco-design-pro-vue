@@ -60,7 +60,5 @@ module.exports = {
     'no-console': 1,
     'no-shadow': 0,
     'no-param-reassign': 0,
-    // TODO: Remove
-    'import/no-cycle': 0,
   },
 };

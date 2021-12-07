@@ -1,4 +1,4 @@
-import request from '@/utils/request';
+import axios from 'axios';
 
 export interface ProfileBasicRes {
   status: number;
@@ -33,8 +33,5 @@ export interface ProfileBasicRes {
 }
 
 export function queryProfileBasic() {
-  return request<ProfileBasicRes>({
-    url: '/api/profile/basic',
-    method: 'post',
-  });
+  return axios.post<ProfileBasicRes>('/api/profile/basic');
 }

@@ -1,6 +1,11 @@
 import { MutationTree } from 'vuex';
 import { MutationTypes } from './mutation-types';
-import { UserMutationsTypes, UserStateTypes } from '../../interface';
+import { UserStateTypes } from './state';
+
+export type UserMutationsTypes<S = UserStateTypes> = {
+  [MutationTypes.USER_RESET_INFO](state: S): void;
+  [MutationTypes.USER_SET_INFO](state: S, payload: UserStateTypes): void;
+};
 
 export const mutations: MutationTree<UserStateTypes> & UserMutationsTypes = {
   [MutationTypes.USER_SET_INFO](

@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig, AxiosResponse, AxiosPromise } from 'axios';
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Message, Modal } from '@arco-design/web-vue';
 import store from '@/store';
 import { ActionTypes } from '@/store/modules/user/action-types';
@@ -10,32 +10,19 @@ export interface HttpResponse<T = unknown> {
   data: T;
 }
 
-// create an axios instance
-const service = axios.create({
-  baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
-  // withCredentials: true, // send cookies when cross-domain requests
-  timeout: 5000, // request timeout
-});
-
-// request interceptor
-service.interceptors.request.use(
+axios.interceptors.request.use(
   (config: AxiosRequestConfig) => {
-    // do something before request is sent
     return config;
   },
   (error) => {
-    // do something with request error
-    // console.log(error); // for debug
+    // 对请求错误做些什么
     return Promise.reject(error);
   }
 );
-
-// response interceptor
-
-service.interceptors.response.use(
+// 添加响应拦截器
+axios.interceptors.response.use(
   (response: AxiosResponse<HttpResponse>) => {
     const res = response.data;
-    // console.log(res);
     // if the custom code is not 20000, it is judged as an error.
     if (res.code !== 20000) {
       Message.error({
@@ -60,7 +47,7 @@ service.interceptors.response.use(
       }
       return Promise.reject(new Error(res.msg || 'Error'));
     }
-    return response;
+    return res;
   },
   (error) => {
     Message.error({
@@ -70,17 +57,3 @@ service.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
-function serviceWrap<T>(
-  opts: AxiosRequestConfig
-): AxiosPromise<HttpResponse<T>> {
-  return service(opts);
-}
-async function baseService<T>(
-  opts: AxiosRequestConfig
-): Promise<HttpResponse<T>> {
-  const { data } = await serviceWrap<T>(opts);
-  return data;
-}
-
-export default baseService;

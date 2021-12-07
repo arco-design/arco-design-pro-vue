@@ -1,11 +1,8 @@
 import { Store as VuexStore, CommitOptions, DispatchOptions } from 'vuex';
-
-import {
-  UserStateTypes,
-  UserMutationsTypes,
-  UserGettersTypes,
-  UserActionsTypes,
-} from '@/store/interface';
+import { UserStateTypes } from './state';
+import { UserMutationsTypes } from './mutations';
+import { UserGettersTypes } from './getters';
+import { UserActionsTypes } from './actions';
 
 export type UserStoreModuleTypes<S = UserStateTypes> = Omit<
   VuexStore<S>,

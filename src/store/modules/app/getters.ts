@@ -1,5 +1,10 @@
 import { GetterTree } from 'vuex';
-import { AppGettersTypes, AppStateTypes, RootState } from '@/store/interface';
+import { RootState } from '@/store/interface';
+import { AppStateTypes } from './state';
+
+export interface AppGettersTypes {
+  appCurrentSetting(state: AppStateTypes): AppStateTypes;
+}
 
 export const getters: GetterTree<AppStateTypes, RootState> & AppGettersTypes = {
   appCurrentSetting: (state: AppStateTypes) => {

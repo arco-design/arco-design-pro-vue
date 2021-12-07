@@ -1,5 +1,5 @@
-import request from '@/utils/request';
-import { UserStateTypes } from '@/store/interface';
+import axios from 'axios';
+import { UserStateTypes } from '@/store/modules/user/state';
 
 export interface LoginData {
   username: string;
@@ -10,23 +10,13 @@ export interface LoginRes {
   token: string;
 }
 export function login(data: LoginData) {
-  return request<LoginRes>({
-    url: '/api/user/login',
-    method: 'post',
-    data,
-  });
+  return axios.post<LoginRes>('/api/user/login', data);
 }
 
 export function logout() {
-  return request({
-    url: '/api/user/logout',
-    method: 'post',
-  });
+  return axios.post<LoginRes>('/api/user/logout');
 }
 
 export function getUserInfo() {
-  return request<UserStateTypes>({
-    url: '/api/user/info',
-    method: 'post',
-  });
+  return axios.post<UserStateTypes>('/api/user/info');
 }

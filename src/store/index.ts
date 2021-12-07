@@ -5,12 +5,17 @@ import {
   createLogger,
   Store as VuexStore,
 } from 'vuex';
-import { RootState, AppStateTypes, UserStateTypes } from './interface';
-import { UserStoreModuleTypes } from './modules/user/types';
-import { AppStoreModuleTypes } from './modules/app/types';
+import { RootState } from './interface';
+import {
+  AppStateTypes,
+  AppStoreModuleTypes,
+  UserStateTypes,
+  UserStoreModuleTypes,
+} from './modules/interface';
+
 import { debug } from '@/utils/env';
 
-import modules from './modules/index';
+import modules from './modules';
 
 export type StoreModules = {
   user: UserStoreModuleTypes;

@@ -1,6 +1,14 @@
 import { MutationTree } from 'vuex';
 import { MutationTypes } from './mutation-types';
-import { AppMutationsTypes, AppStateTypes } from '../../interface';
+import { AppStateTypes } from './state';
+
+export type AppMutationsTypes<S = AppStateTypes> = {
+  [MutationTypes.APP_UPDATE_SETTING](
+    state: S,
+    payload: Partial<AppStateTypes>
+  ): void;
+  [MutationTypes.TOGGLE_THEME](state: S): void;
+};
 
 export const mutations: MutationTree<AppStateTypes> & AppMutationsTypes = {
   [MutationTypes.APP_UPDATE_SETTING](

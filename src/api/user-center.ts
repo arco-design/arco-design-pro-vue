@@ -1,4 +1,4 @@
-import request from '@/utils/request';
+import axios from 'axios';
 
 export interface LatestProjectRecord {
   id: number;
@@ -11,10 +11,7 @@ export interface LatestProjectRecord {
   }[];
 }
 export function queryLatestProjectList() {
-  return request<LatestProjectRecord[]>({
-    url: '/api/user/latest-project/list',
-    method: 'post',
-  });
+  return axios.post<LatestProjectRecord[]>('/api/user/latest-project/list');
 }
 
 export interface LatestActivity {
@@ -24,10 +21,7 @@ export interface LatestActivity {
   avatar: string;
 }
 export function queryLatestActivity() {
-  return request<LatestActivity[]>({
-    url: '/api/user/latest-activity',
-    method: 'post',
-  });
+  return axios.post<LatestActivity[]>('/api/user/latest-activity');
 }
 
 export interface VisitsRecord {
@@ -37,10 +31,7 @@ export interface VisitsRecord {
 }
 
 export function queryVisits() {
-  return request<VisitsRecord[]>({
-    url: '/api/user/visits',
-    method: 'post',
-  });
+  return axios.post<VisitsRecord[]>('/api/user/visits');
 }
 
 export interface ProjectRecord {
@@ -49,15 +40,9 @@ export interface ProjectRecord {
 }
 
 export function queryProjectAndTeamList() {
-  return request<ProjectRecord[]>({
-    url: '/api/user/project-and-team/list',
-    method: 'post',
-  });
+  return axios.post<ProjectRecord[]>('/api/user/project-and-team/list');
 }
 
 export function saveUserInfo() {
-  return request({
-    url: '/api/user/save-info',
-    method: 'post',
-  });
+  return axios.post('/api/user/save-info');
 }

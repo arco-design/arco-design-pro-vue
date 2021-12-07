@@ -1,4 +1,4 @@
-import request from '@/utils/request';
+import axios from 'axios';
 
 export interface PolicyParams {
   current: number;
@@ -25,19 +25,11 @@ export interface PolicyListRes {
 }
 
 export function queryPolicyList(params: PolicyParams) {
-  return request<PolicyListRes>({
-    url: '/api/list/policy',
-    method: 'get',
-    params,
-  });
+  return axios.get<PolicyListRes>('/api/list/policy', { params });
 }
 
 export function queryRecentList(params = []) {
-  return request({
-    url: '/api/list/service/recent',
-    method: 'get',
-    params,
-  });
+  return axios.get('/api/list/service/recent', { params });
 }
 
 export interface DocRecord {
@@ -50,17 +42,9 @@ export interface ServiceRecord extends DocRecord {
 }
 
 export function queryDevList(params = []) {
-  return request<ServiceRecord[]>({
-    url: '/api/list/service/dev',
-    method: 'get',
-    params,
-  });
+  return axios.get('/api/list/service/dev', { params });
 }
 
 export function queryDocsList(params = []) {
-  return request({
-    url: '/api/list/docs',
-    method: 'get',
-    params,
-  });
+  return axios.get('/api/list/docs', { params });
 }

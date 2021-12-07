@@ -1,9 +1,9 @@
 import { Module } from 'vuex';
-import { UserStateTypes, RootState } from '@/store/interface';
+import { RootState } from '@/store/interface';
+import { state, UserStateTypes } from './state';
 import { getters } from './getters';
 import { actions } from './actions';
 import { mutations } from './mutations';
-import { state } from './state';
 
 // Module
 const user: Module<UserStateTypes, RootState> = {

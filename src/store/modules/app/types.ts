@@ -1,11 +1,9 @@
 import { Store as VuexStore, CommitOptions, DispatchOptions } from 'vuex';
 
-import {
-  AppStateTypes,
-  AppMutationsTypes,
-  AppGettersTypes,
-  AppActionsTypes,
-} from '../../interface';
+import { AppStateTypes } from './state';
+import { AppMutationsTypes } from './mutations';
+import { AppGettersTypes } from './getters';
+import { AppActionsTypes } from './actions';
 
 export type AppStoreModuleTypes<S = AppStateTypes> = Omit<
   VuexStore<S>,

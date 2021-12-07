@@ -1,4 +1,4 @@
-import request from '@/utils/request';
+import axios from 'axios';
 import { Options, NodeOptions } from '@/types/global';
 
 export interface StepFormRes {
@@ -13,17 +13,11 @@ export interface StepFormRes {
 }
 
 export function queryStepForm() {
-  return request<StepFormRes>({
-    url: '/api/step-form',
-    method: 'post',
-  });
+  return axios.post<StepFormRes>('/api/step-form');
 }
 
 export function queryClusterList() {
-  return request<NodeOptions[]>({
-    url: '/api/cluster/list',
-    method: 'post',
-  });
+  return axios.post<NodeOptions[]>('/api/cluster/list');
 }
 
 export interface LineListRes {
@@ -38,9 +32,5 @@ export interface LineListRes {
 }
 
 export function queryLineList(params: { cluster: string[] }) {
-  return request<Options[]>({
-    url: '/api/line/list',
-    method: 'get',
-    params,
-  });
+  return axios.get<Options[]>('/api/line/list', { params });
 }

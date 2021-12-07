@@ -1,4 +1,4 @@
-import request from '@/utils/request';
+import axios from 'axios';
 
 export interface FeedBackSearchParams {
   page: number;
@@ -21,11 +21,7 @@ export interface FeedBackSearchRes {
 }
 
 export function queryFeedbackList(params: FeedBackSearchParams) {
-  return request<FeedBackSearchRes>({
-    url: '/api/feedback/list',
-    method: 'get',
-    params,
-  });
+  return axios.get<FeedBackSearchRes>('/api/feedback/list', { params });
 }
 export interface ReportStuckRateRecord {
   x: string;
@@ -34,10 +30,7 @@ export interface ReportStuckRateRecord {
 }
 
 export function queryReportStuckRate() {
-  return request<ReportStuckRateRecord[]>({
-    url: '/api/report-stuck-rate',
-    method: 'post',
-  });
+  return axios.post<ReportStuckRateRecord[]>('/api/report-stuck-rate');
 }
 
 export interface DataChainGrowth {
@@ -49,11 +42,7 @@ export interface DataChainGrowthRes {
   chartData: ReportStuckRateRecord[];
 }
 export function queryDataChainGrowth(data: DataChainGrowth) {
-  return request<DataChainGrowthRes>({
-    url: '/api/data-chain-growth',
-    method: 'post',
-    data,
-  });
+  return axios.post<DataChainGrowthRes>('/api/data-chain-growth', data);
 }
 
 export interface DownloadHistoryParams {
@@ -66,10 +55,8 @@ export interface DownloadHistoryRecord {
   name: string;
 }
 
-export function queryDownloadHistory(formData: DownloadHistoryParams) {
-  return request<DownloadHistoryRecord[]>({
-    url: '/api/download-history',
-    method: 'get',
-    params: formData,
+export function queryDownloadHistory(params: DownloadHistoryParams) {
+  return axios.get<DownloadHistoryRecord[]>('/api/download-history', {
+    params,
   });
 }

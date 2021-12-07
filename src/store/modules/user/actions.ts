@@ -1,13 +1,36 @@
-import { ActionTree } from 'vuex';
+import { ActionTree, ActionContext } from 'vuex';
+import { UserStateTypes } from './state';
 import { ActionTypes } from './action-types';
 import { MutationTypes } from './mutation-types';
-import { UserActionsTypes, UserStateTypes, RootState } from '@/store/interface';
+import { UserMutationsTypes } from './mutations';
+import { RootState } from '@/store/interface';
 import {
   login as userLogin,
   logout as userLogout,
   getUserInfo,
+  LoginData,
 } from '@/api/user';
 import { setToken, clearToken } from '@/utils/auth';
+
+export type UserAugmentedActionContext = {
+  commit<K extends keyof UserMutationsTypes>(
+    key: K,
+    payload: Parameters<UserMutationsTypes[K]>[1]
+  ): ReturnType<UserMutationsTypes[K]>;
+} & Omit<ActionContext<UserStateTypes, RootState>, 'commit'>;
+
+export interface UserActionsTypes {
+  [ActionTypes.USER_INFO]({
+    commit,
+  }: UserAugmentedActionContext): Promise<unknown>;
+  [ActionTypes.USER_LOGIN](
+    { commit }: UserAugmentedActionContext,
+    payload: LoginData
+  ): Promise<unknown>;
+  [ActionTypes.USER_LOGOUT]({
+    commit,
+  }: UserAugmentedActionContext): Promise<unknown>;
+}
 
 export const actions: ActionTree<UserStateTypes, RootState> & UserActionsTypes =
   {

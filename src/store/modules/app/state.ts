@@ -1,5 +1,16 @@
 import defaultSettings from '@/config/settings.json';
-import { AppStateTypes } from '@/store/interface';
+
+export interface AppStateTypes {
+  theme: string;
+  colorWeek: boolean;
+  navbar: boolean;
+  menu: boolean;
+  menuCollapse: boolean;
+  footer: boolean;
+  themeColor: string;
+  menuWidth: number;
+  [key: string]: unknown;
+}
 
 const defaultTheme = localStorage.getItem('arco-theme') || 'light';
 
