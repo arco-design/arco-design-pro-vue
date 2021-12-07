@@ -42,17 +42,14 @@ export default defineComponent({
             {
               value: [64],
               name: '开发者',
-              type: 'pie',
             },
             {
               value: [33],
               name: '设计师',
-              type: 'pie',
             },
             {
               value: [5],
               name: '其他',
-              type: 'pie',
             },
           ],
         },

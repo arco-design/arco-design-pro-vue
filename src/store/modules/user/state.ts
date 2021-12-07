@@ -1,3 +1,3 @@
-import { UserStateTypes } from '../../interface';
+import { UserStateTypes } from '@/store/interface';
 
 export const state: UserStateTypes = {};

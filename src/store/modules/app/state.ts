@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/extensions
 import defaultSettings from '@/config/settings.json';
 import { AppStateTypes } from '@/store/interface';
 

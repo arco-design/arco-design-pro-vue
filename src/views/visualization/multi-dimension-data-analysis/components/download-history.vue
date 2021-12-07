@@ -17,9 +17,9 @@
               field="showCompetitor"
               trigger-prop-name="checked"
             >
-              <a-checkbox v-model="formData.showCompetitor">{{
-                $t('multiDAnalysis.showCompetitor')
-              }}</a-checkbox>
+              <a-checkbox v-model="formData.showCompetitor">
+                {{ $t('multiDAnalysis.showCompetitor') }}
+              </a-checkbox>
             </a-form-item>
           </a-col>
         </a-row>

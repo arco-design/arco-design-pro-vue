@@ -1,10 +1,10 @@
 import { ref } from 'vue';
-import { EChartOption } from 'echarts';
+import { EChartsOption } from 'echarts';
 
 // for code hints
 
-export default function useChartOption(sourceOption: EChartOption) {
-  const chartOption = ref<EChartOption>(sourceOption);
+export default function useChartOption(sourceOption: EChartsOption) {
+  const chartOption = ref<EChartsOption>(sourceOption);
   return {
     chartOption,
   };

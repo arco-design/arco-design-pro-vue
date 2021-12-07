@@ -6,17 +6,16 @@
     @collapse="setCollapse"
   >
     <a-sub-menu v-for="route in appRoute.children" :key="route.name">
-      <template #title
-        ><component :is="route?.meta?.icon" />{{
-          $t(route?.meta?.locale || '')
-        }}</template
-      >
+      <template #title>
+        <component :is="route?.meta?.icon" />{{ $t(route?.meta?.locale || '') }}
+      </template>
       <a-menu-item
         v-for="_route in route.children || []"
         :key="_route.name"
         @click="goto(_route)"
-        >{{ $t(_route?.meta?.locale || '') }}</a-menu-item
       >
+        {{ $t(_route?.meta?.locale || '') }}
+      </a-menu-item>
     </a-sub-menu>
   </a-menu>
 </template>

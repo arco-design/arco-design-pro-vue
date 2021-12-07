@@ -15,10 +15,10 @@ import * as echarts from 'echarts';
 
 import useChartOption from '@/hooks/chart-option';
 
-// eslint-disable-next-line import/extensions
 import worldJson from '@/assets/world.json';
 
-echarts.registerMap('world', worldJson);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+echarts.registerMap('world', worldJson as any);
 
 export default defineComponent({
   setup() {

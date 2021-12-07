@@ -65,7 +65,7 @@ export default defineComponent({});
 }
 
 .result {
-  margin: 150px 0 36px 0;
+  margin: 150px 0 0 0;
 }
 
 .operation-wrap {

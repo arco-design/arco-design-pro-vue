@@ -1,7 +1,7 @@
-export default (config: { mock?: boolean; setup: () => void }) => {
-  const { mock = process.env.NODE_ENV === 'development', setup } = config;
-  if (mock === false) return;
-  setup();
+import { debug } from './env';
+
+export default ({ mock, setup }: { mock?: boolean; setup: () => void }) => {
+  if (mock !== false && debug) setup();
 };
 
 export const successResponseWrap = (data: unknown) => {

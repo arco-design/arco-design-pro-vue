@@ -56,7 +56,8 @@ export default defineComponent({
             name: computed(() => t('multiDAnalysis.productEvaluation.ecology')),
             max: 2500,
           },
-        ],
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ] as any,
       },
       tooltip: {
         show: true,
@@ -65,8 +66,7 @@ export default defineComponent({
       series: [
         {
           type: 'radar',
-          radius: ['40%', '70%'],
-          center: ['50%', '50%'],
+          name: '产品评价',
           data: [
             {
               value: [1700, 1400, 2400, 2800, 3900, 1900],
