@@ -78,7 +78,7 @@ import { FormInstance } from '@arco-design/web-vue/es/form';
 import useLoading from '@/hooks/loading';
 import { saveUserInfo } from '@/api/user-center';
 import { useStore } from '@/store';
-import { UserStateTypes } from '@/store/interface';
+import { UserStateTypes } from '@/store/modules/interface';
 
 export default defineComponent({
   setup() {

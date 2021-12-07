@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="logo">
-      <img src="src/assets/logo.svg" />
+      <img src="./../../assets/logo.svg" />
       <div class="logo-text">Arco Design Pro</div>
     </div>
     <LoginBanner />

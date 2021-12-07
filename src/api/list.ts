@@ -28,8 +28,8 @@ export function queryPolicyList(params: PolicyParams) {
   return axios.get<PolicyListRes>('/api/list/policy', { params });
 }
 
-export function queryRecentList(params = []) {
-  return axios.get('/api/list/service/recent', { params });
+export function queryRecentList() {
+  return axios.get('/api/list/service/recent');
 }
 
 export interface DocRecord {
@@ -41,10 +41,10 @@ export interface ServiceRecord extends DocRecord {
   enable: boolean;
 }
 
-export function queryDevList(params = []) {
-  return axios.get('/api/list/service/dev', { params });
+export function queryDevList() {
+  return axios.get('/api/list/service/dev');
 }
 
-export function queryDocsList(params = []) {
-  return axios.get('/api/list/docs', { params });
+export function queryDocsList() {
+  return axios.get('/api/list/docs');
 }
