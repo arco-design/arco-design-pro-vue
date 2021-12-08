@@ -2,7 +2,6 @@
   "name": "arco-design-pro-vue",
   "description": "Arco Design Pro for Vue",
   "version": "1.0.0-alpha.0",
-  "private": true,
   "author": "ArcoDesign Team",
   "license": "MIT",
   "scripts": {
