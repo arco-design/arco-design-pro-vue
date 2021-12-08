@@ -12,6 +12,7 @@
     "gen:nuxt": "node scripts/nuxt"
   },
   "files": [
+    ".arco-cli",
     "scripts",
     "arco-design-pro-cra",
     "arco-design-pro-nuxt",
