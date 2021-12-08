@@ -1,81 +1,62 @@
 const path = require('path');
 const fs = require('fs-extra');
 
-const projectPath = process.argv[2] || path.resolve(__dirname, "../examples/arco-design-pro-vite");
+const templatePath = path.resolve(__dirname, '../arco-design-pro-vite');
+const projectPath =
+  process.argv[2] ||
+  path.resolve(__dirname, '../examples/arco-design-pro-vite');
 
 const maps = {
+  'src/api': 'src/api',
+  'src/assets': 'src/assets',
   'src/components': 'src/components',
+  'src/config': 'src/config',
+  'src/hooks': 'src/hooks',
+  'src/layout': 'src/layout',
   'src/locale': 'src/locale',
   'src/mock': 'src/mock',
-  'src/pages': {
-    dest: 'src/pages',
-    filter: (src) => {
-      const ignores = [
-        path.resolve(__dirname, '../arco-design-pro-next/src/pages/index.tsx'),
-        path.resolve(__dirname, '../arco-design-pro-next/src/pages/_app.tsx'),
-        path.resolve(__dirname, '../arco-design-pro-next/src/pages/layout.tsx'),
-      ];
-      return ignores.indexOf(src) === -1;
-    },
-  },
-  'src/public/assets': 'src/assets',
+  'src/router': 'src/router',
   'src/store': 'src/store',
-  'src/style': 'src/style',
+  'src/types': 'src/types',
   'src/utils': 'src/utils',
-  'src/settings.json': 'src/settings.json',
-  'src/routes.ts': 'src/routes.ts',
-  'src/declaration.d.ts': 'src/declaration.d.ts',
-  'src/context.ts': 'src/context.ts',
-  '.eslintrc': '.eslintrc',
+  'src/views': 'src/views',
+  '.eslintrc.js': '.eslintrc.js',
   '.eslintignore': '.eslintignore',
-  '.stylelintrc': '.stylelintrc',
-  '.stylelintignore': '.stylelintignore',
-  '.prettierrc': '.prettierrc',
+  '.stylelintrc.js': '.stylelintrc.js',
+  '.prettierrc.js': '.prettierrc.js',
+  'tsconfig.json': 'tsconfig.json',
 };
 
-fs.copySync(
-  path.resolve(__dirname, '../arco-design-pro-vite'),
-  projectPath,
-  {
-    filter: (src) => src.indexOf('node_modules') === -1,
-  }
-);
+fs.copySync(templatePath, projectPath, {
+  filter: (src) => !src.startsWith(path.resolve(templatePath, 'node_modules')),
+});
 
 const gitignorePath = path.resolve(
   __dirname,
-  '../arco-design-pro-next/gitignore'
+  '../arco-design-pro-nuxt/gitignore'
 );
 const gitignorePath2 = path.resolve(
   __dirname,
-  '../arco-design-pro-next/.gitignore'
+  '../arco-design-pro-nuxt/.gitignore'
 );
 
 Object.keys(maps).forEach((src) => {
   if (typeof maps[src] === 'string') {
     fs.copySync(
-      path.resolve(__dirname, '../arco-design-pro-next', src),
+      path.resolve(__dirname, '../arco-design-pro-vite', src),
       path.resolve(projectPath, maps[src])
     );
   }
   if (typeof maps[src] === 'object') {
     fs.copySync(
-      path.resolve(__dirname, '../arco-design-pro-next', src),
-      path.resolve(
-        projectPath,
-        maps[src].dest
-      ),
+      path.resolve(__dirname, '../arco-design-pro-vite', src),
+      path.resolve(projectPath, maps[src].dest),
       { filter: maps[src].filter }
     );
   }
   if (fs.existsSync(gitignorePath)) {
-    fs.copySync(
-      gitignorePath,
-      path.resolve(projectPath, '.gitignore')
-    );
+    fs.copySync(gitignorePath, path.resolve(projectPath, '.gitignore'));
   } else if (fs.existsSync(gitignorePath2)) {
-    fs.copySync(
-      gitignorePath2,
-      path.resolve(projectPath, '.gitignore')
-    );
+    fs.copySync(gitignorePath2, path.resolve(projectPath, '.gitignore'));
   }
 });
