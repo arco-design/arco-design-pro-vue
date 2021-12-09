@@ -27,7 +27,7 @@ export default defineConfig({
     alias: [
       {
         find: '@',
-        replacement: resolve(__dirname, '../src'), // 不晓得全局配置是啥~
+        replacement: resolve(__dirname, '../src'),
       },
       {
         find: 'assets',
@@ -35,11 +35,11 @@ export default defineConfig({
       },
       {
         find: 'vue-i18n',
-        replacement: 'vue-i18n/dist/vue-i18n.cjs.js', // 解决i18n警告问题
+        replacement: 'vue-i18n/dist/vue-i18n.cjs.js', // Resolve the i18n warning issue
       },
       {
         find: 'vue',
-        replacement: 'vue/dist/vue.esm-bundler.js', // 需要编译tmp
+        replacement: 'vue/dist/vue.esm-bundler.js', // compile template
       },
     ],
     extensions: ['.ts', '.js'],

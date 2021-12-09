@@ -8,10 +8,16 @@
         <a-layout-sider
           v-if="menu"
           class="layout-sider"
-          :style="{ width: menuWidth, paddingTop: navbar ? '60px' : '' }"
+          :breakpoint="'xl'"
+          :collapsed="collapse"
+          :collapsible="true"
+          :width="menuWidth"
+          :style="{ paddingTop: navbar ? '60px' : '' }"
+          :hide-trigger="true"
+          @collapse="setCollapsed"
         >
           <div class="menu-wrapper">
-            <Menu :style="{ width: menuWidth }" />
+            <Menu />
           </div>
         </a-layout-sider>
         <a-layout class="layout-content" :style="paddingStyle">
@@ -33,6 +39,7 @@ import NavBar from '@/components/navbar/index.vue';
 import Menu from '@/components/menu/index.vue';
 import Footer from '@/components/footer/index.vue';
 import { ActionTypes } from '@/store/modules/user/action-types';
+import { MutationTypes } from '@/store/modules/app/mutation-types';
 
 export default defineComponent({
   components: {
@@ -62,20 +69,29 @@ export default defineComponent({
     const menu = computed(() => appState.menu);
     const footer = computed(() => appState.footer);
     const menuWidth = computed(() => {
-      return appState.menuCollapse ? '48px' : `${appState.menuWidth}px`;
+      return appState.menuCollapse ? 48 : appState.menuWidth;
+    });
+    const collapse = computed(() => {
+      return appState.menuCollapse;
     });
     const paddingStyle = computed(() => {
-      const paddingLeft = menu.value ? { paddingLeft: menuWidth.value } : {};
+      const paddingLeft = menu.value
+        ? { paddingLeft: `${menuWidth.value}px` }
+        : {};
       const paddingTop = navbar.value ? { paddingTop: navbarHeight } : {};
       return { ...paddingLeft, ...paddingTop };
     });
-
+    const setCollapsed = (val: boolean) => {
+      store.commit(MutationTypes.APP_UPDATE_SETTING, { menuCollapse: val });
+    };
     return {
       navbar,
       menu,
       footer,
       menuWidth,
       paddingStyle,
+      collapse,
+      setCollapsed,
     };
   },
 });

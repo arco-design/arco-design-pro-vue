@@ -1,5 +1,6 @@
 <template>
   <a-menu
+    v-model:collapsed="collapsed"
     show-collapse-button
     :auto-open="true"
     :selected-keys="selectedKey"
@@ -37,6 +38,7 @@ export default defineComponent({
     const store = useStore();
     const router = useRouter();
     const route = useRoute();
+    const collapsed = ref(false);
     const appRoute = router
       .getRoutes()
       .find((el) => el.path === '/app') as RouteRecordNormalized;
@@ -61,6 +63,15 @@ export default defineComponent({
         immediate: true,
       }
     );
+    watch(
+      () => store.state.app.menuCollapse,
+      (newVal) => {
+        collapsed.value = newVal;
+      },
+      {
+        immediate: true,
+      }
+    );
     const setCollapse = (val: boolean) => {
       store.commit(MutationTypes.APP_UPDATE_SETTING, { menuCollapse: val });
     };
@@ -69,6 +80,7 @@ export default defineComponent({
       selectedKey,
       appRoute,
       setCollapse,
+      collapsed,
     };
   },
 });
