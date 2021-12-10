@@ -1,0 +1,4 @@
+# .npmignore
+node_modules
+tests
+dist
