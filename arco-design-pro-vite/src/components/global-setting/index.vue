@@ -24,7 +24,7 @@
 import { defineComponent, ref } from 'vue';
 import { Message } from '@arco-design/web-vue';
 import { useI18n } from 'vue-i18n';
-import copy from 'copy-to-clipboard';
+import { useClipboard } from '@vueuse/core';
 import { useStore } from '@/store';
 import Block from './block.vue';
 
@@ -36,6 +36,7 @@ export default defineComponent({
     const visible = ref(false);
     const store = useStore();
     const { t } = useI18n();
+    const { copy } = useClipboard();
     const contentOpts = [
       { name: 'settings.navbar', key: 'navbar', defaultVal: true },
       { name: 'settings.menu', key: 'menu', defaultVal: true },
@@ -57,9 +58,9 @@ export default defineComponent({
     const cancel = () => {
       visible.value = false;
     };
-
-    const copySettings = () => {
-      copy(JSON.stringify(store.state.app, null, 2));
+    const copySettings = async () => {
+      const text = JSON.stringify(store.state.app, null, 2);
+      await copy(text);
       Message.success(t('settings.copySettings.message'));
     };
     return {

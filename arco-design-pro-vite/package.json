@@ -28,8 +28,8 @@
   },
   "dependencies": {
     "@arco-design/web-vue": "^2.9.0",
+    "@vueuse/core": "^7.3.0",
     "axios": "^0.24.0",
-    "copy-to-clipboard": "^3.3.1",
     "dayjs": "^1.10.7",
     "echarts": "^5.2.2",
     "lodash": "^4.17.21",

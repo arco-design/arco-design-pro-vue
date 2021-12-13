@@ -12,12 +12,6 @@ export interface AppStateTypes {
   [key: string]: unknown;
 }
 
-const defaultTheme = localStorage.getItem('arco-theme') || 'light';
-
-Reflect.defineProperty(defaultSettings, 'theme', {
-  value: defaultTheme,
-});
-
 export const state: AppStateTypes = {
   ...defaultSettings,
 };

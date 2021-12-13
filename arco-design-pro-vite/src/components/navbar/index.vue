@@ -61,6 +61,7 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
+import { useDark, useToggle } from '@vueuse/core';
 import MessageBox from '../message-box/index.vue';
 import { useStore } from '@/store';
 import { MutationTypes } from '@/store/modules/app/mutation-types';
@@ -81,9 +82,18 @@ export default defineComponent({
     const theme = computed(() => {
       return store.state.app.theme;
     });
-    const toggleTheme = () => {
-      store.commit(MutationTypes.TOGGLE_THEME);
-    };
+    const isDark = useDark({
+      selector: 'body',
+      attribute: 'arco-theme',
+      valueDark: 'dark',
+      valueLight: 'light',
+      storageKey: 'arco-theme',
+      onChanged(dark: boolean) {
+        // overridded default behavior
+        store.commit(MutationTypes.TOGGLE_THEME, dark);
+      },
+    });
+    const toggleTheme = useToggle(isDark);
     return {
       locales,
       theme,

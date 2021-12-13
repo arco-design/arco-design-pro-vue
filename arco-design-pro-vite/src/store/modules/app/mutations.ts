@@ -7,7 +7,7 @@ export type AppMutationsTypes<S = AppStateTypes> = {
     state: S,
     payload: Partial<AppStateTypes>
   ): void;
-  [MutationTypes.TOGGLE_THEME](state: S): void;
+  [MutationTypes.TOGGLE_THEME](state: S, dark: boolean): void;
 };
 
 export const mutations: MutationTree<AppStateTypes> & AppMutationsTypes = {
@@ -19,9 +19,13 @@ export const mutations: MutationTree<AppStateTypes> & AppMutationsTypes = {
       state[key] = payload[key];
     });
   },
-  [MutationTypes.TOGGLE_THEME](state: AppStateTypes) {
-    Object.keys(state).forEach((key) => {
-      state[key] = '';
-    });
+  [MutationTypes.TOGGLE_THEME](state: AppStateTypes, dark: boolean) {
+    if (dark) {
+      state.theme = 'dark';
+      document.body.setAttribute('arco-theme', 'dark');
+    } else {
+      state.theme = 'light';
+      document.body.removeAttribute('arco-theme');
+    }
   },
 };
