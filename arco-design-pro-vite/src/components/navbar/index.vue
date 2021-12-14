@@ -17,6 +17,7 @@
       </li>
       <li>
         <a-select
+          :bordered="false"
           :model-value="currentLocale"
           :options="locales"
           @change="changeLocale"
@@ -43,7 +44,7 @@
         </a-tooltip>
       </li>
       <li>
-        <a-avatar :style="{ marginRight: '8px' }">
+        <a-avatar :size="24" :style="{ marginRight: '8px' }">
           <img alt="avatar" :src="avatar" />
         </a-avatar>
         <a-dropdown trigger="click">
