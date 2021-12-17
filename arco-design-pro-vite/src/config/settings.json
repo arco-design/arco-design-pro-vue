@@ -6,5 +6,6 @@
   "menuCollapse": false,
   "footer": true,
   "themeColor": "#165DFF",
-  "menuWidth": 220
+  "menuWidth": 220,
+  "globalSettings": false
 }

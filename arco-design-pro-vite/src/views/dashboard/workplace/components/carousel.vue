@@ -3,7 +3,7 @@
     indicator-type="slider"
     show-rrrow="never"
     auto-play
-    style="width: 100%; height: 160px"
+    style="width: 100%; height: 170px"
   >
     <a-carousel-item v-for="(src, idx) in imageSrc" :key="idx">
       <div>

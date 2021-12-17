@@ -6,6 +6,7 @@ export default {
   'settings.menuWidth': 'Menu Width (px)',
   'settings.navbar.theme.toLight': 'Click to use light mode',
   'settings.navbar.theme.toDark': 'Click to use dark mode',
+  'settings.navbar.alerts': 'alerts',
   'settings.menu': 'Menu',
   'settings.footer': 'Footer',
   'settings.otherSettings': 'Other Settings',

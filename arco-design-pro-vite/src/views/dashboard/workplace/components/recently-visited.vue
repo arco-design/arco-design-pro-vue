@@ -3,32 +3,53 @@
     :title="$t('workplace.recently.visited')"
     hoverable
     :bordered="false"
-    class="panel"
+    :header-style="{ border: 'none' }"
   >
-    <a-row :gutter="8">
-      <a-col :span="12" style="margin-bottom: 8px">
-        <Content />
-      </a-col>
-      <a-col :span="12" style="margin-bottom: 8px">
-        <Content />
-      </a-col>
-      <a-col :span="12">
-        <Content />
-      </a-col>
-      <a-col :span="12">
-        <Content />
-      </a-col>
-    </a-row>
+    <div style="margin-bottom: -1rem">
+      <a-row :gutter="8">
+        <a-col
+          v-for="(link, idx) in links"
+          :key="idx"
+          :span="8"
+          class="wrapper"
+        >
+          <div class="icon">
+            <icon-robot />
+          </div>
+          <a-typography-paragraph class="text">
+            {{ $t(link.text) }}
+          </a-typography-paragraph>
+        </a-col>
+      </a-row>
+    </div>
   </a-card>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import Content from './recently-visited-content.vue';
+
+const links = [
+  {
+    text: 'workplace.contentManagement',
+    icon: 'icon-robot',
+  },
+  {
+    text: 'workplace.contentStatistical',
+    icon: 'icon-robot',
+  },
+  {
+    text: 'workplace.advanced',
+    icon: 'icon-robot',
+  },
+];
 
 export default defineComponent({
-  components: {
-    Content,
+  setup() {
+    return {
+      links,
+    };
   },
 });
 </script>
+
+<style lang="less" scoped></style>

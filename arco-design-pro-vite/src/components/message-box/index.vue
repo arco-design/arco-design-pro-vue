@@ -1,16 +1,7 @@
 <template>
-  <a-dropdown trigger="click" position="br">
-    <div class="message-box-trigger">
-      <a-badge :count="9" dot>
-        <icon-notification />
-      </a-badge>
-    </div>
-    <template #content>
-      <a-menu class="message-box">
-        <drop-content />
-      </a-menu>
-    </template>
-  </a-dropdown>
+  <a-menu class="message-box">
+    <drop-content />
+  </a-menu>
 </template>
 
 <script lang="ts">

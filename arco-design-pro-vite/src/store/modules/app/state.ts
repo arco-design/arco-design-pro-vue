@@ -9,6 +9,7 @@ export interface AppStateTypes {
   footer: boolean;
   themeColor: string;
   menuWidth: number;
+  globalSettings: boolean;
   [key: string]: unknown;
 }
 

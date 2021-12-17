@@ -1,42 +1,39 @@
 <template>
-  <div>
-    <div class="btn" @click="setVisible">
-      <icon-settings />
-    </div>
-    <a-drawer
-      :width="300"
-      unmount-on-close
-      :visible="visible"
-      :cancel-text="$t('settings.close')"
-      :ok-text="$t('settings.copySettings')"
-      @ok="copySettings"
-      @cancel="cancel"
-    >
-      <template #title> {{ $t('settings.title') }} </template>
-      <Block :options="contentOpts" :title="$t('settings.content')" />
-      <Block :options="othersOpts" :title="$t('settings.otherSettings')" />
-      <a-alert>{{ $t('settings.alertContent') }}</a-alert>
-    </a-drawer>
-  </div>
+  <a-drawer
+    :width="300"
+    unmount-on-close
+    :visible="visible"
+    :cancel-text="$t('settings.close')"
+    :ok-text="$t('settings.copySettings')"
+    @ok="copySettings"
+    @cancel="cancel"
+  >
+    <template #title> {{ $t('settings.title') }} </template>
+    <Block :options="contentOpts" :title="$t('settings.content')" />
+    <Block :options="othersOpts" :title="$t('settings.otherSettings')" />
+    <a-alert>{{ $t('settings.alertContent') }}</a-alert>
+  </a-drawer>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, computed } from 'vue';
 import { Message } from '@arco-design/web-vue';
 import { useI18n } from 'vue-i18n';
 import { useClipboard } from '@vueuse/core';
 import { useStore } from '@/store';
+import { MutationTypes } from '@/store/modules/app/mutation-types';
 import Block from './block.vue';
 
 export default defineComponent({
   components: {
     Block,
   },
-  setup() {
-    const visible = ref(false);
+  emits: ['cancel'],
+  setup(props, { emit }) {
     const store = useStore();
     const { t } = useI18n();
     const { copy } = useClipboard();
+    const visible = computed(() => store.state.app.globalSettings);
     const contentOpts = [
       { name: 'settings.navbar', key: 'navbar', defaultVal: true },
       { name: 'settings.menu', key: 'menu', defaultVal: true },
@@ -52,11 +49,9 @@ export default defineComponent({
       { name: 'settings.colorWeek', key: 'colorWeek', defaultVal: false },
     ];
 
-    const setVisible = () => {
-      visible.value = true;
-    };
     const cancel = () => {
-      visible.value = false;
+      store.commit(MutationTypes.APP_UPDATE_SETTING, { globalSettings: false });
+      emit('cancel');
     };
     const copySettings = async () => {
       const text = JSON.stringify(store.state.app, null, 2);
@@ -67,7 +62,6 @@ export default defineComponent({
       visible,
       contentOpts,
       othersOpts,
-      setVisible,
       copySettings,
       cancel,
     };
@@ -75,22 +69,4 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="less">
-.btn {
-  position: fixed;
-  top: 50%;
-  right: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  color: #fff;
-  font-size: 24px;
-  background-color: rgb(var(--arcoblue-6));
-  border-radius: 4px 0 0 4px;
-  transform: translateY(-50%);
-  cursor: pointer;
-}
-</style>
+<style scoped lang="less"></style>

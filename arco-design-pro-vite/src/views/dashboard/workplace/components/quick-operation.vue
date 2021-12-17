@@ -1,7 +1,14 @@
 <template>
-  <a-card :title="$t('workplace.quick.operation')" :bordered="false">
+  <a-card
+    :title="$t('workplace.quick.operation')"
+    :bordered="false"
+    :header-style="{ border: 'none' }"
+  >
+    <template #extra>
+      <a-link>{{ $t('workplace.quickOperation.setup') }}</a-link>
+    </template>
     <div style="margin-bottom: -1rem">
-      <a-row :gutter="4">
+      <a-row :gutter="8">
         <a-col
           v-for="(link, idx) in links"
           :key="idx"
@@ -9,14 +16,15 @@
           class="wrapper"
         >
           <div class="icon">
-            <icon-robot />
+            <icon-home />
           </div>
-          <a-typography-paragraph class="text">{{
-            $t(link)
-          }}</a-typography-paragraph>
+          <a-typography-paragraph class="text">
+            {{ $t(link) }}
+          </a-typography-paragraph>
         </a-col>
       </a-row>
     </div>
+    <a-divider style="margin-bottom: 0" />
   </a-card>
 </template>
 
@@ -24,15 +32,11 @@
 import { defineComponent } from 'vue';
 
 const links = [
-  'workplace.test.performance',
-  'workplace.test.stability',
-  'workplace.test.unit',
-  'workplace.test.release',
-  'workplace.test.security',
-  'workplace.test.memory',
-  'workplace.crontab',
-  'workplace.dataManagement',
-  'workplace.log',
+  'workplace.contentManagement',
+  'workplace.contentStatistical',
+  'workplace.advanced',
+  'workplace.onlinePromotion',
+  'workplace.contentPutIn',
 ];
 
 export default defineComponent({
@@ -44,32 +48,4 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="less">
-.text {
-  font-size: 12px;
-  text-align: center;
-}
-
-.wrapper {
-  text-align: center;
-  cursor: pointer;
-
-  &:last-child {
-    .text {
-      margin-bottom: 0;
-    }
-  }
-}
-
-.icon {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  margin-bottom: 8px;
-  color: #fff;
-  line-height: 24px;
-  text-align: center;
-  background-color: rgb(var(--cyan-6));
-  border-radius: 4px;
-}
-</style>
+<style scoped lang="less"></style>

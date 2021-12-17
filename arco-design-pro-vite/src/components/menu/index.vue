@@ -2,7 +2,7 @@
   <a-menu
     v-model:collapsed="collapsed"
     show-collapse-button
-    :auto-open="true"
+    :auto-open="false"
     :selected-keys="selectedKey"
     @collapse="setCollapse"
   >
