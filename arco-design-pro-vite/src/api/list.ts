@@ -1,22 +1,21 @@
 import axios from 'axios';
-
-export interface PolicyParams {
-  current: number;
-  pageSize: number;
-  createdTimeStart?: string;
-  createdTimeEnd?: string;
-  keyword?: string;
-}
+import qs from 'query-string';
+import { Options } from '@/types/global';
 
 export interface PolicyRecord {
   id: string;
+  number: number;
   name: string;
-  workflow: string;
-  period: string;
-  statistic: number;
-  status: 'success' | 'pending' | 'failed';
+  contentType: 'img' | 'horizontalVideo' | 'verticalVideo';
+  filterType: 'artificial' | 'rules';
+  count: number;
+  status: 'online' | 'offline';
   createdTime: string;
-  deadline: string;
+}
+
+export interface PolicyParams extends Partial<PolicyRecord> {
+  current: number;
+  pageSize: number;
 }
 
 export interface PolicyListRes {
@@ -25,26 +24,33 @@ export interface PolicyListRes {
 }
 
 export function queryPolicyList(params: PolicyParams) {
-  return axios.get<PolicyListRes>('/api/list/policy', { params });
+  return axios.get<PolicyListRes>('/api/list/policy', {
+    params,
+    paramsSerializer: (params) => {
+      return qs.stringify(params);
+    },
+  });
 }
 
-export function queryRecentList() {
-  return axios.get('/api/list/service/recent');
+export function queryInspectionList() {
+  return axios.get('/api/list/quality-inspection');
 }
 
-export interface DocRecord {
+export interface ServiceRecord {
   title: string;
   description: string;
-}
-export interface ServiceRecord extends DocRecord {
-  icon: string;
-  enable: boolean;
-}
-
-export function queryDevList() {
-  return axios.get('/api/list/service/dev');
+  name?: string;
+  actionType?: string;
+  icon?: string;
+  data?: Options[];
+  enable?: boolean;
+  expires?: boolean;
 }
 
-export function queryDocsList() {
-  return axios.get('/api/list/docs');
+export function queryTheServiceList() {
+  return axios.get('/api/list/the-service');
+}
+
+export function queryRulesPresetList() {
+  return axios.get('/api/list/rules-preset');
 }

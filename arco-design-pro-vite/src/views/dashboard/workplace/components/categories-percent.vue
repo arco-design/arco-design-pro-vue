@@ -22,12 +22,6 @@ export default defineComponent({
   setup() {
     const { loading } = useLoading();
     const { chartOption } = useChartOption({
-      // grid: {
-      //   left: 0,
-      //   right: 0,
-      //   top: 20,
-      //   bottom: 20,
-      // },
       legend: {
         left: 'center',
         data: ['纯文本', '图文类', '视频类'],

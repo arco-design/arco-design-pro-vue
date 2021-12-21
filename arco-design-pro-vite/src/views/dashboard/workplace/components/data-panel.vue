@@ -6,7 +6,7 @@
           <a-avatar :size="54" class="col-avatar">
             <img
               alt="avatar"
-              src="http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/91ff1f3733c92258f2d2e25aa60ec9e6.png~tplv-49unhts6dw-image.image"
+              src="http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/8072ed2666d9cbb83367a453aeba3b1a.svg~tplv-49unhts6dw-image.image"
             />
           </a-avatar>
           <a-statistic
@@ -23,7 +23,7 @@
           <a-avatar :size="54" class="col-avatar">
             <img
               alt="avatar"
-              src="http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/7977ecab340b26702e263e6e5c5e09ed.png~tplv-49unhts6dw-image.image"
+              src="http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/d0bbe8e4b54704c46ce7809ab44c5e9b.svg~tplv-49unhts6dw-image.image"
             />
           </a-avatar>
           <a-statistic :title="$t('workplace.putIn')" :value="368">
@@ -36,7 +36,7 @@
           <a-avatar :size="54" class="col-avatar">
             <img
               alt="avatar"
-              src="http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/dbf45c89b97f3f11a85bfbf82281a691.png~tplv-49unhts6dw-image.image"
+              src="http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/32567adf281f99a84f3e6383fc4db598.svg~tplv-49unhts6dw-image.image"
             />
           </a-avatar>
           <a-statistic :title="$t('workplace.newDay')" :value="8874">
@@ -49,7 +49,7 @@
           <a-avatar :size="54" class="col-avatar">
             <img
               alt="avatar"
-              src="http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/fc860a8513d63eeb8cc9d76a58c7964a.png~tplv-49unhts6dw-image.image"
+              src="http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/5e7c293bfed5b59f0d213050ac274714.svg~tplv-49unhts6dw-image.image"
             />
           </a-avatar>
           <a-statistic
@@ -73,7 +73,7 @@ export default defineComponent({});
 </script>
 
 <style lang="less" scoped>
-div.panel {
+.arco-col.panel {
   margin-bottom: 0;
   padding: 16px 16px 0 16px;
 }

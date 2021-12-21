@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <!-- <div class="content"> </div> -->
     <div class="left-side">
       <a-space class="left-space" direction="vertical" :size="12">
         <Banner />
@@ -31,8 +30,6 @@
 </template>
 
 <script lang="ts">
-/* eslint-disable vue/no-unused-components */
-
 import { defineComponent } from 'vue';
 import Banner from './components/banner.vue';
 import DataPanel from './components/data-panel.vue';
@@ -66,10 +63,6 @@ export default defineComponent({
   display: flex;
   padding: 20px;
 }
-// .content {
-//   display: flex;
-//   padding: 20px;
-// }
 
 .left-side {
   width: 100%;

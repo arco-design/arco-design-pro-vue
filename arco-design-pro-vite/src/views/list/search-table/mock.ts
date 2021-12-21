@@ -1,7 +1,6 @@
 import Mock from 'mockjs';
 import qs from 'query-string';
 import setupMock, { successResponseWrap } from '@/utils/setup-mock';
-// import { IPolicyParams } from '@/api/list';
 import { GetParams } from '@/types/global';
 
 const { Random } = Mock;
@@ -10,13 +9,13 @@ const data = Mock.mock({
   'list|55': [
     {
       'id|8': /[A-Z][a-z][-][0-9]/,
+      'number|2-3': /[0-9]/,
       'name|4-8': /[A-Z]/,
-      'workflow|4': /[A-Z][a-z][-][0-9]/,
-      'period': `${Random.date('m')} Min`,
-      'statistic|1-4': /[1-9]/,
-      'status': Random.pick(['success', 'pending', 'failed']),
+      'contentType|1': ['img', 'horizontalVideo', 'verticalVideo'],
+      'count|2-3': /[0-9]/,
+      'status|1': ['online', 'offline'],
+      'filterType|1': ['artificial', 'rules'],
       'createdTime': Random.datetime(),
-      'deadline': Random.datetime(),
     },
   ],
 });

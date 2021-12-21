@@ -226,7 +226,6 @@ export default defineComponent({
     justify-content: space-between;
     padding: 0 9px;
     background: rgba(255, 255, 255, 0.8);
-    /* 投影 1 （数据卡片） */
     width: 164px;
     height: 32px;
     line-height: 32px;

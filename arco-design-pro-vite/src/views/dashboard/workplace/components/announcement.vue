@@ -11,7 +11,7 @@
     <a-space direction="vertical">
       <a-space v-for="(item, idx) in list" :key="idx">
         <a-tag :color="item.type">{{ item.label }}</a-tag>
-        <a-typography-text class="text">{{ item.content }}</a-typography-text>
+        <a-typography-text>{{ item.content }}</a-typography-text>
       </a-space>
     </a-space>
   </a-card>
@@ -32,12 +32,12 @@ export default defineComponent({
       {
         type: 'cyan',
         label: '消息',
-        content: '新增内容尚未通过审核，详情请…',
+        content: '新增内容尚未通过审核，详情…',
       },
       {
         type: 'blue',
         label: '通知',
-        content: '当前产品试用期即将截止，如需…',
+        content: '当前产品试用期即将截止，如…',
       },
       {
         type: 'blue',
@@ -47,7 +47,7 @@ export default defineComponent({
       {
         type: 'cyan',
         label: '消息',
-        content: '新增内容已经通过审核，详情请…',
+        content: '新增内容已经通过审核，详情…',
       },
     ];
     return {
@@ -57,8 +57,4 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="less">
-.text {
-  font-size: 13px;
-}
-</style>
+<style scoped lang="less"></style>
