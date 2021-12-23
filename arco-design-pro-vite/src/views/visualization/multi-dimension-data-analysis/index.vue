@@ -1,40 +1,29 @@
 <template>
   <div class="container">
     <a-breadcrumb class="container-breadcrumb">
+      <a-breadcrumb-item>
+        <icon-home />
+      </a-breadcrumb-item>
       <a-breadcrumb-item>{{ $t('menu.visualization') }}</a-breadcrumb-item>
       <a-breadcrumb-item>
         {{ $t('menu.visualization.multiDimensionDataAnalysis') }}
       </a-breadcrumb-item>
     </a-breadcrumb>
+
     <a-space direction="vertical" :size="12" style="width: 100%">
-      <DataOverview />
+      <a-row :gutter="16">
+        <a-col :span="18">
+          <DataOverview />
+        </a-col>
+        <a-col :span="6">
+          <a-space style="width: 100%" direction="vertical" :size="16">
+            <UserActions />
+            <ContentTypeDistribution />
+          </a-space>
+        </a-col>
+      </a-row>
       <DataChainGrowth />
-      <div>
-        <a-row :gutter="12">
-          <a-col :span="16">
-            <DownloadHistory />
-          </a-col>
-          <a-col :span="8">
-            <DownloadRaking />
-          </a-col>
-        </a-row>
-      </div>
-      <div>
-        <a-row :gutter="12">
-          <a-col :span="6">
-            <UserDistributionGeo />
-          </a-col>
-          <a-col :span="6">
-            <UserDistributionType />
-          </a-col>
-          <a-col :span="6">
-            <ProductEvaluation />
-          </a-col>
-          <a-col :span="6">
-            <ActiveContributors />
-          </a-col>
-        </a-row>
-      </div>
+      <ContentPublishingSource />
     </a-space>
   </div>
 </template>
@@ -43,36 +32,30 @@
 import { defineComponent } from 'vue';
 import DataOverview from './components/data-overview.vue';
 import DataChainGrowth from './components/data-chain-growth.vue';
-import DownloadHistory from './components/download-history.vue';
-import DownloadRaking from './components/download-ranking.vue';
-import UserDistributionGeo from './components/user-distribution-geo.vue';
-import UserDistributionType from './components/user-distribution-type.vue';
-import ProductEvaluation from './components/product-evaluation.vue';
-import ActiveContributors from './components/active-contributors.vue';
+import UserActions from './components/user-actions.vue';
+import ContentTypeDistribution from './components/content-type-distribution.vue';
+import ContentPublishingSource from './components/content-publishing-source.vue';
 
 export default defineComponent({
   components: {
     DataOverview,
     DataChainGrowth,
-    DownloadHistory,
-    DownloadRaking,
-    UserDistributionGeo,
-    UserDistributionType,
-    ProductEvaluation,
-    ActiveContributors,
+    UserActions,
+    ContentTypeDistribution,
+    ContentPublishingSource,
   },
 });
 </script>
 
 <style scoped lang="less">
 .container {
-  padding: 16px;
+  padding: 20px;
 }
 
 :deep(.section-titile) {
   margin-top: 0;
   margin-bottom: 16px;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 :deep(.chart-wrap) {

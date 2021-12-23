@@ -1,62 +1,78 @@
 import axios from 'axios';
+import { GeneralChart } from '@/types/global';
 
-export interface FeedBackSearchParams {
-  page: number;
-  pageSize: number;
-  roomNumber: string;
-  startTime: string;
-  endTime: string;
-}
-
-export interface FeedBackSearchRes {
-  list: {
-    id: string;
-    userId: number;
-    deviceId: number;
-    system: string;
-    content: string;
-    time: string;
-  }[];
-  total: number;
-}
-
-export function queryFeedbackList(params: FeedBackSearchParams) {
-  return axios.get<FeedBackSearchRes>('/api/feedback/list', { params });
-}
-export interface ReportStuckRateRecord {
+export interface ChartDataRecord {
   x: string;
   y: number;
   name: string;
 }
-
-export function queryReportStuckRate() {
-  return axios.post<ReportStuckRateRecord[]>('/api/report-stuck-rate');
-}
-
 export interface DataChainGrowth {
   quota: string;
 }
+
 export interface DataChainGrowthRes {
   count: number;
   growth: number;
-  chartData: ReportStuckRateRecord[];
+  chartData: {
+    xAxis: string[];
+    data: { name: string; value: number[] };
+  };
 }
 export function queryDataChainGrowth(data: DataChainGrowth) {
   return axios.post<DataChainGrowthRes>('/api/data-chain-growth', data);
 }
 
-export interface DownloadHistoryParams {
-  time: [string, string];
-  showCompetitor: string | boolean;
+export interface PopularAuthorRes {
+  list: {
+    ranking: number;
+    author: string;
+    contentCount: number;
+    clickCount: number;
+  }[];
 }
-export interface DownloadHistoryRecord {
-  x: string;
-  y: number;
+
+export function queryPopularAuthor() {
+  return axios.get<PopularAuthorRes>('/api/popular-author/list');
+}
+
+export interface ContentPublishRecord {
+  x: string[];
+  y: number[];
   name: string;
 }
 
-export function queryDownloadHistory(params: DownloadHistoryParams) {
-  return axios.get<DownloadHistoryRecord[]>('/api/download-history', {
-    params,
-  });
+export function queryContentPublish() {
+  return axios.get<ContentPublishRecord[]>('/api/content-publish');
+}
+
+export interface ContentPeriodAnalysisRes {
+  xAxis: string[];
+  data: GeneralChart;
+}
+
+export function queryContentPeriodAnalysis() {
+  return axios.post<ContentPeriodAnalysisRes>('/api/content-period-analysis');
+}
+
+export interface PublicOpinionAnalysis {
+  quota: string;
+}
+export interface PublicOpinionAnalysisRes {
+  count: number;
+  growth: number;
+  chartData: ChartDataRecord[];
+}
+export function queryPublicOpinionAnalysis(data: DataChainGrowth) {
+  return axios.post<PublicOpinionAnalysisRes>(
+    '/api/public-opinion-analysis',
+    data
+  );
+}
+export interface DataOverviewRes {
+  xAxis: string[];
+  data: Array<{ name: string; value: number[]; count: number }>;
+}
+
+export function queryDataOverview() {
+  return axios.post<DataOverviewRes>('/api/data-overview');
 }

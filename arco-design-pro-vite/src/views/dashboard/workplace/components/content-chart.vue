@@ -20,7 +20,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { graphic, EChartsOption } from 'echarts';
+import { graphic } from 'echarts';
 import useLoading from '@/hooks/loading';
 import { queryContentData, ContentDataRecord } from '@/api/dashboard';
 

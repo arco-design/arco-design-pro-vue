@@ -1,0 +1,83 @@
+<template>
+  <a-card :bordered="false" :header-style="{ border: 'none' }">
+    <template #title>
+      {{ $t('multiDAnalysis.card.title.userActions') }}
+    </template>
+    <Chart style="width: 100%; height: 110px" :option="chartOption" />
+  </a-card>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+import useChartOption from '@/hooks/chart-option';
+
+export default defineComponent({
+  setup() {
+    const { chartOption } = useChartOption({
+      grid: {
+        left: 44,
+        right: 20,
+        top: 0,
+        bottom: 20,
+      },
+      xAxis: {
+        type: 'value',
+        axisLabel: {
+          show: true,
+          formatter(value: string, idx: number) {
+            if (idx === 0) return value;
+            return `${Number(value) / 1000}k`;
+          },
+        },
+        splitLine: {
+          lineStyle: {
+            color: '#E5E8EF',
+          },
+        },
+      },
+      yAxis: {
+        type: 'category',
+        data: ['点赞量', '评论量', '分享量'],
+        axisLabel: {
+          show: true,
+          color: '#4E5969',
+        },
+        axisTick: {
+          show: true,
+          length: 2,
+          lineStyle: {
+            color: '#A9AEB8',
+          },
+          alignWithLabel: true,
+        },
+        axisLine: {
+          lineStyle: {
+            color: '#A9AEB8',
+          },
+        },
+      },
+      tooltip: {
+        show: true,
+        trigger: 'axis',
+      },
+      series: [
+        {
+          data: [1033, 1244, 1520],
+          type: 'bar',
+          barWidth: 7,
+          itemStyle: {
+            color: '#4086FF',
+            borderRadius: 4,
+          },
+        },
+      ],
+    });
+
+    return {
+      chartOption,
+    };
+  },
+});
+</script>
+
+<style scoped lang="less"></style>

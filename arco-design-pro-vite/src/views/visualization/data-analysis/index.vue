@@ -1,47 +1,50 @@
 <template>
   <div class="container">
     <a-breadcrumb class="container-breadcrumb">
+      <a-breadcrumb-item>
+        <icon-home />
+      </a-breadcrumb-item>
       <a-breadcrumb-item>{{ $t('menu.visualization') }}</a-breadcrumb-item>
       <a-breadcrumb-item>
         {{ $t('menu.visualization.dataAnalysis') }}
       </a-breadcrumb-item>
     </a-breadcrumb>
-    <div class="wrapper">
-      <a-space direction="vertical" :size="24" style="width: 100%">
-        <div>
-          <a-typography-title class="title-fix" :heading="6">
-            {{ $t('dataAnalysis.title.publicOpinion') }}
-          </a-typography-title>
+    <a-space direction="vertical" :size="12" style="width: 100%">
+      <a-space direction="vertical" :size="16" style="width: 100%">
+        <div class="space-unit">
           <PublicOpinion />
         </div>
         <div>
-          <a-typography-title class="title-fix" :heading="6">
-            {{ $t('dataAnalysis.title.reportStuckRate') }}
-          </a-typography-title>
-          <ReportStuckRate />
+          <a-row :gutter="20">
+            <a-col :span="16">
+              <ContentPublishRatio />
+            </a-col>
+            <a-col :span="8">
+              <PopularAuthor />
+            </a-col>
+          </a-row>
         </div>
         <div>
-          <a-typography-title class="title-fix" :heading="6">
-            {{ $t('dataAnalysis.title.detail') }}
-          </a-typography-title>
-          <DetailTable />
+          <ContentPeriodAnalysis />
         </div>
       </a-space>
-    </div>
+    </a-space>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import PublicOpinion from './components/public-opinion.vue';
-import DetailTable from './components/detail-table.vue';
-import ReportStuckRate from './components/report-stuck-rate.vue';
+import ContentPeriodAnalysis from './components/content-period-analysis.vue';
+import ContentPublishRatio from './components/content-publish-ratio.vue';
+import PopularAuthor from './components/popular-author.vue';
 
 export default defineComponent({
   components: {
     PublicOpinion,
-    ReportStuckRate,
-    DetailTable,
+    ContentPeriodAnalysis,
+    ContentPublishRatio,
+    PopularAuthor,
   },
 });
 </script>
@@ -49,15 +52,20 @@ export default defineComponent({
 <style scoped lang="less">
 .container {
   padding: 16px;
+  margin-bottom: 20px;
 }
 
-.wrapper {
-  padding: 20px;
+.space-unit {
   background-color: var(--color-bg-2);
+  border-radius: 4px;
 }
 
 .title-fix {
   margin: 0 0 12px 0;
   font-size: 14;
+}
+:deep(.section-titile) {
+  margin: 0 0 12px 0;
+  font-size: 14px;
 }
 </style>

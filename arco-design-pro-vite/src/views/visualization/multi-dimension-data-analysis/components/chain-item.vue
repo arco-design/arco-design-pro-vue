@@ -1,27 +1,17 @@
 <template>
   <a-spin :loading="loading" style="width: 100%">
-    <a-card :bordered="false">
+    <a-card :bordered="false" :header-style="{ border: 'none' }">
+      <template #title>{{ title }}</template>
       <div class="content">
         <a-statistic
-          :title="title"
-          :value="renderData.count"
+          v-if="!loading"
+          :value="count"
           :show-group-separator="true"
-        >
-          <template #suffix>
-            <a-typography-text type="secondary" class="unit">
-              {{ $t('multiDAnalysis.unit') }}
-            </a-typography-text>
-          </template>
-        </a-statistic>
-        <div>
-          <a-typography-text type="secondary" class="label">
-            {{ $t('multiDAnalysis.lastMonth') }}
-          </a-typography-text>
-          <a-typography-text type="danger">
-            {{ renderData.growth }}
-            <icon-arrow-rise />
-          </a-typography-text>
-        </div>
+        />
+        <a-typography-text class="percent-text" type="danger">
+          {{ growth }}%
+          <icon-arrow-rise />
+        </a-typography-text>
       </div>
       <div class="chart">
         <Chart :option="chartOption" />
@@ -32,13 +22,8 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-
 import useLoading from '@/hooks/loading';
-import {
-  queryDataChainGrowth,
-  DataChainGrowth,
-  DataChainGrowthRes,
-} from '@/api/visualization';
+import { queryDataChainGrowth, DataChainGrowth } from '@/api/visualization';
 
 export default defineComponent({
   props: {
@@ -57,11 +42,8 @@ export default defineComponent({
   },
   setup(props) {
     const { loading, setLoading } = useLoading(true);
-    const renderData = ref<DataChainGrowthRes>({
-      count: 0,
-      growth: 0,
-      chartData: [],
-    });
+    const count = ref(0);
+    const growth = ref(0);
     const chartOption = ref({
       grid: {
         left: 0,
@@ -79,22 +61,15 @@ export default defineComponent({
       tooltip: {
         show: true,
         trigger: 'axis',
+        formatter: '{c}',
       },
       series: [
         {
-          name: '2001',
-          data: [] as number[],
+          data: [] as unknown[],
           type: props.chartType,
           showSymbol: false,
-          barWidth: 4,
-          barGap: '0',
-        },
-        {
-          name: '2002',
-          data: [] as number[],
-          type: props.chartType,
-          showSymbol: false,
-          barWidth: 4,
+          smooth: true,
+          barWidth: 7,
           barGap: '0',
         },
       ],
@@ -103,12 +78,18 @@ export default defineComponent({
       try {
         const { data } = await queryDataChainGrowth(params);
         const { chartData } = data;
-        renderData.value = data;
-        chartData.forEach((el) => {
-          if (el.name === '2021') {
-            chartOption.value.series[0].data.push(el.y);
+        count.value = data.count;
+        growth.value = data.growth;
+        chartData.data.value.forEach((el, idx) => {
+          if (props.chartType === 'bar') {
+            chartOption.value.series[0].data.push({
+              value: el,
+              itemStyle: {
+                color: idx % 2 ? '#468DFF' : '#86DF6C',
+              },
+            });
           } else {
-            chartOption.value.series[1].data.push(el.y);
+            chartOption.value.series[0].data.push(el);
           }
         });
       } catch (err) {
@@ -120,7 +101,8 @@ export default defineComponent({
     fetchData({ quota: props.quota });
     return {
       loading,
-      renderData,
+      count,
+      growth,
       chartOption,
     };
   },
@@ -129,13 +111,15 @@ export default defineComponent({
 
 <style scoped lang="less">
 .content {
-  display: inline-block;
-  width: 130px;
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
-
+.percent-text {
+  margin-left: 16px;
+}
 .chart {
-  display: inline-block;
-  width: calc(100% - 130px);
+  width: 100%;
   height: 80px;
   vertical-align: bottom;
 }

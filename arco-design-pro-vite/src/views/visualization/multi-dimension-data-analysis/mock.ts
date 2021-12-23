@@ -1,46 +1,49 @@
 import Mock from 'mockjs';
-import qs from 'query-string';
 import setupMock, { successResponseWrap } from '@/utils/setup-mock';
-import { GetParams } from '@/types/global';
-import { DownloadHistoryParams } from '@/api/visualization';
+import { PostData } from '@/types/global';
 
 setupMock({
   setup() {
-    Mock.mock(new RegExp('/api/data-chain-growth'), () => {
-      const year = new Date().getFullYear();
-      const getLineData = (name: number) => {
-        return new Array(12).fill(0).map((_item, index) => ({
-          x: `${index + 1}月`,
-          y: Mock.Random.natural(0, 100),
-          name: String(name),
-        }));
+    Mock.mock(new RegExp('/api/data-chain-growth'), (params: PostData) => {
+      const { quota } = JSON.parse(params.body);
+      const getLineData = () => {
+        return {
+          xAxis: new Array(12).fill(0).map((_item, index) => `${index + 1}日`),
+          data: {
+            name: quota,
+            value: new Array(12)
+              .fill(0)
+              .map(() => Mock.Random.natural(1000, 3000)),
+          },
+        };
       };
       return successResponseWrap({
-        count: 5670,
-        growth: 206.32,
-        chartData: [...getLineData(year), ...getLineData(year - 1)],
+        count: Mock.Random.natural(1000, 3000),
+        growth: Mock.Random.float(20, 100, 2, 2),
+        chartData: getLineData(),
       });
     });
-
-    Mock.mock(new RegExp('/api/download-history'), (params: GetParams) => {
-      const { showCompetitor } = qs.parseUrl(params.url)
-        .query as unknown as DownloadHistoryParams;
-      const year = new Date().getFullYear();
-      const getLineData = (name: string) => {
-        return new Array(12).fill(0).map((_item, index) => ({
-          x: `${year}/${index + 1}`,
-          y: Mock.Random.natural(0, 75) * 1000,
+    // v2
+    Mock.mock(new RegExp('/api/data-overview'), () => {
+      const generateLineData = (name: string) => {
+        return {
           name,
-        }));
+          count: Mock.Random.natural(20, 2000),
+          value: new Array(8).fill(0).map(() => Mock.Random.natural(800, 4000)),
+        };
       };
-      const chartData = [...getLineData('开发者'), ...getLineData('设计师')];
-      if (showCompetitor === 'true') {
-        chartData.push(
-          ...getLineData('竞品-开发者'),
-          ...getLineData('竞品-设计师')
-        );
-      }
-      return successResponseWrap(chartData);
+      const xAxis = new Array(8).fill(0).map((_item, index) => {
+        return `12.1${index}`;
+      });
+      return successResponseWrap({
+        xAxis,
+        data: [
+          generateLineData('内容生产量'),
+          generateLineData('内容点击量'),
+          generateLineData('内容曝光量'),
+          generateLineData('活跃用户数'),
+        ],
+      });
     });
   },
 });

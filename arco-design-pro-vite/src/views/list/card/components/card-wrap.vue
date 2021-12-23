@@ -1,6 +1,6 @@
 <template>
   <div class="card-wrap">
-    <a-card :bordered="false">
+    <a-card :bordered="false" hoverable>
       <a-space align="start">
         <a-avatar
           v-if="icon"
@@ -144,7 +144,8 @@ export default defineComponent({
   transition: all 0.3s;
   border: 1px solid var(--color-neutral-3);
   &:hover {
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+    // box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
   }
   :deep(.arco-card) {
     height: 100%;

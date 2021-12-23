@@ -11,7 +11,9 @@
     <a-space direction="vertical">
       <a-space v-for="(item, idx) in list" :key="idx">
         <a-tag :color="item.type">{{ item.label }}</a-tag>
-        <a-typography-text>{{ item.content }}</a-typography-text>
+        <a-typography-text style="margin-bottom: 0" ellipsis>
+          {{ item.content }}
+        </a-typography-text>
       </a-space>
     </a-space>
   </a-card>
@@ -32,12 +34,12 @@ export default defineComponent({
       {
         type: 'cyan',
         label: '消息',
-        content: '新增内容尚未通过审核，详情…',
+        content: '新增内容尚未通过审核，详',
       },
       {
         type: 'blue',
         label: '通知',
-        content: '当前产品试用期即将截止，如…',
+        content: '当前产品试用期即将截止，…',
       },
       {
         type: 'blue',
@@ -47,7 +49,7 @@ export default defineComponent({
       {
         type: 'cyan',
         label: '消息',
-        content: '新增内容已经通过审核，详情…',
+        content: '新增内容已经通过审核，详…',
       },
     ];
     return {

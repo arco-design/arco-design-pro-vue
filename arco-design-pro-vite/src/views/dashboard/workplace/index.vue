@@ -124,7 +124,7 @@ export default defineComponent({
     width: 24px;
     height: 24px;
     margin-bottom: 4px;
-    color: #000;
+    color: rgb(var(--dark-gray-1));
     line-height: 24px;
     text-align: center;
     background-color: rgb(var(--gray-1));

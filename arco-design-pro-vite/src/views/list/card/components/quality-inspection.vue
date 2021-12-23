@@ -7,7 +7,7 @@
       <a-row class="list-row" :gutter="24">
         <a-col v-if="response" :span="6" class="list-col">
           <div class="card-wrap">
-            <a-card :bordered="false">
+            <a-card :bordered="false" hoverable style="height: 100%">
               <a-result :status="null" :title="$t('cardList.content.action')">
                 <template #icon>
                   <icon-plus style="font-size: 20px" />
@@ -72,7 +72,8 @@ export default defineComponent({
   transition: all 0.3s;
   border: 1px solid var(--color-neutral-3);
   &:hover {
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+    // box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
   }
 }
 </style>

@@ -39,9 +39,11 @@
               src="http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/32567adf281f99a84f3e6383fc4db598.svg~tplv-49unhts6dw-image.image"
             />
           </a-avatar>
-          <a-statistic :title="$t('workplace.newDay')" :value="8874">
-            <!-- <template #suffix> GB </template> -->
-          </a-statistic>
+          <a-statistic
+            :title="$t('workplace.newDay')"
+            :value="8874"
+            show-group-separator
+          />
         </a-space>
       </a-col>
       <a-col class="panel-col" :span="6">

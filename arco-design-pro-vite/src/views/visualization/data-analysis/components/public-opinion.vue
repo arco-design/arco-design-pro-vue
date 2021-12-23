@@ -1,121 +1,60 @@
 <template>
-  <div class="list">
-    <div
-      v-for="(item, idx) in renderData"
-      :key="idx"
-      :class="['box', item.type === 'up' ? 'box--up' : 'box--down']"
-      :style="{ width: `${100 / renderData.length}%` }"
-    >
-      <div class="box-inner">
-        <a-statistic :title="item.title" :value="item.value" group-separator>
-          <template #prefix>
-            <span class="box__icon">
-              <icon-code />
-            </span>
-          </template>
-          <template #suffix>
-            {{ item.unit }}
-          </template>
-        </a-statistic>
-      </div>
-    </div>
-  </div>
+  <a-card :bordered="false" :header-style="{ border: 'none' }">
+    <template #title>
+      {{ $t('dataAnalysis.title.publicOpinion') }}
+    </template>
+    <a-row :gutter="12">
+      <a-col :span="6">
+        <ChainItem
+          :title="$t('dataAnalysis.card.title.allVisitors')"
+          quota="visitors"
+          chart-type="line"
+          :card-style="{
+            background: 'linear-gradient(180deg, #f2f9fe 0%, #e6f4fe 100%)',
+          }"
+        />
+      </a-col>
+      <a-col :span="6">
+        <ChainItem
+          :title="$t('dataAnalysis.card.title.contentPublished')"
+          quota="published"
+          chart-type="bar"
+          :card-style="{
+            background: 'linear-gradient(180deg, #F5FEF2 0%, #E6FEEE 100%)',
+          }"
+        />
+      </a-col>
+      <a-col :span="6">
+        <ChainItem
+          :title="$t('dataAnalysis.card.title.totalComment')"
+          quota="comment"
+          chart-type="line"
+          :card-style="{
+            background: 'linear-gradient(180deg, #f2f9fe 0%, #e6f4fe 100%)',
+          }"
+        />
+      </a-col>
+      <a-col :span="6">
+        <ChainItem
+          :title="$t('dataAnalysis.card.title.totalShare')"
+          quota="share"
+          chart-type="pie"
+          :card-style="{
+            background: 'linear-gradient(180deg, #F7F7FF 0%, #ECECFF 100%)',
+          }"
+        />
+      </a-col>
+    </a-row>
+  </a-card>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { useI18n } from 'vue-i18n';
+import ChainItem from './chain-item.vue';
 
 export default defineComponent({
-  setup() {
-    const { t } = useI18n();
-    const renderData = [
-      {
-        title: t('dataAnalysis.downstream'),
-        value: 125670,
-        unit: 'b',
-        type: 'down',
-      },
-      {
-        title: t('dataAnalysis.downstream'),
-        value: 125670,
-        unit: 'b',
-        type: 'down',
-      },
-      {
-        title: t('dataAnalysis.upstream'),
-        value: 125670,
-        unit: 'b',
-        type: 'up',
-      },
-      {
-        title: t('dataAnalysis.downstream'),
-        value: 125670,
-        unit: 'b',
-        type: 'down',
-      },
-      {
-        title: t('dataAnalysis.downstream'),
-        value: 125670,
-        unit: 'b',
-        type: 'down',
-      },
-    ];
-    return {
-      renderData,
-    };
+  components: {
+    ChainItem,
   },
 });
 </script>
-
-<style scoped lang="less">
-.list {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.box {
-  box-sizing: border-box;
-  height: 98px;
-  padding-right: 16px;
-
-  &:last-child {
-    padding-right: 0;
-  }
-
-  &-inner {
-    padding: 16px;
-    border: 1px solid var(--color-border);
-    border-radius: 4px;
-  }
-
-  &__icon {
-    display: inline-block;
-    width: 14.4px;
-    height: 12.96px;
-    color: var(--color-white);
-    font-size: 10px;
-    line-height: 12.96px;
-    text-align: center;
-    vertical-align: middle;
-    border-radius: 2px;
-  }
-
-  &__icon {
-    margin-right: 6px;
-  }
-
-  &--up {
-    .box__icon {
-      background-color: #175dff;
-    }
-  }
-
-  &--down {
-    .box__icon {
-      background-color: #0fc6c2;
-    }
-  }
-}
-</style>
