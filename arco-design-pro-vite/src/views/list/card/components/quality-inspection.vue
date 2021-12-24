@@ -42,6 +42,7 @@
         </a-col>
       </a-row>
     </div>
+    <a-empty v-if="loading" />
   </a-spin>
 </template>
 

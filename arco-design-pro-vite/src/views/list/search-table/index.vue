@@ -1,12 +1,6 @@
 <template>
   <div class="container">
-    <a-breadcrumb class="container-breadcrumb">
-      <a-breadcrumb-item>
-        <icon-home />
-      </a-breadcrumb-item>
-      <a-breadcrumb-item>{{ $t('menu.list') }}</a-breadcrumb-item>
-      <a-breadcrumb-item>{{ $t('menu.list.searchTable') }}</a-breadcrumb-item>
-    </a-breadcrumb>
+    <Breadcrumb :items="['menu.list', 'menu.list.searchTable']" />
     <a-card
       :bordered="false"
       :title="$t('menu.list.searchTable')"

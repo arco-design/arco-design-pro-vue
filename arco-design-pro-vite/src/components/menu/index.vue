@@ -4,6 +4,7 @@
     show-collapse-button
     :auto-open="false"
     :selected-keys="selectedKey"
+    :auto-open-selected="true"
     @collapse="setCollapse"
   >
     <a-sub-menu v-for="route in appRoute.children" :key="route.name">

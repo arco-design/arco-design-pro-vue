@@ -133,12 +133,16 @@ export default defineComponent({
           bottom: 40,
           type: 'slider',
           left: 40,
-          right: 8,
+          right: 14,
           height: 14,
           borderColor: 'transparent',
           handleIcon:
-            'image://http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/883788745785cb187423078c85710242.svg~tplv-49unhts6dw-image.image',
+            'image://http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/1ee5a8c6142b2bcf47d2a9f084096447.svg~tplv-49unhts6dw-image.image',
           handleSize: '20',
+          handleStyle: {
+            shadowColor: 'rgba(0, 0, 0, 0.2)',
+            shadowBlur: 4,
+          },
           brushSelect: false,
           backgroundColor: '#F2F3F5',
         },

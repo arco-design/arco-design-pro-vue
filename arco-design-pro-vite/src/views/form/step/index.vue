@@ -1,38 +1,33 @@
 <template>
   <div class="container">
-    <a-breadcrumb class="container-breadcrumb">
-      <a-breadcrumb-item>{{ $t('menu.form') }}</a-breadcrumb-item>
-      <a-breadcrumb-item>{{ $t('menu.form.step') }}</a-breadcrumb-item>
-    </a-breadcrumb>
+    <Breadcrumb :items="['menu.form', 'menu.form.step']" />
     <a-spin :loading="loading" style="width: 100%">
-      <div class="wrapper">
-        <a-steps
-          v-model:current="step"
-          label-placement="vertical"
-          class="steps"
-        >
-          <a-step :description="$t('stepForm.step.subTitle.baseInfo')">
-            {{ $t('stepForm.step.title.baseInfo') }}
-          </a-step>
-          <a-step :description="$t('stepForm.step.subTitle.target')">
-            {{ $t('stepForm.step.title.target') }}
-          </a-step>
-          <a-step :description="$t('stepForm.step.subTitle.finish')">
-            {{ $t('stepForm.step.title.finish') }}
-          </a-step>
-        </a-steps>
-        <BaseInfo
-          v-if="step === 1"
-          :source-data="sourceData"
-          @changeStep="changeStep"
-        />
-        <Service
-          v-else-if="step === 2"
-          :source-data="sourceData"
-          @changeStep="changeStep"
-        />
-        <Success v-else-if="step === 3" @changeStep="changeStep" />
-      </div>
+      <a-card :bordered="false" :header-style="{ border: 'none' }">
+        <template #title>
+          {{ $t('stepForm.step.title') }}
+        </template>
+        <div class="wrapper">
+          <a-steps
+            v-model:current="step"
+            style="width: 580px"
+            line-less
+            class="steps"
+          >
+            <a-step :description="$t('stepForm.step.subTitle.baseInfo')">
+              {{ $t('stepForm.step.title.baseInfo') }}
+            </a-step>
+            <a-step :description="$t('stepForm.step.subTitle.channel')">
+              {{ $t('stepForm.step.title.channel') }}
+            </a-step>
+            <a-step :description="$t('stepForm.step.subTitle.finish')">
+              {{ $t('stepForm.step.title.finish') }}
+            </a-step>
+          </a-steps>
+          <BaseInfo v-if="step === 1" @changeStep="changeStep" />
+          <ChannelInfo v-else-if="step === 2" @changeStep="changeStep" />
+          <Success v-else-if="step === 3" @changeStep="changeStep" />
+        </div>
+      </a-card>
     </a-spin>
   </div>
 </template>
@@ -40,38 +35,56 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import useLoading from '@/hooks/loading';
-import { queryStepForm, StepFormRes } from '@/api/form';
+import {
+  submitChannelForm,
+  BaseInfoModel,
+  ChannelInfoModel,
+  UnitChannelMode,
+} from '@/api/form';
 import BaseInfo from './components/base-info.vue';
-import Service from './components/service.vue';
+import ChannelInfo from './components/channel-info.vue';
 import Success from './components/success.vue';
 
 export default defineComponent({
   components: {
     BaseInfo,
-    Service,
+    ChannelInfo,
     Success,
   },
   setup() {
-    const { loading, setLoading } = useLoading(true);
+    const { loading, setLoading } = useLoading(false);
     const step = ref(1);
-    const sourceData = ref<StepFormRes>({} as StepFormRes);
-    const fetchData = async () => {
+    const submitModel = ref<UnitChannelMode>({} as UnitChannelMode);
+    const submitForm = async () => {
+      setLoading(true);
       try {
-        const { data } = await queryStepForm();
-        sourceData.value = data;
+        await submitChannelForm(submitModel.value); // The moack api default success
+        step.value = 3;
+        submitModel.value = {} as UnitChannelMode; // init
       } catch (err) {
         // you can report use errorHandler or other
       } finally {
         setLoading(false);
       }
     };
-    fetchData();
-    const changeStep = (direction: string | number) => {
+    const changeStep = (
+      direction: string | number,
+      model: BaseInfoModel | ChannelInfoModel
+    ) => {
       if (typeof direction === 'number') {
         step.value = direction;
         return;
       }
-      if (direction === 'forward') {
+
+      if (direction === 'forward' || direction === 'submit') {
+        submitModel.value = {
+          ...submitModel.value,
+          ...model,
+        };
+        if (direction === 'submit') {
+          submitForm();
+          return;
+        }
         step.value += 1;
       } else if (direction === 'backward') {
         step.value -= 1;
@@ -80,7 +93,7 @@ export default defineComponent({
     return {
       loading,
       step,
-      sourceData,
+      submitModel,
       changeStep,
     };
   },
@@ -98,30 +111,16 @@ export default defineComponent({
   align-items: center;
   padding: 64px 0;
   background-color: var(--color-bg-2);
+  :deep(.arco-form) {
+    .arco-form-item {
+      &:last-child {
+        margin-top: 20px;
+      }
+    }
+  }
 }
 
 .steps {
-  margin-bottom: 36px;
-}
-
-.form {
-  width: 622px;
-}
-
-.form-content {
-  padding: 8px 50px 0 30px;
-}
-
-.actions {
-  padding: 15px 0;
-  text-align: right;
-
-  > button {
-    margin-left: 8px;
-
-    &:first-child {
-      margin-left: 0;
-    }
-  }
+  margin-bottom: 76px;
 }
 </style>

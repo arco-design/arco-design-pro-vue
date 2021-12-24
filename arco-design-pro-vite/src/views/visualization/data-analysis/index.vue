@@ -1,14 +1,8 @@
 <template>
   <div class="container">
-    <a-breadcrumb class="container-breadcrumb">
-      <a-breadcrumb-item>
-        <icon-home />
-      </a-breadcrumb-item>
-      <a-breadcrumb-item>{{ $t('menu.visualization') }}</a-breadcrumb-item>
-      <a-breadcrumb-item>
-        {{ $t('menu.visualization.dataAnalysis') }}
-      </a-breadcrumb-item>
-    </a-breadcrumb>
+    <Breadcrumb
+      :items="['menu.visualization', 'menu.visualization.dataAnalysis']"
+    />
     <a-space direction="vertical" :size="12" style="width: 100%">
       <a-space direction="vertical" :size="16" style="width: 100%">
         <div class="space-unit">

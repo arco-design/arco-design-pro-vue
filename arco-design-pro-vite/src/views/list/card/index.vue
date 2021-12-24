@@ -1,12 +1,6 @@
 <template>
   <div class="container">
-    <a-breadcrumb class="container-breadcrumb">
-      <a-breadcrumb-item>
-        <icon-home />
-      </a-breadcrumb-item>
-      <a-breadcrumb-item>{{ $t('menu.list') }}</a-breadcrumb-item>
-      <a-breadcrumb-item>{{ $t('menu.list.cardList') }}</a-breadcrumb-item>
-    </a-breadcrumb>
+    <Breadcrumb :items="['menu.list', 'menu.list.cardList']" />
     <a-row :gutter="20" align="stretch">
       <a-col :span="24">
         <a-card
@@ -90,6 +84,7 @@ export default defineComponent({
   font-size: 14px;
 }
 :deep(.list-wrap) {
+  // min-height: 140px;
   .list-row {
     align-items: stretch;
     .list-col {

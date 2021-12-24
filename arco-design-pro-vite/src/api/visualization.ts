@@ -45,13 +45,8 @@ export function queryContentPublish() {
   return axios.get<ContentPublishRecord[]>('/api/content-publish');
 }
 
-export interface ContentPeriodAnalysisRes {
-  xAxis: string[];
-  data: GeneralChart;
-}
-
 export function queryContentPeriodAnalysis() {
-  return axios.post<ContentPeriodAnalysisRes>('/api/content-period-analysis');
+  return axios.post<GeneralChart>('/api/content-period-analysis');
 }
 
 export interface PublicOpinionAnalysis {

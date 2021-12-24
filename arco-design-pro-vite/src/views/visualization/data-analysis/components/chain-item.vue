@@ -229,7 +229,6 @@ export default defineComponent({
 <style scoped lang="less">
 :deep(.arco-card-body) {
   height: 134px;
-  box-sizing: border-box;
 }
 .content-wrap {
   display: flex;

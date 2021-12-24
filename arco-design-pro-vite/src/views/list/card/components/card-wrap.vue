@@ -151,7 +151,6 @@ export default defineComponent({
     height: 100%;
     .arco-card-body {
       height: 100%;
-      box-sizing: border-box;
       .arco-space {
         width: 100%;
         height: 100%;

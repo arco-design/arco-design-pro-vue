@@ -1,9 +1,6 @@
 <template>
   <div class="container">
-    <a-breadcrumb class="container-breadcrumb">
-      <a-breadcrumb-item>{{ $t('menu.result') }}</a-breadcrumb-item>
-      <a-breadcrumb-item>{{ $t('menu.result.success') }}</a-breadcrumb-item>
-    </a-breadcrumb>
+    <Breadcrumb :items="['menu.result', 'menu.result.success']" />
     <div class="wrapper">
       <a-result
         class="result"
@@ -11,15 +8,18 @@
         :title="$t('success.result.title')"
         :subtitle="$t('success.result.subTitle')"
       >
+        <template #extra>
+          <a-space class="operation-wrap" :size="16">
+            <a-button key="again" type="secondary">
+              {{ $t('success.result.printResult') }}
+            </a-button>
+            <a-button key="back" type="primary">
+              {{ $t('success.result.projectList') }}
+            </a-button>
+          </a-space>
+        </template>
       </a-result>
-      <div class="operation-wrap">
-        <a-button key="again" type="secondary" style="margin-right: 16px">
-          {{ $t('success.result.printResult') }}
-        </a-button>
-        <a-button key="back" type="primary">
-          {{ $t('success.result.projectList') }}
-        </a-button>
-      </div>
+
       <div class="steps-wrapper">
         <a-typography-paragraph bold>{{
           $t('success.result.progress')
@@ -59,7 +59,6 @@ export default defineComponent({});
 
 <style scoped lang="less">
 .wrapper {
-  box-sizing: border-box;
   padding: 24px 150px;
   background-color: var(--color-bg-2);
 }
@@ -74,7 +73,6 @@ export default defineComponent({});
 }
 
 .steps-wrapper {
-  box-sizing: border-box;
   width: 100%;
   min-width: fit-content;
   margin-bottom: 150px;

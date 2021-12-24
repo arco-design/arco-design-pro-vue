@@ -101,10 +101,6 @@ export default defineComponent({
 @nav-size-height: 60px;
 @layout-max-width: 1100px;
 
-:deep(.container-breadcrumb) {
-  margin-bottom: 20px;
-}
-
 .layout {
   width: 100%;
   height: 100%;
@@ -125,7 +121,6 @@ export default defineComponent({
   top: 0;
   left: 0;
   z-index: 99;
-  box-sizing: border-box;
   height: 100%;
 
   &::after {
@@ -151,7 +146,6 @@ export default defineComponent({
 }
 
 .layout-content {
-  box-sizing: border-box;
   min-width: @layout-max-width;
   min-height: 100vh;
   overflow-y: hidden;

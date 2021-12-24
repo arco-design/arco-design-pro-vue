@@ -28,6 +28,7 @@
         </a-col>
       </a-row>
     </div>
+    <a-empty v-if="!response?.length" />
   </a-spin>
 </template>
 

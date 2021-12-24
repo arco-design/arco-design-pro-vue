@@ -1,36 +1,21 @@
 import axios from 'axios';
-import { Options, NodeOptions } from '@/types/global';
 
-export interface StepFormRes {
-  name: string;
-  purpose: string;
-  cluster: string[];
-  type: string;
-  dns: boolean;
-  subDomain: boolean;
-  psm: string;
-  strategy: string;
+export interface BaseInfoModel {
+  activityName: string;
+  channelType: string;
+  promotionTime: string[];
+  promoteLink: string;
+}
+export interface ChannelInfoModel {
+  advertisingSource: string;
+  advertisingMedia: string;
+  keyword: string[];
+  pushNotify: boolean;
+  advertisingContent: string;
 }
 
-export function queryStepForm() {
-  return axios.post<StepFormRes>('/api/step-form');
-}
+export type UnitChannelMode = BaseInfoModel & ChannelInfoModel;
 
-export function queryClusterList() {
-  return axios.post<NodeOptions[]>('/api/cluster/list');
-}
-
-export interface LineListRes {
-  name: string;
-  purpose: string;
-  cluster: string[];
-  type: string;
-  dns: boolean;
-  subDomain: boolean;
-  psm: string;
-  strategy: string;
-}
-
-export function queryLineList(params: { cluster: string[] }) {
-  return axios.get<Options[]>('/api/line/list', { params });
+export function submitChannelForm(data: UnitChannelMode) {
+  return axios.post('/api/channel-form/submit', { data });
 }

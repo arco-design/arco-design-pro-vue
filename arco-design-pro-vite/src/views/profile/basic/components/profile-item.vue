@@ -1,23 +1,18 @@
 <template>
-  <div>
-    <a-typography-title :heading="6" style="margin: 0 0 16px 0">
-      {{ title }}
-    </a-typography-title>
-    <div class="item-container">
-      <a-descriptions
-        v-for="(item, idx) in blockDataList"
-        :key="idx"
-        colon=":"
-        :label-style="{
-          textAlign: 'right',
-          width: '200px',
-          paddingRight: '10px',
-        }"
-        :value-style="{ width: '400px' }"
-        :title="item.title"
-        :data="item.data"
-      />
-    </div>
+  <div class="item-container">
+    <a-descriptions
+      v-for="(item, idx) in blockDataList"
+      :key="idx"
+      colon=":"
+      :label-style="{
+        textAlign: 'right',
+        width: '100px',
+        paddingRight: '10px',
+      }"
+      :value-style="{ width: '500px' }"
+      :title="item.title"
+      :data="item.data"
+    />
   </div>
 </template>
 
@@ -35,7 +30,7 @@ type BlockList = {
 }[];
 export default defineComponent({
   props: {
-    title: {
+    type: {
       type: String,
       default: '',
     },
@@ -50,7 +45,10 @@ export default defineComponent({
       const { renderData } = props;
       const result = [];
       result.push({
-        title: t('basicProfile.title.video'),
+        title:
+          props.type === 'pre'
+            ? t('basicProfile.title.preVideo')
+            : t('basicProfile.title.video'),
         data: [
           {
             label: t('basicProfile.label.video.mode'),
@@ -92,7 +90,10 @@ export default defineComponent({
       });
 
       result.push({
-        title: t('basicProfile.title.audio'),
+        title:
+          props.type === 'pre'
+            ? t('basicProfile.title.preAudio')
+            : t('basicProfile.title.audio'),
         data: [
           {
             label: t('basicProfile.label.audio.mode'),
@@ -131,9 +132,4 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="less">
-.item-container {
-  padding: 24px;
-  background: rgb(var(--gray-1));
-}
-</style>
+<style scoped lang="less"></style>

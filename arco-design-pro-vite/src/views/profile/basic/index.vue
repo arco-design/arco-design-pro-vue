@@ -1,45 +1,47 @@
 <template>
   <div class="container">
-    <a-breadcrumb class="container-breadcrumb">
-      <a-breadcrumb-item>{{ $t('menu.profile') }}</a-breadcrumb-item>
-      <a-breadcrumb-item>{{ $t('menu.profile.basic') }}</a-breadcrumb-item>
-    </a-breadcrumb>
-    <a-card :bordered="false">
-      <a-row justify="space-between" align="center" style="margin-bottom: 24px">
-        <a-col :span="16">
-          <a-typography-title :heading="6" style="margin: 0">
-            王力群{{ $t('basicProfile.title.form') }}
-          </a-typography-title>
-        </a-col>
-        <a-col :span="8" style="text-align: right">
-          <a-space>
-            <a-button size="mini" type="primary">
-              {{ $t('basicProfile.goBack') }}
-            </a-button>
-            <a-button size="mini">{{ $t('basicProfile.cancel') }}</a-button>
-          </a-space>
-        </a-col>
-      </a-row>
-      <a-spin :loading="loading" style="width: 100%">
-        <a-steps v-model:current="step" line-less class="steps">
-          <a-step>{{ $t('basicProfile.steps.commit') }}</a-step>
-          <a-step>{{ $t('basicProfile.steps.approval') }}</a-step>
-          <a-step>{{ $t('basicProfile.steps.finish') }}</a-step>
-        </a-steps>
-        <ProfileItem
-          :title="$t('basicProfile.title.currentParams')"
-          :render-data="currentData"
-          style="margin-top: 24px"
-        />
-      </a-spin>
-      <a-spin :loading="preLoading" style="width: 100%">
-        <ProfileItem
-          :title="$t('basicProfile.title.originParams')"
-          :render-data="preData"
-          style="margin-top: 24px"
-        />
-      </a-spin>
-    </a-card>
+    <Breadcrumb :items="['menu.profile', 'menu.profile.basic']" />
+    <a-space style="width: 100%" direction="vertical" :size="16">
+      <a-card :bordered="false">
+        <a-row
+          justify="space-between"
+          align="center"
+          style="margin-bottom: 24px"
+        >
+          <a-col :span="16">
+            <a-typography-title :heading="6">
+              {{ $t('basicProfile.title.form') }}
+            </a-typography-title>
+          </a-col>
+          <a-col :span="8" style="text-align: right">
+            <a-space>
+              <a-button>{{ $t('basicProfile.cancel') }}</a-button>
+              <a-button type="primary">
+                {{ $t('basicProfile.goBack') }}
+              </a-button>
+            </a-space>
+          </a-col>
+        </a-row>
+        <a-spin :loading="loading" style="width: 100%">
+          <a-steps v-model:current="step" line-less class="steps">
+            <a-step>{{ $t('basicProfile.steps.commit') }}</a-step>
+            <a-step>{{ $t('basicProfile.steps.approval') }}</a-step>
+            <a-step>{{ $t('basicProfile.steps.finish') }}</a-step>
+          </a-steps>
+        </a-spin>
+      </a-card>
+      <a-card :bordered="false">
+        <a-spin :loading="loading" style="width: 100%">
+          <ProfileItem :render-data="currentData" />
+        </a-spin>
+      </a-card>
+      <a-card :bordered="false">
+        <a-spin :loading="preLoading" style="width: 100%">
+          <ProfileItem type="pre" :render-data="preData" />
+        </a-spin>
+      </a-card>
+      <OperationLog />
+    </a-space>
   </div>
 </template>
 
@@ -48,10 +50,12 @@ import { defineComponent, ref } from 'vue';
 import useLoading from '@/hooks/loading';
 import { queryProfileBasic, ProfileBasicRes } from '@/api/profile';
 import ProfileItem from './components/profile-item.vue';
+import OperationLog from './components/operation-log.vue';
 
 export default defineComponent({
   components: {
     ProfileItem,
+    OperationLog,
   },
   setup() {
     const { loading, setLoading } = useLoading(true);
@@ -99,7 +103,7 @@ export default defineComponent({
 
 .steps {
   max-width: 548px;
-  margin: 0 auto;
+  margin: 0 auto 10px;
 }
 
 .itemContainer {

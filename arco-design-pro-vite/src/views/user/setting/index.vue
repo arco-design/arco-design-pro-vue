@@ -1,9 +1,6 @@
 <template>
   <div class="container">
-    <a-breadcrumb class="container-breadcrumb">
-      <a-breadcrumb-item>{{ $t('menu.user') }}</a-breadcrumb-item>
-      <a-breadcrumb-item>{{ $t('menu.user.setting') }}</a-breadcrumb-item>
-    </a-breadcrumb>
+    <Breadcrumb :items="['menu.user', 'menu.user.setting']" />
     <div class="wrapper">
       <div class="sidebar">
         <a-menu

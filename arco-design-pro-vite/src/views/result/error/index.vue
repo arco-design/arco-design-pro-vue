@@ -1,9 +1,6 @@
 <template>
   <div class="container">
-    <a-breadcrumb class="container-breadcrumb">
-      <a-breadcrumb-item>{{ $t('menu.result') }}</a-breadcrumb-item>
-      <a-breadcrumb-item>{{ $t('menu.result.error') }}</a-breadcrumb-item>
-    </a-breadcrumb>
+    <Breadcrumb :items="['menu.result', 'menu.result.error']" />
     <div class="wrapper">
       <a-result
         class="result"
@@ -11,15 +8,18 @@
         :title="$t('error.result.title')"
         :subtitle="$t('error.result.subTitle')"
       >
+        <template #extra>
+          <a-space class="operation-wrap" :size="16">
+            <a-button key="again" type="secondary">
+              {{ $t('error.result.goBack') }}
+            </a-button>
+            <a-button key="back" type="primary">
+              {{ $t('error.result.retry') }}
+            </a-button>
+          </a-space>
+        </template>
       </a-result>
-      <div class="operation-wrap">
-        <a-button key="again" type="secondary" style="margin-right: 16px">
-          {{ $t('error.result.goBack') }}
-        </a-button>
-        <a-button key="back" type="primary">
-          {{ $t('error.result.retry') }}
-        </a-button>
-      </div>
+
       <div class="details-wrapper">
         <a-typography-title :heading="6" style="margin-top: 0">
           {{ $t('error.detailTitle') }}
@@ -49,7 +49,6 @@ export default defineComponent({});
 
 <style scoped lang="less">
 .wrapper {
-  box-sizing: border-box;
   padding: 24px 150px;
   background-color: var(--color-bg-2);
 }
@@ -64,7 +63,6 @@ export default defineComponent({});
 }
 
 .details-wrapper {
-  box-sizing: border-box;
   width: 100%;
   margin-bottom: 150px;
   padding: 20px;

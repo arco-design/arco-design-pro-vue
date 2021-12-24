@@ -1,9 +1,6 @@
 <template>
   <div class="container">
-    <a-breadcrumb class="container-breadcrumb">
-      <a-breadcrumb-item>{{ $t('menu.dashboard') }}</a-breadcrumb-item>
-      <a-breadcrumb-item>{{ $t('menu.dashboard.monitor') }}</a-breadcrumb-item>
-    </a-breadcrumb>
+    <Breadcrumb :items="['menu.dashboard', 'menu.dashboard.monitor']" />
     <div class="layout">
       <div class="layout-left-side">
         <ChatPanel />
@@ -52,9 +49,6 @@ export default defineComponent({
 <style scoped lang="less">
 .container {
   padding: 20px;
-  // box-sizing: border-box;
-  // height: calc(100vh - 100px);
-  // overflow-y: hidden;
 }
 
 .layout {
