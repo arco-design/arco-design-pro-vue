@@ -1,48 +1,142 @@
 <template>
-  <a-menu class="message-box">
-    <drop-content />
-  </a-menu>
+  <a-spin style="display: block" :loading="loading">
+    <a-tabs v-model:activeKey="messageType" type="rounded" destroy-on-hide>
+      <a-tab-pane v-for="item in tabList" :key="item.key">
+        <template #title>
+          <span> {{ item.title }}{{ formatUnreadLength(item.key) }} </span>
+        </template>
+        <a-result v-if="!renderList.length" status="404"> </a-result>
+        <List
+          :render-list="renderList"
+          :unread-count="unreadCount"
+          @itemClick="handleItemClick"
+        />
+      </a-tab-pane>
+      <template #extra>
+        <a-button type="text" @click="emptyList">
+          {{ $t('messageBox.tab.button') }}
+        </a-button>
+      </template>
+    </a-tabs>
+  </a-spin>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import DropContent from './drop-content.vue';
+import { defineComponent, ref, reactive, toRefs, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+import {
+  queryMessageList,
+  setMessageStatus,
+  MessageRecord,
+  MessageListType,
+} from '@/api/message';
+import List from './list.vue';
+import useLoading from '@/hooks/loading';
 
+interface TabItem {
+  key: string;
+  title: string;
+  avatar?: string;
+}
 export default defineComponent({
   components: {
-    DropContent,
+    List,
+  },
+  setup() {
+    const { loading, setLoading } = useLoading(true);
+    const messageType = ref('message');
+    const { t } = useI18n();
+    const messageData = reactive<{
+      renderList: MessageRecord[];
+      messageList: MessageRecord[];
+    }>({
+      renderList: [],
+      messageList: [],
+    });
+    const refData = toRefs(messageData);
+    const tabList: TabItem[] = [
+      {
+        key: 'message',
+        title: t('messageBox.tab.title.message'),
+      },
+      {
+        key: 'notice',
+        title: t('messageBox.tab.title.notice'),
+      },
+      {
+        key: 'todo',
+        title: t('messageBox.tab.title.todo'),
+      },
+    ];
+    async function fetchSourceData() {
+      setLoading(true);
+      try {
+        const { data } = await queryMessageList();
+        messageData.messageList = data;
+      } catch (err) {
+        // you can report use errorHandler or other
+      } finally {
+        setLoading(false);
+      }
+    }
+    async function readMessage(data: MessageListType) {
+      const ids = data.map((item) => item.id);
+      await setMessageStatus({ ids });
+      fetchSourceData();
+    }
+    const renderList = computed(() => {
+      return messageData.messageList.filter(
+        (item) => messageType.value === item.type
+      );
+    });
+    const unreadCount = computed(() => {
+      return renderList.value.filter((item) => !item.status).length;
+    });
+    const getUnreadList = (type: string) => {
+      const list = messageData.messageList.filter(
+        (item) => item.type === type && !item.status
+      );
+      return list;
+    };
+    const formatUnreadLength = (type: string) => {
+      const list = getUnreadList(type);
+      return list.length ? `(${list.length})` : ``;
+    };
+    const handleItemClick = (items: MessageListType) => {
+      readMessage([...items]);
+    };
+    const emptyList = () => {
+      messageData.messageList = [];
+    };
+    fetchSourceData();
+    return {
+      loading,
+      tabList,
+      ...refData,
+      renderList,
+      handleItemClick,
+      formatUnreadLength,
+      unreadCount,
+      messageType,
+      emptyList,
+    };
   },
 });
 </script>
 
 <style scoped lang="less">
-.message-box-trigger {
-  width: 20px;
-  padding: 16px 0;
-  color: var(--color-text-1);
-  text-align: center;
-  cursor: pointer;
-
-  &:hover {
-    color: rgb(var(--arcoblue-6));
-  }
+:deep(.arco-popover-popup-content) {
+  padding: 0;
 }
 
-.message-box {
-  min-width: 352px;
-  max-height: 800px;
-
-  :deep(.arco-tabs-nav) {
-    padding: 8px 0 12px 0;
-    border-bottom: 1px solid var(--color-neutral-3);
-  }
-
-  :deep(.arco-tabs-nav-tab-list) {
-    margin: 0 auto;
-  }
-
-  :deep(.arco-list-item-meta) {
-    align-items: flex-start;
-  }
+:deep(.arco-list-item-meta) {
+  align-items: flex-start;
+}
+:deep(.arco-tabs-nav) {
+  padding: 14px 0 12px 16px;
+  border-bottom: 1px solid var(--color-neutral-3);
+}
+:deep(.arco-tabs-content) {
+  padding-top: 0;
 }
 </style>

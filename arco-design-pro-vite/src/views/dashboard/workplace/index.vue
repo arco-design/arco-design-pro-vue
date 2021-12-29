@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="left-side">
-      <a-space class="left-space" direction="vertical" :size="12">
+      <a-space class="left-space" direction="vertical" :size="12" fill>
         <Banner />
         <DataPanel />
         <ContentChart />
@@ -68,7 +68,6 @@ export default defineComponent({
   width: 100%;
   flex: 1;
   .left-space {
-    width: 100%;
     margin-bottom: 16px;
     background-color: var(--color-bg-2);
   }

@@ -1,12 +1,13 @@
 <template>
-  <div>
-    <div class="latest-activity-header">
-      <a-typography-title :heading="6">
-        {{ $t('userInfo.title.latestActivity') }}
-      </a-typography-title>
-      <a-link>{{ $t('userInfo.showMore') }}</a-link>
-    </div>
-    <a-list>
+  <a-card
+    :title="$t('userInfo.title.latestActivity')"
+    :bordered="false"
+    :header-style="{ border: 'none' }"
+  >
+    <template #extra>
+      <a-link>{{ $t('userInfo.viewAll') }}</a-link>
+    </template>
+    <a-list :bordered="false">
       <a-list-item
         v-for="activity in activityList"
         :key="activity.id"
@@ -24,7 +25,7 @@
         </a-list-item-meta>
       </a-list-item>
     </a-list>
-  </div>
+  </a-card>
 </template>
 
 <script lang="ts">
@@ -53,5 +54,13 @@ export default defineComponent({
     align-items: center;
     justify-content: space-between;
   }
+}
+:deep(.arco-list-item-meta-avatar) {
+  padding-bottom: 27px;
+}
+:deep(.arco-list-item-meta-content) {
+  flex: 1;
+  padding-bottom: 27px;
+  border-bottom: 1px solid var(--color-neutral-3);
 }
 </style>

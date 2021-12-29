@@ -3,26 +3,14 @@
     <UserInfoHeader />
     <div class="content">
       <div class="content-left">
-        <a-tabs>
-          <a-tab-pane v-for="tab in tabList" :key="tab.key">
-            <template #title>
-              <div>
-                <a-space :size="6">
-                  <component :is="tab.icon" />
-                  <span>{{ tab.title }}</span>
-                </a-space>
-              </div>
-            </template>
-            <div class="tab-pane-wrapper">
-              <component :is="tab.component" />
-            </div>
-          </a-tab-pane>
-        </a-tabs>
+        <a-space direction="vertical" :size="16" fill>
+          <MyProject />
+          <LatestActivity />
+        </a-space>
       </div>
       <div class="content-right">
-        <a-space size="{12}" direction="vertical">
-          <Visits />
-          <Other />
+        <a-space :size="16" direction="vertical" fill>
+          <Myteam />
           <LatestNotification />
         </a-space>
       </div>
@@ -34,18 +22,18 @@
 import { defineComponent } from 'vue';
 import { useI18n } from 'vue-i18n';
 import UserInfoHeader from './components/user-info-header.vue';
-import Visits from './components/visit.vue';
-import Other from './components/other.vue';
 import LatestNotification from './components/latest-notification.vue';
-import Overview from './components/overview.vue';
+import MyProject from './components/my-project.vue';
+import LatestActivity from './components/latest-activity.vue';
+import Myteam from './components/my-team.vue';
 
 export default defineComponent({
   components: {
     UserInfoHeader,
-    Overview,
-    Visits,
-    Other,
     LatestNotification,
+    MyProject,
+    LatestActivity,
+    Myteam,
   },
   setup() {
     const { t } = useI18n();
@@ -88,9 +76,9 @@ export default defineComponent({
 
   &-left {
     flex: 1;
-    margin-right: 12px;
+    margin-right: 16px;
     overflow: hidden;
-    background-color: var(--color-bg-2);
+    // background-color: var(--color-bg-2);
 
     :deep(.arco-tabs-nav-tab) {
       margin-left: 16px;

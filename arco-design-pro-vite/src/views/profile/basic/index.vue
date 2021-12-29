@@ -1,27 +1,20 @@
 <template>
   <div class="container">
     <Breadcrumb :items="['menu.profile', 'menu.profile.basic']" />
-    <a-space style="width: 100%" direction="vertical" :size="16">
-      <a-card :bordered="false">
-        <a-row
-          justify="space-between"
-          align="center"
-          style="margin-bottom: 24px"
-        >
-          <a-col :span="16">
-            <a-typography-title :heading="6">
-              {{ $t('basicProfile.title.form') }}
-            </a-typography-title>
-          </a-col>
-          <a-col :span="8" style="text-align: right">
-            <a-space>
-              <a-button>{{ $t('basicProfile.cancel') }}</a-button>
-              <a-button type="primary">
-                {{ $t('basicProfile.goBack') }}
-              </a-button>
-            </a-space>
-          </a-col>
-        </a-row>
+    <a-space direction="vertical" :size="16" fill>
+      <a-card
+        :bordered="false"
+        :title="$t('basicProfile.title.form')"
+        :header-style="{ border: 'none' }"
+      >
+        <template #extra>
+          <a-space>
+            <a-button>{{ $t('basicProfile.cancel') }}</a-button>
+            <a-button type="primary">
+              {{ $t('basicProfile.goBack') }}
+            </a-button>
+          </a-space>
+        </template>
         <a-spin :loading="loading" style="width: 100%">
           <a-steps v-model:current="step" line-less class="steps">
             <a-step>{{ $t('basicProfile.steps.commit') }}</a-step>

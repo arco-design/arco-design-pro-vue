@@ -5,10 +5,11 @@ export interface MessageRecord {
   type: string;
   title: string;
   subTitle: string;
-  avatar: string;
+  avatar?: string;
   content: string;
   time: string;
   status: 0 | 1;
+  messageType?: number;
 }
 export type MessageListType = MessageRecord[];
 

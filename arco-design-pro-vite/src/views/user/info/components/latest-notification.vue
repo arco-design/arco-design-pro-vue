@@ -1,10 +1,12 @@
 <template>
-  <a-card :bordered="false" :title="$t('userInfo.title.latestNotification')">
+  <a-card
+    :bordered="false"
+    :title="$t('userInfo.title.latestNotification')"
+    :header-style="{ border: 'none' }"
+  >
     <a-result status="404">
-      <template #title>
-        <a-typography-text type="secondary">
-          {{ $t('userInfo.nodata') }}
-        </a-typography-text>
+      <template #subtitle>
+        {{ $t('userInfo.nodata') }}
       </template>
     </a-result>
   </a-card>
@@ -19,3 +21,9 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="less" scoped>
+:deep(.arco-result) {
+  padding: 40px 32px 108px;
+}
+</style>

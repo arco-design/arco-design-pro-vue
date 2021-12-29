@@ -36,7 +36,7 @@ import {
   PublicOpinionAnalysisRes,
 } from '@/api/visualization';
 
-const barChartOptions = () => ({
+const barChartOptionsFactory = () => ({
   grid: {
     left: 0,
     right: 0,
@@ -56,7 +56,7 @@ const barChartOptions = () => ({
   },
   series: {
     name: 'total',
-    data: [],
+    data: [] as unknown[],
     type: 'bar',
     barWidth: 7,
     itemStyle: {
@@ -65,7 +65,7 @@ const barChartOptions = () => ({
   },
 });
 
-const lineChartOptions = () => ({
+const lineChartOptionsFactory = () => ({
   grid: {
     left: 0,
     right: 0,
@@ -110,7 +110,7 @@ const lineChartOptions = () => ({
   ],
 });
 
-const pieChartOptions = () => ({
+const pieChartOptionsFactory = () => ({
   grid: {
     left: 0,
     right: 0,
@@ -131,7 +131,6 @@ const pieChartOptions = () => ({
   },
   tooltip: {
     show: true,
-    trigger: 'axis',
   },
   series: [
     {
@@ -141,7 +140,7 @@ const pieChartOptions = () => ({
       label: {
         show: false,
       },
-      data: [],
+      data: [] as unknown[],
     },
   ],
 });
@@ -169,20 +168,15 @@ export default defineComponent({
   },
   setup(props) {
     const { loading, setLoading } = useLoading(true);
-    let opts = null;
-    if (props.chartType === 'line') {
-      opts = lineChartOptions();
-    } else if (props.chartType === 'bar') {
-      opts = barChartOptions();
-    } else {
-      opts = pieChartOptions();
-    }
+    const lineChartOption = lineChartOptionsFactory();
+    const barChartOption = barChartOptionsFactory();
+    const pieChartOption = pieChartOptionsFactory();
     const renderData = ref<PublicOpinionAnalysisRes>({
       count: 0,
       growth: 0,
       chartData: [],
     });
-    const chartOption = ref(opts);
+    const chartOption = ref({});
     const fetchData = async (params: PublicOpinionAnalysis) => {
       try {
         const { data } = await queryPublicOpinionAnalysis(params);
@@ -190,25 +184,28 @@ export default defineComponent({
         const { chartData } = data;
         if (props.chartType === 'bar') {
           chartData.forEach((el, idx) => {
-            chartOption.value.series.data.push({
+            barChartOption.series.data.push({
               value: el.y,
               itemStyle: {
                 color: idx % 2 ? '#2CAB40' : '#86DF6C',
               },
             });
           });
+          chartOption.value = barChartOption;
         } else if (props.chartType === 'line') {
           chartData.forEach((el) => {
             if (el.name === '2021') {
-              chartOption.value.series[0].data.push(el.y);
+              lineChartOption.series[0].data.push(el.y);
             } else {
-              chartOption.value.series[1].data.push(el.y);
+              lineChartOption.series[1].data.push(el.y);
             }
           });
+          chartOption.value = lineChartOption;
         } else {
           chartData.forEach((el) => {
-            chartOption.value.series[0].data.push(el);
+            pieChartOption.series[0].data.push(el);
           });
+          chartOption.value = pieChartOption;
         }
       } catch (err) {
         // you can report use errorHandler or other

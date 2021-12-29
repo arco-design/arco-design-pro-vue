@@ -32,10 +32,6 @@ export function queryPolicyList(params: PolicyParams) {
   });
 }
 
-export function queryInspectionList() {
-  return axios.get('/api/list/quality-inspection');
-}
-
 export interface ServiceRecord {
   title: string;
   description: string;
@@ -45,6 +41,9 @@ export interface ServiceRecord {
   data?: Options[];
   enable?: boolean;
   expires?: boolean;
+}
+export function queryInspectionList() {
+  return axios.get('/api/list/quality-inspection');
 }
 
 export function queryTheServiceList() {

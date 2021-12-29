@@ -2,6 +2,8 @@ export default {
   'settings.title': 'Settings',
   'settings.themeColor': 'Theme Color',
   'settings.content': 'Content Setting',
+  'settings.search': 'Search',
+  'settings.language': 'Language',
   'settings.navbar': 'Navbar',
   'settings.menuWidth': 'Menu Width (px)',
   'settings.navbar.theme.toLight': 'Click to use light mode',

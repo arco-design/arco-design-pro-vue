@@ -23,9 +23,11 @@
               {{ $t('stepForm.step.title.finish') }}
             </a-step>
           </a-steps>
-          <BaseInfo v-if="step === 1" @changeStep="changeStep" />
-          <ChannelInfo v-else-if="step === 2" @changeStep="changeStep" />
-          <Success v-else-if="step === 3" @changeStep="changeStep" />
+          <keep-alive>
+            <BaseInfo v-if="step === 1" @changeStep="changeStep" />
+            <ChannelInfo v-else-if="step === 2" @changeStep="changeStep" />
+            <Success v-else-if="step === 3" @changeStep="changeStep" />
+          </keep-alive>
         </div>
       </a-card>
     </a-spin>
@@ -93,7 +95,6 @@ export default defineComponent({
     return {
       loading,
       step,
-      submitModel,
       changeStep,
     };
   },

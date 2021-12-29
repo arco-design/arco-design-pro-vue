@@ -11,7 +11,7 @@
       <template #extra>
         <a-link>{{ $t('workplace.viewMore') }}</a-link>
       </template>
-      <a-space style="width: 100%" direction="vertical" size="medium">
+      <a-space direction="vertical" size="medium" fill>
         <a-radio-group
           v-model:model-value="type"
           type="button"

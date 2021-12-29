@@ -5,17 +5,6 @@
         {{ $t('multiDAnalysis.card.title.contentTypeDistribution') }}
       </template>
       <Chart style="width: 100%; height: 300px" :option="chartOption" />
-      <!-- <a-row>
-        <a-col :span="8">
-          <Chart :option="chartOption" />
-        </a-col>
-        <a-col :span="8">
-          <Chart :option="chartOption" />
-        </a-col>
-        <a-col :span="8">
-          <Chart :option="chartOption" />
-        </a-col>
-      </a-row> -->
     </a-card>
   </a-spin>
 </template>
@@ -264,7 +253,7 @@ export default defineComponent({
         },
       ],
     });
-    const { loading, setLoading } = useLoading(false);
+    const { loading } = useLoading(false);
     return {
       chartOption,
       loading,

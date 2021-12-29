@@ -7,26 +7,42 @@
           ARCO PRO
         </a-typography-title>
       </a-space>
-      <a-space style="margin-left: 60px; position: relative">
-        <a-input placeholder="搜索">
-          <template #prefix>
-            <icon-search />
-          </template>
-        </a-input>
-        <div class="key-wrap">
-          <span class="search-button-key">⌘</span>
-          <span class="search-button-key">S</span>
-        </div>
-      </a-space>
     </div>
     <ul class="right-side">
       <li>
-        <a-select
-          class="locale-select"
-          :model-value="currentLocale"
-          :options="locales"
-          @change="changeLocale"
-        ></a-select>
+        <a-tooltip :content="$t('settings.search')">
+          <a-button class="nav-btn" type="outline" :shape="'circle'">
+            <template #icon>
+              <icon-search />
+            </template>
+          </a-button>
+        </a-tooltip>
+      </li>
+      <li>
+        <a-tooltip :content="$t('settings.language')">
+          <a-button
+            class="nav-btn"
+            type="outline"
+            :shape="'circle'"
+            @click="setDropDownVisible"
+          >
+            <template #icon>
+              <icon-language />
+            </template>
+          </a-button>
+        </a-tooltip>
+        <a-dropdown trigger="click" @select="changeLocale">
+          <div ref="triggerBtn" class="trigger-btn"></div>
+          <template #content>
+            <a-doption
+              v-for="item in locales"
+              :key="item.value"
+              :value="item.value"
+            >
+              {{ item.label }}
+            </a-doption>
+          </template>
+        </a-dropdown>
       </li>
       <li>
         <a-tooltip
@@ -64,7 +80,12 @@
             </a-badge>
           </div>
         </a-tooltip>
-        <a-popover trigger="click" :arrow-style="{ left: '59%' }">
+        <a-popover
+          trigger="click"
+          :arrow-style="{ display: 'none' }"
+          :content-style="{ padding: 0, minWidth: '400px' }"
+          content-class="message-popover"
+        >
           <div ref="refBtn" class="ref-btn"></div>
           <template #content>
             <message-box />
@@ -91,7 +112,30 @@
             <img alt="avatar" :src="avatar" />
           </a-avatar>
           <template #content>
-            <a-doption @click="logout">登出</a-doption>
+            <a-doption>
+              <a-space @click="$router.push({ name: 'info' })">
+                <icon-user />
+                <span>
+                  {{ $t('messageBox.userCenter') }}
+                </span>
+              </a-space>
+            </a-doption>
+            <a-doption>
+              <a-space @click="$router.push({ name: 'setting' })">
+                <icon-settings />
+                <span>
+                  {{ $t('messageBox.userSettings') }}
+                </span>
+              </a-space>
+            </a-doption>
+            <a-doption>
+              <a-space @click="handleLogout">
+                <icon-export />
+                <span>
+                  {{ $t('messageBox.logout') }}
+                </span>
+              </a-space>
+            </a-doption>
           </template>
         </a-dropdown>
       </li>
@@ -138,6 +182,7 @@ export default defineComponent({
       store.commit(MutationTypes.APP_UPDATE_SETTING, { globalSettings: true });
     };
     const refBtn = ref();
+    const triggerBtn = ref();
     const setPopoverVisible = () => {
       const event = new MouseEvent('click', {
         view: window,
@@ -145,6 +190,17 @@ export default defineComponent({
         cancelable: true,
       });
       refBtn.value.dispatchEvent(event);
+    };
+    const handleLogout = () => {
+      logout();
+    };
+    const setDropDownVisible = () => {
+      const event = new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: true,
+      });
+      triggerBtn.value.dispatchEvent(event);
     };
     return {
       locales,
@@ -157,6 +213,9 @@ export default defineComponent({
       setVisible,
       setPopoverVisible,
       refBtn,
+      triggerBtn,
+      handleLogout,
+      setDropDownVisible,
     };
   },
 });
@@ -175,29 +234,6 @@ export default defineComponent({
   display: flex;
   align-items: center;
   padding-left: 20px;
-  .key-wrap {
-    position: absolute;
-    right: 16px;
-    top: 6px;
-    width: 44px;
-    display: flex;
-    justify-content: space-between;
-  }
-  .search-button-key {
-    align-items: center;
-    background: #f8f8f8;
-    border-radius: 3px;
-    box-shadow: inset 0 -2px 0 0 #cdcde6, inset 0 0 1px 1px #fff,
-      0 1px 2px 1px rgba(30, 35, 90, 0.4);
-    color: #969faf;
-    display: flex;
-    height: 18px;
-    justify-content: center;
-    padding-bottom: 2px;
-    position: relative;
-    top: -1px;
-    width: 20px;
-  }
 }
 
 .right-side {
@@ -218,11 +254,24 @@ export default defineComponent({
     text-decoration: none;
   }
   .nav-btn {
-    font-size: 20px;
+    border-color: rgb(var(--gray-2));
+    color: rgb(var(--gray-8));
   }
+  .trigger-btn,
   .ref-btn {
     position: absolute;
     bottom: 14px;
+  }
+  .trigger-btn {
+    margin-left: 14px;
+  }
+}
+</style>
+
+<style lang="less">
+.message-popover {
+  .arco-popover-content {
+    margin-top: 0;
   }
 }
 </style>

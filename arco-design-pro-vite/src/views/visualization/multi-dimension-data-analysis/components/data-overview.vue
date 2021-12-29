@@ -39,6 +39,22 @@ import { defineComponent, computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { queryDataOverview } from '@/api/visualization';
 import useLoading from '@/hooks/loading';
+import { ToolTipFormatterParams } from '@/types/echarts';
+
+const tooltipItemsHtmlString = (items: ToolTipFormatterParams[]) => {
+  return items
+    .map(
+      (el) => `<div class="content-panel">
+        <p>
+          <span style="background-color: ${
+            el.color
+          }" class="tooltip-item-icon"></span><span>${el.seriesName}</span>
+        </p>
+        <span class="tooltip-value">${el.value.toLocaleString()}</span>
+      </div>`
+    )
+    .join('');
+};
 
 const generateSeries = (name: string, lineColor: string) => {
   return {
@@ -152,48 +168,11 @@ export default defineComponent({
         trigger: 'axis',
         // showDelay: 2,
         // showContent: false,
-        formatter(arr: unknown) {
-          const [d, d1, d2, d3] = arr;
+        formatter(params: ToolTipFormatterParams[]) {
+          const [firstElement] = params;
           return `<div>
-            <p class="tooltip-title">${d.axisValueLabel}</p>
-            <div class="content-panel">
-              <p>
-                <span style="background-color: ${
-                  d.color
-                }" class="tooltip-item-icon"></span><span>${d.seriesName}</span>
-              </p>
-              <span class="tooltip-value">${d.value.toLocaleString()}</span>
-            </div>
-            <div class="content-panel">
-              <p>
-              <span style="background-color: ${
-                d1.color
-              }" class="tooltip-item-icon">
-              </span><span>${d1.seriesName}</span></p>
-              <span class="tooltip-value">
-              ${d1.value.toLocaleString()}
-              </span>
-            </div>
-            <div class="content-panel">
-              <p><span style="background-color: ${
-                d2.color
-              }" class="tooltip-item-icon"></span><span>${
-            d2.seriesName
-          }</span></p>
-              <span class="tooltip-value">
-              ${d2.value.toLocaleString()}
-              </span>
-            </div>
-            <div class="content-panel">
-              <p><span style="background-color: ${
-                d3.color
-              }" class="tooltip-item-icon"></span><span>${
-            d3.seriesName
-          }</span></p>
-              <span class="tooltip-value">
-              ${d3.value.toLocaleString()}
-              </span>
-            </div>
+            <p class="tooltip-title">${firstElement.axisValueLabel}</p>
+            ${tooltipItemsHtmlString(params)}
           </div>`;
         },
         className: 'echarts-tooltip-diy',

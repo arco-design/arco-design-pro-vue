@@ -1,85 +1,50 @@
 <template>
   <div class="container">
     <Breadcrumb :items="['menu.user', 'menu.user.setting']" />
-    <div class="wrapper">
-      <div class="sidebar">
-        <a-menu
-          mode="vertical"
-          :selected-keys="selectedKeys"
-          @menu-item-click="onClickMenuItem"
-        >
-          <a-menu-item v-for="menu in menuList" :key="menu.key">
-            {{ menu.title }}
-          </a-menu-item>
-        </a-menu>
-      </div>
-      <div class="content">
-        <component :is="renderComponent" />
-      </div>
-    </div>
+    <a-row style="margin-bottom: 16px">
+      <a-col :span="24">
+        <UserPanel />
+      </a-col>
+    </a-row>
+    <a-row class="wrapper">
+      <a-col :span="24">
+        <a-tabs default-active-key="1" type="rounded">
+          <a-tab-pane key="1" :title="$t('userSetting.tab.basicInformation')">
+            <BasicInformation />
+          </a-tab-pane>
+          <a-tab-pane key="2" :title="$t('userSetting.tab.securitySettings')">
+            <SecuritySettings />
+          </a-tab-pane>
+          <a-tab-pane key="3" :title="$t('userSetting.tab.certification')">
+            <Certification />
+          </a-tab-pane>
+        </a-tabs>
+      </a-col>
+    </a-row>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from 'vue';
-import { useI18n } from 'vue-i18n';
-import Info from './components/info.vue';
+import { defineComponent } from 'vue';
+// import { useI18n } from 'vue-i18n';
+// import Info from './components/info.vue';
+import UserPanel from './components/user-panel.vue';
+import BasicInformation from './components/basic-information.vue';
+import SecuritySettings from './components/security-settings.vue';
+import Certification from './components/certification.vue';
 
 export default defineComponent({
   components: {
-    Info,
+    // Info,
+    UserPanel,
+    BasicInformation,
+    SecuritySettings,
+    Certification,
   },
   setup() {
-    const { t } = useI18n();
+    // const { t } = useI18n();
 
-    const menuList = computed(() => [
-      {
-        key: 'info',
-        title: t('userSetting.menu.title.info'),
-        component: 'Info',
-      },
-      {
-        key: 'account',
-        title: t('userSetting.menu.title.account'),
-        component: 'Info',
-      },
-      {
-        key: 'password',
-        title: t('userSetting.menu.title.password'),
-        component: 'Info',
-      },
-      {
-        key: 'message',
-        title: t('userSetting.menu.title.message'),
-        component: 'Info',
-      },
-      {
-        key: 'result',
-        title: t('userSetting.menu.title.result'),
-        component: 'Info',
-      },
-      {
-        key: 'data',
-        title: t('userSetting.menu.title.data'),
-        component: 'Info',
-      },
-    ]);
-    const selectedKeys = ref([menuList.value[0].key]);
-    const onClickMenuItem = (name: string) => {
-      selectedKeys.value = [name];
-    };
-    const renderComponent = computed(() => {
-      return (
-        menuList.value.find((el) => el.key === selectedKeys.value[0])
-          ?.component ?? 'Info'
-      );
-    });
-    return {
-      menuList,
-      selectedKeys,
-      renderComponent,
-      onClickMenuItem,
-    };
+    return {};
   },
 });
 </script>
@@ -90,18 +55,9 @@ export default defineComponent({
 }
 
 .wrapper {
-  display: flex;
+  padding: 20px;
+  min-height: 580px;
   background-color: var(--color-bg-2);
-
-  .sidebar {
-    width: 200px;
-    border-right: 1px solid var(--color-border);
-  }
-
-  .content {
-    flex: 1;
-    padding: 20px 24px;
-  }
 }
 
 :deep(.section-title) {

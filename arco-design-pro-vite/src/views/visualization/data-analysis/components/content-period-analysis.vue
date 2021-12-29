@@ -11,9 +11,25 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-// import { EChartsOption } from 'echarts';
 import useLoading from '@/hooks/loading';
 import { queryContentPeriodAnalysis } from '@/api/visualization';
+import { ToolTipFormatterParams } from '@/types/echarts';
+
+const tooltipItemsHtmlString = (items: ToolTipFormatterParams[]) => {
+  return items
+    .map(
+      (el) => `<div class="content-panel">
+        <p>
+          <span style="background-color: ${el.color}" class="tooltip-item-icon"></span>
+          <span>${el.seriesName}</span>
+        </p>
+        <span class="tooltip-value">
+        ${el.value}%
+        </span>
+      </div>`
+    )
+    .join('');
+};
 
 export default defineComponent({
   setup() {
@@ -72,32 +88,11 @@ export default defineComponent({
       tooltip: {
         show: true,
         trigger: 'axis',
-        formatter(arr: unknown) {
-          const [d, d1, d2] = arr;
+        formatter(params: ToolTipFormatterParams[]) {
+          const [firstElement] = params;
           return `<div>
-            <p class="tooltip-title">${d.axisValueLabel}</p>
-            <div class="content-panel">
-              <p>
-                <span style="background-color: ${d.color}" class="tooltip-item-icon"></span><span>${d.seriesName}</span>
-              </p>
-              <span class="tooltip-value">${d.value}%</span>
-            </div>
-            <div class="content-panel">
-              <p>
-                <span style="background-color: ${d1.color}" class="tooltip-item-icon"></span><span>${d1.seriesName}</span>
-              </p>
-              <span class="tooltip-value">
-              ${d1.value}%
-              </span>
-            </div>
-            <div class="content-panel">
-              <p>
-                <span style="background-color: ${d2.color}" class="tooltip-item-icon"></span><span>${d2.seriesName}</span>
-              </p>
-              <span class="tooltip-value">
-              ${d2.value}%
-              </span>
-            </div>
+            <p class="tooltip-title">${firstElement.axisValueLabel}</p>
+            ${tooltipItemsHtmlString(params)}
           </div>`;
         },
         className: 'echarts-tooltip-diy',

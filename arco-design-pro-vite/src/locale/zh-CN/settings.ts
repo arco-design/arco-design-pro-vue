@@ -2,6 +2,8 @@ export default {
   'settings.title': '页面配置',
   'settings.themeColor': '主题色',
   'settings.content': '内容区域',
+  'settings.search': '搜索',
+  'settings.language': '语言',
   'settings.navbar': '导航栏',
   'settings.menuWidth': '菜单宽度 (px)',
   'settings.navbar.theme.toLight': '点击切换为亮色模式',

@@ -27,6 +27,10 @@ setupMock({
           locationName: '北京',
           introduction: '人潇洒，性温存',
           personalWebsite: 'https://www.arco.design',
+          phone: '150****0000',
+          registrationDate: '2013-05-10 12:10:00',
+          accountId: '15012312300',
+          certification: 1,
         });
       }
       return failResponseWrap(null, 50008, '未登录');

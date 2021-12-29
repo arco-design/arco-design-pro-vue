@@ -6,13 +6,13 @@
         <ChatPanel />
       </div>
       <div class="layout-content">
-        <a-space :size="12" direction="vertical" style="width: 100%">
+        <a-space :size="12" direction="vertical" fill>
           <Studio />
           <DataStatistic />
         </a-space>
       </div>
       <div class="layout-right-side">
-        <a-space :size="12" direction="vertical" style="width: 100%">
+        <a-space :size="12" direction="vertical" fill>
           <StudioStatus />
           <QuickOperation />
           <StudioInformation />

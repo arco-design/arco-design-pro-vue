@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a-row :gutter="12">
+    <a-row :gutter="16">
       <a-col :span="6">
         <ChainItem
           :title="$t('multiDAnalysis.card.title.retentionTrends')"

@@ -10,5 +10,9 @@ export interface UserStateTypes {
   jobName?: string;
   organizationName?: string;
   locationName?: string;
+  phone?: string;
+  registrationDate?: string;
+  accountId?: string;
+  certification?: number;
 }
 export const state: UserStateTypes = {};

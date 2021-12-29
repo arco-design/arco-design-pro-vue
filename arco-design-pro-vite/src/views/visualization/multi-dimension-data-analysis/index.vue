@@ -6,13 +6,13 @@
         'menu.visualization.multiDimensionDataAnalysis',
       ]"
     />
-    <a-space direction="vertical" :size="12" style="width: 100%">
+    <a-space direction="vertical" :size="16" fill>
       <a-row :gutter="16">
         <a-col :span="18">
           <DataOverview />
         </a-col>
         <a-col :span="6">
-          <a-space style="width: 100%" direction="vertical" :size="16">
+          <a-space direction="vertical" :size="16" fill>
             <UserActions />
             <ContentTypeDistribution />
           </a-space>

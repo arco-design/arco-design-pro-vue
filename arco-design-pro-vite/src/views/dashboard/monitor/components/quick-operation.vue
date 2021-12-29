@@ -3,7 +3,7 @@
     <a-typography-title style="margin: 0 0 16px 0" :heading="6">
       {{ $t('monitor.title.quickOperation') }}
     </a-typography-title>
-    <a-space direction="vertical" style="width: 100%" :size="10">
+    <a-space direction="vertical" fill :size="10">
       <a-button long>
         {{ $t('monitor.quickOperation.changeClarity') }}
         <template #icon>

@@ -74,16 +74,4 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="less">
-.circle {
-  display: inline-block;
-  margin-right: 4px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: rgb(var(--blue-6));
-  &.pass {
-    background-color: rgb(var(--green-6));
-  }
-}
-</style>
+<style scoped lang="less"></style>

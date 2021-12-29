@@ -10,15 +10,17 @@ export type UserMutationsTypes<S = UserStateTypes> = {
 export const mutations: MutationTree<UserStateTypes> & UserMutationsTypes = {
   [MutationTypes.USER_SET_INFO](
     state: UserStateTypes,
-    payload: UserStateTypes
+    payload: Partial<UserStateTypes>
   ) {
-    Object.keys(payload).forEach((key) => {
-      state[key as keyof UserStateTypes] = payload[key as keyof UserStateTypes];
+    Object.keys(payload).forEach((_key) => {
+      const key = _key as keyof UserStateTypes;
+      const value: UserStateTypes[keyof UserStateTypes] = payload[key];
+      (<typeof value>state[key]) = value;
     });
   },
   [MutationTypes.USER_RESET_INFO](state: UserStateTypes) {
     Object.keys(state).forEach((key) => {
-      state[key as keyof UserStateTypes] = '';
+      Reflect.deleteProperty(state, key);
     });
   },
 };

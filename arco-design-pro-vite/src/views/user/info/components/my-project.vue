@@ -1,0 +1,94 @@
+<template>
+  <a-spin :loading="loading" style="width: 100%">
+    <a-card
+      :title="$t('userInfo.title.myProject')"
+      :bordered="false"
+      :header-style="{ border: 'none' }"
+    >
+      <template #extra>
+        <a-link>{{ $t('userInfo.showMore') }}</a-link>
+      </template>
+      <a-row :gutter="16">
+        <a-col
+          v-for="project in projectList"
+          :key="project.id"
+          :span="8"
+          class="my-project-item"
+        >
+          <a-card>
+            <a-space direction="vertical">
+              <a-typography-text bold>{{ project.name }}</a-typography-text>
+              <a-typography-text type="secondary">
+                {{ project.description }}
+              </a-typography-text>
+              <a-space>
+                <a-avatar-group :size="0">
+                  <a-avatar
+                    v-for="(contributor, idx) in project.contributors"
+                    :key="idx"
+                    :size="32"
+                  >
+                    <img alt="avatar" :src="contributor.avatar" />
+                  </a-avatar>
+                </a-avatar-group>
+                <a-typography-text type="secondary">
+                  等{{ project.peopleNumber }}人
+                </a-typography-text>
+              </a-space>
+            </a-space>
+          </a-card>
+        </a-col>
+      </a-row>
+    </a-card>
+  </a-spin>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+import { queryMyProjectList, MyProjectRecord } from '@/api/user-center';
+import useRequest from '@/hooks/request';
+
+export default defineComponent({
+  setup() {
+    const { loading, response: projectList } =
+      useRequest<MyProjectRecord[]>(queryMyProjectList);
+    return {
+      loading,
+      projectList,
+    };
+  },
+});
+</script>
+
+<style scoped lang="less">
+:deep(.arco-card-body) {
+  min-height: 128px;
+  padding-bottom: 0;
+}
+.my-project {
+  &-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  &-title {
+    margin-top: 0 !important;
+    margin-bottom: 18px !important;
+  }
+
+  &-list {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-item {
+    // padding-right: 16px;
+    margin-bottom: 16px;
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+}
+</style>

@@ -3,8 +3,8 @@
     <Breadcrumb
       :items="['menu.visualization', 'menu.visualization.dataAnalysis']"
     />
-    <a-space direction="vertical" :size="12" style="width: 100%">
-      <a-space direction="vertical" :size="16" style="width: 100%">
+    <a-space direction="vertical" :size="12" fill>
+      <a-space direction="vertical" :size="16" fill>
         <div class="space-unit">
           <PublicOpinion />
         </div>
