@@ -1,13 +1,13 @@
 <template>
   <a-carousel
     indicator-type="slider"
-    show-rrrow="never"
+    show-arrow="hover"
     auto-play
-    style="width: 100%; height: 170px"
+    style="width: 100%; height: 170px; border-radius: 4px; overflow: hidden"
   >
     <a-carousel-item v-for="(src, idx) in imageSrc" :key="idx">
       <div>
-        <img :src="src" style="width: 280; transform: translateY(-30px)" />
+        <img :src="src" style="width: 280px" />
       </div>
     </a-carousel-item>
   </a-carousel>
@@ -17,10 +17,11 @@
 import { defineComponent } from 'vue';
 
 const imageSrc = [
-  '//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a8c8cdb109cb051163646151a4a5083b.png~tplv-uwbnlip3yd-webp.webp',
-  '//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/e278888093bef8910e829486fb45dd69.png~tplv-uwbnlip3yd-webp.webp',
-  '//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp',
-  '//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/8361eeb82904210b4f55fab888fe8416.png~tplv-uwbnlip3yd-webp.webp',
+  'http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/5cc3cd1d994b7ef9db6a1f619a22addd.jpg~tplv-49unhts6dw-image.image',
+  'http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/f256cbcc287139e191fecea9d255a1f0.jpg~tplv-49unhts6dw-image.image',
+  'http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/b557ff0cd44146a2e471b477af2f30d0.jpg~tplv-49unhts6dw-image.image',
+  'http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/665106f4bbd2a2df96eaf7aec52f7bc3.jpg~tplv-49unhts6dw-image.image',
+  'http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/ea095a2c9c72b5d8f2f2818040db736d.jpg~tplv-49unhts6dw-image.image',
 ];
 export default defineComponent({
   setup() {

@@ -3,8 +3,11 @@
     <div class="left-side">
       <a-space>
         <img alt="logo" src="/src/assets/logo.svg" />
-        <a-typography-title :style="{ margin: 0, fontSize: 18 }" :heading="5">
-          ARCO PRO
+        <a-typography-title
+          :style="{ margin: 0, fontSize: '18px' }"
+          :heading="5"
+        >
+          Arco Design Pro
         </a-typography-title>
       </a-space>
     </div>
@@ -256,6 +259,7 @@ export default defineComponent({
   .nav-btn {
     border-color: rgb(var(--gray-2));
     color: rgb(var(--gray-8));
+    font-size: 16px;
   }
   .trigger-btn,
   .ref-btn {

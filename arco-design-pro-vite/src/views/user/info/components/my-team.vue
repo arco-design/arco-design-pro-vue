@@ -1,9 +1,11 @@
 <template>
   <a-spin :loading="loading" style="width: 100%">
     <a-card
+      class="general-card"
       :bordered="false"
       :title="$t('userInfo.tab.title.team')"
-      :header-style="{ border: 'none' }"
+      :header-style="{ paddingBottom: '18px' }"
+      :body-style="{ paddingBottom: '12px' }"
     >
       <a-list :bordered="false">
         <a-list-item
@@ -46,6 +48,9 @@ export default defineComponent({
 :deep(.arco-card) {
   min-height: 350px;
   .arco-list-item {
+    height: 72px;
+    padding-left: 0;
+    padding-bottom: 12px;
     border-bottom: 1px solid var(--color-neutral-3);
     &:first-child {
       padding-top: 0;
@@ -53,10 +58,9 @@ export default defineComponent({
     &:last-child {
       border-bottom: none;
     }
-  }
-  .arco-card-body {
-    // min-height: 308px;
-    padding: 0 16px;
+    .arco-list-item-meta {
+      padding: 0;
+    }
   }
 }
 </style>

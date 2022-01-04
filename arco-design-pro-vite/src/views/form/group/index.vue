@@ -3,7 +3,7 @@
     <Breadcrumb :items="['menu.form', 'menu.form.group']" />
     <a-form ref="formRef" layout="vertical" :model="formData">
       <a-space direction="vertical" :size="16">
-        <a-card :bordered="false" :header-style="{ border: 'none' }">
+        <a-card class="general-card" :bordered="false">
           <template #title>
             {{ $t('groupForm.title.video') }}
           </template>
@@ -143,7 +143,7 @@
             </a-col>
           </a-row>
         </a-card>
-        <a-card :bordered="false" :header-style="{ border: 'none' }">
+        <a-card class="general-card" :bordered="false">
           <template #title>
             {{ $t('groupForm.title.audio') }}
           </template>
@@ -221,7 +221,7 @@
             </a-col>
           </a-row>
         </a-card>
-        <a-card :bordered="false" :header-style="{ border: 'none' }">
+        <a-card class="general-card" :bordered="false">
           <template #title>
             {{ $t('groupForm.title.description') }}
           </template>
@@ -237,7 +237,7 @@
       </a-space>
       <div class="actions">
         <a-space>
-          <a-button type="primary">
+          <a-button>
             {{ $t('groupForm.reset') }}
           </a-button>
           <a-button type="primary" :loading="loading" @click="onSubmitClick">
@@ -280,7 +280,7 @@ export default defineComponent({
 
 <style scoped lang="less">
 .container {
-  padding: 20px 20px 40px 20px;
+  padding: 0 20px 40px 20px;
   overflow: hidden;
 }
 
@@ -290,7 +290,7 @@ export default defineComponent({
   right: 0;
   bottom: 0;
   height: 60px;
-  padding: 12px 20px 12px 0;
+  padding: 14px 20px 14px 0;
   background: var(--color-bg-2);
   text-align: right;
 }

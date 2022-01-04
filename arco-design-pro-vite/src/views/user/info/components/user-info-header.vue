@@ -55,6 +55,7 @@ export default defineComponent({
   background: url(http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/41c6b125cc2e27021bf7fcc9a9b1897c.svg~tplv-49unhts6dw-image.image)
     no-repeat;
   background-size: cover;
+  border-radius: 4px;
 
   :deep(.arco-avatar-trigger-icon-button) {
     color: rgb(var(--arcoblue-6));

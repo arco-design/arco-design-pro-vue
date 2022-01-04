@@ -1,9 +1,10 @@
 <template>
   <a-card
+    class="general-card"
     :title="$t('workplace.recently.visited')"
-    hoverable
     :bordered="false"
-    :header-style="{ border: 'none' }"
+    :header-style="{ paddingBottom: '0' }"
+    :body-style="{ paddingTop: '26px' }"
   >
     <div style="margin-bottom: -1rem">
       <a-row :gutter="8">

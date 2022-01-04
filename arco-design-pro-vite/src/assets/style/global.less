@@ -10,6 +10,8 @@ body {
   padding: 0;
   font-size: 14px;
   background-color: var(--color-bg-1);
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
 }
 
 .echarts-tooltip-diy {
@@ -60,8 +62,20 @@ body {
   }
 }
 
-.common-card-header {
-  border: none;
+.general-card {
+  border-radius: 4px;
+  & > .arco-card-header {
+    height: auto;
+    padding: 20px;
+    border: none;
+  }
+  & > .arco-card-body {
+    padding: 0 20px 20px 20px;
+  }
+}
+
+.split-line {
+  border-color: rgb(var(--gray-2));
 }
 
 .arco-table-cell {

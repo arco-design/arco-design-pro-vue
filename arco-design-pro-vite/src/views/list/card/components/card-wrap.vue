@@ -15,13 +15,17 @@
               {{ title }}
             </a-typography-text>
             <template v-if="showTag">
-              <a-tag v-if="open && isExpires === false" color="green">
+              <a-tag
+                v-if="open && isExpires === false"
+                size="small"
+                color="green"
+              >
                 <template #icon>
                   <icon-check-circle-fill />
                 </template>
                 <span>{{ tagText }}</span>
               </a-tag>
-              <a-tag v-else-if="isExpires" color="red">
+              <a-tag v-else-if="isExpires" size="small" color="red">
                 <template #icon>
                   <icon-check-circle-fill />
                 </template>
@@ -39,7 +43,7 @@
         <a-switch v-if="actionType === 'switch'" v-model="open" />
         <a-space v-else-if="actionType === 'button'">
           <template v-if="isExpires">
-            <a-button type="primary" @click="renew">
+            <a-button type="outline" @click="renew">
               {{ expiresText }}
             </a-button>
           </template>
@@ -47,7 +51,7 @@
             <a-button v-if="open" @click="toggle">
               {{ closeTxt }}
             </a-button>
-            <a-button v-else-if="!open" type="primary" @click="toggle">
+            <a-button v-else-if="!open" type="outline" @click="toggle">
               {{ openTxt }}
             </a-button>
           </template>
@@ -143,12 +147,14 @@ export default defineComponent({
   height: 100%;
   transition: all 0.3s;
   border: 1px solid var(--color-neutral-3);
+  border-radius: 4px;
   &:hover {
     transform: translateY(-4px);
     // box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
   }
   :deep(.arco-card) {
     height: 100%;
+    border-radius: 4px;
     .arco-card-body {
       height: 100%;
       .arco-space {
@@ -165,6 +171,11 @@ export default defineComponent({
             flex-flow: column;
             .arco-card-meta-content {
               flex: 1;
+              .arco-card-meta-description {
+                margin-top: 8px;
+                color: rgb(var(--gray-6));
+                line-height: 20px;
+              }
             }
             .arco-card-meta-footer {
               margin-top: 0;
@@ -175,6 +186,9 @@ export default defineComponent({
     }
   }
   :deep(.arco-card-meta-title) {
+    display: flex;
+    align-items: center;
+
     // To prevent the shaking
     line-height: 28px;
   }

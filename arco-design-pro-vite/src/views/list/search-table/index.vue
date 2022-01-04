@@ -2,9 +2,9 @@
   <div class="container">
     <Breadcrumb :items="['menu.list', 'menu.list.searchTable']" />
     <a-card
+      class="general-card"
       :bordered="false"
       :title="$t('menu.list.searchTable')"
-      :header-style="{ border: 'none', paddingBottom: 0 }"
     >
       <a-row>
         <a-col :flex="1">
@@ -12,6 +12,7 @@
             :model="formModel"
             :label-col-props="{ span: 6 }"
             :wrapper-col-props="{ span: 18 }"
+            label-align="left"
           >
             <a-row :gutter="16">
               <a-col :span="8">
@@ -84,7 +85,7 @@
           </a-form>
         </a-col>
         <a-divider style="height: 84px" direction="vertical" />
-        <a-col :flex="'100px'">
+        <a-col :flex="'86px'" style="text-align: right">
           <a-space direction="vertical" :size="18">
             <a-button type="primary" @click="search">
               <template #icon>
@@ -202,6 +203,8 @@
             data-index="status"
           >
             <template #cell="{ record }">
+              <span v-if="record.status === 'offline'" class="circle"></span>
+              <span v-else class="circle pass"></span>
               {{ $t(`searchTable.form.status.${record.status}`) }}
             </template>
           </a-table-column>
@@ -332,9 +335,11 @@ export default defineComponent({
 </script>
 
 <style scoped lang="less">
-// .toolbar {
-//   display: flex;
-//   justify-content: space-between;
-//   margin-bottom: 24px;
-// }
+:deep(.arco-table-th) {
+  &:last-child {
+    .arco-table-th-item-title {
+      margin-left: 16px;
+    }
+  }
+}
 </style>

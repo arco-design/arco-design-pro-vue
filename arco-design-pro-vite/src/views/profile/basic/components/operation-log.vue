@@ -1,5 +1,5 @@
 <template>
-  <a-card :bordered="false" :header-style="{ border: 'none' }">
+  <a-card class="general-card" :bordered="false">
     <template #title>
       {{ $t('basicProfile.title.operationLog') }}
     </template>
@@ -9,11 +9,11 @@
           <a-table-column
             :title="$t('basicProfile.column.contentNumber')"
             data-index="contentNumber"
-          ></a-table-column>
+          />
           <a-table-column
             :title="$t('basicProfile.column.updateContent')"
             data-index="updateContent"
-          ></a-table-column>
+          />
           <a-table-column
             :title="$t('basicProfile.column.status')"
             data-index="status"
@@ -32,7 +32,7 @@
           <a-table-column
             :title="$t('basicProfile.column.updateTime')"
             data-index="updateTime"
-          ></a-table-column>
+          />
           <a-table-column :title="$t('basicProfile.column.operation')">
             <template #cell>
               <a-button type="text">{{
@@ -74,4 +74,12 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="less"></style>
+<style scoped lang="less">
+:deep(.arco-table-th) {
+  &:last-child {
+    .arco-table-th-item-title {
+      margin-left: 16px;
+    }
+  }
+}
+</style>

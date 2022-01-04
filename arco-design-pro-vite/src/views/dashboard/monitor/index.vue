@@ -6,13 +6,13 @@
         <ChatPanel />
       </div>
       <div class="layout-content">
-        <a-space :size="12" direction="vertical" fill>
+        <a-space :size="16" direction="vertical" fill>
           <Studio />
           <DataStatistic />
         </a-space>
       </div>
       <div class="layout-right-side">
-        <a-space :size="12" direction="vertical" fill>
+        <a-space :size="16" direction="vertical" fill>
           <StudioStatus />
           <QuickOperation />
           <StudioInformation />
@@ -48,7 +48,7 @@ export default defineComponent({
 
 <style scoped lang="less">
 .container {
-  padding: 20px;
+  padding: 0 20px 20px 20px;
 }
 
 .layout {

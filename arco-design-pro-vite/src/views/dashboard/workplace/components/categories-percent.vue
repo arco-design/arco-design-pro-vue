@@ -1,14 +1,17 @@
 <template>
   <a-spin :loading="loading" style="width: 100%">
     <a-card
-      class="bottom-card"
+      class="general-card"
       :bordered="false"
-      :header-style="{ border: 'none' }"
+      :header-style="{ paddingBottom: '0' }"
+      :body-style="{
+        padding: '20px',
+      }"
     >
       <template #title>
         {{ $t('workplace.categoriesPercent') }}
       </template>
-      <Chart style="width: 100%; height: 310px" :option="chartOption" />
+      <Chart height="310px" :option="chartOption" />
     </a-card>
   </a-spin>
 </template>
@@ -28,6 +31,9 @@ export default defineComponent({
         bottom: 0,
         icon: 'circle',
         itemWidth: 8,
+        textStyle: {
+          color: '#4E5969',
+        },
       },
       tooltip: {
         show: true,
@@ -43,7 +49,7 @@ export default defineComponent({
               text: '内容量',
               textAlign: 'center',
               fill: '#4E5969',
-              fontSize: 12,
+              fontSize: 14,
             },
           },
           {
@@ -53,7 +59,7 @@ export default defineComponent({
             style: {
               text: '928,531',
               textAlign: 'center',
-              fill: '#4E5969',
+              fill: '#1D2129',
               fontSize: 16,
               fontWeight: 500,
             },
@@ -66,19 +72,8 @@ export default defineComponent({
           radius: ['50%', '70%'],
           center: ['50%', '50%'],
           label: {
-            formatter: '{text|{b}:{d}%}\n{value|{c}} ',
-            rich: {
-              text: {
-                fontSize: 12,
-                color: '#4E5969',
-              },
-              value: {
-                fontSize: 13,
-                color: '#1D2129',
-                lineHeight: 24,
-                fontWeight: 'bold',
-              },
-            },
+            formatter: '{d}%',
+            fontSize: 14,
           },
           itemStyle: {
             borderColor: '#fff',

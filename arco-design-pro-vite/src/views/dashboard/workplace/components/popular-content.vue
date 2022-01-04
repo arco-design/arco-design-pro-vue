@@ -1,9 +1,10 @@
 <template>
   <a-spin :loading="loading" style="width: 100%">
     <a-card
-      class="bottom-card"
+      class="general-card"
       :bordered="false"
-      :header-style="{ border: 'none' }"
+      :header-style="{ paddingBottom: '0' }"
+      :body-style="{ padding: '17px 20px 21px 20px' }"
     >
       <template #title>
         {{ $t('workplace.popularContent') }}
@@ -11,7 +12,7 @@
       <template #extra>
         <a-link>{{ $t('workplace.viewMore') }}</a-link>
       </template>
-      <a-space direction="vertical" size="medium" fill>
+      <a-space direction="vertical" :size="10" fill>
         <a-radio-group
           v-model:model-value="type"
           type="button"
@@ -94,6 +95,9 @@ export default defineComponent({
 </script>
 
 <style scoped lang="less">
+:deep(.arco-table-tr) {
+  height: 44px;
+}
 .increases-cell {
   display: flex;
   align-items: center;

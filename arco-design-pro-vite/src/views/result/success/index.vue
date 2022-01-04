@@ -77,6 +77,6 @@ export default defineComponent({});
   min-width: fit-content;
   margin-bottom: 150px;
   padding: 20px;
-  background-color: var(--color-fill-2);
+  background-color: rgb(var(--gray-1));
 }
 </style>

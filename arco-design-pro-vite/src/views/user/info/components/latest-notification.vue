@@ -1,8 +1,8 @@
 <template>
   <a-card
+    class="general-card"
     :bordered="false"
     :title="$t('userInfo.title.latestNotification')"
-    :header-style="{ border: 'none' }"
   >
     <a-result status="404">
       <template #subtitle>

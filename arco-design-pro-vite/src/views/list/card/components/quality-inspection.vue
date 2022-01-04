@@ -6,8 +6,8 @@
       </a-typography-title>
       <a-row class="list-row" :gutter="24">
         <a-col v-if="response" :span="6" class="list-col">
-          <div class="card-wrap">
-            <a-card :bordered="false" hoverable style="height: 100%">
+          <div class="card-wrap empty-wrap">
+            <a-card :bordered="false" hoverable>
               <a-result :status="null" :title="$t('cardList.content.action')">
                 <template #icon>
                   <icon-plus style="font-size: 20px" />
@@ -74,7 +74,29 @@ export default defineComponent({
   border: 1px solid var(--color-neutral-3);
   &:hover {
     transform: translateY(-4px);
-    // box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  :deep(.arco-card-meta-description) {
+    color: rgb(var(--gray-6));
+    .arco-descriptions-item-label-inline {
+      font-weight: normal;
+      color: rgb(var(--gray-6));
+    }
+    .arco-descriptions-item-value-inline {
+      color: rgb(var(--gray-6));
+    }
+  }
+}
+.empty-wrap {
+  border-radius: 4px;
+  :deep(.arco-card) {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    .arco-result-title {
+      color: rgb(var(--gray-6));
+    }
   }
 }
 </style>

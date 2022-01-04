@@ -1,21 +1,20 @@
 <template>
-  <a-col :span="24" class="panel">
+  <a-spin :loading="loading" style="width: 100%">
     <a-card
+      class="general-card"
       :bordered="false"
-      :header-style="{ padding: 0, border: 'none' }"
+      :header-style="{ padding: '8px 20px 0 20px' }"
       :body-style="{
-        padding: 0,
+        paddingTop: '20px',
       }"
+      :title="$t('workplace.contentData')"
     >
-      <template #title>
-        {{ $t('workplace.contentData') }}
-      </template>
       <template #extra>
         <a-link>{{ $t('workplace.viewMore') }}</a-link>
       </template>
-      <Chart style="width: 100%; height: 290px" :option="chartOption" />
+      <Chart height="278px" :option="chartOption" />
     </a-card>
-  </a-col>
+  </a-spin>
 </template>
 
 <script lang="ts">
@@ -60,6 +59,9 @@ export default defineComponent({
             if (idx === chartOption.value.xAxis.data.length - 1) return false;
             return true;
           },
+          lineStyle: {
+            color: '#E5E8EF',
+          },
         },
         axisPointer: {
           show: true,
@@ -84,13 +86,12 @@ export default defineComponent({
           show: true,
           lineStyle: {
             type: 'dashed',
+            color: '#E5E8EF',
           },
         },
       },
       tooltip: {
         trigger: 'axis',
-        // showDelay: 2,
-        // showContent: false,
         formatter([params]: unknown) {
           return `<div>
             <p class="tooltip-title">${params.axisValueLabel}</p>
@@ -132,12 +133,14 @@ export default defineComponent({
           data: [] as number[],
           type: 'line',
           smooth: true,
+          // symbol: 'circle',
+          symbolSize: 12,
           emphasis: {
             focus: 'series',
+            itemStyle: {
+              borderWidth: 2,
+            },
           },
-          // itemStyle: {
-          //   color: '#f00',
-          // },
           lineStyle: {
             width: 3,
             color: new graphic.LinearGradient(0, 0, 1, 0, [
@@ -201,49 +204,4 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="less">
-.panel {
-  width: 100%;
-  padding: 0 16px;
-  margin-bottom: 0;
-}
-</style>
-
-<style lang="less">
-.echarts-tooltip-diy {
-  background: linear-gradient(
-    304.17deg,
-    rgba(253, 254, 255, 0.6) -6.04%,
-    rgba(244, 247, 252, 0.6) 85.2%
-  ) !important;
-  border: none !important;
-  backdrop-filter: blur(10px) !important;
-  /* Note: backdrop-filter has minimal browser support */
-
-  border-radius: 6px !important;
-  .content-panel {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 9px;
-    background: rgba(255, 255, 255, 0.8);
-    width: 164px;
-    height: 32px;
-    line-height: 32px;
-    box-shadow: 6px 0px 20px rgba(34, 87, 188, 0.1);
-    border-radius: 4px;
-  }
-  .tooltip-title {
-    margin: 0 0 10px 0;
-  }
-  .tooltip-title,
-  .tooltip-value {
-    font-size: 13px;
-    line-height: 15px;
-    display: flex;
-    align-items: center;
-    text-align: right;
-    color: #1d2129;
-    font-weight: bold;
-  }
-}
-</style>
+<style scoped lang="less"></style>

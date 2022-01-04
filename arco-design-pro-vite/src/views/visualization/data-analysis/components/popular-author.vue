@@ -1,9 +1,9 @@
 <template>
   <a-spin :loading="loading" style="width: 100%">
     <a-card
-      class="bottom-card"
+      class="general-card"
       :bordered="false"
-      :header-style="{ border: 'none' }"
+      :header-style="{ paddingBottom: '14px' }"
     >
       <template #title>
         {{ $t('dataAnalysis.popularAuthor') }}
@@ -80,7 +80,7 @@ export default defineComponent({
 </script>
 
 <style scoped lang="less">
-// :deep(.arco-card-body) {
-//   padding-top: 0;
-// }
+.general-card {
+  min-height: 425px;
+}
 </style>

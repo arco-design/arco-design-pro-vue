@@ -66,6 +66,6 @@ export default defineComponent({});
   width: 100%;
   margin-bottom: 150px;
   padding: 20px;
-  background-color: var(--color-fill-2);
+  background-color: rgb(var(--gray-1));
 }
 </style>

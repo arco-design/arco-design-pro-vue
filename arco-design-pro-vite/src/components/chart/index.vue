@@ -2,8 +2,8 @@
   <VCharts
     v-if="renderChart"
     :option="options"
-    :theme="theme"
     :autoresize="autoresize"
+    :style="{ width, height }"
   />
 </template>
 
@@ -27,6 +27,14 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
+    width: {
+      type: String,
+      default: '100%',
+    },
+    height: {
+      type: String,
+      default: '100%',
+    },
   },
   setup() {
     const store = useStore();
@@ -47,8 +55,4 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="less">
-.chart-box {
-  width: 100%;
-}
-</style>
+<style scoped lang="less"></style>

@@ -1,9 +1,9 @@
 <template>
   <a-spin :loading="loading" style="width: 100%">
     <a-card
-      class="bottom-card"
+      class="general-card"
       :bordered="false"
-      :header-style="{ border: 'none' }"
+      :header-style="{ paddingBottom: '14px' }"
     >
       <template #title>
         {{ $t('dataAnalysis.contentPublishRatio') }}
@@ -122,6 +122,9 @@ export default defineComponent({
           stack: 'one',
           type: 'bar',
           color: '#81E2FF',
+          itemStyle: {
+            borderRadius: 2,
+          },
         },
       ],
     });

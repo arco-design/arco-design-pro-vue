@@ -1,23 +1,29 @@
 <template>
-  <div class="chat-panel">
-    <div class="chat-panel-header">
-      <a-typography-title style="margin: 0 0 16px 0" :heading="6">
-        {{ $t('monitor.title.chatPanel') }}
-      </a-typography-title>
-      <a-space :size="8">
-        <a-select style="width: 86px" default-value="all">
-          <a-option value="all">
-            {{ $t('monitor.chat.options.all') }}
-          </a-option>
-        </a-select>
-        <a-input-search
-          :placeholder="$t('monitor.chat.placeholder.searchCategory')"
-        />
-        <a-button type="text">
-          <icon-download />
-        </a-button>
-      </a-space>
-    </div>
+  <a-card
+    class="general-card chat-panel"
+    :title="$t('monitor.title.chatPanel')"
+    :bordered="false"
+    :header-style="{ paddingBottom: '0' }"
+    :body-style="{
+      height: '100%',
+      paddingTop: '16px',
+      display: 'flex',
+      flexFlow: 'column',
+    }"
+  >
+    <a-space :size="8">
+      <a-select style="width: 86px" default-value="all">
+        <a-option value="all">
+          {{ $t('monitor.chat.options.all') }}
+        </a-option>
+      </a-select>
+      <a-input-search
+        :placeholder="$t('monitor.chat.placeholder.searchCategory')"
+      />
+      <a-button type="text">
+        <icon-download />
+      </a-button>
+    </a-space>
     <div class="chat-panel-content">
       <a-spin :loading="loading" style="width: 100%">
         <ChatList :render-list="chatList" />
@@ -33,7 +39,7 @@
         <a-button type="primary">{{ $t('monitor.chat.update') }}</a-button>
       </a-space>
     </div>
-  </div>
+  </a-card>
 </template>
 
 <script lang="ts">
@@ -73,7 +79,7 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 16px;
+  // padding: 20px;
   background-color: var(--color-bg-2);
 
   &-content {

@@ -3,9 +3,9 @@
     <Breadcrumb :items="['menu.profile', 'menu.profile.basic']" />
     <a-space direction="vertical" :size="16" fill>
       <a-card
+        class="general-card"
         :bordered="false"
         :title="$t('basicProfile.title.form')"
-        :header-style="{ border: 'none' }"
       >
         <template #extra>
           <a-space>
@@ -23,12 +23,12 @@
           </a-steps>
         </a-spin>
       </a-card>
-      <a-card :bordered="false">
+      <a-card class="general-card" :bordered="false">
         <a-spin :loading="loading" style="width: 100%">
           <ProfileItem :render-data="currentData" />
         </a-spin>
       </a-card>
-      <a-card :bordered="false">
+      <a-card class="general-card" :bordered="false">
         <a-spin :loading="preLoading" style="width: 100%">
           <ProfileItem type="pre" :render-data="preData" />
         </a-spin>
@@ -91,16 +91,11 @@ export default defineComponent({
 
 <style scoped lang="less">
 .container {
-  padding: 20px;
+  padding: 0 20px 20px 20px;
 }
 
 .steps {
   max-width: 548px;
   margin: 0 auto 10px;
-}
-
-.itemContainer {
-  padding: 24px;
-  background: rgb(var(--gray-1));
 }
 </style>

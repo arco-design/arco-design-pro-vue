@@ -14,7 +14,7 @@ export default defineComponent({
 
 <style scoped lang="less">
 .container {
-  padding: 20px;
+  padding: 0 20px 20px 20px;
 }
 
 .operations {

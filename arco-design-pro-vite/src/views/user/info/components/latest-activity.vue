@@ -1,8 +1,8 @@
 <template>
   <a-card
+    class="general-card"
     :title="$t('userInfo.title.latestActivity')"
     :bordered="false"
-    :header-style="{ border: 'none' }"
   >
     <template #extra>
       <a-link>{{ $t('userInfo.viewAll') }}</a-link>
@@ -55,12 +55,15 @@ export default defineComponent({
     justify-content: space-between;
   }
 }
-:deep(.arco-list-item-meta-avatar) {
-  padding-bottom: 27px;
-}
-:deep(.arco-list-item-meta-content) {
-  flex: 1;
-  padding-bottom: 27px;
-  border-bottom: 1px solid var(--color-neutral-3);
+.general-card :deep(.arco-list-item) {
+  padding-left: 0;
+  .arco-list-item-meta-content {
+    flex: 1;
+    padding-bottom: 27px;
+    border-bottom: 1px solid var(--color-neutral-3);
+  }
+  .arco-list-item-meta-avatar {
+    padding-bottom: 27px;
+  }
 }
 </style>

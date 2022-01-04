@@ -1,15 +1,12 @@
 <template>
-  <a-card :bordered="false">
-    <a-row>
-      <a-col :span="16">
-        <a-typography-title style="margin: 0 0 16px 0" :heading="6">
-          {{ $t('monitor.title.studioPreview') }}
-        </a-typography-title>
-      </a-col>
-      <a-col :span="8" style="text-align: right">
-        <icon-more />
-      </a-col>
-    </a-row>
+  <a-card
+    class="general-card"
+    :title="$t('monitor.title.studioPreview')"
+    :bordered="false"
+  >
+    <template #extra>
+      <icon-more />
+    </template>
     <div class="studio-wrapper">
       <img :src="previewImage" class="studio-preview" />
       <div class="studio-bar">

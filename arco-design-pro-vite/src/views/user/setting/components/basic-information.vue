@@ -47,10 +47,10 @@
       ]"
     >
       <a-select
-        v-model="formData.area"
+        v-model="formData.countryRegion"
         :placeholder="$t('userSetting.basicInfo.placeholder.area')"
       >
-        <a-option>中国</a-option>
+        <a-option value="China">中国</a-option>
       </a-select>
     </a-form-item>
     <a-form-item

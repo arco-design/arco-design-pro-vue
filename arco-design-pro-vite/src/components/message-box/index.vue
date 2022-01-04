@@ -5,7 +5,9 @@
         <template #title>
           <span> {{ item.title }}{{ formatUnreadLength(item.key) }} </span>
         </template>
-        <a-result v-if="!renderList.length" status="404"> </a-result>
+        <a-result v-if="!renderList.length" status="404">
+          <template #subtitle> {{ $t('messageBox.noContent') }} </template>
+        </a-result>
         <List
           :render-list="renderList"
           :unread-count="unreadCount"
@@ -103,7 +105,7 @@ export default defineComponent({
       return list.length ? `(${list.length})` : ``;
     };
     const handleItemClick = (items: MessageListType) => {
-      readMessage([...items]);
+      if (renderList.value.length) readMessage([...items]);
     };
     const emptyList = () => {
       messageData.messageList = [];
@@ -138,5 +140,8 @@ export default defineComponent({
 }
 :deep(.arco-tabs-content) {
   padding-top: 0;
+  .arco-result-subtitle {
+    color: rgb(var(--gray-6));
+  }
 }
 </style>

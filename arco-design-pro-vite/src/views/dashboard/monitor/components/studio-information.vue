@@ -1,8 +1,9 @@
 <template>
-  <a-card :bordered="false">
-    <a-typography-title style="margin: 0 0 16px 0" :heading="6">
-      {{ $t('monitor.title.studioInfo') }}
-    </a-typography-title>
+  <a-card
+    class="general-card"
+    :title="$t('monitor.title.studioInfo')"
+    :bordered="false"
+  >
     <a-form :model="info" layout="vertical">
       <a-form-item :label="$t('monitor.studioInfo.label.studioTitle')" required>
         <a-input

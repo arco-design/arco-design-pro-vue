@@ -45,7 +45,7 @@ export default defineComponent({
 
 <style scoped lang="less">
 .container {
-  padding: 16px;
+  padding: 0 20px 20px 20px;
   margin-bottom: 20px;
 }
 

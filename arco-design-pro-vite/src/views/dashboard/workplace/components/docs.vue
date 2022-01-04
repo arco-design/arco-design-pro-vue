@@ -1,8 +1,9 @@
 <template>
   <a-card
+    class="general-card"
     :title="$t('workplace.docs')"
     :bordered="false"
-    :header-style="{ border: 'none' }"
+    :header-style="{ paddingBottom: 0 }"
     :body-style="{ paddingTop: 0 }"
     style="height: 160px"
   >
@@ -11,22 +12,22 @@
     </template>
     <a-row>
       <a-col :span="12">
-        <a-link style="display: block">
+        <a-link>
           {{ $t('workplace.docs.productOverview') }}
         </a-link>
       </a-col>
       <a-col :span="12">
-        <a-link style="display: block">
+        <a-link>
           {{ $t('workplace.docs.userGuide') }}
         </a-link>
       </a-col>
       <a-col :span="12">
-        <a-link style="display: block">
+        <a-link>
           {{ $t('workplace.docs.workflow') }}
         </a-link>
       </a-col>
       <a-col :span="12">
-        <a-link style="display: block">
+        <a-link>
           {{ $t('workplace.docs.interfaceDocs') }}
         </a-link>
       </a-col>

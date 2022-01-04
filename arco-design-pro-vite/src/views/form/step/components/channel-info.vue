@@ -133,7 +133,6 @@ export default defineComponent({
 
 <style scoped lang="less">
 .container {
-  padding: 20px;
   .keep-margin {
     margin-bottom: 20px;
   }

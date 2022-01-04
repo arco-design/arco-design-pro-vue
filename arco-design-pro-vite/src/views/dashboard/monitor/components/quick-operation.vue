@@ -1,8 +1,9 @@
 <template>
-  <a-card :bordered="false">
-    <a-typography-title style="margin: 0 0 16px 0" :heading="6">
-      {{ $t('monitor.title.quickOperation') }}
-    </a-typography-title>
+  <a-card
+    class="general-card"
+    :title="$t('monitor.title.quickOperation')"
+    :bordered="false"
+  >
     <a-space direction="vertical" fill :size="10">
       <a-button long>
         {{ $t('monitor.quickOperation.changeClarity') }}

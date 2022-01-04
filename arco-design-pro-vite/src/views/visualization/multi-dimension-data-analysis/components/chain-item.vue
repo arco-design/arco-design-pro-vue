@@ -1,7 +1,11 @@
 <template>
   <a-spin :loading="loading" style="width: 100%">
-    <a-card :bordered="false" :header-style="{ border: 'none' }">
-      <template #title>{{ title }}</template>
+    <a-card
+      class="general-card"
+      :title="title"
+      :bordered="false"
+      :header-style="{ paddingBottom: '12px' }"
+    >
       <div class="content">
         <a-statistic
           v-if="!loading"
@@ -71,6 +75,9 @@ export default defineComponent({
           smooth: true,
           barWidth: 7,
           barGap: '0',
+          lineStyle: {
+            color: '#4080FF',
+          },
         },
       ],
     });
@@ -114,6 +121,7 @@ export default defineComponent({
   display: flex;
   align-items: center;
   width: 100%;
+  margin-bottom: 12px;
 }
 .percent-text {
   margin-left: 16px;

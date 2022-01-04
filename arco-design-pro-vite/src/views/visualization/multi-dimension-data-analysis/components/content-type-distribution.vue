@@ -1,9 +1,10 @@
 <template>
-  <a-card :bordered="false" :header-style="{ border: 'none' }">
-    <template #title>
-      {{ $t('multiDAnalysis.card.title.contentTypeDistribution') }}
-    </template>
-    <Chart style="width: 100%; height: 250px" :option="chartOption" />
+  <a-card
+    class="general-card"
+    :title="$t('multiDAnalysis.card.title.contentTypeDistribution')"
+    :bordered="false"
+  >
+    <Chart style="height: 202px" :option="chartOption" />
   </a-card>
 </template>
 
@@ -44,7 +45,7 @@ export default defineComponent({
           { name: '体育', max: 52000 },
           { name: '娱乐', max: 25000 },
         ],
-        axisLabel: {
+        axisName: {
           color: '#1D2129',
         },
       },

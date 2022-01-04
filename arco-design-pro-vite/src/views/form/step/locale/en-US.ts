@@ -25,10 +25,10 @@ export default {
   'stepForm.form.error.activityName.required': 'Please enter the activity name',
   'stepForm.form.label.channelType': 'Channel Type',
   'stepForm.placeholder.channelType': 'Select a channel type',
-  'stepForm.form.error.channelType.required': 'Please Select a channel type',
+  'stepForm.form.error.channelType.required': 'Please select a channel type',
   'stepForm.form.label.promotionTime': 'Promotion Time',
   'stepForm.form.error.promotionTime.required':
-    'Please enter the promotion time',
+    'Please select the promotion time',
   'stepForm.form.label.promoteLink': 'Promote Link',
   'stepForm.form.error.promoteLink.required': 'Please enter the promotion link',
   'stepForm.form.error.promoteLink.pattern':

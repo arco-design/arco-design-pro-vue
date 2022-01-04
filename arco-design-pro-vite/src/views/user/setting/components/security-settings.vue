@@ -116,7 +116,7 @@ export default defineComponent({
     justify-content: space-between;
 
     .tip {
-      color: var(--color-text-4);
+      color: rgb(var(--gray-6));
     }
     .operation {
       margin-right: 6px;

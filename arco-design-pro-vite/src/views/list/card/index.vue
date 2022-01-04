@@ -4,9 +4,10 @@
     <a-row :gutter="20" align="stretch">
       <a-col :span="24">
         <a-card
+          class="general-card"
           :bordered="false"
           :title="$t('menu.list.cardList')"
-          :header-style="{ border: 'none', paddingBottom: 0 }"
+          :header-style="{ paddingBottom: '16px' }"
         >
           <a-row justify="space-between">
             <a-col :span="24">
@@ -58,8 +59,6 @@ export default defineComponent({
 
 <style scoped lang="less">
 .container {
-  padding: 20px;
-
   :deep(.arco-list-content) {
     overflow-x: hidden;
   }

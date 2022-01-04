@@ -2,7 +2,7 @@
   <div class="container">
     <Breadcrumb :items="['menu.form', 'menu.form.step']" />
     <a-spin :loading="loading" style="width: 100%">
-      <a-card :bordered="false" :header-style="{ border: 'none' }">
+      <a-card class="general-card" :bordered="false">
         <template #title>
           {{ $t('stepForm.step.title') }}
         </template>
@@ -102,10 +102,6 @@ export default defineComponent({
 </script>
 
 <style scoped lang="less">
-.container {
-  padding: 20px;
-}
-
 .wrapper {
   display: flex;
   flex-direction: column;

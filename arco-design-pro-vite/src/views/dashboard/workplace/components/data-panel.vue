@@ -77,7 +77,7 @@ export default defineComponent({});
 <style lang="less" scoped>
 .arco-col.panel {
   margin-bottom: 0;
-  padding: 16px 16px 0 16px;
+  padding: 16px 20px 0 20px;
 }
 .panel-col {
   padding-left: 43px;

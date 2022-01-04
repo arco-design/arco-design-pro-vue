@@ -1,17 +1,18 @@
 <template>
   <a-card
+    class="general-card"
     :title="$t('workplace.announcement')"
     :bordered="false"
-    :header-style="{ border: 'none' }"
-    :body-style="{ paddingTop: 0 }"
+    :header-style="{ paddingBottom: '0' }"
+    :body-style="{ paddingTop: '15px' }"
   >
     <template #extra>
       <a-link>{{ $t('workplace.viewMore') }}</a-link>
     </template>
-    <a-space direction="vertical">
+    <a-space direction="vertical" :size="6">
       <a-space v-for="(item, idx) in list" :key="idx">
-        <a-tag :color="item.type">{{ item.label }}</a-tag>
-        <a-typography-text style="margin-bottom: 0" ellipsis>
+        <a-tag :color="item.type" size="small">{{ item.label }}</a-tag>
+        <a-typography-text class="item-content" ellipsis>
           {{ item.content }}
         </a-typography-text>
       </a-space>
@@ -59,4 +60,10 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="less"></style>
+<style scoped lang="less">
+.item-content {
+  margin-bottom: 0;
+  font-size: 14px;
+  color: rgb(var(--gray-8));
+}
+</style>

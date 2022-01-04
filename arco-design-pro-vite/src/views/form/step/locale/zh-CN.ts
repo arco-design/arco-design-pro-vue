@@ -23,7 +23,7 @@ export default {
   'stepForm.placeholder.channelType': '请选择渠道类型',
   'stepForm.form.error.channelType.required': '请选择渠道类型',
   'stepForm.form.label.promotionTime': '推广时间',
-  'stepForm.form.error.promotionTime.required': '请输入推广时间',
+  'stepForm.form.error.promotionTime.required': '请选择推广时间',
   'stepForm.form.label.promoteLink': '推广地址',
   'stepForm.form.error.promoteLink.required': '请输入推广地址',
   'stepForm.form.error.promoteLink.pattern':
@@ -36,7 +36,7 @@ export default {
   'stepForm.form.error.advertisingSource.required': '请输入广告来源',
   'stepForm.form.label.advertisingMedia': '广告媒介',
   'stepForm.placeholder.advertisingMedia': '营销媒介：cpc、bannner、edm',
-  'stepForm.form.error.advertisingMedia.required': '请输入广告来源',
+  'stepForm.form.error.advertisingMedia.required': '请输入广告媒介',
   'stepForm.form.label.keyword': '关键词',
   'stepForm.placeholder.keyword': '请选择关键词',
   'stepForm.form.error.keyword.required': '请选择关键词',
@@ -44,7 +44,7 @@ export default {
   'stepForm.form.label.advertisingContent': '广告内容',
   'stepForm.placeholder.advertisingContent':
     '请输入广告内容介绍，最多不超过200字。',
-  'stepForm.form.error.advertisingContent.required': '请选择广告内容',
+  'stepForm.form.error.advertisingContent.required': '请输入广告内容',
   'stepForm.form.error.advertisingContent.maxLength': '最多不超过200字',
   'stepForm.form.description.title': '渠道表单说明',
   'stepForm.form.description.text':

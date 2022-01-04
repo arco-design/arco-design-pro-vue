@@ -1,6 +1,10 @@
 <template>
   <a-spin :loading="loading" style="width: 100%">
-    <a-card :bordered="false" :header-style="{ border: 'none' }">
+    <a-card
+      class="general-card"
+      :bordered="false"
+      :header-style="{ paddingBottom: '16px' }"
+    >
       <template #title>
         {{ $t('dataAnalysis.contentPeriodAnalysis') }}
       </template>
@@ -105,6 +109,15 @@ export default defineComponent({
           smooth: true,
           showSymbol: false,
           color: '#246EFF',
+          symbol: 'circle',
+          symbolSize: 10,
+          emphasis: {
+            focus: 'series',
+            itemStyle: {
+              borderWidth: 2,
+              borderColor: '#E0E3FF',
+            },
+          },
         },
         {
           name: '图文类',
@@ -113,6 +126,15 @@ export default defineComponent({
           smooth: true,
           showSymbol: false,
           color: '#00B2FF',
+          symbol: 'circle',
+          symbolSize: 10,
+          emphasis: {
+            focus: 'series',
+            itemStyle: {
+              borderWidth: 2,
+              borderColor: '#E2F2FF',
+            },
+          },
         },
         {
           name: '视频类',
@@ -121,6 +143,15 @@ export default defineComponent({
           smooth: true,
           showSymbol: false,
           color: '#81E2FF',
+          symbol: 'circle',
+          symbolSize: 10,
+          emphasis: {
+            focus: 'series',
+            itemStyle: {
+              borderWidth: 2,
+              borderColor: '#D9F6FF',
+            },
+          },
         },
       ],
       dataZoom: [

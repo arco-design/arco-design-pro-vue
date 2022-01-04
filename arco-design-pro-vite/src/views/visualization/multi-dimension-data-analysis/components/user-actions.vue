@@ -1,9 +1,10 @@
 <template>
-  <a-card :bordered="false" :header-style="{ border: 'none' }">
-    <template #title>
-      {{ $t('multiDAnalysis.card.title.userActions') }}
-    </template>
-    <Chart style="width: 100%; height: 110px" :option="chartOption" />
+  <a-card
+    class="general-card"
+    :title="$t('multiDAnalysis.card.title.userActions')"
+    :bordered="false"
+  >
+    <Chart height="122px" :option="chartOption" />
   </a-card>
 </template>
 

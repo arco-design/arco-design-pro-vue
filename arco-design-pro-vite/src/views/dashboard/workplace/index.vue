@@ -70,6 +70,7 @@ export default defineComponent({
   .left-space {
     margin-bottom: 16px;
     background-color: var(--color-bg-2);
+    border-radius: 4px;
   }
 }
 
@@ -89,8 +90,11 @@ export default defineComponent({
 }
 :deep(.panel-border) {
   margin-bottom: 0;
+  border-bottom: 1px solid rgb(var(--gray-2));
 }
 .moduler-wrap {
+  border-radius: 4px;
+  background-color: var(--color-bg-2);
   :deep(.text) {
     font-size: 12px;
     text-align: center;
@@ -98,7 +102,7 @@ export default defineComponent({
   }
 
   :deep(.wrapper) {
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     text-align: center;
     cursor: pointer;
 
@@ -120,11 +124,12 @@ export default defineComponent({
 
   :deep(.icon) {
     display: inline-block;
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     margin-bottom: 4px;
     color: rgb(var(--dark-gray-1));
-    line-height: 24px;
+    line-height: 32px;
+    font-size: 16px;
     text-align: center;
     background-color: rgb(var(--gray-1));
     border-radius: 4px;

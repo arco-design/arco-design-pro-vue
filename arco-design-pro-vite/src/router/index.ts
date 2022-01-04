@@ -22,6 +22,9 @@ const router = createRouter({
       children: appRoutes,
     },
   ],
+  scrollBehavior() {
+    return { top: 0 };
+  },
 });
 
 router.beforeEach(async (_to, _from, next) => {

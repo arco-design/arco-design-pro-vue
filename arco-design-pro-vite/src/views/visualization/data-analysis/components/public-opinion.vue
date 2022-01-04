@@ -1,8 +1,10 @@
 <template>
-  <a-card :bordered="false" :header-style="{ border: 'none' }">
-    <template #title>
-      {{ $t('dataAnalysis.title.publicOpinion') }}
-    </template>
+  <a-card
+    class="general-card"
+    :bordered="false"
+    :title="$t('dataAnalysis.title.publicOpinion')"
+    :header-style="{ paddingBottom: '12px' }"
+  >
     <a-row :gutter="12">
       <a-col :span="6">
         <ChainItem

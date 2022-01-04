@@ -26,8 +26,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-// import { useI18n } from 'vue-i18n';
-// import Info from './components/info.vue';
 import UserPanel from './components/user-panel.vue';
 import BasicInformation from './components/basic-information.vue';
 import SecuritySettings from './components/security-settings.vue';
@@ -35,15 +33,12 @@ import Certification from './components/certification.vue';
 
 export default defineComponent({
   components: {
-    // Info,
     UserPanel,
     BasicInformation,
     SecuritySettings,
     Certification,
   },
   setup() {
-    // const { t } = useI18n();
-
     return {};
   },
 });
@@ -51,13 +46,14 @@ export default defineComponent({
 
 <style scoped lang="less">
 .container {
-  padding: 20px;
+  padding: 0 20px 20px 20px;
 }
 
 .wrapper {
-  padding: 20px;
+  padding: 20px 0 0 20px;
   min-height: 580px;
   background-color: var(--color-bg-2);
+  border-radius: 4px;
 }
 
 :deep(.section-title) {

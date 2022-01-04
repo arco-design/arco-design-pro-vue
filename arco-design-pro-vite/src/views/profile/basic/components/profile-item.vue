@@ -1,18 +1,20 @@
 <template>
   <div class="item-container">
-    <a-descriptions
-      v-for="(item, idx) in blockDataList"
-      :key="idx"
-      colon=":"
-      :label-style="{
-        textAlign: 'right',
-        width: '100px',
-        paddingRight: '10px',
-      }"
-      :value-style="{ width: '500px' }"
-      :title="item.title"
-      :data="item.data"
-    />
+    <a-space :size="16" direction="vertical" fill>
+      <a-descriptions
+        v-for="(item, idx) in blockDataList"
+        :key="idx"
+        colon=":"
+        :label-style="{
+          textAlign: 'right',
+          width: '100px',
+          paddingRight: '10px',
+        }"
+        :value-style="{ width: '500px' }"
+        :title="item.title"
+        :data="item.data"
+      />
+    </a-space>
   </div>
 </template>
 
@@ -132,4 +134,11 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="less"></style>
+<style scoped lang="less">
+.item-container {
+  padding-top: 20px;
+  :deep(.arco-descriptions-item-label) {
+    font-weight: normal;
+  }
+}
+</style>

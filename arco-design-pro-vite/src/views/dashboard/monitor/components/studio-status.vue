@@ -1,11 +1,12 @@
 <template>
-  <a-card :bordered="false">
-    <a-space align="start">
-      <a-typography-title style="margin: 0 0 16px 0" :heading="6">
-        {{ $t('monitor.studioStatus.title.studioStatus') }}
-      </a-typography-title>
+  <a-card
+    class="general-card"
+    :title="$t('monitor.studioStatus.title.studioStatus')"
+    :bordered="false"
+  >
+    <template #extra>
       <a-tag color="green">{{ $t('monitor.studioStatus.smooth') }}</a-tag>
-    </a-space>
+    </template>
     <a-descriptions layout="horizontal" :data="dataStatus" :column="2">
       <template #label="{ label }">
         <span

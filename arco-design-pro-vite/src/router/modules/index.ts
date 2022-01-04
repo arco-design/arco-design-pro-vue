@@ -9,10 +9,10 @@ import User from './user';
 
 export default [
   Dashboard,
+  Visualization,
   List,
   Form,
   Profile,
-  Visualization,
   Result,
   Exception,
   User,

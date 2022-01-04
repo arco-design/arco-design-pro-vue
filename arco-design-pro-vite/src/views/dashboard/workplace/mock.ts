@@ -103,13 +103,14 @@ const videoList = [
 setupMock({
   setup() {
     Mock.mock(new RegExp('/api/content-data'), () => {
+      const presetData = [58, 81, 53, 90, 64, 88, 49, 79];
       const getLineData = () => {
         const count = 8;
         return new Array(count).fill(0).map((el, idx) => ({
           x: dayjs()
             .day(idx - 2)
             .format('YYYY-MM-DD'),
-          y: Mock.Random.natural(40, 90),
+          y: presetData[idx],
         }));
       };
       return successResponseWrap([...getLineData()]);

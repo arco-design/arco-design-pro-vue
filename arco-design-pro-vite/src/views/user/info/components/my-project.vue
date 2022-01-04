@@ -1,9 +1,9 @@
 <template>
   <a-spin :loading="loading" style="width: 100%">
     <a-card
+      class="general-card"
       :title="$t('userInfo.title.myProject')"
       :bordered="false"
-      :header-style="{ border: 'none' }"
     >
       <template #extra>
         <a-link>{{ $t('userInfo.showMore') }}</a-link>

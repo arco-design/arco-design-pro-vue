@@ -1,5 +1,5 @@
 <template>
-  <a-card :bordered="false">
+  <a-card :bordered="false" :body-style="{ padding: '20px' }">
     <a-tabs default-active-tab="liveMethod">
       <a-tab-pane
         key="liveMethod"

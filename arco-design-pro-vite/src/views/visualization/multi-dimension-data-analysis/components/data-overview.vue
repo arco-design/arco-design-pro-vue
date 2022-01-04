@@ -1,15 +1,12 @@
 <template>
   <a-spin :loading="loading" style="width: 100%">
-    <a-card :bordered="false">
-      <a-typography-title class="section-titile" :heading="6">
-        {{ $t('multiDAnalysis.card.title.dataOverview') }}
-      </a-typography-title>
+    <a-card
+      class="general-card"
+      :title="$t('multiDAnalysis.card.title.dataOverview')"
+      :bordered="false"
+    >
       <a-row justify="space-between">
-        <a-col
-          v-for="(item, idx) in renderData"
-          :key="idx"
-          :span="24 / renderData.length"
-        >
+        <a-col v-for="(item, idx) in renderData" :key="idx" :span="6">
           <a-statistic
             :title="item.title"
             :value="item.value"
@@ -20,16 +17,16 @@
                 class="statistic-prefix"
                 :style="{ background: item.prefix.background }"
               >
-                <component :is="item.prefix.icon" />
+                <component
+                  :is="item.prefix.icon"
+                  :style="{ color: item.prefix.iconColor }"
+                />
               </span>
             </template>
           </a-statistic>
         </a-col>
       </a-row>
-      <Chart
-        style="width: 100%; height: 370px; margin-top: 20px"
-        :option="chartOption"
-      />
+      <Chart style="height: 328px; margin-top: 20px" :option="chartOption" />
     </a-card>
   </a-spin>
 </template>
@@ -53,18 +50,33 @@ const tooltipItemsHtmlString = (items: ToolTipFormatterParams[]) => {
         <span class="tooltip-value">${el.value.toLocaleString()}</span>
       </div>`
     )
+    .reverse()
     .join('');
 };
 
-const generateSeries = (name: string, lineColor: string) => {
+const generateSeries = (
+  name: string,
+  lineColor: string,
+  itemBorderColor: string
+) => {
   return {
     name,
     data: [] as number[],
     stack: 'Total',
     type: 'line',
     smooth: true,
+    symbol: 'circle',
+    symbolSize: 10,
+    itemStyle: {
+      color: lineColor,
+    },
     emphasis: {
       focus: 'series',
+      itemStyle: {
+        color: lineColor,
+        borderWidth: 2,
+        borderColor: itemBorderColor,
+      },
     },
     lineStyle: {
       width: 2,
@@ -87,7 +99,8 @@ export default defineComponent({
         value: 1902,
         prefix: {
           icon: 'icon-desktop',
-          background: '#f53f3f',
+          background: '#FFE4BA',
+          iconColor: '#F77234',
         },
       },
       {
@@ -95,7 +108,8 @@ export default defineComponent({
         value: 2445,
         prefix: {
           icon: 'icon-code',
-          background: '#0fc6c2',
+          background: '#E8FFFB',
+          iconColor: '#33D1C9',
         },
       },
       {
@@ -103,7 +117,8 @@ export default defineComponent({
         value: 3034,
         prefix: {
           icon: 'icon-user',
-          background: '#175dff',
+          background: '#E8F3FF',
+          iconColor: '#165DFF',
         },
       },
       {
@@ -111,7 +126,8 @@ export default defineComponent({
         value: 1275,
         prefix: {
           icon: 'icon-user',
-          background: '#ff7d03',
+          background: '#F5E8FF',
+          iconColor: '#722ED1',
         },
       },
     ]);
@@ -163,6 +179,11 @@ export default defineComponent({
             return `${value / 1000}k`;
           },
         },
+        splitLine: {
+          lineStyle: {
+            color: '#F2F3F5',
+          },
+        },
       },
       tooltip: {
         trigger: 'axis',
@@ -204,10 +225,10 @@ export default defineComponent({
         ],
       },
       series: [
-        generateSeries('内容生产量', '#F77234'),
-        generateSeries('内容点击量', '#33D1C9'),
-        generateSeries('内容曝光量', '#3469FF'),
-        generateSeries('活跃用户数', '#722ED1'),
+        generateSeries('活跃用户数', '#722ED1', '#F5E8FF'),
+        generateSeries('内容生产量', '#F77234', '#FFE4BA'),
+        generateSeries('内容点击量', '#33D1C9', '#E8FFFB'),
+        generateSeries('内容曝光量', '#3469FF', '#E8F3FF'),
       ],
     });
     const fetchData = async () => {
@@ -242,9 +263,14 @@ export default defineComponent({
 </script>
 
 <style scoped lang="less">
-:deep(.arco-statistic-value) {
-  display: flex;
-  align-items: center;
+:deep(.arco-statistic) {
+  .arco-statistic-title {
+    color: rgb(var(--gray-10));
+  }
+  .arco-statistic-value {
+    display: flex;
+    align-items: center;
+  }
 }
 .statistic-prefix {
   display: inline-block;

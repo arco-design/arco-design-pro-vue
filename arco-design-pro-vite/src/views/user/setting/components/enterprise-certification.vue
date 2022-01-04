@@ -1,135 +1,107 @@
 <template>
   <a-card
+    class="general-card"
     :bordered="false"
     :title="$t('userSetting.certification.title.enterprise')"
-    :header-style="{ border: 'none' }"
+    :header-style="{ padding: '0px 20px 16px 20px' }"
   >
     <template #extra>
       <a-link>{{ $t('userSetting.certification.extra.enterprise') }}</a-link>
     </template>
-    <a-space class="card-content" direction="vertical">
-      <a-row>
-        <a-col :span="8">
-          <a-space :size="16">
-            <a-typography-paragraph class="item-label">
-              {{ $t('userSetting.certification.label.accountType') }}
-            </a-typography-paragraph>
-            <a-typography-paragraph>
-              {{ enterpriseInfo.accountType }}
-            </a-typography-paragraph>
-          </a-space>
-        </a-col>
-        <a-col :span="8">
-          <a-space :size="16">
-            <a-typography-paragraph class="item-label">
-              {{ $t('userSetting.certification.label.status') }}
-            </a-typography-paragraph>
-            <a-tag
-              v-if="enterpriseInfo.status === 0"
-              style="margin-bottom: 1em"
-              color="green"
-              size="small"
-            >
-              已认证
-            </a-tag>
-          </a-space>
-        </a-col>
-        <a-col :span="8">
-          <a-space :size="16">
-            <a-typography-paragraph class="item-label">
-              {{ $t('userSetting.certification.label.time') }}
-            </a-typography-paragraph>
-            <a-typography-paragraph>
-              {{ enterpriseInfo.time }}
-            </a-typography-paragraph>
-          </a-space>
-        </a-col>
-      </a-row>
-      <a-row>
-        <a-col :span="8">
-          <a-space :size="16">
-            <a-typography-paragraph class="item-label">
-              {{ $t('userSetting.certification.label.legalPerson') }}
-            </a-typography-paragraph>
-            <a-typography-paragraph>
-              {{ enterpriseInfo.legalPerson }}
-            </a-typography-paragraph>
-          </a-space>
-        </a-col>
-        <a-col :span="8">
-          <a-space :size="16">
-            <a-typography-paragraph class="item-label">
-              {{ $t('userSetting.certification.label.certificateType') }}
-            </a-typography-paragraph>
-            <a-typography-paragraph>
-              {{ enterpriseInfo.certificateType }}
-            </a-typography-paragraph>
-          </a-space>
-        </a-col>
-        <a-col :span="8">
-          <a-space :size="16">
-            <a-typography-paragraph class="item-label">
-              {{ $t('userSetting.certification.label.authenticationNumber') }}
-            </a-typography-paragraph>
-            <a-typography-paragraph>
-              {{ enterpriseInfo.authenticationNumber }}
-            </a-typography-paragraph>
-          </a-space>
-        </a-col>
-      </a-row>
-      <a-row>
-        <a-col :span="8">
-          <a-space :size="16">
-            <a-typography-paragraph class="item-label">
-              {{ $t('userSetting.certification.label.enterpriseName') }}
-            </a-typography-paragraph>
-            <a-typography-paragraph>
-              {{ enterpriseInfo.enterpriseName }}
-            </a-typography-paragraph>
-          </a-space>
-        </a-col>
-        <a-col :span="8">
-          <a-space :size="16">
-            <a-typography-paragraph class="item-label">
-              {{
-                $t('userSetting.certification.label.enterpriseCertificateType')
-              }}
-            </a-typography-paragraph>
-            <a-typography-paragraph>
-              {{ enterpriseInfo.enterpriseCertificateType }}
-            </a-typography-paragraph>
-          </a-space>
-        </a-col>
-        <a-col :span="8">
-          <a-space :size="16">
-            <a-typography-paragraph class="item-label">
-              {{ $t('userSetting.certification.label.organizationCode') }}
-            </a-typography-paragraph>
-            <a-typography-paragraph>
-              {{ enterpriseInfo.organizationCode }}
-            </a-typography-paragraph>
-          </a-space>
-        </a-col>
-      </a-row>
-    </a-space>
+    <a-descriptions
+      class="card-content"
+      :data="renderData"
+      :column="3"
+      align="right"
+      layout="inline-horizontal"
+      :label-style="{ fontWeight: 'normal' }"
+      :value-style="{
+        width: '200px',
+        paddingLeft: '8px',
+        textAlign: 'left',
+      }"
+    >
+      <template #label="{ label }">{{ $t(label) }} :</template>
+      <template #value="{ value, data }">
+        <a-tag
+          v-if="data.label === 'userSetting.certification.label.status'"
+          color="green"
+          size="small"
+        >
+          已认证
+        </a-tag>
+        <span v-else>{{ value }}</span>
+      </template>
+    </a-descriptions>
   </a-card>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
+import { defineComponent, PropType, computed } from 'vue';
 import { EnterpriseCertificationModel } from '@/api/user-center';
 
 export default defineComponent({
   props: {
     enterpriseInfo: {
       type: Object as PropType<EnterpriseCertificationModel>,
-      default() {
-        return {};
-      },
+      required: true,
     },
   },
-  setup() {
-    //
+  setup(props) {
+    const renderData = computed(() => {
+      const {
+        accountType,
+        status,
+        time,
+        legalPerson,
+        certificateType,
+        authenticationNumber,
+        enterpriseName,
+        enterpriseCertificateType,
+        organizationCode,
+      } = props.enterpriseInfo;
+      return [
+        {
+          label: 'userSetting.certification.label.accountType',
+          value: accountType,
+        },
+        {
+          label: 'userSetting.certification.label.status',
+          value: status,
+        },
+        {
+          label: 'userSetting.certification.label.time',
+          value: time,
+        },
+        {
+          label: 'userSetting.certification.label.legalPerson',
+          value: legalPerson,
+        },
+        {
+          label: 'userSetting.certification.label.certificateType',
+          value: certificateType,
+        },
+        {
+          label: 'userSetting.certification.label.authenticationNumber',
+          value: authenticationNumber,
+        },
+        {
+          label: 'userSetting.certification.label.enterpriseName',
+          value: enterpriseName,
+        },
+        {
+          label: 'userSetting.certification.label.enterpriseCertificateType',
+          value: enterpriseCertificateType,
+        },
+        {
+          label: 'userSetting.certification.label.organizationCode',
+          value: organizationCode,
+        },
+      ];
+    });
+    return {
+      renderData,
+    };
   },
 });
 </script>

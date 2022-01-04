@@ -1,5 +1,6 @@
 <template>
   <a-card
+    class="general-card"
     :bordered="false"
     :title="$t('userSetting.certification.title.record')"
     :header-style="{ border: 'none' }"
@@ -71,4 +72,12 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="less"></style>
+<style scoped lang="less">
+:deep(.arco-table-th) {
+  &:last-child {
+    .arco-table-th-item-title {
+      margin-left: 16px;
+    }
+  }
+}
+</style>

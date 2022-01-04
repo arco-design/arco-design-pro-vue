@@ -22,7 +22,7 @@
         :column="2"
         align="right"
         layout="inline-horizontal"
-        :label-style="{ width: '140px' }"
+        :label-style="{ width: '140px', fontWeight: 'normal' }"
         :value-style="{
           width: '200px',
           paddingLeft: '8px',
@@ -30,8 +30,12 @@
         }"
       >
         <template #label="{ label }">{{ $t(label) }} :</template>
-        <template #value="{ value }">
-          <a-tag v-if="typeof value === 'number'" color="green" size="small">
+        <template #value="{ value, data }">
+          <a-tag
+            v-if="data.label === 'userSetting.label.certification'"
+            color="green"
+            size="small"
+          >
             已认证
           </a-tag>
           <span v-else>{{ value }}</span>
@@ -89,6 +93,7 @@ export default defineComponent({
 <style scoped lang="less">
 .arco-card {
   padding: 14px 0 4px 4px;
+  border-radius: 4px;
 }
 :deep(.arco-avatar-trigger-icon-button) {
   width: 32px;

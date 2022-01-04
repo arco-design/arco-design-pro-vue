@@ -5,6 +5,7 @@
     :auto-open="false"
     :selected-keys="selectedKey"
     :auto-open-selected="true"
+    style="height: 100%"
     @collapse="setCollapse"
   >
     <a-sub-menu v-for="route in appRoute.children" :key="route.name">
