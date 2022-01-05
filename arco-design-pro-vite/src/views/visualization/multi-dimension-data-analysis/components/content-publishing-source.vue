@@ -1,9 +1,10 @@
 <template>
   <a-spin :loading="loading" style="width: 100%">
-    <a-card :bordered="false" :header-style="{ border: 'none' }">
-      <template #title>
-        {{ $t('multiDAnalysis.card.title.contentTypeDistribution') }}
-      </template>
+    <a-card
+      class="general-card"
+      :bordered="false"
+      :title="$t('multiDAnalysis.card.title.contentPublishingSource')"
+    >
       <Chart style="width: 100%; height: 300px" :option="chartOption" />
     </a-card>
   </a-spin>
@@ -15,6 +16,13 @@ import useLoading from '@/hooks/loading';
 
 export default defineComponent({
   setup() {
+    const graphicElementStyle = {
+      textAlign: 'center',
+      fill: '#4E5969',
+      fontSize: 14,
+      lineWidth: 10,
+      fontWeight: 'bold',
+    };
     const chartOption = ref({
       legend: {
         left: 'center',
@@ -35,10 +43,7 @@ export default defineComponent({
             top: 'center',
             style: {
               text: '纯文本',
-              textAlign: 'center',
-              fill: '#4E5969',
-              fontSize: 14,
-              lineWidth: 10,
+              ...graphicElementStyle,
             },
           },
           {
@@ -47,10 +52,7 @@ export default defineComponent({
             top: 'center',
             style: {
               text: '图文类',
-              textAlign: 'center',
-              fill: '#4E5969',
-              fontSize: 14,
-              lineWidth: 10,
+              ...graphicElementStyle,
             },
           },
           {
@@ -59,10 +61,7 @@ export default defineComponent({
             top: 'center',
             style: {
               text: '视频类',
-              textAlign: 'center',
-              fill: '#4E5969',
-              fontSize: 14,
-              lineWidth: 10,
+              ...graphicElementStyle,
             },
           },
         ],

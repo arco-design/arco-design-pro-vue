@@ -1,33 +1,38 @@
 <template>
-  <a-spin :loading="loading" style="width: 100%">
-    <div class="list-wrap">
-      <a-typography-title class="block-title" :heading="6">
-        {{ $t('cardList.tab.title.preset') }}
-      </a-typography-title>
-      <a-row class="list-row" :gutter="24">
-        <a-col
-          v-for="(item, idx) in response"
-          :key="idx"
-          :span="6"
-          class="list-col"
-          style="min-height: 140px"
+  <div class="list-wrap">
+    <a-typography-title class="block-title" :heading="6">
+      {{ $t('cardList.tab.title.preset') }}
+    </a-typography-title>
+    <a-row class="list-row" :gutter="24">
+      <a-col
+        v-for="item in renderData"
+        :key="item.id"
+        :span="6"
+        class="list-col"
+        style="min-height: 140px"
+      >
+        <CardWrap
+          :loading="loading"
+          :title="item.title"
+          :description="item.description"
+          :default-value="item.enable"
+          :action-type="item.actionType"
+          :tag-text="$t('cardList.preset.tag')"
         >
-          <CardWrap
-            :title="item.title"
-            :description="item.description"
-            :default-value="item.enable"
-            :action-type="item.actionType"
-            :tag-text="$t('cardList.preset.tag')"
-          />
-        </a-col>
-      </a-row>
-    </div>
-    <a-empty v-if="!response?.length" />
-  </a-spin>
+          <template #skeleton>
+            <a-skeleton :animation="true">
+              <a-skeleton-line :widths="['100%', '40%']" :rows="2" />
+              <a-skeleton-line :widths="['40%']" :rows="1" />
+            </a-skeleton>
+          </template>
+        </CardWrap>
+      </a-col>
+    </a-row>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, computed } from 'vue';
 import { queryRulesPresetList, ServiceRecord } from '@/api/list';
 import useRequest from '@/hooks/request';
 import CardWrap from './card-wrap.vue';
@@ -39,9 +44,15 @@ export default defineComponent({
   setup() {
     const { loading, response } =
       useRequest<ServiceRecord[]>(queryRulesPresetList);
+    const renderData = computed(() => {
+      if (loading.value) {
+        return new Array(6).fill({});
+      }
+      return response.value;
+    });
     return {
       loading,
-      response,
+      renderData,
     };
   },
 });

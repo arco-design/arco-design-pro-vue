@@ -10,31 +10,31 @@ setupMock({
           name: '秦臻宇',
           email: 'qingzhenyu@arco.design',
           avatar:
-            'http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/56bf91ebc7afd8294a52708c6e03556e.svg~tplv-49unhts6dw-image.image',
+            '//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/56bf91ebc7afd8294a52708c6e03556e.svg~tplv-49unhts6dw-image.image',
         },
         {
           name: '于涛',
           email: 'yuebao@arco.design',
           avatar:
-            'http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/bc5dd0d204a67f1a8d0d2a43d62b27c5.svg~tplv-49unhts6dw-image.image',
+            '//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/bc5dd0d204a67f1a8d0d2a43d62b27c5.svg~tplv-49unhts6dw-image.image',
         },
         {
           name: '宁波',
           email: 'ningbo@arco.design',
           avatar:
-            'http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/5ba07a51bab9754c547927218aa62faa.svg~tplv-49unhts6dw-image.image',
+            '//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/5ba07a51bab9754c547927218aa62faa.svg~tplv-49unhts6dw-image.image',
         },
         {
           name: '郑曦月',
           email: 'zhengxiyue@arco.design',
           avatar:
-            'http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/b8c414c300d5511413d53113dfdb41b7.svg~tplv-49unhts6dw-image.image',
+            '//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/b8c414c300d5511413d53113dfdb41b7.svg~tplv-49unhts6dw-image.image',
         },
         {
           name: '宁波',
           email: 'ningbo@arco.design',
           avatar:
-            'http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/9448405f941c4f61426565bca8acb24e.png~tplv-49unhts6dw-image.image',
+            '//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/9448405f941c4f61426565bca8acb24e.png~tplv-49unhts6dw-image.image',
         },
       ];
       const units = [
@@ -82,7 +82,7 @@ setupMock({
           title: '发布了项目 Arco Design System',
           description: '企业级产品设计系统',
           avatar:
-            'http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/9448405f941c4f61426565bca8acb24e.png~tplv-49unhts6dw-image.image',
+            '//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/9448405f941c4f61426565bca8acb24e.png~tplv-49unhts6dw-image.image',
         }))
       );
     });
@@ -131,28 +131,28 @@ setupMock({
         {
           id: 1,
           avatar:
-            'http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/56bf91ebc7afd8294a52708c6e03556e.svg~tplv-49unhts6dw-image.image',
+            '//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/56bf91ebc7afd8294a52708c6e03556e.svg~tplv-49unhts6dw-image.image',
           name: '火山引擎智能应用团队',
           peopleNumber: Mock.Random.natural(10, 100),
         },
         {
           id: 2,
           avatar:
-            'http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/bc5dd0d204a67f1a8d0d2a43d62b27c5.svg~tplv-49unhts6dw-image.image',
+            '//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/bc5dd0d204a67f1a8d0d2a43d62b27c5.svg~tplv-49unhts6dw-image.image',
           name: '企业级产品设计团队',
           peopleNumber: Mock.Random.natural(5000, 6000),
         },
         {
           id: 3,
           avatar:
-            'http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/5ba07a51bab9754c547927218aa62faa.svg~tplv-49unhts6dw-image.image',
+            '//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/5ba07a51bab9754c547927218aa62faa.svg~tplv-49unhts6dw-image.image',
           name: '前端/UE小分队',
           peopleNumber: Mock.Random.natural(10, 5000),
         },
         {
           id: 4,
           avatar:
-            'http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/b8c414c300d5511413d53113dfdb41b7.svg~tplv-49unhts6dw-image.image',
+            '//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/b8c414c300d5511413d53113dfdb41b7.svg~tplv-49unhts6dw-image.image',
           name: '内容识别插件小分队',
           peopleNumber: Mock.Random.natural(10, 100),
         },

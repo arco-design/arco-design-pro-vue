@@ -14,7 +14,6 @@ export default {
   'workplace.docs.userGuide': '使用指南',
   'workplace.docs.workflow': '接入流程',
   'workplace.docs.interfaceDocs': '接口文档',
-  //
   'workplace.contentManagement': '内容管理',
   'workplace.contentStatistical': '内容分析',
   'workplace.advanced': '高级管理',
@@ -34,4 +33,5 @@ export default {
   'workplace.popularContent.image': '图片',
   'workplace.popularContent.video': '视频',
   'workplace.categoriesPercent': '内容类型占比',
+  'workplace.pecs': '个',
 };

@@ -3,7 +3,7 @@
     <a-card
       class="general-card"
       :bordered="false"
-      :header-style="{ padding: '8px 20px 0 20px' }"
+      :header-style="{ padding: '20px 20px 0 20px' }"
       :body-style="{
         paddingTop: '20px',
       }"
@@ -12,7 +12,7 @@
       <template #extra>
         <a-link>{{ $t('workplace.viewMore') }}</a-link>
       </template>
-      <Chart height="278px" :option="chartOption" />
+      <Chart height="289px" :option="chartOption" />
     </a-card>
   </a-spin>
 </template>

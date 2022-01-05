@@ -1,24 +1,31 @@
 import { App } from 'vue';
-// import * as echarts from 'echarts';
 import { use } from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
-import { BarChart, LineChart, PieChart } from 'echarts/charts';
-import { GridComponent, TooltipComponent } from 'echarts/components';
-// import walden from '@/config/echarts-theme/walden.json';
+import { BarChart, LineChart, PieChart, RadarChart } from 'echarts/charts';
+import {
+  GridComponent,
+  TooltipComponent,
+  LegendComponent,
+  DataZoomComponent,
+  GraphicComponent,
+} from 'echarts/components';
 import Chart from './chart/index.vue';
 import Breadcrumb from './breadcrumb/index.vue';
 // import SvgIcon from './svg-icon/index.vue';
 
 // Manually introduce ECharts modules to reduce packing size
-// echarts.registerTheme('walden', walden);
 
 use([
   CanvasRenderer,
   BarChart,
   LineChart,
   PieChart,
+  RadarChart,
   GridComponent,
   TooltipComponent,
+  LegendComponent,
+  DataZoomComponent,
+  GraphicComponent,
 ]);
 
 export default {

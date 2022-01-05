@@ -13,7 +13,23 @@
         :key="activity.id"
         action-layout="horizontal"
       >
+        <a-skeleton
+          v-if="loading"
+          :loading="loading"
+          :animation="true"
+          class="skeleton-item"
+        >
+          <a-row :gutter="6">
+            <a-col :span="2">
+              <a-skeleton-shape shape="circle" />
+            </a-col>
+            <a-col :span="22">
+              <a-skeleton-line :widths="['40%', '100%']" :rows="2" />
+            </a-col>
+          </a-row>
+        </a-skeleton>
         <a-list-item-meta
+          v-else
           :title="activity.title"
           :description="activity.description"
         >
@@ -31,16 +47,25 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { queryLatestActivity, LatestActivity } from '@/api/user-center';
+import useLoading from '@/hooks/loading';
 
 export default defineComponent({
   setup() {
-    const activityList = ref<LatestActivity[]>([]);
+    const { loading, setLoading } = useLoading(true);
+    const activityList = ref<LatestActivity[]>(new Array(7).fill({}));
     const fetchData = async () => {
-      const { data } = await queryLatestActivity();
-      activityList.value = data;
+      try {
+        const { data } = await queryLatestActivity();
+        activityList.value = data;
+      } catch (err) {
+        // you can report use errorHandler or other
+      } finally {
+        setLoading(false);
+      }
     };
     fetchData();
     return {
+      loading,
       activityList,
     };
   },
@@ -64,6 +89,11 @@ export default defineComponent({
   }
   .arco-list-item-meta-avatar {
     padding-bottom: 27px;
+  }
+  .skeleton-item {
+    margin-top: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-neutral-3);
   }
 }
 </style>

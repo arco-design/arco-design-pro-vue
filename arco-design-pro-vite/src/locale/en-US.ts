@@ -35,6 +35,7 @@ export default {
   'menu.visualization': 'Data Visualization',
   'menu.user': 'User Center',
   'navbar.docs': 'Docs',
+  'navbar.action.locale': 'Switch to English',
   ...localeSettings,
   ...localeMessageBox,
   ...localeWorkplace,

@@ -35,6 +35,7 @@ export default {
   'menu.visualization': '数据可视化',
   'menu.user': '个人中心',
   'navbar.docs': '文档中心',
+  'navbar.action.locale': '切换为中文',
   ...localeSettings,
   ...localeMessageBox,
   ...localeWorkplace,

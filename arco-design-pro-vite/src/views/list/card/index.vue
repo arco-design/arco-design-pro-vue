@@ -7,7 +7,6 @@
           class="general-card"
           :bordered="false"
           :title="$t('menu.list.cardList')"
-          :header-style="{ paddingBottom: '16px' }"
         >
           <a-row justify="space-between">
             <a-col :span="24">

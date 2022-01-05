@@ -7,13 +7,20 @@
         colon=":"
         :label-style="{
           textAlign: 'right',
-          width: '100px',
+          width: '200px',
           paddingRight: '10px',
         }"
-        :value-style="{ width: '500px' }"
+        :value-style="{ width: '400px' }"
         :title="item.title"
         :data="item.data"
-      />
+      >
+        <template #value="{ value }">
+          <a-skeleton v-if="loading" :animation="true">
+            <a-skeleton-line :widths="['200px']" :rows="1" />
+          </a-skeleton>
+          <span v-else>{{ value }}</span>
+        </template>
+      </a-descriptions>
     </a-space>
   </div>
 </template>
@@ -39,6 +46,10 @@ export default defineComponent({
     renderData: {
       type: Object as PropType<ProfileBasicRes>,
       required: true,
+    },
+    loading: {
+      type: Boolean,
+      default: false,
     },
   },
   setup(props) {

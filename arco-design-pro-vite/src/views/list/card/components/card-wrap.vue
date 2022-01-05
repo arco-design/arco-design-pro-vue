@@ -1,6 +1,9 @@
 <template>
   <div class="card-wrap">
-    <a-card :bordered="false" hoverable>
+    <a-card v-if="loading" :bordered="false" hoverable>
+      <slot name="skeleton"></slot>
+    </a-card>
+    <a-card v-else :bordered="false" hoverable>
       <a-space align="start">
         <a-avatar
           v-if="icon"
@@ -77,6 +80,10 @@ import { useToggle } from '@vueuse/core';
 
 export default defineComponent({
   props: {
+    loading: {
+      type: Boolean,
+      default: false,
+    },
     title: {
       type: String,
       default: '',
@@ -191,6 +198,13 @@ export default defineComponent({
 
     // To prevent the shaking
     line-height: 28px;
+  }
+  :deep(.arco-skeleton-line) {
+    &:last-child {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 20px;
+    }
   }
 }
 </style>

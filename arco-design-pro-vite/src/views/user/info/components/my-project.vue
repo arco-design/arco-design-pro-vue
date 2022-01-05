@@ -1,46 +1,58 @@
 <template>
-  <a-spin :loading="loading" style="width: 100%">
-    <a-card
-      class="general-card"
-      :title="$t('userInfo.title.myProject')"
-      :bordered="false"
-    >
-      <template #extra>
-        <a-link>{{ $t('userInfo.showMore') }}</a-link>
-      </template>
-      <a-row :gutter="16">
-        <a-col
-          v-for="project in projectList"
-          :key="project.id"
-          :span="8"
-          class="my-project-item"
-        >
-          <a-card>
-            <a-space direction="vertical">
-              <a-typography-text bold>{{ project.name }}</a-typography-text>
+  <a-card
+    class="general-card"
+    :title="$t('userInfo.title.myProject')"
+    :bordered="false"
+  >
+    <template #extra>
+      <a-link>{{ $t('userInfo.showMore') }}</a-link>
+    </template>
+    <a-row v-if="loading" :gutter="16">
+      <a-col
+        v-for="project in new Array(6).fill({})"
+        :key="project.id"
+        :span="8"
+        class="my-project-item"
+      >
+        <a-card>
+          <a-skeleton :loading="loading" :animation="true">
+            <a-skeleton-line :rows="3" />
+          </a-skeleton>
+        </a-card>
+      </a-col>
+    </a-row>
+    <a-row v-else :gutter="16">
+      <a-col
+        v-for="project in projectList"
+        :key="project.id"
+        :span="8"
+        class="my-project-item"
+      >
+        <a-card>
+          <a-space direction="vertical">
+            <a-typography-text bold>{{ project.name }}</a-typography-text>
+            <a-typography-text type="secondary">
+              {{ project.description }}
+            </a-typography-text>
+            <a-space>
+              <a-avatar-group :size="0">
+                <a-avatar
+                  v-for="(contributor, idx) in project.contributors"
+                  :key="idx"
+                  :size="32"
+                >
+                  <img alt="avatar" :src="contributor.avatar" />
+                </a-avatar>
+              </a-avatar-group>
               <a-typography-text type="secondary">
-                {{ project.description }}
+                等{{ project.peopleNumber }}人
               </a-typography-text>
-              <a-space>
-                <a-avatar-group :size="0">
-                  <a-avatar
-                    v-for="(contributor, idx) in project.contributors"
-                    :key="idx"
-                    :size="32"
-                  >
-                    <img alt="avatar" :src="contributor.avatar" />
-                  </a-avatar>
-                </a-avatar-group>
-                <a-typography-text type="secondary">
-                  等{{ project.peopleNumber }}人
-                </a-typography-text>
-              </a-space>
             </a-space>
-          </a-card>
-        </a-col>
-      </a-row>
-    </a-card>
-  </a-spin>
+          </a-space>
+        </a-card>
+      </a-col>
+    </a-row>
+  </a-card>
 </template>
 
 <script lang="ts">

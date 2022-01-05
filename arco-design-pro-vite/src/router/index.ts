@@ -17,7 +17,8 @@ const router = createRouter({
     },
     Login,
     {
-      path: '/app',
+      name: 'root',
+      path: '/',
       component: PageLayout,
       children: appRoutes,
     },

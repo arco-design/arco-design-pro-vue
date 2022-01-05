@@ -34,4 +34,5 @@ export default {
   'workplace.popularContent.image': 'image',
   'workplace.popularContent.video': 'video',
   'workplace.categoriesPercent': 'Categories Percent',
+  'workplace.pecs': 'pecs',
 };

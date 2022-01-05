@@ -266,6 +266,7 @@ export default defineComponent({
 :deep(.arco-statistic) {
   .arco-statistic-title {
     color: rgb(var(--gray-10));
+    font-weight: bold;
   }
   .arco-statistic-value {
     display: flex;

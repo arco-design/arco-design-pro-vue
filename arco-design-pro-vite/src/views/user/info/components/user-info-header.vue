@@ -7,20 +7,24 @@
         </template>
         <img :src="userInfo.avatar" />
       </a-avatar>
-      <div class="user-name">{{ userInfo.name }}</div>
+      <a-typography-title :heading="6" style="margin: 0">
+        {{ userInfo.name }}
+      </a-typography-title>
       <div class="user-msg">
         <a-space :size="18">
           <div>
             <icon-user />
-            <span class="user-msg-text">{{ userInfo.jobName }}</span>
+            <a-typography-text>{{ userInfo.jobName }}</a-typography-text>
           </div>
           <div>
             <icon-home />
-            <span class="user-msg-text">{{ userInfo.organizationName }}</span>
+            <a-typography-text>
+              {{ userInfo.organizationName }}
+            </a-typography-text>
           </div>
           <div>
             <icon-location />
-            <span class="user-msg-text">{{ userInfo.locationName }}</span>
+            <a-typography-text>{{ userInfo.locationName }}</a-typography-text>
           </div>
         </a-space>
       </div>
@@ -52,7 +56,7 @@ export default defineComponent({
   justify-content: center;
   height: 204px;
   color: var(--gray-10);
-  background: url(http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/41c6b125cc2e27021bf7fcc9a9b1897c.svg~tplv-49unhts6dw-image.image)
+  background: url(//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/41c6b125cc2e27021bf7fcc9a9b1897c.svg~tplv-49unhts6dw-image.image)
     no-repeat;
   background-size: cover;
   border-radius: 4px;
@@ -64,29 +68,12 @@ export default defineComponent({
       vertical-align: -1px;
     }
   }
-
-  .user-name {
-    font-weight: 500;
-    font-size: 16px;
-  }
-
   .user-msg {
-    &-text {
-      display: inline-block;
-      margin-left: 6px;
+    .arco-icon {
+      color: rgb(var(--gray-10));
     }
-  }
-
-  .user-edit-btn {
-    color: #fff;
-    background: transparent;
-    border-color: #fff;
-
-    &:hover,
-    &:active {
-      color: #fff;
-      background: transparent;
-      border-color: #fff;
+    .arco-typography {
+      margin-left: 6px;
     }
   }
 }

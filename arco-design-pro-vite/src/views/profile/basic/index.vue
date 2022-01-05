@@ -15,23 +15,17 @@
             </a-button>
           </a-space>
         </template>
-        <a-spin :loading="loading" style="width: 100%">
-          <a-steps v-model:current="step" line-less class="steps">
-            <a-step>{{ $t('basicProfile.steps.commit') }}</a-step>
-            <a-step>{{ $t('basicProfile.steps.approval') }}</a-step>
-            <a-step>{{ $t('basicProfile.steps.finish') }}</a-step>
-          </a-steps>
-        </a-spin>
+        <a-steps v-model:current="step" line-less class="steps">
+          <a-step>{{ $t('basicProfile.steps.commit') }}</a-step>
+          <a-step>{{ $t('basicProfile.steps.approval') }}</a-step>
+          <a-step>{{ $t('basicProfile.steps.finish') }}</a-step>
+        </a-steps>
       </a-card>
       <a-card class="general-card" :bordered="false">
-        <a-spin :loading="loading" style="width: 100%">
-          <ProfileItem :render-data="currentData" />
-        </a-spin>
+        <ProfileItem :loading="loading" :render-data="currentData" />
       </a-card>
       <a-card class="general-card" :bordered="false">
-        <a-spin :loading="preLoading" style="width: 100%">
-          <ProfileItem type="pre" :render-data="preData" />
-        </a-spin>
+        <ProfileItem :loading="preLoading" type="pre" :render-data="preData" />
       </a-card>
       <OperationLog />
     </a-space>
@@ -55,11 +49,12 @@ export default defineComponent({
     const { loading: preLoading, setLoading: preSetLoading } = useLoading(true);
     const currentData = ref<ProfileBasicRes>({} as ProfileBasicRes);
     const preData = ref<ProfileBasicRes>({} as ProfileBasicRes);
-    const step = ref(2);
+    const step = ref(1);
     const fetchCurrentData = async () => {
       try {
         const { data } = await queryProfileBasic();
         currentData.value = data;
+        step.value = 2;
       } catch (err) {
         // you can report use errorHandler or other
       } finally {

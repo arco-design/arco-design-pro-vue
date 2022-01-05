@@ -2,7 +2,10 @@
   <div class="navbar">
     <div class="left-side">
       <a-space>
-        <img alt="logo" src="/src/assets/logo.svg" />
+        <img
+          alt="logo"
+          src="//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/dfdba5317c0c20ce20e64fac803d52bc.svg~tplv-49unhts6dw-image.image"
+        />
         <a-typography-title
           :style="{ margin: 0, fontSize: '18px' }"
           :heading="5"
@@ -209,9 +212,7 @@ export default defineComponent({
       locales,
       theme,
       avatar,
-      currentLocale,
       changeLocale,
-      logout,
       toggleTheme,
       setVisible,
       setPopoverVisible,

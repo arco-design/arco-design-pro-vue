@@ -1,30 +1,34 @@
 <template>
   <div class="container">
     <div class="left-side">
-      <a-space class="left-space" direction="vertical" :size="12" fill>
+      <div class="panel">
         <Banner />
         <DataPanel />
         <ContentChart />
-      </a-space>
-      <a-row :gutter="16">
-        <a-col :span="12">
+      </div>
+      <a-row style="margin-top: 16px">
+        <a-col :flex="1" class="panel" style="margin-right: 16px">
           <PopularContent />
         </a-col>
-        <a-col :span="12">
+        <a-col :flex="1" class="panel">
           <CateforiesPercent />
         </a-col>
       </a-row>
     </div>
     <div class="right-side">
-      <a-space style="width: 280px" direction="vertical" :size="16">
-        <div class="moduler-wrap">
-          <QuickOperation />
-          <RecentlyVisited />
-        </div>
+      <div class="panel moduler-wrap">
+        <QuickOperation />
+        <RecentlyVisited />
+      </div>
+      <div class="panel" style="margin-top: 16px">
         <Carousel />
+      </div>
+      <div class="panel" style="margin-top: 16px">
         <Announcement />
+      </div>
+      <div class="panel" style="margin-top: 16px">
         <Docs />
-      </a-space>
+      </div>
     </div>
   </div>
 </template>
@@ -58,35 +62,28 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="less">
+<style lang="less" scoped>
 .container {
+  background-color: var(--color-fill-2);
+  padding: 16px 20px;
+  padding-bottom: 0;
   display: flex;
-  padding: 20px;
 }
 
 .left-side {
-  width: 100%;
   flex: 1;
-  .left-space {
-    margin-bottom: 16px;
-    background-color: var(--color-bg-2);
-    border-radius: 4px;
-  }
+  overflow: auto;
 }
 
 .right-side {
+  width: 280px;
   margin-left: 16px;
-  flex-basis: 280px;
-  // display: none;
 }
 
 .panel {
-  margin-bottom: 12px;
   background-color: var(--color-bg-2);
   border-radius: 2px;
-}
-:deep(.bottom-card) {
-  min-height: 388px;
+  overflow: auto;
 }
 :deep(.panel-border) {
   margin-bottom: 0;

@@ -93,7 +93,7 @@
               </template>
               {{ $t('searchTable.form.search') }}
             </a-button>
-            <a-button type="primary" @click="reset">
+            <a-button @click="reset">
               <template #icon>
                 <icon-refresh />
               </template>
@@ -135,6 +135,7 @@
         :loading="loading"
         :pagination="pagination"
         :data="renderData"
+        :bordered="false"
         @pageChange="onPageChange"
       >
         <template #columns>
@@ -159,7 +160,7 @@
                 >
                   <img
                     alt="avatar"
-                    src="http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/581b17753093199839f2e327e726b157.svg~tplv-49unhts6dw-image.image"
+                    src="//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/581b17753093199839f2e327e726b157.svg~tplv-49unhts6dw-image.image"
                   />
                 </a-avatar>
                 <a-avatar
@@ -169,13 +170,13 @@
                 >
                   <img
                     alt="avatar"
-                    src="http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/77721e365eb2ab786c889682cbc721c1.svg~tplv-49unhts6dw-image.image"
+                    src="//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/77721e365eb2ab786c889682cbc721c1.svg~tplv-49unhts6dw-image.image"
                   />
                 </a-avatar>
                 <a-avatar v-else :size="16" shape="square">
                   <img
                     alt="avatar"
-                    src="http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/ea8b09190046da0ea7e070d83c5d1731.svg~tplv-49unhts6dw-image.image"
+                    src="//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/ea8b09190046da0ea7e070d83c5d1731.svg~tplv-49unhts6dw-image.image"
                   />
                 </a-avatar>
                 {{ $t(`searchTable.form.contentType.${record.contentType}`) }}

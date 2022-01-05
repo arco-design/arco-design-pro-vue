@@ -5,6 +5,7 @@
     :auto-open="false"
     :selected-keys="selectedKey"
     :auto-open-selected="true"
+    :level-indent="34"
     style="height: 100%"
     @collapse="setCollapse"
   >
@@ -43,7 +44,7 @@ export default defineComponent({
     const collapsed = ref(false);
     const appRoute = router
       .getRoutes()
-      .find((el) => el.path === '/app') as RouteRecordNormalized;
+      .find((el) => el.name === 'root') as RouteRecordNormalized;
     // In this case only two levels of menus are available
     // You can expand as needed
 
@@ -87,3 +88,17 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="less" scoped>
+:deep(.arco-menu-inner) {
+  .arco-menu-inline-header {
+    display: flex;
+    align-items: center;
+  }
+  .arco-icon {
+    &:not(.arco-icon-down) {
+      font-size: 18px;
+    }
+  }
+}
+</style>
