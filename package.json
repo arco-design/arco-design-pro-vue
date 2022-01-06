@@ -1,7 +1,7 @@
 {
   "name": "arco-design-pro-vue",
   "description": "Arco Design Pro for Vue",
-  "version": "1.0.0-alpha.6",
+  "version": "1.0.0",
   "author": "ArcoDesign Team",
   "license": "MIT",
   "scripts": {
@@ -20,7 +20,8 @@
     "!/**/node_modules",
     "!/**/.nuxt",
     "!/**/.eslintcache",
-    "!/**/.stylelintcache"
+    "!/**/.stylelintcache",
+    "!/**/dist"
   ],
   "dependencies": {
     "fs-extra": "^10.0.0"
