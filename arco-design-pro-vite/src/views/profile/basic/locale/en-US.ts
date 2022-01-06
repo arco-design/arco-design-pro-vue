@@ -33,7 +33,7 @@ export default {
   'basicProfile.column.status': 'Status',
   'basicProfile.column.updateTime': 'Update Time',
   'basicProfile.column.operation': 'Operation',
-  'basicProfile.cell.pass': 'pass',
-  'basicProfile.cell.auditing': 'auditing',
-  'basicProfile.cell.view': 'view',
+  'basicProfile.cell.pass': 'Pass',
+  'basicProfile.cell.auditing': 'Auditing',
+  'basicProfile.cell.view': 'View',
 };

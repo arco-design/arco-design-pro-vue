@@ -10,7 +10,7 @@
           :style="{ margin: 0, fontSize: '18px' }"
           :heading="5"
         >
-          Arco Design Pro
+          Arco Pro
         </a-typography-title>
       </a-space>
     </div>
@@ -167,7 +167,7 @@ export default defineComponent({
     const store = useStore();
     const { logout } = useUser();
     const { avatar } = store.state.user;
-    const { currentLocale, changeLocale } = useLocale();
+    const { changeLocale } = useLocale();
     const locales = [...LOCALE_OPTIONS];
     const theme = computed(() => {
       return store.state.app.theme;

@@ -22,7 +22,11 @@
         :column="2"
         align="right"
         layout="inline-horizontal"
-        :label-style="{ width: '140px', fontWeight: 'normal' }"
+        :label-style="{
+          width: '140px',
+          fontWeight: 'normal',
+          color: 'rgb(var(--gray-8))',
+        }"
         :value-style="{
           width: '200px',
           paddingLeft: '8px',

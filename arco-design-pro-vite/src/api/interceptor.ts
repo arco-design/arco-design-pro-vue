@@ -15,11 +15,11 @@ axios.interceptors.request.use(
     return config;
   },
   (error) => {
-    // 对请求错误做些什么
+    // do something
     return Promise.reject(error);
   }
 );
-// 添加响应拦截器
+// add response interceptors
 axios.interceptors.response.use(
   (response: AxiosResponse<HttpResponse>) => {
     const res = response.data;

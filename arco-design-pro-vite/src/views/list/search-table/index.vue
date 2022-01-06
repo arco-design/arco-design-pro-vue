@@ -106,7 +106,7 @@
       <a-row style="margin-bottom: 16px">
         <a-col :span="16">
           <a-space>
-            <a-button>
+            <a-button type="primary">
               <template #icon>
                 <icon-plus />
               </template>
@@ -142,11 +142,11 @@
           <a-table-column
             :title="$t('searchTable.columns.number')"
             data-index="number"
-          ></a-table-column>
+          />
           <a-table-column
             :title="$t('searchTable.columns.name')"
             data-index="name"
-          ></a-table-column>
+          />
           <a-table-column
             :title="$t('searchTable.columns.contentType')"
             data-index="contentType"
@@ -194,11 +194,11 @@
           <a-table-column
             :title="$t('searchTable.columns.count')"
             data-index="count"
-          ></a-table-column>
+          />
           <a-table-column
             :title="$t('searchTable.columns.createdTime')"
             data-index="createdTime"
-          ></a-table-column>
+          />
           <a-table-column
             :title="$t('searchTable.columns.status')"
             data-index="status"

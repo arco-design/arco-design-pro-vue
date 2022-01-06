@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import bannerImage from '@/assets/login-banner.png';
+import bannerImage from '@/assets/images/login-banner.png';
 
 export default defineComponent({
   setup() {

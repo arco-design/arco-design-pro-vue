@@ -93,10 +93,11 @@ export default defineComponent({
     color: rgb(var(--gray-6));
     .arco-descriptions-item-label-inline {
       font-weight: normal;
+      font-size: 12px;
       color: rgb(var(--gray-6));
     }
     .arco-descriptions-item-value-inline {
-      color: rgb(var(--gray-6));
+      color: rgb(var(--gray-8));
     }
   }
 }

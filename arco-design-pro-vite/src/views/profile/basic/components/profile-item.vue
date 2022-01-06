@@ -4,11 +4,11 @@
       <a-descriptions
         v-for="(item, idx) in blockDataList"
         :key="idx"
-        colon=":"
         :label-style="{
           textAlign: 'right',
           width: '200px',
           paddingRight: '10px',
+          color: 'rgb(var(--gray-8))',
         }"
         :value-style="{ width: '400px' }"
         :title="item.title"

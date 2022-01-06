@@ -51,6 +51,7 @@ export default defineComponent({});
 .wrapper {
   padding: 24px 150px;
   background-color: var(--color-bg-2);
+  border-radius: 4px;
 }
 
 .result {

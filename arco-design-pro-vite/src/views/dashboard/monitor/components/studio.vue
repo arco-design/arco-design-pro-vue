@@ -21,7 +21,7 @@
           </a-space>
         </div>
         <a-typography-text type="secondary">
-          3,6000 {{ $t('monitor.studioPreview.watching') }}
+          36,000 {{ $t('monitor.studioPreview.watching') }}
         </a-typography-text>
       </div>
     </div>
@@ -31,7 +31,7 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import { useStore } from '@/store';
-import previewImage from '@/assets/monitor-studio-preview.png';
+import previewImage from '@/assets/images/monitor-studio-preview.png';
 
 export default defineComponent({
   setup() {

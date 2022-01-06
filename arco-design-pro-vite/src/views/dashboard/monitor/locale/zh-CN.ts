@@ -31,6 +31,7 @@ export default {
   'monitor.studioInfo.label.onlineNotification': '上线通知',
   'monitor.studioInfo.label.studioCategory': '直播类目',
   'monitor.studioInfo.placeholder.studioTitle': '的直播间',
+  'monitor.studioInfo.btn.fresh': '更新',
   'monitor.studioStatus.title.studioStatus': '直播状态',
   'monitor.studioStatus.title.pictureInfo': '画面信息',
   'monitor.studioStatus.smooth': '流畅',

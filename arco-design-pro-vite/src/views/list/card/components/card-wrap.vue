@@ -182,6 +182,7 @@ export default defineComponent({
                 margin-top: 8px;
                 color: rgb(var(--gray-6));
                 line-height: 20px;
+                font-size: 12px;
               }
             }
             .arco-card-meta-footer {

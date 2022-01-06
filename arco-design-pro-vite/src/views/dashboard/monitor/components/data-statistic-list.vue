@@ -26,7 +26,7 @@ import {
   TableData,
 } from '@arco-design/web-vue/es/table/interface.d';
 
-import previewImage from '@/assets/monitor-studio-preview.png';
+import previewImage from '@/assets/images/monitor-studio-preview.png';
 
 interface PreviewRecord {
   cover: string;
@@ -112,7 +112,7 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-// 此处是全局样式！！！
+// Warning: Here is the global style
 .data-statistic {
   &-list {
     &-cover {

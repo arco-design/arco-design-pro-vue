@@ -41,7 +41,7 @@ import {
   submitChannelForm,
   BaseInfoModel,
   ChannelInfoModel,
-  UnitChannelMode,
+  UnitChannelModel,
 } from '@/api/form';
 import BaseInfo from './components/base-info.vue';
 import ChannelInfo from './components/channel-info.vue';
@@ -56,13 +56,13 @@ export default defineComponent({
   setup() {
     const { loading, setLoading } = useLoading(false);
     const step = ref(1);
-    const submitModel = ref<UnitChannelMode>({} as UnitChannelMode);
+    const submitModel = ref<UnitChannelModel>({} as UnitChannelModel);
     const submitForm = async () => {
       setLoading(true);
       try {
         await submitChannelForm(submitModel.value); // The moack api default success
         step.value = 3;
-        submitModel.value = {} as UnitChannelMode; // init
+        submitModel.value = {} as UnitChannelModel; // init
       } catch (err) {
         // you can report use errorHandler or other
       } finally {

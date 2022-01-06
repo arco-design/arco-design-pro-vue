@@ -31,6 +31,7 @@ export default {
   'monitor.studioInfo.label.onlineNotification': 'Online Notification',
   'monitor.studioInfo.label.studioCategory': 'Studio Category',
   'monitor.studioInfo.placeholder.studioTitle': "'s Studio",
+  'monitor.studioInfo.btn.fresh': 'Fresh',
   'monitor.studioStatus.title.studioStatus': 'Studio Status',
   'monitor.studioStatus.title.pictureInfo': 'Picture Information',
   'monitor.studioStatus.smooth': 'Smooth',

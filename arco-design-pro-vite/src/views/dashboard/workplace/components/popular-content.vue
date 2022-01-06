@@ -32,6 +32,15 @@
           <template #columns>
             <a-table-column title="排名" data-index="key"></a-table-column>
             <a-table-column title="内容标题" data-index="title">
+              <template #cell="{ record }">
+                <a-typography-paragraph
+                  :ellipsis="{
+                    rows: 1,
+                  }"
+                >
+                  {{ record.title }}
+                </a-typography-paragraph>
+              </template>
             </a-table-column>
             <a-table-column title="点击量" data-index="clickNumber">
             </a-table-column>
@@ -95,8 +104,14 @@ export default defineComponent({
 </script>
 
 <style scoped lang="less">
+.general-card {
+  min-height: 388px;
+}
 :deep(.arco-table-tr) {
   height: 44px;
+  .arco-typography {
+    margin-bottom: 0;
+  }
 }
 .increases-cell {
   display: flex;

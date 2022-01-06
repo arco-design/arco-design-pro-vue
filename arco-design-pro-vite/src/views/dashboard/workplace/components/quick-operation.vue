@@ -10,7 +10,7 @@
       <a-link>{{ $t('workplace.quickOperation.setup') }}</a-link>
     </template>
     <a-row :gutter="8">
-      <a-col v-for="(link, idx) in links" :key="idx" :span="8" class="wrapper">
+      <a-col v-for="link in links" :key="link" :span="8" class="wrapper">
         <div class="icon">
           <icon-home />
         </div>

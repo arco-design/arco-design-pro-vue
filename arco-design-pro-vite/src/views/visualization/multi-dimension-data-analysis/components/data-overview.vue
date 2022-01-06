@@ -37,6 +37,7 @@ import { useI18n } from 'vue-i18n';
 import { queryDataOverview } from '@/api/visualization';
 import useLoading from '@/hooks/loading';
 import { ToolTipFormatterParams } from '@/types/echarts';
+import useThemes from '@/hooks/themes';
 
 const tooltipItemsHtmlString = (items: ToolTipFormatterParams[]) => {
   return items
@@ -57,11 +58,12 @@ const tooltipItemsHtmlString = (items: ToolTipFormatterParams[]) => {
 const generateSeries = (
   name: string,
   lineColor: string,
-  itemBorderColor: string
+  itemBorderColor: string,
+  data: number[]
 ) => {
   return {
     name,
-    data: [] as number[],
+    data,
     stack: 'Total',
     type: 'line',
     smooth: true,
@@ -93,14 +95,15 @@ export default defineComponent({
   setup() {
     const { t } = useI18n();
     const { loading, setLoading } = useLoading(true);
+    const { isDark } = useThemes();
     const renderData = computed(() => [
       {
         title: t('multiDAnalysis.dataOverview.contentProduction'),
         value: 1902,
         prefix: {
           icon: 'icon-desktop',
-          background: '#FFE4BA',
-          iconColor: '#F77234',
+          background: isDark.value ? '#593E2F' : '#FFE4BA',
+          iconColor: isDark.value ? '#F29A43' : '#F77234',
         },
       },
       {
@@ -108,8 +111,8 @@ export default defineComponent({
         value: 2445,
         prefix: {
           icon: 'icon-code',
-          background: '#E8FFFB',
-          iconColor: '#33D1C9',
+          background: isDark.value ? '#3D5A62' : '#E8FFFB',
+          iconColor: isDark.value ? '#6ED1CE' : '#33D1C9',
         },
       },
       {
@@ -117,8 +120,8 @@ export default defineComponent({
         value: 3034,
         prefix: {
           icon: 'icon-user',
-          background: '#E8F3FF',
-          iconColor: '#165DFF',
+          background: isDark.value ? '#354276' : '#E8F3FF',
+          iconColor: isDark.value ? '#4A7FF7' : '#165DFF',
         },
       },
       {
@@ -126,125 +129,150 @@ export default defineComponent({
         value: 1275,
         prefix: {
           icon: 'icon-user',
-          background: '#F5E8FF',
-          iconColor: '#722ED1',
+          background: isDark.value ? '#3F385E' : '#F5E8FF',
+          iconColor: isDark.value ? '#8558D3' : '#722ED1',
         },
       },
     ]);
-    const chartOption = ref({
-      grid: {
-        left: '2.6%',
-        right: '4',
-        top: '40',
-        bottom: '40',
-      },
-      xAxis: {
-        type: 'category',
-        offset: 2,
-        data: [] as string[],
-        boundaryGap: false,
-        axisLabel: {
-          color: '#4E5969',
-          formatter(value: number, idx: number) {
-            if (idx === 0) return '';
-            if (idx === chartOption.value.xAxis.data.length - 1) return '';
-            return `${value}`;
+    const xAxis = ref<string[]>([]);
+    const contentProductionData = ref<number[]>([]);
+    const contentClickData = ref<number[]>([]);
+    const contentExposureData = ref<number[]>([]);
+    const activeUsersData = ref<number[]>([]);
+    const chartOption = computed(() => {
+      return {
+        grid: {
+          left: '2.6%',
+          right: '4',
+          top: '40',
+          bottom: '40',
+        },
+        xAxis: {
+          type: 'category',
+          offset: 2,
+          data: xAxis.value,
+          boundaryGap: false,
+          axisLabel: {
+            color: '#4E5969',
+            formatter(value: number, idx: number) {
+              if (idx === 0) return '';
+              if (idx === chartOption.value.xAxis.data.length - 1) return '';
+              return `${value}`;
+            },
+          },
+          axisLine: {
+            show: false,
+          },
+          axisTick: {
+            show: false,
+          },
+          splitLine: {
+            show: false,
+          },
+          axisPointer: {
+            show: true,
+            lineStyle: {
+              color: '#23ADFF',
+              width: 2,
+            },
           },
         },
-        axisLine: {
-          show: false,
-        },
-        axisTick: {
-          show: false,
-        },
-        splitLine: {
-          show: false,
-        },
-        axisPointer: {
-          show: true,
-          lineStyle: {
-            color: '#23ADFF',
-            width: 2,
+        yAxis: {
+          type: 'value',
+          axisLine: {
+            show: false,
+          },
+          axisLabel: {
+            formatter(value: number, idx: number) {
+              if (idx === 0) return value;
+              return `${value / 1000}k`;
+            },
+          },
+          splitLine: {
+            lineStyle: {
+              color: isDark.value ? '#2E2E30' : '#F2F3F5',
+            },
           },
         },
-      },
-      yAxis: {
-        type: 'value',
-        axisLine: {
-          show: false,
-        },
-        axisLabel: {
-          formatter(value: number, idx: number) {
-            if (idx === 0) return value;
-            return `${value / 1000}k`;
-          },
-        },
-        splitLine: {
-          lineStyle: {
-            color: '#F2F3F5',
-          },
-        },
-      },
-      tooltip: {
-        trigger: 'axis',
-        // showDelay: 2,
-        // showContent: false,
-        formatter(params: ToolTipFormatterParams[]) {
-          const [firstElement] = params;
-          return `<div>
+        tooltip: {
+          trigger: 'axis',
+          formatter(params: ToolTipFormatterParams[]) {
+            const [firstElement] = params;
+            return `<div>
             <p class="tooltip-title">${firstElement.axisValueLabel}</p>
             ${tooltipItemsHtmlString(params)}
           </div>`;
+          },
+          className: 'echarts-tooltip-diy',
         },
-        className: 'echarts-tooltip-diy',
-      },
-      graphic: {
-        elements: [
-          {
-            type: 'text',
-            left: '2.6%',
-            bottom: '18',
-            style: {
-              text: '12.10',
-              textAlign: 'center',
-              fill: '#4E5969',
-              fontSize: 12,
+        graphic: {
+          elements: [
+            {
+              type: 'text',
+              left: '2.6%',
+              bottom: '18',
+              style: {
+                text: '12.10',
+                textAlign: 'center',
+                fill: '#4E5969',
+                fontSize: 12,
+              },
             },
-          },
-          {
-            type: 'text',
-            right: '0',
-            bottom: '18',
-            style: {
-              text: '12.17',
-              textAlign: 'center',
-              fill: '#4E5969',
-              fontSize: 12,
+            {
+              type: 'text',
+              right: '0',
+              bottom: '18',
+              style: {
+                text: '12.17',
+                textAlign: 'center',
+                fill: '#4E5969',
+                fontSize: 12,
+              },
             },
-          },
+          ],
+        },
+        series: [
+          generateSeries(
+            '活跃用户数',
+            '#722ED1',
+            '#F5E8FF',
+            contentProductionData.value
+          ),
+          generateSeries(
+            '内容生产量',
+            '#F77234',
+            '#FFE4BA',
+            contentClickData.value
+          ),
+          generateSeries(
+            '内容点击量',
+            '#33D1C9',
+            '#E8FFFB',
+            contentExposureData.value
+          ),
+          generateSeries(
+            '内容曝光量',
+            '#3469FF',
+            '#E8F3FF',
+            activeUsersData.value
+          ),
         ],
-      },
-      series: [
-        generateSeries('活跃用户数', '#722ED1', '#F5E8FF'),
-        generateSeries('内容生产量', '#F77234', '#FFE4BA'),
-        generateSeries('内容点击量', '#33D1C9', '#E8FFFB'),
-        generateSeries('内容曝光量', '#3469FF', '#E8F3FF'),
-      ],
+      };
     });
     const fetchData = async () => {
       setLoading(true);
       try {
         const { data } = await queryDataOverview();
-        chartOption.value.xAxis.data = data.xAxis;
+        xAxis.value = data.xAxis;
         data.data.forEach((el) => {
           if (el.name === '内容生产量') {
-            chartOption.value.series[0].data = el.value;
+            contentProductionData.value = el.value;
           } else if (el.name === '内容点击量') {
-            chartOption.value.series[1].data = el.value;
+            contentClickData.value = el.value;
           } else if (el.name === '内容曝光量') {
-            chartOption.value.series[2].data = el.value;
+            contentExposureData.value = el.value;
           }
-          chartOption.value.series[3].data = el.value;
+          activeUsersData.value = el.value;
         });
       } catch (err) {
         // you can report use errorHandler or other

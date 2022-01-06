@@ -14,8 +14,8 @@ export interface ChannelInfoModel {
   advertisingContent: string;
 }
 
-export type UnitChannelMode = BaseInfoModel & ChannelInfoModel;
+export type UnitChannelModel = BaseInfoModel & ChannelInfoModel;
 
-export function submitChannelForm(data: UnitChannelMode) {
+export function submitChannelForm(data: UnitChannelModel) {
   return axios.post('/api/channel-form/submit', { data });
 }

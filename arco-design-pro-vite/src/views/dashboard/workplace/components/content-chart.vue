@@ -3,7 +3,7 @@
     <a-card
       class="general-card"
       :bordered="false"
-      :header-style="{ padding: '20px 20px 0 20px' }"
+      :header-style="{ paddingBottom: 0 }"
       :body-style="{
         paddingTop: '20px',
       }"

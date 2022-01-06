@@ -31,7 +31,7 @@
         <a-input-search />
       </a-form-item>
     </a-form>
-    <a-button type="primary">更新</a-button>
+    <a-button type="primary">{{ $t('monitor.studioInfo.btn.fresh') }}</a-button>
   </a-card>
 </template>
 
