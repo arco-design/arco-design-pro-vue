@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch } from 'vue';
+import { defineComponent, ref, computed } from 'vue';
 import { ToolTipFormatterParams } from '@/types/echarts';
 import useLoading from '@/hooks/loading';
 import { queryContentPublish, ContentPublishRecord } from '@/api/visualization';
