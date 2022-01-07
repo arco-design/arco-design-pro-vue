@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   root: true,
   parser: 'vue-eslint-parser',
@@ -27,7 +29,7 @@ module.exports = {
   settings: {
     'import/resolver': {
       typescript: {
-        project: './tsconfig.json',
+        project: path.resolve(__dirname, './tsconfig.json'),
       },
     },
   },
