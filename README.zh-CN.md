@@ -38,11 +38,11 @@ Admin 中后台管理页面，创新的多架构方案。
 ## 🌈 Usage
 
 ```bash
-$ npm i @arco-design/arco-cli@latest -g
+$ npm i @arco-design/arco-cli@latest yarn -g
 
 $ arco init my-project
 ```
 
 ## LICENSE
 
-[MIT](./README.md) © [ArcoDesign](https://arco.design)
+[MIT](./LICENSE) © [ArcoDesign](https://arco.design)

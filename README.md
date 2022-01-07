@@ -4,7 +4,7 @@
 
 <div align="center">
 
-An out-of-the-box solution to quickly enterprise applications based on [Arco Design](https://arco.design/).
+An out-of-the-box solution to quickly build enterprise-level applications based on [Arco Design](https://arco.design/).
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/arco-design/arco-design-pro/blob/main/LICENSE)
 
@@ -34,11 +34,11 @@ English | [简体中文](./README.zh-CN.md)
 ## 🌈 Usage
 
 ```bash
-$ npm i @arco-design/arco-cli@latest -g
+$ npm i @arco-design/arco-cli@latest yarn -g
 
 $ arco init my-project
 ```
 
 ## LICENSE
 
-[MIT](./README.md) © [ArcoDesign](https://arco.design)
+[MIT](./LICENSE) © [ArcoDesign](https://arco.design)
