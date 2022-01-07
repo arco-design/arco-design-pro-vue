@@ -45,4 +45,4 @@ $ arco init my-project
 
 ## LICENSE
 
-[MIT](./README.md) © [ArcoDesign](https://arco.design)
+[MIT](./LICENSE) © [ArcoDesign](https://arco.design)
