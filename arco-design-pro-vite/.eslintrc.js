@@ -1,4 +1,5 @@
 module.exports = {
+  root: true,
   parser: 'vue-eslint-parser',
   parserOptions: {
     // Parser that checks the content of the <script> tag
@@ -26,7 +27,7 @@ module.exports = {
   settings: {
     'import/resolver': {
       typescript: {
-        project: './tsconfig.json',
+        project: '*/tsconfig.json',
       },
     },
   },
