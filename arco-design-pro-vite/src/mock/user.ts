@@ -17,7 +17,7 @@ setupMock({
         return successResponseWrap({
           name: '王立群',
           avatar:
-            '//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/9448405f941c4f61426565bca8acb24e.png~tplv-49unhts6dw-image.image',
+            '//lf1-xgcdn-tos.pstatp.com/obj/vcloud/vadmin/start.8e0e4855ee346a46ccff8ff3e24db27b.png',
           email: 'wangliqun@email.com',
           job: 'frontend',
           jobName: '前端艺术家',
