@@ -2,7 +2,6 @@
   <a-card
     class="general-card"
     :title="$t('workplace.recently.visited')"
-    :bordered="false"
     :header-style="{ paddingBottom: '0' }"
     :body-style="{ paddingTop: '26px' }"
   >

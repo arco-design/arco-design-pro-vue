@@ -2,7 +2,6 @@
   <a-card
     class="general-card"
     :title="$t('multiDAnalysis.card.title.userActions')"
-    :bordered="false"
   >
     <Chart height="122px" :option="chartOption" />
   </a-card>

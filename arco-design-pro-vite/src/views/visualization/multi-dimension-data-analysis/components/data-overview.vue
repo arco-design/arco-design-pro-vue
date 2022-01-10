@@ -3,7 +3,6 @@
     <a-card
       class="general-card"
       :title="$t('multiDAnalysis.card.title.dataOverview')"
-      :bordered="false"
     >
       <a-row justify="space-between">
         <a-col v-for="(item, idx) in renderData" :key="idx" :span="6">

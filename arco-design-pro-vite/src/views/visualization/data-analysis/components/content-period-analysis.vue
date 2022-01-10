@@ -1,10 +1,6 @@
 <template>
   <a-spin :loading="loading" style="width: 100%">
-    <a-card
-      class="general-card"
-      :bordered="false"
-      :header-style="{ paddingBottom: '16px' }"
-    >
+    <a-card class="general-card" :header-style="{ paddingBottom: '16px' }">
       <template #title>
         {{ $t('dataAnalysis.contentPeriodAnalysis') }}
       </template>

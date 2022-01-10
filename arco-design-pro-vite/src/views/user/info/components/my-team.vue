@@ -1,36 +1,27 @@
 <template>
   <a-card
     class="general-card"
-    :bordered="false"
     :title="$t('userInfo.tab.title.team')"
     :header-style="{ paddingBottom: '18px' }"
     :body-style="{ paddingBottom: '12px' }"
   >
-    <div v-if="loading">
-      <a-skeleton
-        v-for="(item, idx) in new Array(4).fill({})"
-        :key="idx"
-        :loading="loading"
-        :animation="true"
-        style="margin-top: 10px"
-      >
-        <a-row :gutter="6">
-          <a-col :span="6">
-            <a-skeleton-shape shape="circle" />
-          </a-col>
-          <a-col :span="16">
-            <a-skeleton-line :widths="['100%', '40%']" :rows="2" />
-          </a-col>
-        </a-row>
-      </a-skeleton>
-    </div>
     <a-list :bordered="false">
       <a-list-item
         v-for="team in teamList"
         :key="team.id"
         action-layout="horizontal"
       >
-        <a-list-item-meta :title="team.name">
+        <a-skeleton v-if="loading" :loading="loading" :animation="true">
+          <a-row :gutter="6">
+            <a-col :span="6">
+              <a-skeleton-shape shape="circle" />
+            </a-col>
+            <a-col :span="16">
+              <a-skeleton-line :widths="['100%', '40%']" :rows="2" />
+            </a-col>
+          </a-row>
+        </a-skeleton>
+        <a-list-item-meta v-else :title="team.name">
           <template #avatar>
             <a-avatar>
               <img :src="team.avatar" />
@@ -50,8 +41,11 @@ import useRequest from '@/hooks/request';
 
 export default defineComponent({
   setup() {
-    const { loading, response: teamList } =
-      useRequest<MyTeamRecord[]>(queryMyTeamList);
+    const defaultValue: MyTeamRecord[] = new Array(4).fill({});
+    const { loading, response: teamList } = useRequest<MyTeamRecord[]>(
+      queryMyTeamList,
+      defaultValue
+    );
     return {
       loading,
       teamList,

@@ -2,7 +2,6 @@
   <a-card
     class="general-card"
     :title="$t('workplace.quick.operation')"
-    :bordered="false"
     :header-style="{ paddingBottom: '0' }"
     :body-style="{ padding: '24px 20px 0 20px' }"
   >

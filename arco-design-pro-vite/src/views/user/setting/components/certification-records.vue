@@ -1,7 +1,6 @@
 <template>
   <a-card
     class="general-card"
-    :bordered="false"
     :title="$t('userSetting.certification.title.record')"
     :header-style="{ border: 'none' }"
   >

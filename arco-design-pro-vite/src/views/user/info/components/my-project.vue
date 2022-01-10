@@ -1,35 +1,20 @@
 <template>
-  <a-card
-    class="general-card"
-    :title="$t('userInfo.title.myProject')"
-    :bordered="false"
-  >
+  <a-card class="general-card" :title="$t('userInfo.title.myProject')">
     <template #extra>
       <a-link>{{ $t('userInfo.showMore') }}</a-link>
     </template>
-    <a-row v-if="loading" :gutter="16">
+    <a-row :gutter="16">
       <a-col
-        v-for="project in new Array(6).fill({})"
-        :key="project.id"
+        v-for="(project, index) in projectList"
+        :key="index"
         :span="8"
         class="my-project-item"
       >
         <a-card>
-          <a-skeleton :loading="loading" :animation="true">
+          <a-skeleton v-if="loading" :loading="loading" :animation="true">
             <a-skeleton-line :rows="3" />
           </a-skeleton>
-        </a-card>
-      </a-col>
-    </a-row>
-    <a-row v-else :gutter="16">
-      <a-col
-        v-for="project in projectList"
-        :key="project.id"
-        :span="8"
-        class="my-project-item"
-      >
-        <a-card>
-          <a-space direction="vertical">
+          <a-space v-else direction="vertical">
             <a-typography-text bold>{{ project.name }}</a-typography-text>
             <a-typography-text type="secondary">
               {{ project.description }}
@@ -62,8 +47,11 @@ import useRequest from '@/hooks/request';
 
 export default defineComponent({
   setup() {
-    const { loading, response: projectList } =
-      useRequest<MyProjectRecord[]>(queryMyProjectList);
+    const defaultValue = Array(6).fill({} as MyProjectRecord);
+    const { loading, response: projectList } = useRequest<MyProjectRecord[]>(
+      queryMyProjectList,
+      defaultValue
+    );
     return {
       loading,
       projectList,

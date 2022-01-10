@@ -2,7 +2,6 @@
   <a-card
     class="general-card"
     :title="$t('monitor.studioStatus.title.studioStatus')"
-    :bordered="false"
   >
     <template #extra>
       <a-tag color="green">{{ $t('monitor.studioStatus.smooth') }}</a-tag>

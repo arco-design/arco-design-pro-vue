@@ -3,7 +3,6 @@
     <a-card
       class="general-card"
       :title="title"
-      :bordered="false"
       :header-style="{ paddingBottom: '12px' }"
     >
       <div class="content">

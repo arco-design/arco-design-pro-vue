@@ -3,11 +3,7 @@
     <Breadcrumb :items="['menu.list', 'menu.list.cardList']" />
     <a-row :gutter="20" align="stretch">
       <a-col :span="24">
-        <a-card
-          class="general-card"
-          :bordered="false"
-          :title="$t('menu.list.cardList')"
-        >
+        <a-card class="general-card" :title="$t('menu.list.cardList')">
           <a-row justify="space-between">
             <a-col :span="24">
               <a-tabs :default-active-tab="1" type="rounded">

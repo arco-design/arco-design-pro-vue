@@ -2,11 +2,7 @@
   <div class="container">
     <Breadcrumb :items="['menu.profile', 'menu.profile.basic']" />
     <a-space direction="vertical" :size="16" fill>
-      <a-card
-        class="general-card"
-        :bordered="false"
-        :title="$t('basicProfile.title.form')"
-      >
+      <a-card class="general-card" :title="$t('basicProfile.title.form')">
         <template #extra>
           <a-space>
             <a-button>{{ $t('basicProfile.cancel') }}</a-button>
@@ -21,10 +17,10 @@
           <a-step>{{ $t('basicProfile.steps.finish') }}</a-step>
         </a-steps>
       </a-card>
-      <a-card class="general-card" :bordered="false">
+      <a-card class="general-card">
         <ProfileItem :loading="loading" :render-data="currentData" />
       </a-card>
-      <a-card class="general-card" :bordered="false">
+      <a-card class="general-card">
         <ProfileItem :loading="preLoading" type="pre" :render-data="preData" />
       </a-card>
       <OperationLog />

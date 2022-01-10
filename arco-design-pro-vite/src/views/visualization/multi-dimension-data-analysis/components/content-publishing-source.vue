@@ -2,7 +2,6 @@
   <a-spin :loading="loading" style="width: 100%">
     <a-card
       class="general-card"
-      :bordered="false"
       :title="$t('multiDAnalysis.card.title.contentPublishingSource')"
     >
       <Chart style="width: 100%; height: 300px" :option="chartOption" />

@@ -2,7 +2,7 @@
   <div class="container">
     <Breadcrumb :items="['menu.form', 'menu.form.step']" />
     <a-spin :loading="loading" style="width: 100%">
-      <a-card class="general-card" :bordered="false">
+      <a-card class="general-card">
         <template #title>
           {{ $t('stepForm.step.title') }}
         </template>

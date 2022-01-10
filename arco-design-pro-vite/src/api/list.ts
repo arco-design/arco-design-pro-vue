@@ -33,6 +33,7 @@ export function queryPolicyList(params: PolicyParams) {
 }
 
 export interface ServiceRecord {
+  id: number;
   title: string;
   description: string;
   name?: string;

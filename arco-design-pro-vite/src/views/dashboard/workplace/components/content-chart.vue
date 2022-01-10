@@ -2,7 +2,6 @@
   <a-spin :loading="loading" style="width: 100%">
     <a-card
       class="general-card"
-      :bordered="false"
       :header-style="{ paddingBottom: 0 }"
       :body-style="{
         paddingTop: '20px',

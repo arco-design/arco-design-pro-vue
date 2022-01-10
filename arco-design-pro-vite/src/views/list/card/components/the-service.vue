@@ -5,8 +5,8 @@
     </a-typography-title>
     <a-row class="list-row" :gutter="24">
       <a-col
-        v-for="item in renderData"
-        :key="item.id"
+        v-for="(item, idx) in renderData"
+        :key="idx"
         :span="6"
         class="list-col"
         style="min-height: 162px"
@@ -38,7 +38,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue';
+import { defineComponent } from 'vue';
 import { queryTheServiceList, ServiceRecord } from '@/api/list';
 import useRequest from '@/hooks/request';
 import CardWrap from './card-wrap.vue';
@@ -48,14 +48,11 @@ export default defineComponent({
     CardWrap,
   },
   setup() {
-    const { loading, response } =
-      useRequest<ServiceRecord[]>(queryTheServiceList);
-    const renderData = computed(() => {
-      if (loading.value) {
-        return new Array(4).fill({});
-      }
-      return response.value;
-    });
+    const defaultValue: ServiceRecord[] = new Array(4).fill({});
+    const { loading, response: renderData } = useRequest<ServiceRecord[]>(
+      queryTheServiceList,
+      defaultValue
+    );
     return {
       loading,
       renderData,

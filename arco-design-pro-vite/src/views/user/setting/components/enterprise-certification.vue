@@ -1,7 +1,6 @@
 <template>
   <a-card
     class="general-card"
-    :bordered="false"
     :title="$t('userSetting.certification.title.enterprise')"
     :header-style="{ padding: '0px 20px 16px 20px' }"
   >

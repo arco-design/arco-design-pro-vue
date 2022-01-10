@@ -1,9 +1,5 @@
 <template>
-  <a-card
-    class="general-card"
-    :title="$t('monitor.title.studioInfo')"
-    :bordered="false"
-  >
+  <a-card class="general-card" :title="$t('monitor.title.studioInfo')">
     <a-form :model="info" layout="vertical">
       <a-form-item :label="$t('monitor.studioInfo.label.studioTitle')" required>
         <a-input

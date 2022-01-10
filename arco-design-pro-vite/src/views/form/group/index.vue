@@ -3,7 +3,7 @@
     <Breadcrumb :items="['menu.form', 'menu.form.group']" />
     <a-form ref="formRef" layout="vertical" :model="formData">
       <a-space direction="vertical" :size="16">
-        <a-card class="general-card" :bordered="false">
+        <a-card class="general-card">
           <template #title>
             {{ $t('groupForm.title.video') }}
           </template>
@@ -143,7 +143,7 @@
             </a-col>
           </a-row>
         </a-card>
-        <a-card class="general-card" :bordered="false">
+        <a-card class="general-card">
           <template #title>
             {{ $t('groupForm.title.audio') }}
           </template>

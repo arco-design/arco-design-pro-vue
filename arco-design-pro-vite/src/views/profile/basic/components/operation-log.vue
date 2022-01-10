@@ -1,5 +1,5 @@
 <template>
-  <a-card class="general-card" :bordered="false">
+  <a-card class="general-card">
     <template #title>
       {{ $t('basicProfile.title.operationLog') }}
     </template>

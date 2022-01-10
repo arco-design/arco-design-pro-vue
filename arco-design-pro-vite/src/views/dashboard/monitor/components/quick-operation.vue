@@ -1,9 +1,5 @@
 <template>
-  <a-card
-    class="general-card"
-    :title="$t('monitor.title.quickOperation')"
-    :bordered="false"
-  >
+  <a-card class="general-card" :title="$t('monitor.title.quickOperation')">
     <a-space direction="vertical" fill :size="10">
       <a-button long>
         {{ $t('monitor.quickOperation.changeClarity') }}

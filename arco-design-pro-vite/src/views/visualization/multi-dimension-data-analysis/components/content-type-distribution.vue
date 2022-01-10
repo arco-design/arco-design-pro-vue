@@ -2,7 +2,6 @@
   <a-card
     class="general-card"
     :title="$t('multiDAnalysis.card.title.contentTypeDistribution')"
-    :bordered="false"
     :header-style="{ paddingBottom: 0 }"
   >
     <Chart style="height: 222px" :option="chartOption" />

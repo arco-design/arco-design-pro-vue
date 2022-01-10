@@ -1,7 +1,6 @@
 <template>
   <a-card
     class="general-card"
-    :bordered="false"
     :title="$t('dataAnalysis.title.publicOpinion')"
     :header-style="{ paddingBottom: '12px' }"
   >

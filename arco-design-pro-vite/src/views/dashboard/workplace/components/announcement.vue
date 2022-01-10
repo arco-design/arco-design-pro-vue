@@ -2,7 +2,6 @@
   <a-card
     class="general-card"
     :title="$t('workplace.announcement')"
-    :bordered="false"
     :header-style="{ paddingBottom: '0' }"
     :body-style="{ paddingTop: '15px' }"
   >

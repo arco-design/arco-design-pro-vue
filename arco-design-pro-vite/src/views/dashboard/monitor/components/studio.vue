@@ -1,9 +1,5 @@
 <template>
-  <a-card
-    class="general-card"
-    :title="$t('monitor.title.studioPreview')"
-    :bordered="false"
-  >
+  <a-card class="general-card" :title="$t('monitor.title.studioPreview')">
     <template #extra>
       <icon-more />
     </template>

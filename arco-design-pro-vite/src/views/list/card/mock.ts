@@ -4,6 +4,7 @@ import { ServiceRecord } from '@/api/list';
 
 const qualityInspectionList: ServiceRecord[] = [
   {
+    id: 1,
     name: 'quality',
     title: '视频类-历史导入',
     description: '2021-10-12 00:00:00',
@@ -23,6 +24,7 @@ const qualityInspectionList: ServiceRecord[] = [
     ],
   },
   {
+    id: 2,
     name: 'quality',
     title: '图文类-图片版权',
     description: '2021-12-11 18:30:00',
@@ -42,6 +44,7 @@ const qualityInspectionList: ServiceRecord[] = [
     ],
   },
   {
+    id: 3,
     name: 'quality',
     title: '图文类-高清图片',
     description: '2021-10-15 08:10:00',
@@ -63,6 +66,7 @@ const qualityInspectionList: ServiceRecord[] = [
 ];
 const theServiceList: ServiceRecord[] = [
   {
+    id: 1,
     icon: 'code',
     title: '漏斗分析',
     description:
@@ -71,6 +75,7 @@ const theServiceList: ServiceRecord[] = [
     actionType: 'button',
   },
   {
+    id: 2,
     icon: 'edit',
     title: '用户分布',
     description:
@@ -80,6 +85,7 @@ const theServiceList: ServiceRecord[] = [
     expires: true,
   },
   {
+    id: 3,
     icon: 'user',
     title: '资源分发',
     description:
@@ -88,6 +94,7 @@ const theServiceList: ServiceRecord[] = [
     actionType: 'button',
   },
   {
+    id: 4,
     icon: 'user',
     title: '用户画像分析',
     description:
@@ -98,6 +105,7 @@ const theServiceList: ServiceRecord[] = [
 ];
 const rulesPresetList: ServiceRecord[] = [
   {
+    id: 1,
     title: '内容屏蔽规则',
     description:
       '用户在执行特定的内容分发任务时，可使用内容屏蔽规则根据特定标签，过滤内容集合。',
@@ -105,6 +113,7 @@ const rulesPresetList: ServiceRecord[] = [
     actionType: 'switch',
   },
   {
+    id: 2,
     title: '内容置顶规则',
     description:
       '该规则支持用户在执行特定内容分发任务时，对固定的几条内容置顶。',
@@ -112,24 +121,28 @@ const rulesPresetList: ServiceRecord[] = [
     actionType: 'switch',
   },
   {
+    id: 3,
     title: '内容加权规则',
     description: '选定内容加权规则后可自定义从不同内容集合获取内容的概率。',
     enable: false,
     actionType: 'switch',
   },
   {
+    id: 4,
     title: '内容分发规则',
     description: '内容分发时，对某些内容需要固定在C端展示的位置。',
     enable: true,
     actionType: 'switch',
   },
   {
+    id: 5,
     title: '违禁内容识别',
     description: '精准识别赌博、刀枪、毒品、造假、贩假等违规物品和违规行为。',
     enable: false,
     actionType: 'switch',
   },
   {
+    id: 6,
     title: '多语言文字符号识别',
     description:
       '精准识别英语、维语、藏语、蒙古语、朝鲜语等多种语言以及emoji表情形态的语义识别。',
