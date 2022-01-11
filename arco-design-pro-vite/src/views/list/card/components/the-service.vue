@@ -5,8 +5,8 @@
     </a-typography-title>
     <a-row class="list-row" :gutter="24">
       <a-col
-        v-for="(item, idx) in renderData"
-        :key="idx"
+        v-for="item in renderData"
+        :key="item.id"
         :span="6"
         class="list-col"
         style="min-height: 162px"

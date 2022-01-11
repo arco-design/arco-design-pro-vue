@@ -1,6 +1,6 @@
 import { GetterTree } from 'vuex';
-import { UserStateTypes } from './state';
 import { RootState } from '@/store/interface';
+import { UserStateTypes } from './state';
 
 export interface UserGettersTypes {
   userInfo(state: UserStateTypes): UserStateTypes;

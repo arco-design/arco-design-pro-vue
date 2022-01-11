@@ -152,12 +152,12 @@
 <script lang="ts">
 import { defineComponent, computed, ref } from 'vue';
 import { useDark, useToggle } from '@vueuse/core';
-import MessageBox from '../message-box/index.vue';
 import { useStore } from '@/store';
 import { MutationTypes } from '@/store/modules/app/mutation-types';
 import { LOCALE_OPTIONS } from '@/locale';
 import useLocale from '@/hooks/locale';
 import useUser from '@/hooks/user';
+import MessageBox from '../message-box/index.vue';
 
 export default defineComponent({
   components: {

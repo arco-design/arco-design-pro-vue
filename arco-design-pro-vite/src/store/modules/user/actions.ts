@@ -1,8 +1,4 @@
 import { ActionTree, ActionContext } from 'vuex';
-import { UserStateTypes } from './state';
-import { ActionTypes } from './action-types';
-import { MutationTypes } from './mutation-types';
-import { UserMutationsTypes } from './mutations';
 import { RootState } from '@/store/interface';
 import {
   login as userLogin,
@@ -11,6 +7,10 @@ import {
   LoginData,
 } from '@/api/user';
 import { setToken, clearToken } from '@/utils/auth';
+import { UserStateTypes } from './state';
+import { ActionTypes } from './action-types';
+import { MutationTypes } from './mutation-types';
+import { UserMutationsTypes } from './mutations';
 
 export type UserAugmentedActionContext = {
   commit<K extends keyof UserMutationsTypes>(
