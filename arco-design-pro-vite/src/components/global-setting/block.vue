@@ -15,8 +15,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { useStore } from '@/store';
-import { MutationTypes } from '@/store/modules/app/mutation-types';
+import { useAppStore } from '@/store';
 import FormWrapper from './form-wrapper.vue';
 
 interface OptionsProps {
@@ -43,7 +42,7 @@ export default defineComponent({
     },
   },
   setup() {
-    const store = useStore();
+    const appStore = useAppStore();
     const handleChange = ({ key, value }: { key: string; value: unknown }) => {
       if (value && key === 'colorWeek') {
         document.body.style.filter = 'invert(80%)';
@@ -51,7 +50,7 @@ export default defineComponent({
       if (!value && key === 'colorWeek') {
         document.body.style.filter = 'none';
       }
-      store.commit(MutationTypes.APP_UPDATE_SETTING, { [key]: value });
+      appStore.updateSettings({ [key]: value });
     };
     return {
       handleChange,

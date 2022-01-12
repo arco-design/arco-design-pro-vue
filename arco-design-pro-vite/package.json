@@ -34,6 +34,8 @@
     "echarts": "^5.2.2",
     "lodash": "^4.17.21",
     "nprogress": "^0.2.0",
+    "pinia": "^2.0.9",
+    "pinia-logger": "^1.2.0",
     "query-string": "^7.0.1",
     "vue": "^3.2.16",
     "vue-echarts": "^6.0.0",
