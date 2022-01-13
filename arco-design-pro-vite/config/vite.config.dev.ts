@@ -4,6 +4,8 @@ import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import svgLoader from 'vite-svg-loader';
 import eslint from 'vite-plugin-eslint';
+import { injectHtml } from 'vite-plugin-html';
+import { teaScript, teaRun } from '../../../inject-script';
 
 export default defineConfig({
   mode: 'development',
@@ -21,6 +23,12 @@ export default defineConfig({
       cache: false,
       include: ['src/**/*.ts', 'src/**/*.tsx', 'src/**/*.vue'],
       exclude: ['node_modules'],
+    }),
+    injectHtml({
+      data: {
+        teaScript,
+        teaRun,
+      },
     }),
   ],
   resolve: {

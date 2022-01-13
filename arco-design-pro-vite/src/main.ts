@@ -10,7 +10,9 @@ import App from './App.vue';
 import '@arco-design/web-vue/dist/arco.css';
 import '@/assets/style/global.less';
 import '@/api/interceptor';
+import tea from './utils/tea';
 
+tea();
 const app = createApp(App);
 
 app.use(ArcoVue, {});
