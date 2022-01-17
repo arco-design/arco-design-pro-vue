@@ -25,8 +25,8 @@ export default defineComponent({
           type: 'value',
           axisLabel: {
             show: true,
-            formatter(value: string, idx: number) {
-              if (idx === 0) return value;
+            formatter(value: number, idx: number) {
+              if (idx === 0) return String(value);
               return `${Number(value) / 1000}k`;
             },
           },

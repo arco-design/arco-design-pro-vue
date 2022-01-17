@@ -33,10 +33,12 @@
 <script lang="ts">
 import { defineComponent, computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { LineSeriesOption } from 'echarts';
 import { queryDataOverview } from '@/api/visualization';
 import useLoading from '@/hooks/loading';
 import { ToolTipFormatterParams } from '@/types/echarts';
 import useThemes from '@/hooks/themes';
+import useChartOption from '@/hooks/chart-option';
 
 const tooltipItemsHtmlString = (items: ToolTipFormatterParams[]) => {
   return items
@@ -59,7 +61,7 @@ const generateSeries = (
   lineColor: string,
   itemBorderColor: string,
   data: number[]
-) => {
+): LineSeriesOption => {
   return {
     name,
     data,
@@ -138,7 +140,7 @@ export default defineComponent({
     const contentClickData = ref<number[]>([]);
     const contentExposureData = ref<number[]>([]);
     const activeUsersData = ref<number[]>([]);
-    const chartOption = computed(() => {
+    const { chartOption } = useChartOption((isDark) => {
       return {
         grid: {
           left: '2.6%',
@@ -155,7 +157,7 @@ export default defineComponent({
             color: '#4E5969',
             formatter(value: number, idx: number) {
               if (idx === 0) return '';
-              if (idx === chartOption.value.xAxis.data.length - 1) return '';
+              if (idx === xAxis.value.length - 1) return '';
               return `${value}`;
             },
           },
@@ -183,7 +185,7 @@ export default defineComponent({
           },
           axisLabel: {
             formatter(value: number, idx: number) {
-              if (idx === 0) return value;
+              if (idx === 0) return String(value);
               return `${value / 1000}k`;
             },
           },
@@ -195,11 +197,11 @@ export default defineComponent({
         },
         tooltip: {
           trigger: 'axis',
-          formatter(params: ToolTipFormatterParams[]) {
-            const [firstElement] = params;
+          formatter(params) {
+            const [firstElement] = params as ToolTipFormatterParams[];
             return `<div>
             <p class="tooltip-title">${firstElement.axisValueLabel}</p>
-            ${tooltipItemsHtmlString(params)}
+            ${tooltipItemsHtmlString(params as ToolTipFormatterParams[])}
           </div>`;
           },
           className: 'echarts-tooltip-diy',

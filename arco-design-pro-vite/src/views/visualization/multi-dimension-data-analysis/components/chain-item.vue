@@ -27,6 +27,7 @@
 import { defineComponent, ref } from 'vue';
 import useLoading from '@/hooks/loading';
 import { queryDataChainGrowth, DataChainGrowth } from '@/api/visualization';
+import useChartOption from '@/hooks/chart-option';
 
 export default defineComponent({
   props: {
@@ -47,38 +48,47 @@ export default defineComponent({
     const { loading, setLoading } = useLoading(true);
     const count = ref(0);
     const growth = ref(0);
-    const chartOption = ref({
-      grid: {
-        left: 0,
-        right: 0,
-        top: 0,
-        bottom: 0,
-      },
-      xAxis: {
-        type: 'category',
-        show: false,
-      },
-      yAxis: {
-        show: false,
-      },
-      tooltip: {
-        show: true,
-        trigger: 'axis',
-        formatter: '{c}',
-      },
-      series: [
-        {
-          data: [] as unknown[],
-          type: props.chartType,
-          showSymbol: false,
-          smooth: true,
-          barWidth: 7,
-          barGap: '0',
-          lineStyle: {
-            color: '#4080FF',
-          },
+    const chartDatas = ref<any>([]);
+    const { chartOption } = useChartOption(() => {
+      return {
+        grid: {
+          left: 0,
+          right: 0,
+          top: 0,
+          bottom: 0,
         },
-      ],
+        xAxis: {
+          type: 'category',
+          show: false,
+        },
+        yAxis: {
+          show: false,
+        },
+        tooltip: {
+          show: true,
+          trigger: 'axis',
+          formatter: '{c}',
+        },
+        series: [
+          {
+            data: chartDatas.value,
+            ...(props.chartType === 'bar'
+              ? {
+                  type: 'bar',
+                  barWidth: 7,
+                  barGap: '0',
+                }
+              : {
+                  type: 'line',
+                  showSymbol: false,
+                  smooth: true,
+                  lineStyle: {
+                    color: '#4080FF',
+                  },
+                }),
+          },
+        ],
+      };
     });
     const fetchData = async (params: DataChainGrowth) => {
       try {
@@ -88,14 +98,14 @@ export default defineComponent({
         growth.value = data.growth;
         chartData.data.value.forEach((el, idx) => {
           if (props.chartType === 'bar') {
-            chartOption.value.series[0].data.push({
+            chartDatas.value.push({
               value: el,
               itemStyle: {
                 color: idx % 2 ? '#468DFF' : '#86DF6C',
               },
             });
           } else {
-            chartOption.value.series[0].data.push(el);
+            chartDatas.value.push(el);
           }
         });
       } catch (err) {
@@ -116,6 +126,9 @@ export default defineComponent({
 </script>
 
 <style scoped lang="less">
+.general-card {
+  min-height: 204px;
+}
 .content {
   display: flex;
   align-items: center;
