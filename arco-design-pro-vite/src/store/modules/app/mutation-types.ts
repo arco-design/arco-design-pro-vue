@@ -1,4 +1,0 @@
-export enum MutationTypes {
-  APP_UPDATE_SETTING = 'APP/UPDATE_SETTING',
-  TOGGLE_THEME = 'APP/TOGGLE_THEME',
-}

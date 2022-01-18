@@ -44,9 +44,9 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import ChatList from './chat-list.vue';
 import { queryChatList, ChatRecord } from '@/api/message';
 import useLoading from '@/hooks/loading';
+import ChatList from './chat-list.vue';
 
 export default defineComponent({
   components: {

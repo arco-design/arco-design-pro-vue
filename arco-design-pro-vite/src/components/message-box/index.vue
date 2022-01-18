@@ -32,8 +32,8 @@ import {
   MessageRecord,
   MessageListType,
 } from '@/api/message';
-import List from './list.vue';
 import useLoading from '@/hooks/loading';
+import List from './list.vue';
 
 interface TabItem {
   key: string;

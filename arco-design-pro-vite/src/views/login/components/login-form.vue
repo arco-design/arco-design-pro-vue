@@ -66,9 +66,8 @@ import { defineComponent, ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { Message } from '@arco-design/web-vue';
 import { ValidatedError } from '@arco-design/web-vue/es/form/interface';
-import { useStore } from '@/store';
+import { useUserStore } from '@/store';
 import useLoading from '@/hooks/loading';
-import { ActionTypes } from '@/store/modules/user/action-types';
 import { LoginData } from '@/api/user';
 
 export default defineComponent({
@@ -76,7 +75,7 @@ export default defineComponent({
     const router = useRouter();
     const errorMessage = ref('');
     const { loading, setLoading } = useLoading();
-    const store = useStore();
+    const userStore = useUserStore();
     const userInfo = reactive({
       username: 'admin',
       password: 'admin',
@@ -91,7 +90,7 @@ export default defineComponent({
       if (!errors) {
         setLoading(true);
         try {
-          await store.dispatch(ActionTypes.USER_LOGIN, values);
+          await userStore.login(values);
           const { redirect, ...othersQuery } = router.currentRoute.value.query;
           router.push({
             name: (redirect as string) || 'workplace',

@@ -10,11 +10,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from 'vue';
+import { defineComponent, ref } from 'vue';
 import useLoading from '@/hooks/loading';
 import { queryContentPeriodAnalysis } from '@/api/visualization';
 import { ToolTipFormatterParams } from '@/types/echarts';
-import useThemes from '@/hooks/themes';
+import useChartOption from '@/hooks/chart-option';
 
 const tooltipItemsHtmlString = (items: ToolTipFormatterParams[]) => {
   return items
@@ -35,12 +35,11 @@ const tooltipItemsHtmlString = (items: ToolTipFormatterParams[]) => {
 export default defineComponent({
   setup() {
     const { loading, setLoading } = useLoading(true);
-    const { isDark } = useThemes();
     const xAxis = ref<string[]>([]);
     const textChartsData = ref<number[]>([]);
     const imgChartsData = ref<number[]>([]);
     const videoChartsData = ref<number[]>([]);
-    const chartOption = computed(() => {
+    const { chartOption } = useChartOption((isDark) => {
       return {
         grid: {
           left: '40',
@@ -72,7 +71,7 @@ export default defineComponent({
             },
             interval(idx: number) {
               if (idx === 0) return false;
-              if (idx === chartOption.value.xAxis.data.length - 1) return false;
+              if (idx === xAxis.value.length - 1) return false;
               return true;
             },
           },
@@ -80,7 +79,7 @@ export default defineComponent({
             color: '#86909C',
             formatter(value: number, idx: number) {
               if (idx === 0) return '';
-              if (idx === chartOption.value.xAxis.data.length - 1) return '';
+              if (idx === xAxis.value.length - 1) return '';
               return `${value}`;
             },
           },
@@ -100,11 +99,11 @@ export default defineComponent({
         tooltip: {
           show: true,
           trigger: 'axis',
-          formatter(params: ToolTipFormatterParams[]) {
-            const [firstElement] = params;
+          formatter(params) {
+            const [firstElement] = params as ToolTipFormatterParams[];
             return `<div>
             <p class="tooltip-title">${firstElement.axisValueLabel}</p>
-            ${tooltipItemsHtmlString(params)}
+            ${tooltipItemsHtmlString(params as ToolTipFormatterParams[])}
           </div>`;
           },
           className: 'echarts-tooltip-diy',

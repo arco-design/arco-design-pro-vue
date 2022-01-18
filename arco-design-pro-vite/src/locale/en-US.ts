@@ -1,4 +1,3 @@
-import localeSettings from './en-US/settings';
 import localeMessageBox from '@/components/message-box/locale/en-US';
 
 import localeWorkplace from '@/views/dashboard/workplace/locale/en-US';
@@ -24,6 +23,7 @@ import locale500 from '@/views/exception/500/locale/en-US';
 
 import localeUserInfo from '@/views/user/info/locale/en-US';
 import localeUserSetting from '@/views/user/setting/locale/en-US';
+import localeSettings from './en-US/settings';
 
 export default {
   'menu.dashboard': 'Dashboard',

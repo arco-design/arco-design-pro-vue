@@ -1,14 +1,13 @@
 import { useRouter } from 'vue-router';
 import { Message } from '@arco-design/web-vue';
 
-import { useStore } from '@/store';
-import { ActionTypes } from '@/store/modules/user/action-types';
+import { useUserStore } from '@/store';
 
 export default function useUser() {
   const router = useRouter();
-  const store = useStore();
+  const userStore = useUserStore();
   const logout = async (logoutTo?: string) => {
-    await store.dispatch(ActionTypes.USER_LOGOUT);
+    await userStore.logout();
     const currentRoute = router.currentRoute.value;
     Message.success('登出成功');
     router.push({

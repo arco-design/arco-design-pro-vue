@@ -10,24 +10,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue';
+import { defineComponent } from 'vue';
 import useLoading from '@/hooks/loading';
-import useThemes from '@/hooks/themes';
+import useChartOption from '@/hooks/chart-option';
 
 export default defineComponent({
   setup() {
-    const { isDark } = useThemes();
-
-    const graphicElementStyle = computed(() => {
-      return {
+    const { chartOption } = useChartOption((isDark) => {
+      const graphicElementStyle = {
         textAlign: 'center',
         fill: isDark.value ? 'rgba(255,255,255,0.7)' : '#4E5969',
         fontSize: 14,
         lineWidth: 10,
         fontWeight: 'bold',
       };
-    });
-    const chartOption = computed(() => {
       return {
         legend: {
           left: 'center',
@@ -54,7 +50,7 @@ export default defineComponent({
               top: 'center',
               style: {
                 text: '纯文本',
-                ...graphicElementStyle.value,
+                ...graphicElementStyle,
               },
             },
             {
@@ -63,7 +59,7 @@ export default defineComponent({
               top: 'center',
               style: {
                 text: '图文类',
-                ...graphicElementStyle.value,
+                ...graphicElementStyle,
               },
             },
             {
@@ -72,7 +68,7 @@ export default defineComponent({
               top: 'center',
               style: {
                 text: '视频类',
-                ...graphicElementStyle.value,
+                ...graphicElementStyle,
               },
             },
           ],

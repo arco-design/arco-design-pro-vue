@@ -16,8 +16,8 @@
         </div>
       </a-col>
       <a-col
-        v-for="(item, idx) in renderData"
-        :key="idx"
+        v-for="item in renderData"
+        :key="item.id"
         :span="6"
         class="list-col"
       >

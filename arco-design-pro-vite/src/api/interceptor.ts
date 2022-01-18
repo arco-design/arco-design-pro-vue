@@ -1,7 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Message, Modal } from '@arco-design/web-vue';
-import store from '@/store';
-import { ActionTypes } from '@/store/modules/user/action-types';
+import { useUserStore } from '@/store';
 
 export interface HttpResponse<T = unknown> {
   status: number;
@@ -40,7 +39,9 @@ axios.interceptors.response.use(
             'You have been logged out, you can cancel to stay on this page, or log in again',
           okText: 'Re-Login',
           async onOk() {
-            await store.dispatch(ActionTypes.USER_LOGOUT);
+            const userStore = useUserStore();
+
+            await userStore.logout();
             window.location.reload();
           },
         });

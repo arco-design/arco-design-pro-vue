@@ -2,8 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import NProgress from 'nprogress'; // progress bar
 import 'nprogress/nprogress.css';
 
-import Login from './modules/login';
 import PageLayout from '@/layout/page-layout.vue';
+import Login from './modules/login';
 import appRoutes from './modules';
 
 NProgress.configure({ showSpinner: false }); // NProgress Configuration
