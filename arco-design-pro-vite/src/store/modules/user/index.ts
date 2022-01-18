@@ -1,16 +1,73 @@
-import { Module } from 'vuex';
-import { RootState } from '@/store/interface';
-import { state, UserStateTypes } from './state';
-import { getters } from './getters';
-import { actions } from './actions';
-import { mutations } from './mutations';
+import { defineStore } from 'pinia';
+import {
+  login as userLogin,
+  logout as userLogout,
+  getUserInfo,
+  LoginData,
+} from '@/api/user';
+import { setToken, clearToken } from '@/utils/auth';
+import { UserState } from './types';
 
-// Module
-const user: Module<UserStateTypes, RootState> = {
-  state,
-  getters,
-  mutations,
-  actions,
-};
+export const useUserStore = defineStore('user', {
+  state: (): UserState => ({
+    name: undefined,
+    avatar: undefined,
+    job: undefined,
+    organization: undefined,
+    location: undefined,
+    email: undefined,
+    introduction: undefined,
+    personalWebsite: undefined,
+    jobName: undefined,
+    organizationName: undefined,
+    locationName: undefined,
+    phone: undefined,
+    registrationDate: undefined,
+    accountId: undefined,
+    certification: undefined,
+  }),
 
-export default user;
+  getters: {
+    userInfo(state: UserState): UserState {
+      return { ...state };
+    },
+  },
+
+  actions: {
+    // Set user's information
+    setInfo(partial: Partial<UserState>) {
+      this.$patch(partial);
+    },
+
+    // Reset user's information
+    resetInfo() {
+      this.$reset();
+    },
+
+    // Get user's information
+    async info() {
+      const res = await getUserInfo();
+
+      this.setInfo(res.data);
+    },
+
+    // Login
+    async login(loginForm: LoginData) {
+      try {
+        const res = await userLogin(loginForm);
+        setToken(res.data.token);
+      } catch (err) {
+        clearToken();
+        throw err;
+      }
+    },
+
+    // Logout
+    async logout() {
+      await userLogout();
+
+      this.resetInfo();
+      clearToken();
+    },
+  },
+});

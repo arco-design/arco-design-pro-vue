@@ -34,12 +34,13 @@
     "echarts": "^5.2.2",
     "lodash": "^4.17.21",
     "nprogress": "^0.2.0",
+    "pinia": "^2.0.9",
+    "pinia-logger": "^1.2.0",
     "query-string": "^7.0.1",
     "vue": "^3.2.16",
     "vue-echarts": "^6.0.0",
     "vue-i18n": "^9.2.0-beta.17",
-    "vue-router": "4",
-    "vuex": "^4.0.2"
+    "vue-router": "4"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",

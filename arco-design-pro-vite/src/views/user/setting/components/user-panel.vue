@@ -51,41 +51,39 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { useStore } from '@/store';
+import { useUserStore } from '@/store';
 
 export default defineComponent({
   setup() {
-    const store = useStore();
+    const userStore = useUserStore();
     const file = {
       uid: '-2',
       name: 'avatar.png',
-      url: store.getters.userInfo.avatar,
+      url: userStore.avatar,
     };
-    const fileList = ref([file]);
-    const { name, certification, accountId, phone, registrationDate } =
-      store.getters.userInfo;
     const renderData = [
       {
         label: 'userSetting.label.name',
-        value: name,
+        value: userStore.name,
       },
       {
         label: 'userSetting.label.certification',
-        value: certification,
+        value: userStore.certification,
       },
       {
         label: 'userSetting.label.accountId',
-        value: accountId,
+        value: userStore.accountId,
       },
       {
         label: 'userSetting.label.phone',
-        value: phone,
+        value: userStore.phone,
       },
       {
         label: 'userSetting.label.registrationDate',
-        value: registrationDate,
+        value: userStore.registrationDate,
       },
     ];
+    const fileList = ref([file]);
     return {
       fileList,
       renderData,

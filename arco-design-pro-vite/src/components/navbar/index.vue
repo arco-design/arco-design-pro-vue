@@ -153,8 +153,7 @@
 import { defineComponent, computed, ref } from 'vue';
 import { useDark, useToggle } from '@vueuse/core';
 import MessageBox from '../message-box/index.vue';
-import { useStore } from '@/store';
-import { MutationTypes } from '@/store/modules/app/mutation-types';
+import { useAppStore, useUserStore } from '@/store';
 import { LOCALE_OPTIONS } from '@/locale';
 import useLocale from '@/hooks/locale';
 import useUser from '@/hooks/user';
@@ -164,13 +163,16 @@ export default defineComponent({
     MessageBox,
   },
   setup() {
-    const store = useStore();
+    const appStore = useAppStore();
+    const userStore = useUserStore();
     const { logout } = useUser();
-    const { avatar } = store.state.user;
     const { changeLocale } = useLocale();
     const locales = [...LOCALE_OPTIONS];
+    const avatar = computed(() => {
+      return userStore.avatar;
+    });
     const theme = computed(() => {
-      return store.state.app.theme;
+      return appStore.theme;
     });
     const isDark = useDark({
       selector: 'body',
@@ -180,12 +182,12 @@ export default defineComponent({
       storageKey: 'arco-theme',
       onChanged(dark: boolean) {
         // overridded default behavior
-        store.commit(MutationTypes.TOGGLE_THEME, dark);
+        appStore.toggleTheme(dark);
       },
     });
     const toggleTheme = useToggle(isDark);
     const setVisible = () => {
-      store.commit(MutationTypes.APP_UPDATE_SETTING, { globalSettings: true });
+      appStore.updateSettings({ globalSettings: true });
     };
     const refBtn = ref();
     const triggerBtn = ref();
@@ -208,6 +210,7 @@ export default defineComponent({
       });
       triggerBtn.value.dispatchEvent(event);
     };
+
     return {
       locales,
       theme,

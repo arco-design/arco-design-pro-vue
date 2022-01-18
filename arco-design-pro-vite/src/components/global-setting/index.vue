@@ -20,8 +20,7 @@ import { defineComponent, computed } from 'vue';
 import { Message } from '@arco-design/web-vue';
 import { useI18n } from 'vue-i18n';
 import { useClipboard } from '@vueuse/core';
-import { useStore } from '@/store';
-import { MutationTypes } from '@/store/modules/app/mutation-types';
+import { useAppStore } from '@/store';
 import Block from './block.vue';
 
 export default defineComponent({
@@ -30,10 +29,10 @@ export default defineComponent({
   },
   emits: ['cancel'],
   setup(props, { emit }) {
-    const store = useStore();
+    const appStore = useAppStore();
     const { t } = useI18n();
     const { copy } = useClipboard();
-    const visible = computed(() => store.state.app.globalSettings);
+    const visible = computed(() => appStore.globalSettings);
     const contentOpts = [
       { name: 'settings.navbar', key: 'navbar', defaultVal: true },
       { name: 'settings.menu', key: 'menu', defaultVal: true },
@@ -41,7 +40,7 @@ export default defineComponent({
       {
         name: 'settings.menuWidth',
         key: 'menuWidth',
-        defaultVal: store.state.app.menuWidth,
+        defaultVal: appStore.menuWidth,
         type: 'number',
       },
     ];
@@ -50,11 +49,11 @@ export default defineComponent({
     ];
 
     const cancel = () => {
-      store.commit(MutationTypes.APP_UPDATE_SETTING, { globalSettings: false });
+      appStore.updateSettings({ globalSettings: false });
       emit('cancel');
     };
     const copySettings = async () => {
-      const text = JSON.stringify(store.state.app, null, 2);
+      const text = JSON.stringify(appStore.$state, null, 2);
       await copy(text);
       Message.success(t('settings.copySettings.message'));
     };

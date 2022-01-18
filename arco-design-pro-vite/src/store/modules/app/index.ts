@@ -1,16 +1,32 @@
-import { Module } from 'vuex';
-import { RootState } from '@/store/interface';
-import { state, AppStateTypes } from './state';
-import { getters } from './getters';
-import { actions } from './actions';
-import { mutations } from './mutations';
+import { defineStore } from 'pinia';
+import defaultSettings from '@/config/settings.json';
+import { AppState } from './types';
 
-// Module
-const app: Module<AppStateTypes, RootState> = {
-  state,
-  getters,
-  mutations,
-  actions,
-};
+export const useAppStore = defineStore('app', {
+  state: (): AppState => ({ ...defaultSettings }),
 
-export default app;
+  getters: {
+    appCurrentSetting(state: AppState): AppState {
+      return { ...state };
+    },
+  },
+
+  actions: {
+    // Update app settings
+    updateSettings(partial: Partial<AppState>) {
+      // @ts-ignore-next-line
+      this.$patch(partial);
+    },
+
+    // Change theme color
+    toggleTheme(dark: boolean) {
+      if (dark) {
+        this.theme = 'dark';
+        document.body.setAttribute('arco-theme', 'dark');
+      } else {
+        this.theme = 'light';
+        document.body.removeAttribute('arco-theme');
+      }
+    },
+  },
+});

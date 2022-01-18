@@ -33,17 +33,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue';
-import { useStore } from '@/store';
+import { defineComponent } from 'vue';
+import { useUserStore } from '@/store';
 
 export default defineComponent({
   setup() {
-    const store = useStore();
-    const userInfo = computed(() => {
-      return store.getters.userInfo;
-    });
+    const userStore = useUserStore();
     return {
-      userInfo,
+      userInfo: userStore,
     };
   },
 });
