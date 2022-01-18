@@ -34,12 +34,10 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import { LocationQueryRaw } from 'vue-router';
-import baseStore, { useStore } from '@/store';
+import { useAppStore, useUserStore } from '@/store';
 import NavBar from '@/components/navbar/index.vue';
 import Menu from '@/components/menu/index.vue';
 import Footer from '@/components/footer/index.vue';
-import { ActionTypes } from '@/store/modules/user/action-types';
-import { MutationTypes } from '@/store/modules/app/mutation-types';
 
 export default defineComponent({
   components: {
@@ -48,8 +46,9 @@ export default defineComponent({
     Footer,
   },
   async beforeRouteEnter(to, from, next) {
+    const store = useUserStore();
     try {
-      await baseStore.dispatch(ActionTypes.USER_INFO);
+      await store.info();
       next();
     } catch (error) {
       next({
@@ -62,17 +61,16 @@ export default defineComponent({
     }
   },
   setup() {
-    const store = useStore();
-    const appState = store.state.app;
+    const appStore = useAppStore();
     const navbarHeight = `60px`;
-    const navbar = computed(() => appState.navbar);
-    const menu = computed(() => appState.menu);
-    const footer = computed(() => appState.footer);
+    const navbar = computed(() => appStore.navbar);
+    const menu = computed(() => appStore.menu);
+    const footer = computed(() => appStore.footer);
     const menuWidth = computed(() => {
-      return appState.menuCollapse ? 48 : appState.menuWidth;
+      return appStore.menuCollapse ? 48 : appStore.menuWidth;
     });
     const collapse = computed(() => {
-      return appState.menuCollapse;
+      return appStore.menuCollapse;
     });
     const paddingStyle = computed(() => {
       const paddingLeft = menu.value
@@ -82,7 +80,7 @@ export default defineComponent({
       return { ...paddingLeft, ...paddingTop };
     });
     const setCollapsed = (val: boolean) => {
-      store.commit(MutationTypes.APP_UPDATE_SETTING, { menuCollapse: val });
+      appStore.updateSettings({ menuCollapse: val });
     };
     return {
       navbar,

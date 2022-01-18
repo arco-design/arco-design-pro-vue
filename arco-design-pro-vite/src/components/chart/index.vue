@@ -10,7 +10,7 @@
 <script lang="ts">
 import { defineComponent, ref, computed, nextTick } from 'vue';
 import VCharts from 'vue-echarts';
-import { useStore } from '@/store';
+import { useAppStore } from '@/store';
 
 export default defineComponent({
   components: {
@@ -37,9 +37,9 @@ export default defineComponent({
     },
   },
   setup() {
-    const store = useStore();
+    const appStore = useAppStore();
     const theme = computed(() => {
-      if (store.state.app.theme === 'dark') return 'dark';
+      if (appStore.theme === 'dark') return 'dark';
       return '';
     });
     const renderChart = ref(false);

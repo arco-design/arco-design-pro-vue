@@ -32,13 +32,12 @@ import {
   RouteRecordRaw,
   RouteRecordNormalized,
 } from 'vue-router';
-import { useStore } from '@/store';
-import { MutationTypes } from '@/store/modules/app/mutation-types';
+import { useAppStore } from '@/store';
 
 export default defineComponent({
   emit: ['collapse'],
   setup() {
-    const store = useStore();
+    const appStore = useAppStore();
     const router = useRouter();
     const route = useRoute();
     const collapsed = ref(false);
@@ -67,7 +66,7 @@ export default defineComponent({
       }
     );
     watch(
-      () => store.state.app.menuCollapse,
+      () => appStore.menuCollapse,
       (newVal) => {
         collapsed.value = newVal;
       },
@@ -76,7 +75,7 @@ export default defineComponent({
       }
     );
     const setCollapse = (val: boolean) => {
-      store.commit(MutationTypes.APP_UPDATE_SETTING, { menuCollapse: val });
+      appStore.updateSettings({ menuCollapse: val });
     };
     return {
       goto,

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { UserStateTypes } from '@/store/modules/user/state';
+import { UserState } from '@/store/modules/user/types';
 
 export interface LoginData {
   username: string;
@@ -18,5 +18,5 @@ export function logout() {
 }
 
 export function getUserInfo() {
-  return axios.post<UserStateTypes>('/api/user/info');
+  return axios.post<UserState>('/api/user/info');
 }

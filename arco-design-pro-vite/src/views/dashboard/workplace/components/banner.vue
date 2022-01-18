@@ -11,15 +11,14 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
-import { useStore } from '@/store';
+import { useUserStore } from '@/store';
 
 export default defineComponent({
   setup() {
-    const store = useStore();
+    const userStore = useUserStore();
     const userInfo = computed(() => {
-      const { name } = store.state.user;
       return {
-        name,
+        name: userStore.name,
       };
     });
     return {
