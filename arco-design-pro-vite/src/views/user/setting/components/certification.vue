@@ -7,14 +7,14 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import EnterpriseCertification from './enterprise-certification.vue';
-import CertificationRecords from './certification-records.vue';
 import {
   queryCertification,
   UnitCertification,
   EnterpriseCertificationModel,
 } from '@/api/user-center';
 import useLoading from '@/hooks/loading';
+import EnterpriseCertification from './enterprise-certification.vue';
+import CertificationRecords from './certification-records.vue';
 
 export default defineComponent({
   components: {
