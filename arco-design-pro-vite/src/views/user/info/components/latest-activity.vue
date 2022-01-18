@@ -78,6 +78,7 @@ export default defineComponent({
 }
 .general-card :deep(.arco-list-item) {
   padding-left: 0;
+  border-bottom: none;
   .arco-list-item-meta-content {
     flex: 1;
     padding-bottom: 27px;

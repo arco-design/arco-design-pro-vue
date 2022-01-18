@@ -100,11 +100,17 @@ export default defineComponent({
 </script>
 
 <style scoped lang="less">
-:deep(.arco-list-item-meta-avatar) {
-  margin-bottom: 1px;
-}
-:deep(.arco-typography) {
-  margin-bottom: 20px;
+:deep(.arco-list-item) {
+  border-bottom: none !important;
+  .arco-typography {
+    margin-bottom: 20px;
+  }
+  .arco-list-item-meta-avatar {
+    margin-bottom: 1px;
+  }
+  .arco-list-item-meta {
+    padding: 0;
+  }
 }
 :deep(.arco-list-item-meta-content) {
   flex: 1;
