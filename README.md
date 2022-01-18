@@ -22,6 +22,7 @@ English | [简体中文](./README.zh-CN.md)
 
 - **TypeScript** - The code is completely written in TypeScript.
 - **Vue3** - Look to the future and embrace Vue3.
+- **Pinia** - It's trendy and delicious.
 - **Arco Design** - Powered by [ArcoDesign Vue](https://github.com/arco-design/arco-design-vue) component library.
 - **Templates** - 16+ page templates, covering tables, lists, forms, dashboard, visualization and other scenes.
 - **Themes** - Based on the rich theme market of [DesignLab](https://arco.design/themes), make your projects ever-changing.
@@ -29,7 +30,6 @@ English | [简体中文](./README.zh-CN.md)
 - **Mock** - Built-in API simulation scheme, code as comments, more simulation of the online environment.
 - **I18n** - Built-in internationalized multi-language solution.
 - **Config** - Flexible configuration of page color, layout, etc.
-- **Store** - Built-in more complete TypeScript type declarations.
 
 ## 🌈 Usage
 
