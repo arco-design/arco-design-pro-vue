@@ -13,6 +13,9 @@
             :title="$t('workplace.onlineContent')"
             :value="373.5"
             :precision="1"
+            :value-from="0"
+            animation
+            show-group-separator
           >
             <template #suffix>
               W+ <span class="unit">{{ $t('workplace.pecs') }}</span>
@@ -28,7 +31,13 @@
               src="//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/fdc66b07224cdf18843c6076c2587eb5.svg~tplv-49unhts6dw-image.image"
             />
           </a-avatar>
-          <a-statistic :title="$t('workplace.putIn')" :value="368">
+          <a-statistic
+            :title="$t('workplace.putIn')"
+            :value="368"
+            :value-from="0"
+            animation
+            show-group-separator
+          >
             <template #suffix>
               <span class="unit">{{ $t('workplace.pecs') }}</span>
             </template>
@@ -46,6 +55,8 @@
           <a-statistic
             :title="$t('workplace.newDay')"
             :value="8874"
+            :value-from="0"
+            animation
             show-group-separator
           >
             <template #suffix>
@@ -66,6 +77,8 @@
             :title="$t('workplace.newFromYesterday')"
             :value="2.8"
             :precision="1"
+            :value-from="0"
+            animation
           >
             <template #suffix> % <icon-caret-up class="up-icon" /> </template>
           </a-statistic>

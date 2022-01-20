@@ -7,13 +7,18 @@
     >
       <div class="content">
         <a-statistic
-          v-if="!loading"
           :value="count"
           :show-group-separator="true"
+          :value-from="0"
+          animation
         />
-        <a-typography-text class="percent-text" type="danger">
+        <a-typography-text
+          class="percent-text"
+          :type="isUp ? 'danger' : 'success'"
+        >
           {{ growth }}%
-          <icon-arrow-rise />
+          <icon-arrow-rise v-if="isUp" />
+          <icon-arrow-fall v-else />
         </a-typography-text>
       </div>
       <div class="chart">
@@ -24,7 +29,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { computed, defineComponent, ref } from 'vue';
 import useLoading from '@/hooks/loading';
 import { queryDataChainGrowth, DataChainGrowth } from '@/api/visualization';
 import useChartOption from '@/hooks/chart-option';
@@ -47,7 +52,8 @@ export default defineComponent({
   setup(props) {
     const { loading, setLoading } = useLoading(true);
     const count = ref(0);
-    const growth = ref(0);
+    const growth = ref(100);
+    const isUp = computed(() => growth.value > 50);
     const chartDatas = ref<any>([]);
     const { chartOption } = useChartOption(() => {
       return {
@@ -120,6 +126,7 @@ export default defineComponent({
       count,
       growth,
       chartOption,
+      isUp,
     };
   },
 });
