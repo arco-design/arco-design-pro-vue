@@ -25,7 +25,7 @@
           <a-avatar :size="54" class="col-avatar">
             <img
               alt="avatar"
-              src="//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/bf579bf45e307c554c7526da1ba56710.svg~tplv-49unhts6dw-image.image"
+              src="//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/fdc66b07224cdf18843c6076c2587eb5.svg~tplv-49unhts6dw-image.image"
             />
           </a-avatar>
           <a-statistic :title="$t('workplace.putIn')" :value="368">

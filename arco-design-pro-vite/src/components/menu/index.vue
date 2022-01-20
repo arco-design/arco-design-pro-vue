@@ -1,31 +1,6 @@
-<template>
-  <a-menu
-    v-model:collapsed="collapsed"
-    show-collapse-button
-    :auto-open="false"
-    :selected-keys="selectedKey"
-    :auto-open-selected="true"
-    :level-indent="34"
-    style="height: 100%"
-    @collapse="setCollapse"
-  >
-    <a-sub-menu v-for="route in appRoute.children" :key="route.name">
-      <template #title>
-        <component :is="route?.meta?.icon" />{{ $t(route?.meta?.locale || '') }}
-      </template>
-      <a-menu-item
-        v-for="_route in route.children || []"
-        :key="_route.name"
-        @click="goto(_route)"
-      >
-        {{ $t(_route?.meta?.locale || '') }}
-      </a-menu-item>
-    </a-sub-menu>
-  </a-menu>
-</template>
-
-<script lang="ts">
-import { defineComponent, ref, watch } from 'vue';
+<script lang="tsx">
+import { defineComponent, ref, watch, h, compile } from 'vue';
+import { useI18n } from 'vue-i18n';
 import {
   useRouter,
   useRoute,
@@ -37,6 +12,7 @@ import { useAppStore } from '@/store';
 export default defineComponent({
   emit: ['collapse'],
   setup() {
+    const { t } = useI18n();
     const appStore = useAppStore();
     const router = useRouter();
     const route = useRoute();
@@ -77,13 +53,41 @@ export default defineComponent({
     const setCollapse = (val: boolean) => {
       appStore.updateSettings({ menuCollapse: val });
     };
-    return {
-      goto,
-      selectedKey,
-      appRoute,
-      setCollapse,
-      collapsed,
-    };
+
+    return () => (
+      <a-menu
+        v-model:collapsed={collapsed.value}
+        show-collapse-button
+        auto-open={false}
+        selected-keys={selectedKey.value}
+        auto-open-selected={true}
+        level-indent={34}
+        style="height: 100%"
+        onCollapse={setCollapse}
+      >
+        {appRoute.children.map((route) => {
+          const slots = {
+            title: () =>
+              h(
+                compile(
+                  `<${route?.meta?.icon}/>${t(route?.meta?.locale || '')}`
+                )
+              ),
+          };
+          return (
+            <a-sub-menu key={route.name} v-slots={slots}>
+              {route?.children?.map((_route) => {
+                return (
+                  <a-menu-item key={_route.name} onClick={() => goto(_route)}>
+                    {t(_route?.meta?.locale || '')}
+                  </a-menu-item>
+                );
+              })}
+            </a-sub-menu>
+          );
+        })}
+      </a-menu>
+    );
   },
 });
 </script>
