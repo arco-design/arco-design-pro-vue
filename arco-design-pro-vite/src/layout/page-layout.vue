@@ -1,8 +1,8 @@
 <template>
   <a-layout class="layout">
-    <div v-if="navbar" class="layout-navbar">
+    <!-- <div v-if="navbar" class="layout-navbar">
       <NavBar />
-    </div>
+    </div> -->
     <a-layout>
       <a-layout>
         <a-layout-sider
@@ -12,7 +12,6 @@
           :collapsed="collapse"
           :collapsible="true"
           :width="menuWidth"
-          :style="{ paddingTop: navbar ? '60px' : '' }"
           :hide-trigger="true"
           @collapse="setCollapsed"
         >
@@ -35,14 +34,14 @@
 import { defineComponent, computed, watch } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useAppStore, useUserStore } from '@/store';
-import NavBar from '@/components/navbar/index.vue';
+// import NavBar from '@/components/navbar/index.vue';
 import Menu from '@/components/menu/index.vue';
 import Footer from '@/components/footer/index.vue';
 import usePermission from '@/hooks/permission';
 
 export default defineComponent({
   components: {
-    NavBar,
+    // NavBar,
     Menu,
     Footer,
   },
@@ -52,7 +51,7 @@ export default defineComponent({
     const router = useRouter();
     const route = useRoute();
     const permission = usePermission();
-    const navbarHeight = `60px`;
+    // const navbarHeight = `60px`;
     const navbar = computed(() => appStore.navbar);
     const menu = computed(() => appStore.menu);
     const footer = computed(() => appStore.footer);
@@ -66,7 +65,7 @@ export default defineComponent({
       const paddingLeft = menu.value
         ? { paddingLeft: `${menuWidth.value}px` }
         : {};
-      const paddingTop = navbar.value ? { paddingTop: navbarHeight } : {};
+      const paddingTop = {};
       return { ...paddingLeft, ...paddingTop };
     });
     const setCollapsed = (val: boolean) => {

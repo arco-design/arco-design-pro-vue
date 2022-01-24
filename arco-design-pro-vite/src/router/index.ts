@@ -1,12 +1,10 @@
-import { createRouter, createWebHistory, LocationQueryRaw } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import NProgress from 'nprogress'; // progress bar
 import 'nprogress/nprogress.css';
 
 import usePermission from '@/hooks/permission';
 import { useUserStore } from '@/store';
 import PageLayout from '@/layout/page-layout.vue';
-import { isLogin } from '@/utils/auth';
-import Login from './modules/login';
 import appRoutes from './modules';
 
 NProgress.configure({ showSpinner: false }); // NProgress Configuration
@@ -16,9 +14,8 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: 'login',
+      redirect: { name: 'workplace' },
     },
-    Login,
     {
       name: 'root',
       path: '/',
@@ -44,38 +41,11 @@ router.beforeEach(async (to, from, next) => {
     else await next({ name: 'notFound' }); // tip： Maybe you can go to the node that has the permission
     NProgress.done();
   }
-  if (isLogin()) {
-    if (userStore.role) {
-      crossroads();
-    } else {
-      try {
-        await userStore.info();
-        crossroads();
-      } catch (error) {
-        next({
-          name: 'login',
-          query: {
-            redirect: to.name,
-            ...to.query,
-          } as LocationQueryRaw,
-        });
-        NProgress.done();
-      }
-    }
+  if (userStore.role) {
+    crossroads();
   } else {
-    if (to.name === 'login') {
-      next();
-      NProgress.done();
-      return;
-    }
-    next({
-      name: 'login',
-      query: {
-        redirect: to.name,
-        ...to.query,
-      } as LocationQueryRaw,
-    });
-    NProgress.done();
+    await userStore.info();
+    crossroads();
   }
 });
 
