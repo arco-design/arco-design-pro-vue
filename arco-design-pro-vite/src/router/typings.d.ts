@@ -3,9 +3,9 @@ import 'vue-router';
 declare module 'vue-router' {
   interface RouteMeta {
     // options
-    isAdmin?: boolean;
+    role?: string[];
     // every route must declare
-    requiresAuth: boolean;
+    requiresAuth: boolean; // need login
     icon?: string;
     locale?: string;
     // menu select key

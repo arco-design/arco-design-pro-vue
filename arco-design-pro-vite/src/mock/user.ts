@@ -14,6 +14,7 @@ setupMock({
     // 用户信息
     Mock.mock(new RegExp('/api/user/info'), () => {
       if (isLogin()) {
+        const role = window.localStorage.getItem('userRole') || 'admin';
         return successResponseWrap({
           name: '王立群',
           avatar:
@@ -31,6 +32,7 @@ setupMock({
           registrationDate: '2013-05-10 12:10:00',
           accountId: '15012312300',
           certification: 1,
+          role,
         });
       }
       return failResponseWrap(null, 50008, '未登录');
@@ -46,8 +48,15 @@ setupMock({
         return failResponseWrap(null, 50000, '密码不能为空');
       }
       if (username === 'admin' && password === 'admin') {
+        window.localStorage.setItem('userRole', 'admin');
         return successResponseWrap({
           token: '12345',
+        });
+      }
+      if (username === 'user' && password === 'user') {
+        window.localStorage.setItem('userRole', 'user');
+        return successResponseWrap({
+          token: '54321',
         });
       }
       return failResponseWrap(null, 50000, '账号或者密码错误');
