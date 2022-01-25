@@ -35,13 +35,22 @@ const router = createRouter({
     return { top: 0 };
   },
 });
+
 router.beforeEach(async (to, from, next) => {
   NProgress.start();
   const userStore = useUserStore();
   async function crossroads() {
     const Permission = usePermission();
     if (Permission.accessRouter(to)) await next();
-    else await next({ name: 'notFound' }); // tip： Maybe you can go to the node that has the permission
+    else {
+      const destination = Permission.findFirstPermissionRoute(
+        appRoutes,
+        userStore.role
+      ) || {
+        name: 'notFound',
+      };
+      await next(destination);
+    }
     NProgress.done();
   }
   if (isLogin()) {
