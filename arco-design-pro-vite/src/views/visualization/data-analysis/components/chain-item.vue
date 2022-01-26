@@ -4,10 +4,11 @@
       <div class="content-wrap">
         <div class="content">
           <a-statistic
-            v-if="!loading"
             :title="title"
             :value="renderData.count"
-            :show-group-separator="true"
+            :value-from="0"
+            animation
+            show-group-separator
           />
           <div class="desc">
             <a-typography-text type="secondary" class="label">

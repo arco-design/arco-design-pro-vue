@@ -15,28 +15,30 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import bannerImage from '@/assets/images/login-banner.png';
 
 export default defineComponent({
   setup() {
-    const carouselItem = [
+    const { t } = useI18n();
+    const carouselItem = computed(() => [
       {
-        slogan: '开箱即用的高质量模板',
-        subSlogan: '丰富的的页面模板，覆盖大多数典型业务场景',
+        slogan: t('login.banner.slogan1'),
+        subSlogan: t('login.banner.subSlogan1'),
         image: bannerImage,
       },
       {
-        slogan: '内置了常见问题的解决方案',
-        subSlogan: '国际化，路由配置，状态管理应有尽有',
+        slogan: t('login.banner.slogan2'),
+        subSlogan: t('login.banner.subSlogan2'),
         image: bannerImage,
       },
       {
-        slogan: '接入可视化增强工具AUX',
-        subSlogan: '实现灵活的区块式开发',
+        slogan: t('login.banner.slogan3'),
+        subSlogan: t('login.banner.subSlogan3'),
         image: bannerImage,
       },
-    ];
+    ]);
     return {
       carouselItem,
     };

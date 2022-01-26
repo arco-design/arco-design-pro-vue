@@ -32,12 +32,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue';
-import { LocationQueryRaw } from 'vue-router';
+import { defineComponent, computed, watch } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
 import { useAppStore, useUserStore } from '@/store';
 import NavBar from '@/components/navbar/index.vue';
 import Menu from '@/components/menu/index.vue';
 import Footer from '@/components/footer/index.vue';
+import usePermission from '@/hooks/permission';
 
 export default defineComponent({
   components: {
@@ -45,23 +46,12 @@ export default defineComponent({
     Menu,
     Footer,
   },
-  async beforeRouteEnter(to, from, next) {
-    const store = useUserStore();
-    try {
-      await store.info();
-      next();
-    } catch (error) {
-      next({
-        name: 'login',
-        query: {
-          redirect: to.name,
-          ...to.query,
-        } as LocationQueryRaw,
-      });
-    }
-  },
   setup() {
     const appStore = useAppStore();
+    const userStore = useUserStore();
+    const router = useRouter();
+    const route = useRoute();
+    const permission = usePermission();
     const navbarHeight = `60px`;
     const navbar = computed(() => appStore.navbar);
     const menu = computed(() => appStore.menu);
@@ -82,6 +72,13 @@ export default defineComponent({
     const setCollapsed = (val: boolean) => {
       appStore.updateSettings({ menuCollapse: val });
     };
+    watch(
+      () => userStore.role,
+      (roleValue) => {
+        if (roleValue && !permission.accessRouter(route))
+          router.push({ name: 'notFound' });
+      }
+    );
     return {
       navbar,
       menu,

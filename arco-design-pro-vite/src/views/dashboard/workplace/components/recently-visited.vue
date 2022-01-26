@@ -9,7 +9,7 @@
       <a-row :gutter="8">
         <a-col v-for="link in links" :key="link.text" :span="8" class="wrapper">
           <div class="icon">
-            <icon-robot />
+            <component :is="link.icon" />
           </div>
           <a-typography-paragraph class="text">
             {{ $t(link.text) }}
@@ -26,15 +26,15 @@ import { defineComponent } from 'vue';
 const links = [
   {
     text: 'workplace.contentManagement',
-    icon: 'icon-robot',
+    icon: 'icon-storage',
   },
   {
     text: 'workplace.contentStatistical',
-    icon: 'icon-robot',
+    icon: 'icon-file',
   },
   {
     text: 'workplace.advanced',
-    icon: 'icon-robot',
+    icon: 'icon-settings',
   },
 ];
 

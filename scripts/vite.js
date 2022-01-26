@@ -33,11 +33,11 @@ fs.copySync(templatePath, projectPath, {
 
 const gitignorePath = path.resolve(
   __dirname,
-  '../arco-design-pro-nuxt/gitignore'
+  '../arco-design-pro-vite/gitignore'
 );
 const gitignorePath2 = path.resolve(
   __dirname,
-  '../arco-design-pro-nuxt/.gitignore'
+  '../arco-design-pro-vite/.gitignore'
 );
 
 Object.keys(maps).forEach((src) => {

@@ -1,7 +1,7 @@
 <template>
   <div class="login-form-wrapper">
-    <div class="login-form-title">登录 Arco Design Pro</div>
-    <div class="login-form-sub-title">登录 Arco Design Pro</div>
+    <div class="login-form-title">{{ $t('login.form.title') }}</div>
+    <div class="login-form-sub-title">{{ $t('login.form.title') }}</div>
     <div class="login-form-error-msg">{{ errorMessage }}</div>
     <a-form
       ref="loginForm"
@@ -12,13 +12,13 @@
     >
       <a-form-item
         field="username"
-        :rules="[{ required: true, message: '用户名不能为空' }]"
+        :rules="[{ required: true, message: $t('login.form.userName.errMsg') }]"
         :validate-trigger="['change', 'blur']"
         hide-label
       >
         <a-input
           v-model="userInfo.username"
-          placeholder="用户名：admin"
+          :placeholder="$t('login.form.userName.placeholder')"
           @keyup.enter="handleSubmit"
         >
           <template #prefix>
@@ -28,33 +28,33 @@
       </a-form-item>
       <a-form-item
         field="password"
-        :rules="[{ required: true, message: '密码不能为空' }]"
+        :rules="[{ required: true, message: $t('login.form.password.errMsg') }]"
         :validate-trigger="['change', 'blur']"
         hide-label
       >
-        <a-input
+        <a-input-password
           v-model="userInfo.password"
-          placeholder="密码：admin"
-          type="password"
+          :placeholder="$t('login.form.password.placeholder')"
+          allow-clear
           @keyup.enter="handleSubmit"
         >
           <template #prefix>
             <icon-lock />
           </template>
-        </a-input>
+        </a-input-password>
       </a-form-item>
       <a-space :size="16" direction="vertical">
         <div class="login-form-password-actions">
           <a-checkbox checked="rememberPassword" @change="setRememberPassword">
-            记住密码
+            {{ $t('login.form.rememberPassword') }}
           </a-checkbox>
-          <a-link>忘记密码？</a-link>
+          <a-link>{{ $t('login.form.forgetPassword') }}</a-link>
         </div>
         <a-button type="primary" html-type="submit" long :loading="loading">
-          登录
+          {{ $t('login.form.login') }}
         </a-button>
         <a-button type="text" long class="login-form-register-btn">
-          注册账号
+          {{ $t('login.form.register') }}
         </a-button>
       </a-space>
     </a-form>
@@ -66,6 +66,7 @@ import { defineComponent, ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { Message } from '@arco-design/web-vue';
 import { ValidatedError } from '@arco-design/web-vue/es/form/interface';
+import { useI18n } from 'vue-i18n';
 import { useUserStore } from '@/store';
 import useLoading from '@/hooks/loading';
 import { LoginData } from '@/api/user';
@@ -73,6 +74,7 @@ import { LoginData } from '@/api/user';
 export default defineComponent({
   setup() {
     const router = useRouter();
+    const { t } = useI18n();
     const errorMessage = ref('');
     const { loading, setLoading } = useLoading();
     const userStore = useUserStore();
@@ -98,7 +100,7 @@ export default defineComponent({
               ...othersQuery,
             },
           });
-          Message.success('欢迎使用');
+          Message.success(t('login.form.login.success'));
         } catch (err) {
           errorMessage.value = (err as Error).message;
         } finally {

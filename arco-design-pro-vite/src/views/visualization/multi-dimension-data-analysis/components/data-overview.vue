@@ -10,6 +10,8 @@
             :title="item.title"
             :value="item.value"
             show-group-separator
+            :value-from="0"
+            animation
           >
             <template #prefix>
               <span
@@ -102,7 +104,7 @@ export default defineComponent({
         title: t('multiDAnalysis.dataOverview.contentProduction'),
         value: 1902,
         prefix: {
-          icon: 'icon-desktop',
+          icon: 'icon-edit',
           background: isDark.value ? '#593E2F' : '#FFE4BA',
           iconColor: isDark.value ? '#F29A43' : '#F77234',
         },
@@ -111,7 +113,7 @@ export default defineComponent({
         title: t('multiDAnalysis.dataOverview.contentClick'),
         value: 2445,
         prefix: {
-          icon: 'icon-code',
+          icon: 'icon-thumb-up',
           background: isDark.value ? '#3D5A62' : '#E8FFFB',
           iconColor: isDark.value ? '#6ED1CE' : '#33D1C9',
         },
@@ -120,7 +122,7 @@ export default defineComponent({
         title: t('multiDAnalysis.dataOverview.contentExposure'),
         value: 3034,
         prefix: {
-          icon: 'icon-user',
+          icon: 'icon-heart',
           background: isDark.value ? '#354276' : '#E8F3FF',
           iconColor: isDark.value ? '#4A7FF7' : '#165DFF',
         },

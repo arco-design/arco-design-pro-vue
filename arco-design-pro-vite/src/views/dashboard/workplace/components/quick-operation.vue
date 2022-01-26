@@ -11,10 +11,10 @@
     <a-row :gutter="8">
       <a-col v-for="link in links" :key="link" :span="8" class="wrapper">
         <div class="icon">
-          <icon-home />
+          <component :is="link.icon" />
         </div>
         <a-typography-paragraph class="text">
-          {{ $t(link) }}
+          {{ $t(link.text) }}
         </a-typography-paragraph>
       </a-col>
     </a-row>
@@ -26,11 +26,11 @@
 import { defineComponent } from 'vue';
 
 const links = [
-  'workplace.contentManagement',
-  'workplace.contentStatistical',
-  'workplace.advanced',
-  'workplace.onlinePromotion',
-  'workplace.contentPutIn',
+  { text: 'workplace.contentManagement', icon: 'icon-file' },
+  { text: 'workplace.contentStatistical', icon: 'icon-storage' },
+  { text: 'workplace.advanced', icon: 'icon-settings' },
+  { text: 'workplace.onlinePromotion', icon: 'icon-mobile' },
+  { text: 'workplace.contentPutIn', icon: 'icon-fire' },
 ];
 
 export default defineComponent({

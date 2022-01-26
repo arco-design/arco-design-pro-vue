@@ -15,6 +15,7 @@ export default {
       meta: {
         locale: 'menu.list.searchTable',
         requiresAuth: true,
+        role: ['*'],
       },
     },
     {
@@ -24,6 +25,7 @@ export default {
       meta: {
         locale: 'menu.list.cardList',
         requiresAuth: true,
+        role: ['*'],
       },
     },
   ],
