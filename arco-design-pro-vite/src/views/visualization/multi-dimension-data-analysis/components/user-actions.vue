@@ -32,7 +32,7 @@ export default defineComponent({
           },
           splitLine: {
             lineStyle: {
-              color: isDark.value ? '#484849' : '#E5E8EF',
+              color: isDark ? '#484849' : '#E5E8EF',
             },
           },
         },
@@ -53,7 +53,7 @@ export default defineComponent({
           },
           axisLine: {
             lineStyle: {
-              color: isDark.value ? '#484849' : '#A9AEB8',
+              color: isDark ? '#484849' : '#A9AEB8',
             },
           },
         },

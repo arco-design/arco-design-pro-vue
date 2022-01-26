@@ -193,7 +193,7 @@ export default defineComponent({
           },
           splitLine: {
             lineStyle: {
-              color: isDark.value ? '#2E2E30' : '#F2F3F5',
+              color: isDark ? '#2E2E30' : '#F2F3F5',
             },
           },
         },

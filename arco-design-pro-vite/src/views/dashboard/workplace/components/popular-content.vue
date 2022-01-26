@@ -77,10 +77,10 @@ export default defineComponent({
     const type = ref('text');
     const { loading, setLoading } = useLoading();
     const renderList = ref<PopularRecord[]>();
-    const fetchData = async (type: string) => {
+    const fetchData = async (contentType: string) => {
       try {
         setLoading(true);
-        const { data } = await queryPopularList({ type });
+        const { data } = await queryPopularList({ type: contentType });
         renderList.value = data;
       } catch (err) {
         // you can report use errorHandler or other
@@ -88,8 +88,8 @@ export default defineComponent({
         setLoading(false);
       }
     };
-    const typeChange = (type: string) => {
-      fetchData(type);
+    const typeChange = (contentType: string) => {
+      fetchData(contentType);
     };
     fetchData('text');
     return {

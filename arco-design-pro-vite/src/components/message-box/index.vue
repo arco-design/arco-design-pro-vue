@@ -11,7 +11,7 @@
         <List
           :render-list="renderList"
           :unread-count="unreadCount"
-          @itemClick="handleItemClick"
+          @item-click="handleItemClick"
         />
       </a-tab-pane>
       <template #extra>

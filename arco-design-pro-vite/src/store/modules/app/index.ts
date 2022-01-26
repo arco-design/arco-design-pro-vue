@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import defaultSettings from '@/config/settings.json';
 import { AppState } from './types';
 
-export const useAppStore = defineStore('app', {
+const useAppStore = defineStore('app', {
   state: (): AppState => ({ ...defaultSettings }),
 
   getters: {
@@ -30,3 +30,5 @@ export const useAppStore = defineStore('app', {
     },
   },
 });
+
+export default useAppStore;

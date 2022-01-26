@@ -8,7 +8,7 @@ import {
 import { setToken, clearToken } from '@/utils/auth';
 import { UserState } from './types';
 
-export const useUserStore = defineStore('user', {
+const useUserStore = defineStore('user', {
   state: (): UserState => ({
     name: undefined,
     avatar: undefined,
@@ -78,3 +78,5 @@ export const useUserStore = defineStore('user', {
     },
   },
 });
+
+export default useUserStore;
