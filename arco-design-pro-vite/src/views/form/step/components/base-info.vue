@@ -98,7 +98,7 @@ export default defineComponent({
       activityName: '',
       channelType: '',
       promotionTime: [],
-      promoteLink: '',
+      promoteLink: 'https://arco.design',
     });
 
     const onNextClick = async () => {
