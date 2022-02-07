@@ -1,0 +1,16 @@
+
+.demo-item {
+  position: relative;
+  padding: 20px;
+  border: 1px dashed transparent;
+}
+
+.demo-item:not(.demo-item-borderless):hover {
+  border-color: var(--color-border-3);
+  cursor: pointer;
+}
+
+.theme-setting-page.theme-setting-page-readonly .demo-item {
+  background: none !important;
+  cursor: unset;
+}

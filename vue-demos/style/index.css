@@ -1,0 +1,50 @@
+@import './demo.css';
+
+body {
+  background-color: var(--color-bg-1);
+  color: var(--color-text-1);
+}
+
+body::-webkit-scrollbar {
+  background-color: transparent;
+}
+
+p {
+  margin: 0;
+}
+
+h4:first-of-type {
+  margin-top: 0;
+}
+
+.demo-item {
+  position: relative;
+  padding: 20px;
+  border: 1px solid transparent;
+}
+
+.demo-item:not(.demo-item-borderless):hover {
+  border-color: var(--color-border-3);
+  cursor: pointer;
+}
+
+.align-loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  font-size: 30px;
+  z-index: 9999;
+}
+
+.align-loading:before {
+  display: block;
+  content: '';
+  background: rgba(0, 0, 0, 0.2);
+  top: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 3;
+}

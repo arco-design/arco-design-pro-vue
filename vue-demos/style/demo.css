@@ -1,0 +1,62 @@
+.demo-inputnumber .arco-input-number-step {
+  opacity: 1 !important;
+}
+
+.demo-input-allowclear .arco-input-clear-btn {
+  visibility: visible !important;
+}
+
+.demo-modal {
+  height: 100%;
+}
+
+.demo-modal.arco-modal-container {
+  position: relative !important;
+}
+
+.demo-modal-absolute .arco-modal-wrapper {
+  /* position: absolute !important; */
+}
+
+.demo-result .arco-result {
+  background-color: var(--color-fill-1);
+}
+
+.demo-result .arco-result-content {
+  background-color: var(--color-fill-2);
+}
+
+.demo-message .arco-message-wrapper {
+  position: relative;
+}
+
+.demo-notification .arco-notification-wrapper {
+  position: relative;
+}
+
+.demo-tree .arco-tree-node-title-dragging .arco-tree-node-drag-icon,
+.demo-tree .arco-tree-node-title-highlight .arco-tree-node-drag-icon {
+  opacity: 1;
+}
+
+/* image 组件的demo */
+.demo-image .arco-image-preview-wrapper,
+.demo-image .arco-image-preview-mask {
+  position: absolute;
+}
+
+.demo-steps .arco-steps-mode-navigation .arco-steps-item {
+  border: 1px dashed var(--color-border-2);
+}
+
+.demo-upload .arco-upload-list-item-picture-mask {
+  opacity: 1;
+}
+
+.demo-upload .arco-upload-list-item-picture-operation {
+  display: block;
+}
+
+.demo-avatar .arco-avatar-trigger-icon-mask {
+  opacity: 1;
+}

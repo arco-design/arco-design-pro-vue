@@ -1,0 +1,88 @@
+const Alert = () => import('./components/alert');
+const Button = () => import('./components/button');
+const Link = () => import('./components/link');
+const Typography = () => import('./components/typography');
+const Divider = () => import('./components/divider');
+const Avatar = () => import('./components/avatar/index.js');
+const Card = () => import('./components/card');
+const Collapse = () => import('./components/collapse');
+const Comment = () => import('./components/comment');
+const Descriptions = () => import('./components/descriptions');
+const Empty = () => import('./components/empty');
+const Input = () => import('./components/input');
+const List = () => import('./components/list');
+const PageHeader = () => import('./components/page-header');
+const Pagination = () => import('./components/pagination');
+const Dropdown = () => import('./components/dropdown');
+const Drawer = () => import('./components/drawer');
+const Progress = () => import('./components/progress');
+const Radio = () => import('./components/radio');
+const Result = () => import('./components/result');
+const Spin = () => import('./components/spin');
+const Statistic = () => import('./components/statistic');
+const Breadcrumb = () => import('./components/breadcrumb');
+const Anchor = () => import('./components/anchor');
+const Checkbox = () => import('./components/checkbox');
+const Message = () => import('./components/message');
+const Notification = () => import('./components/notification');
+const Modal = () => import('./components/modal');
+const Popconfirm = () => import('./components/popconfirm');
+const Popover = () => import('./components/popover');
+const Upload = () => import('./components/upload');
+const Table = () => import('./components/table');
+const Steps = () => import('./components/steps');
+const Timeline = () => import('./components/timeline');
+const Tree = () => import('./components/tree');
+const Tooltip = () => import('./components/tooltip');
+const Slider = () => import('./components/slider');
+const InputNumber = () => import('./components/input-number');
+const InputTag = () => import('./components/input-tag');
+const Select = () => import('./components/select');
+const AutoComplete = () => import('./components/auto-complete');
+const Switch = () => import('./components/switch');
+
+export default [
+  { name: 'Alert', component: Alert },
+  { name: 'Button', component: Button },
+  { name: 'Link', component: Link },
+  { name: 'Typography', component: Typography },
+  { name: 'Divider', component: Divider },
+  { name: 'Avatar', component: Avatar },
+  { name: 'Card', component: Card },
+  { name: 'Collapse', component: Collapse },
+  { name: 'Comment', component: Comment },
+  { name: 'Descriptions', component: Descriptions },
+  { name: 'Empty', component: Empty },
+  { name: 'Input', component: Input },
+  { name: 'List', component: List },
+  { name: 'PageHeader', component: PageHeader },
+  { name: 'Drawer', component: Drawer },
+  { name: 'Dropdown', component: Dropdown },
+  { name: 'Pagination', component: Pagination },
+  { name: 'Progress', component: Progress },
+  { name: 'Radio', component: Radio },
+  { name: 'Result', component: Result },
+  { name: 'Statistic', component: Statistic },
+  { name: 'Spin', component: Spin },
+  { name: 'Breadcrumb', component: Breadcrumb },
+  { name: 'Checkbox', component: Checkbox },
+  { name: 'Anchor', component: Anchor },
+  { name: 'Message', component: Message },
+  { name: 'Modal', component: Modal },
+  { name: 'Notification', component: Notification },
+  { name: 'Popconfirm', component: Popconfirm },
+  { name: 'Upload', component: Upload },
+  { name: 'Popover', component: Popover },
+  { name: 'Table', component: Table },
+  { name: 'Steps', component: Steps },
+  { name: 'Timeline', component: Timeline },
+  { name: 'Tooltip', component: Tooltip },
+  { name: 'Tree', component: Tree },
+  { name: 'Slider', component: Slider },
+  { name: 'InputNumber', component: InputNumber },
+  { name: 'InputTag', component: InputTag },
+  { name: 'Select', component: Select },
+  { name: 'Dropdown', component: Dropdown },
+  { name: 'AutoComplete', component: AutoComplete },
+  { name: 'Switch', component: Switch },
+];
