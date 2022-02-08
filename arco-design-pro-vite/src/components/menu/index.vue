@@ -38,6 +38,11 @@ export default defineComponent({
           if (!element.children) {
             return element;
           }
+          
+          // router isManu filter
+          element.children = element.children.filter(
+            (x) => x.meta?.isManu !== false
+          );
 
           // Associated child node
           const subItem = travel(element.children, layer);
@@ -50,7 +55,9 @@ export default defineComponent({
             element.children = subItem;
             return element;
           }
-          return null;
+          
+          // subItem.children is null;
+          return element;
         });
         return collector.filter(Boolean);
       }
