@@ -56,7 +56,8 @@ export default defineComponent({
             return element;
           }
           
-          return null;
+          // subItem.children is null;
+          return element;
         });
         return collector.filter(Boolean);
       }
