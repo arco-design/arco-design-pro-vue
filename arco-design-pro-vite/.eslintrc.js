@@ -63,5 +63,6 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
     'no-param-reassign': 0,
     'prefer-regex-literals': 0,
+    'import/no-extraneous-dependencies': 0,
   },
 };
