@@ -25,7 +25,7 @@
             </a-col>
             <a-input-search
               :placeholder="$t('cardList.searchInput.placeholder')"
-              style="width: 240px; position: absolute; top: 60px; right: 10px"
+              style="width: 240px; position: absolute; top: 60px; right: 20px"
             />
           </a-row>
         </a-card>

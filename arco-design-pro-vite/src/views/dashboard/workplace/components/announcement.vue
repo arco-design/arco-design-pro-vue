@@ -3,19 +3,19 @@
     class="general-card"
     :title="$t('workplace.announcement')"
     :header-style="{ paddingBottom: '0' }"
-    :body-style="{ paddingTop: '15px' }"
+    :body-style="{ padding: '15px 20px 13px 20px' }"
   >
     <template #extra>
       <a-link>{{ $t('workplace.viewMore') }}</a-link>
     </template>
-    <a-space direction="vertical" :size="6">
-      <a-space v-for="(item, idx) in list" :key="idx">
+    <div>
+      <div v-for="(item, idx) in list" :key="idx" class="item">
         <a-tag :color="item.type" size="small">{{ item.label }}</a-tag>
-        <a-typography-text class="item-content" ellipsis>
+        <span class="item-content">
           {{ item.content }}
-        </a-typography-text>
-      </a-space>
-    </a-space>
+        </span>
+      </div>
+    </div>
   </a-card>
 </template>
 
@@ -34,12 +34,12 @@ export default defineComponent({
       {
         type: 'cyan',
         label: '消息',
-        content: '新增内容尚未通过审核，详',
+        content: '新增内容尚未通过审核，详情请点击查看。',
       },
       {
         type: 'blue',
         label: '通知',
-        content: '当前产品试用期即将截止，…',
+        content: '当前产品试用期即将结束，如需续费请点击查看。',
       },
       {
         type: 'blue',
@@ -49,7 +49,7 @@ export default defineComponent({
       {
         type: 'cyan',
         label: '消息',
-        content: '新增内容已经通过审核，详…',
+        content: '新增内容已经通过审核，详情请点击查看。',
       },
     ];
     return {
@@ -60,9 +60,22 @@ export default defineComponent({
 </script>
 
 <style scoped lang="less">
-.item-content {
-  margin-bottom: 0;
-  font-size: 14px;
-  color: rgb(var(--gray-8));
+.item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 24px;
+  margin-bottom: 4px;
+  .item-content {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-left: 4px;
+    color: var(--color-text-2);
+    text-decoration: none;
+    font-size: 13px;
+    cursor: pointer;
+  }
 }
 </style>

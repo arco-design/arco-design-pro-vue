@@ -34,7 +34,7 @@ export default defineComponent({
           icon: 'circle',
           itemWidth: 8,
           textStyle: {
-            color: isDark.value ? 'rgba(255, 255, 255, 0.7)' : '#4E5969',
+            color: isDark ? 'rgba(255, 255, 255, 0.7)' : '#4E5969',
           },
           itemStyle: {
             borderWidth: 0,
@@ -53,7 +53,7 @@ export default defineComponent({
               style: {
                 text: '内容量',
                 textAlign: 'center',
-                fill: isDark.value ? '#ffffffb3' : '#4E5969',
+                fill: isDark ? '#ffffffb3' : '#4E5969',
                 fontSize: 14,
               },
             },
@@ -64,7 +64,7 @@ export default defineComponent({
               style: {
                 text: '928,531',
                 textAlign: 'center',
-                fill: isDark.value ? '#ffffffb3' : '#1D2129',
+                fill: isDark ? '#ffffffb3' : '#1D2129',
                 fontSize: 16,
                 fontWeight: 500,
               },
@@ -79,10 +79,10 @@ export default defineComponent({
             label: {
               formatter: '{d}%',
               fontSize: 14,
-              color: isDark.value ? 'rgba(255, 255, 255, 0.7)' : '#4E5969',
+              color: isDark ? 'rgba(255, 255, 255, 0.7)' : '#4E5969',
             },
             itemStyle: {
-              borderColor: isDark.value ? '#232324' : '#fff',
+              borderColor: isDark ? '#232324' : '#fff',
               borderWidth: 1,
             },
             data: [
@@ -90,21 +90,21 @@ export default defineComponent({
                 value: [148564],
                 name: '纯文本',
                 itemStyle: {
-                  color: isDark.value ? '#3D72F6' : '#249EFF',
+                  color: isDark ? '#3D72F6' : '#249EFF',
                 },
               },
               {
                 value: [334271],
                 name: '图文类',
                 itemStyle: {
-                  color: isDark.value ? '#A079DC' : '#313CA9',
+                  color: isDark ? '#A079DC' : '#313CA9',
                 },
               },
               {
                 value: [445694],
                 name: '视频类',
                 itemStyle: {
-                  color: isDark.value ? '#6CAAF5' : '#21CCFF',
+                  color: isDark ? '#6CAAF5' : '#21CCFF',
                 },
               },
             ],
