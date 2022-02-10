@@ -6,19 +6,19 @@
         class="demo-page-tab"
         type="rounded"
       >
-        <a-tab-pane :key="1" title="通用" />
-        <a-tab-pane :key="2" title="导航" />
-        <a-tab-pane :key="3" title="数据展示" />
-        <a-tab-pane :key="4" title="数据输入" />
-        <a-tab-pane :key="5" title="反馈" />
+        <a-tab-pane :key="'1'" title="通用" />
+        <a-tab-pane :key="'2'" title="导航" />
+        <a-tab-pane :key="'3'" title="数据展示" />
+        <a-tab-pane :key="'4'" title="数据输入" />
+        <a-tab-pane :key="'5'" title="反馈" />
       </a-tabs>
     </a-affix>
     <div>
-      <Common v-if="activeTab === 1" />
-      <Navigator v-else-if="activeTab === 2" />
-      <DataDisplay v-else-if="activeTab === 3" />
-      <DataInput v-else-if="activeTab === 4" />
-      <Feedback v-else-if="activeTab === 5" />
+      <Common v-if="activeTab === '1'" />
+      <Navigator v-else-if="activeTab === '2'" />
+      <DataDisplay v-else-if="activeTab === '3'" />
+      <DataInput v-else-if="activeTab === '4'" />
+      <Feedback v-else-if="activeTab === '5'" />
     </div>
   </main>
 </template>
@@ -40,7 +40,7 @@ export default defineComponent({
     Feedback,
   },
   setup() {
-    const activeTab = ref(1);
+    const activeTab = ref('1');
     return {
       activeTab,
     };
