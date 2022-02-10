@@ -70,7 +70,9 @@ export default defineComponent({
       route,
       (newVal) => {
         if (newVal.meta.requiresAuth) {
-          const key = newVal.matched[2]?.name as string;
+          const key =
+            (newVal.matched[2]?.name as string) ||
+            (newVal.meta.menuSelectKey as string);
           selectedKey.value = [key];
         }
       },
@@ -98,6 +100,22 @@ export default defineComponent({
             // This is demo, modify nodes as needed
             if (!permission.accessRouter(element)) return;
             const icon = element?.meta?.icon ? `<${element?.meta?.icon}/>` : ``;
+            if (!element.children) {
+              nodes.push(
+                (
+                  <a-menu-item
+                    key={element.name}
+                    onClick={() => goto(element)}
+                    v-slots={{
+                      icon: () => h(compile(`${icon}`)),
+                    }}
+                  >
+                    {t(element?.meta?.locale || '')}
+                  </a-menu-item>
+                ) as never
+              );
+              return;
+            }
             const r = (
               <a-sub-menu
                 key={element?.name}

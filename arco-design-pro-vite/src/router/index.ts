@@ -14,7 +14,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: { name: 'workplace' },
+      redirect: { name: 'common-components' },
     },
     {
       name: 'root',
@@ -37,8 +37,9 @@ router.beforeEach(async (to, from, next) => {
   const userStore = useUserStore();
   async function crossroads() {
     const Permission = usePermission();
+    if (!to.name || to.name === 'notFound') next({ name: 'common-components' });
     if (Permission.accessRouter(to)) await next();
-    else await next({ name: 'notFound' }); // tip： Maybe you can go to the node that has the permission
+    else await next({ name: 'common-components' }); // tip： Maybe you can go to the node that has the permission
     NProgress.done();
   }
   if (userStore.role) {

@@ -26,6 +26,7 @@ import localeUserSetting from '@/views/user/setting/locale/en-US';
 import localeSettings from './en-US/settings';
 
 export default {
+  'menu.common.components': 'Components',
   'menu.dashboard': 'Dashboard',
   'menu.list': 'List',
   'menu.result': 'Result',
