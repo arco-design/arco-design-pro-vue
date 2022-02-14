@@ -7,9 +7,9 @@ export default function usePermission() {
     accessRouter(route: RouteLocationNormalized | RouteRecordRaw) {
       return (
         !route.meta?.requiresAuth ||
-        !route.meta?.role ||
-        route.meta?.role?.includes('*') ||
-        route.meta?.role?.includes(userStore.role)
+        !route.meta?.roles ||
+        route.meta?.roles?.includes('*') ||
+        route.meta?.roles?.includes(userStore.role)
       );
     },
     findFirstPermissionRoute(_routers: any, role = 'admin') {
@@ -17,7 +17,7 @@ export default function usePermission() {
       while (cloneRouters.length) {
         const firstElement = cloneRouters.shift();
         if (
-          firstElement?.meta?.role?.find((el: string[]) => {
+          firstElement?.meta?.roles?.find((el: string[]) => {
             return el.includes('*') || el.includes(role);
           })
         )

@@ -210,7 +210,7 @@
             data-index="operations"
           >
             <template #cell>
-              <a-button type="text" size="small">
+              <a-button v-permission="['admin']" type="text" size="small">
                 {{ $t('searchTable.columns.operations.view') }}
               </a-button>
             </template>
