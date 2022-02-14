@@ -142,7 +142,7 @@ export default defineComponent({
     const contentClickData = ref<number[]>([]);
     const contentExposureData = ref<number[]>([]);
     const activeUsersData = ref<number[]>([]);
-    const { chartOption } = useChartOption((isDark) => {
+    const { chartOption } = useChartOption((dark) => {
       return {
         grid: {
           left: '2.6%',
@@ -193,7 +193,7 @@ export default defineComponent({
           },
           splitLine: {
             lineStyle: {
-              color: isDark ? '#2E2E30' : '#F2F3F5',
+              color: dark ? '#2E2E30' : '#F2F3F5',
             },
           },
         },
