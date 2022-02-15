@@ -39,9 +39,9 @@ export default defineComponent({
             return element;
           }
           
-          // router isManu filter
+          // router displayInMenu filter
           element.children = element.children.filter(
-            (x) => x.meta?.isManu !== false
+            (x) => x.meta?.displayInMenu !== false
           );
 
           // Associated child node
@@ -76,7 +76,7 @@ export default defineComponent({
     watch(
       route,
       (newVal) => {
-        if (newVal.meta.requiresAuth) {
+        if (newVal.meta.requiresAuth && newVal.meta.displayInMenu !== false) {
           const key = newVal.matched[2]?.name as string;
           selectedKey.value = [key];
         }
