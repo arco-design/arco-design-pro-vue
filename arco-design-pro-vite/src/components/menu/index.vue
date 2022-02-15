@@ -39,9 +39,9 @@ export default defineComponent({
             return element;
           }
 
-          //route filter displayInMenu false
+          //route filter hideInMenu true
           element.children = element.children.filter(
-            (x) => x.meta?.displayInMenu !== false
+            (x) => x.meta?.hideInMenu !== true
           );
 
           // Associated child node
@@ -74,7 +74,7 @@ export default defineComponent({
     watch(
       route,
       (newVal) => {
-        if (newVal.meta.requiresAuth && newVal.meta.displayInMenu !== false) {
+        if (newVal.meta.requiresAuth && newVal.meta.hideInMenu) {
           const key = newVal.matched[2]?.name as string;
           selectedKey.value = [key];
         }
