@@ -132,7 +132,7 @@
         :pagination="pagination"
         :data="renderData"
         :bordered="false"
-        @pageChange="onPageChange"
+        @page-change="onPageChange"
       >
         <template #columns>
           <a-table-column
