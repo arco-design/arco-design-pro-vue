@@ -39,6 +39,11 @@ export default defineComponent({
             return element;
           }
 
+          //route filter displayInMenu false
+          element.children = element.children.filter(
+            (x) => x.meta?.displayInMenu !== false
+          );
+
           // Associated child node
           const subItem = travel(element.children, layer);
           if (subItem.length) {
@@ -50,7 +55,7 @@ export default defineComponent({
             element.children = subItem;
             return element;
           }
-          return null;
+          return element;
         });
         return collector.filter(Boolean);
       }
@@ -69,7 +74,7 @@ export default defineComponent({
     watch(
       route,
       (newVal) => {
-        if (newVal.meta.requiresAuth) {
+        if (newVal.meta.requiresAuth && newVal.meta.displayInMenu !== false) {
           const key = newVal.matched[2]?.name as string;
           selectedKey.value = [key];
         }
