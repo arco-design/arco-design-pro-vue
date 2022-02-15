@@ -102,8 +102,8 @@ export default defineComponent({
               <a-sub-menu
                 key={element?.name}
                 v-slots={{
-                  title: () =>
-                    h(compile(`${icon}${t(element?.meta?.locale || '')}`)),
+                  icon: () => h(compile(icon)),
+                  title: () => h(compile(t(element?.meta?.locale || ''))),
                 }}
               >
                 {element?.children?.map((elem) => {

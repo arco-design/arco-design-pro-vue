@@ -3,7 +3,7 @@ import 'vue-router';
 declare module 'vue-router' {
   interface RouteMeta {
     // options
-    role?: string[];
+    roles?: string[];
     // every route must declare
     requiresAuth: boolean; // need login
     icon?: string;

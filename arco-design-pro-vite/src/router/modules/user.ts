@@ -15,7 +15,7 @@ export default {
       meta: {
         locale: 'menu.user.info',
         requiresAuth: true,
-        role: ['*'],
+        roles: ['*'],
       },
     },
     {
@@ -25,7 +25,7 @@ export default {
       meta: {
         locale: 'menu.user.setting',
         requiresAuth: true,
-        role: ['*'],
+        roles: ['*'],
       },
     },
   ],
