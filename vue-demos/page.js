@@ -4,7 +4,12 @@ import { useRoute } from 'vue-router';
 
 let styleNode;
 
-const domains = ['//localhost', '//arco.bytedance.net', '//arco.design', '//arco.boe.bytedance.net'];
+const domains = [
+  '//localhost',
+  '//arco.bytedance.net',
+  '//arco.design',
+  '//arco.boe.bytedance.net',
+];
 
 const toggleLoading = (show) => {
   const node = document.querySelector('#loadingNode');
@@ -126,7 +131,7 @@ const Page = {
       () => route.hash,
       async (hash) => {
         name = hash.replace('#', '');
-      },
+      }
     );
 
     return () => {

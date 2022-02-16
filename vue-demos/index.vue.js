@@ -50,7 +50,7 @@ Promise.all(
       }
       appendScript(window[key], resolve, reject);
     });
-  }),
+  })
 )
   .then(() => {
     window.defaultArcoIcon = window.arcoicon;
@@ -70,7 +70,11 @@ Promise.all(
             return () => (
               <div>
                 <router-view />
-                <span className="align-loading" id="loadingNode" style={{ display: 'none' }}>
+                <span
+                  className="align-loading"
+                  id="loadingNode"
+                  style={{ display: 'none' }}
+                >
                   <Spin tip="编译中..." />
                 </span>
               </div>
@@ -85,12 +89,15 @@ Promise.all(
         app.use(window.arcoicon);
 
         Demos.forEach((item) => {
-          app.component('Demo' + item.name, window.Vue.defineAsyncComponent(item.component));
+          app.component(
+            'Demo' + item.name,
+            window.Vue.defineAsyncComponent(item.component)
+          );
         });
 
         app.mount('#root');
       },
-      onError,
+      onError
     );
   })
   .catch(onError);

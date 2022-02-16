@@ -1,15 +1,12 @@
 <template>
   <router-view></router-view>
-  <global-setting />
+  <span id="loadingNode" class="align-loading" style="display: none">
+    <a-spin tip="编译中..." />
+  </span>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import GlobalSetting from '@/components/global-setting/index.vue';
 
-export default defineComponent({
-  components: {
-    GlobalSetting,
-  },
-});
+export default defineComponent({});
 </script>

@@ -38,6 +38,7 @@ import { useAppStore, useUserStore } from '@/store';
 import Menu from '@/components/menu/index.vue';
 import Footer from '@/components/footer/index.vue';
 import usePermission from '@/hooks/permission';
+import useThemesActions from '@/hooks/themes-actions';
 
 export default defineComponent({
   components: {
@@ -48,6 +49,7 @@ export default defineComponent({
   setup() {
     const appStore = useAppStore();
     const userStore = useUserStore();
+    useThemesActions();
     const router = useRouter();
     const route = useRoute();
     const permission = usePermission();
