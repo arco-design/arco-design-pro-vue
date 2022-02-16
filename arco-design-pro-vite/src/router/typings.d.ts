@@ -10,5 +10,6 @@ declare module 'vue-router' {
     locale?: string;
     // menu select key
     menuSelectKey?: string;
+    hideInMenu?: boolean;
   }
 }
