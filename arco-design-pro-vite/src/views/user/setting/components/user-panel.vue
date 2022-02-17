@@ -5,15 +5,16 @@
         action="/"
         list-type="picture-card"
         :file-list="fileList"
-        :limit="1"
+        :show-upload-button="true"
+        :show-file-list="false"
+        @change="uploadChange"
       >
-        <template #upload-item="{ fileItem }">
+        <template #upload-button>
           <a-avatar :size="100" class="info-avatar">
             <template #trigger-icon>
               <icon-camera />
             </template>
-            <img v-if="fileItem.url" :src="fileItem.url" />
-            <icon-plus v-else />
+            <img v-if="fileList.length" :src="fileList[0].url" />
           </a-avatar>
         </template>
       </a-upload>
@@ -51,6 +52,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import { FileItem } from '@arco-design/web-vue/es/upload/interfaces';
 import { useUserStore } from '@/store';
 
 export default defineComponent({
@@ -83,10 +85,14 @@ export default defineComponent({
         value: userStore.registrationDate,
       },
     ];
-    const fileList = ref([file]);
+    const fileList = ref<FileItem[]>([file]);
+    const uploadChange = (fileItemList: FileItem[], fileItem: FileItem) => {
+      fileList.value = [fileItem];
+    };
     return {
       fileList,
       renderData,
+      uploadChange,
     };
   },
 });
