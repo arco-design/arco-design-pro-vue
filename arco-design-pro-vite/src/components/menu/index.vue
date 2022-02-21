@@ -39,6 +39,11 @@ export default defineComponent({
             return element;
           }
 
+          // route filter hideInMenu true
+          element.children = element.children.filter(
+            (x) => x.meta?.hideInMenu !== true
+          );
+
           // Associated child node
           const subItem = travel(element.children, layer);
           if (subItem.length) {
@@ -50,6 +55,11 @@ export default defineComponent({
             element.children = subItem;
             return element;
           }
+
+          if (element.meta?.hideInMenu === false) {
+            return element;
+          }
+
           return null;
         });
         return collector.filter(Boolean);
@@ -69,7 +79,7 @@ export default defineComponent({
     watch(
       route,
       (newVal) => {
-        if (newVal.meta.requiresAuth) {
+        if (newVal.meta.requiresAuth && !newVal.meta.hideInMenu) {
           const key = newVal.matched[2]?.name as string;
           selectedKey.value = [key];
         }
@@ -96,7 +106,6 @@ export default defineComponent({
         if (_route) {
           _route.forEach((element) => {
             // This is demo, modify nodes as needed
-            if (!permission.accessRouter(element)) return;
             const icon = element?.meta?.icon ? `<${element?.meta?.icon}/>` : ``;
             const r = (
               <a-sub-menu
