@@ -43,6 +43,12 @@ $ npm i @arco-design/arco-cli@latest yarn -g
 $ arco init my-project
 ```
 
+## 💎 Changelog
+
+- [中文版](https://github.com/arco-design/arco-design-pro-vue/blob/main/docs/changelog.zh-CN.md)
+
+- [英文版](https://github.com/arco-design/arco-design-pro-vue/blob/main/docs/changelog.md)
+
 ## LICENSE
 
 [MIT](./LICENSE) © [ArcoDesign](https://arco.design)
