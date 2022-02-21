@@ -9,6 +9,7 @@
     "postpublish": "node scripts/postpublish",
     "gen:cra": "node scripts/cra",
     "gen:vite": "node scripts/vite",
+    "gen:vite-simple": "node scripts/vite --simple",
     "gen:nuxt": "node scripts/nuxt"
   },
   "files": [
@@ -22,6 +23,8 @@
     "!/**/dist"
   ],
   "dependencies": {
-    "fs-extra": "^10.0.0"
+    "fs-extra": "^10.0.0",
+    "minimist": "^1.2.5",
+    "prettier": "^2.5.1"
   }
 }
