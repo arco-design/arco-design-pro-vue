@@ -9,7 +9,7 @@ const isSimple = params.simple;
 
 const templatePath = path.resolve(__dirname, '../arco-design-pro-vite');
 const projectPath =
-  process.argv[2] ||
+  params.projectPath ||
   path.resolve(__dirname, '../examples/arco-design-pro-vite');
 
 const maps = {
