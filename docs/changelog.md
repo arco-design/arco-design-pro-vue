@@ -12,7 +12,6 @@
 
 - Initializing projects supports simple mode. (**Need to upgrade `@arco-design/arco-cli` to `1.26.0`**)
 
----
 
 ## v2.2.0
 
@@ -27,7 +26,6 @@
 - Add permission management.
 - Support jsx syntax.
 
----
 
 ## v2.1.0
 
