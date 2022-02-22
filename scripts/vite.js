@@ -1,9 +1,15 @@
 const path = require('path');
 const fs = require('fs-extra');
+const minimist = require('minimist');
+const prettier = require('prettier');
+const prettierOpt = require('./../arco-design-pro-vite/.prettierrc.js');
+
+const params = minimist(process.argv.slice(2));
+const isSimple = params.simple;
 
 const templatePath = path.resolve(__dirname, '../arco-design-pro-vite');
 const projectPath =
-  process.argv[2] ||
+  params.projectPath ||
   path.resolve(__dirname, '../examples/arco-design-pro-vite');
 
 const maps = {
@@ -60,3 +66,80 @@ Object.keys(maps).forEach((src) => {
     fs.copySync(gitignorePath2, path.resolve(projectPath, '.gitignore'));
   }
 });
+
+// simple mode
+const simpleDir = [
+  {
+    base: 'src/views',
+    accurate: ['dashboard/monitor'], // Accurate to delete
+    exclude: ['login', 'dashboard', 'not-found'],
+  },
+];
+
+const regSum = /\/\*{2} simple( end)? \*\//g;
+const matchReg =
+  /(\/\*{2} simple \*\/)(?:(?!\/\*{2} simple end \*\/).|\n)*?\/\*{2} simple end \*\//gm;
+
+const simplifyFiles = [
+  'locale/en-US.ts',
+  'locale/zh-CN.ts',
+  'mock/index.ts',
+  'router/modules/index.ts',
+  'router/modules/dashboard.ts',
+];
+
+const runSimpleMode = () => {
+  deleteFiles();
+  simplifyFiles.forEach((el) => {
+    const file = path.resolve(projectPath, path.join('src', el));
+    fs.readFile(file, 'utf8', (err, content) => {
+      if (err) return console.error(err);
+      const main = content.replace(matchReg, '');
+      const formatTxt = prettier.format(main, {
+        ...prettierOpt,
+        parser: 'babel',
+      });
+      fs.writeFile(file, formatTxt, 'utf8', function (err) {
+        if (err) return console.error(err);
+      });
+    });
+  });
+};
+
+const deleteFiles = () => {
+  simpleDir.forEach((dirElem) => {
+    const baseDir = path.resolve(projectPath, dirElem.base);
+    fs.readdir(baseDir, (error, data) => {
+      data.forEach((dirName) => {
+        if (dirElem.exclude.includes(dirName)) return;
+        fs.remove(path.join(baseDir, dirName));
+      });
+    });
+    dirElem.accurate.forEach((el) => {
+      fs.remove(path.join(baseDir, el));
+    });
+  });
+};
+
+const runNormalMode = () => {
+  simplifyFiles.forEach((el) => {
+    const file = path.resolve(projectPath, path.join('src', el));
+    fs.readFile(file, 'utf8', (err, content) => {
+      if (err) return console.error(err);
+      const result = content.replace(regSum, '');
+      const formatTxt = prettier.format(result, {
+        ...prettierOpt,
+        parser: 'babel',
+      });
+      fs.writeFile(file, formatTxt, 'utf8', function (err) {
+        if (err) return console.error(err);
+      });
+    });
+  });
+};
+
+if (isSimple) {
+  runSimpleMode();
+} else {
+  runNormalMode();
+}

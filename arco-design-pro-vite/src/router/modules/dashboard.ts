@@ -18,6 +18,7 @@ export default {
         roles: ['*'],
       },
     },
+    /** simple */
     {
       path: 'monitor',
       name: 'monitor',
@@ -28,5 +29,6 @@ export default {
         roles: ['admin'],
       },
     },
+    /** simple end */
   ],
 };
