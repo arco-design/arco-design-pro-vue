@@ -14,6 +14,12 @@ export default defineConfig({
     fs: {
       strict: true,
     },
+    proxy: {
+      '/api/open/themes/list': {
+        target: 'https://arco.design/themes',
+        changeOrigin: true,
+      },
+    },
   },
   plugins: [
     vue(),

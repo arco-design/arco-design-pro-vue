@@ -1,4 +1,5 @@
 import localeMessageBox from '@/components/message-box/locale/en-US';
+import localeThemesDialo from '@/components/themes-dialog/locale/en-US';
 import localeLogin from '@/views/login/locale/en-US';
 
 import localeWorkplace from '@/views/dashboard/workplace/locale/en-US';
@@ -39,6 +40,7 @@ export default {
   'navbar.action.locale': 'Switch to English',
   ...localeSettings,
   ...localeMessageBox,
+  ...localeThemesDialo,
   ...localeLogin,
   ...localeWorkplace,
   ...localeMonitor,

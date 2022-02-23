@@ -9,6 +9,7 @@ export default {
   'settings.navbar.theme.toLight': 'Click to use light mode',
   'settings.navbar.theme.toDark': 'Click to use dark mode',
   'settings.navbar.alerts': 'alerts',
+  'settings.navbar.skin': 'Try the theme online',
   'settings.menu': 'Menu',
   'settings.footer': 'Footer',
   'settings.otherSettings': 'Other Settings',

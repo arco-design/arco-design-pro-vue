@@ -9,6 +9,8 @@ export interface HttpResponse<T = unknown> {
   data: T;
 }
 
+const whiteList = ['/api/open/themes/list'];
+
 axios.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     return config;
@@ -23,6 +25,12 @@ axios.interceptors.response.use(
   (response: AxiosResponse<HttpResponse>) => {
     const res = response.data;
     // if the custom code is not 20000, it is judged as an error.
+    if (
+      whiteList.includes(response.config.url || '') ||
+      response.config.url?.endsWith('arco.css')
+    ) {
+      return response;
+    }
     if (res.code !== 20000) {
       Message.error({
         content: res.msg || 'Error',

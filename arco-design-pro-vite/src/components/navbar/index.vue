@@ -112,6 +112,7 @@
           </a-button>
         </a-tooltip>
       </li>
+      <ThemesDialog />
       <li>
         <a-dropdown trigger="click">
           <a-avatar :size="32" :style="{ marginRight: '8px' }">
@@ -166,10 +167,12 @@ import { LOCALE_OPTIONS } from '@/locale';
 import useLocale from '@/hooks/locale';
 import useUser from '@/hooks/user';
 import MessageBox from '../message-box/index.vue';
+import ThemesDialog from '../themes-dialog/index.vue';
 
 export default defineComponent({
   components: {
     MessageBox,
+    ThemesDialog,
   },
   setup() {
     const appStore = useAppStore();
