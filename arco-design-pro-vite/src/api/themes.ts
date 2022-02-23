@@ -35,7 +35,7 @@ export interface themesListReq {
 }
 
 export function queryThemesList(params: themesListReq) {
-  return axios.get<themesListRes>('/api/open/themes/list', {
+  return axios.get<themesListRes>('/themes/api/open/themes/list', {
     params,
   });
 }

@@ -9,7 +9,7 @@ export interface HttpResponse<T = unknown> {
   data: T;
 }
 
-const whiteList = ['/api/open/themes/list'];
+const whiteList = ['/themes/api/open/themes/list'];
 
 axios.interceptors.request.use(
   (config: AxiosRequestConfig) => {

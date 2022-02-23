@@ -15,8 +15,8 @@ export default defineConfig({
       strict: true,
     },
     proxy: {
-      '/api/open/themes/list': {
-        target: 'https://arco.design/themes',
+      '/themes/api/open/themes/list': {
+        target: 'https://arco.design',
         changeOrigin: true,
       },
     },
