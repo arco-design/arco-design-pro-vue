@@ -15,9 +15,10 @@ export default defineConfig({
       strict: true,
     },
     proxy: {
-      '/themes/api/open/themes/list': {
+      '/official-api/': {
         target: 'https://arco.design',
         changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/official-api/, ''),
       },
     },
   },
