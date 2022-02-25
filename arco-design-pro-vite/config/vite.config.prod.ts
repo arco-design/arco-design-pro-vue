@@ -31,4 +31,9 @@ export default defineConfig({
   define: {
     'process.env': {},
   },
+  build: {
+    manifest: true,
+    assetsDir: 'vue-pro-static',
+  },
+  base: 'http://localhost:9000', // 需要node服务里的模板生成base保持一致
 });

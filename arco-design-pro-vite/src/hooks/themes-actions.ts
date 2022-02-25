@@ -69,7 +69,7 @@ export default function useThemesActions() {
         const customerId = `${componentName}_customize_style`;
         const defaultId = `${themeId}_customize_style_first_render`;
         if (typeof window.less.render === 'function') {
-          window.less.render(code, (err, output) => {
+          window.less.render(code, (err: any, output: { css: string }) => {
             toggleLoading(false);
             if (err) {
               console.error('render customerLess failed', err);
