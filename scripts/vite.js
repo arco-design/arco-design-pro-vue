@@ -68,11 +68,19 @@ Object.keys(maps).forEach((src) => {
 });
 
 // simple mode
-const simpleDir = [
+const simpleOptions = [
   {
     base: 'src/views',
     accurate: ['dashboard/monitor'], // Accurate to delete
-    exclude: ['login', 'dashboard', 'not-found'],
+    excludes: ['login', 'dashboard', 'not-found'],
+  },
+  {
+    base: 'src/api',
+    excludes: ['dashboard', 'interceptor', 'user', 'message'],
+  },
+  {
+    base: 'src/router/modules',
+    excludes: ['index', 'dashboard', 'login'],
   },
 ];
 
@@ -107,15 +115,21 @@ const runSimpleMode = () => {
 };
 
 const deleteFiles = () => {
-  simpleDir.forEach((dirElem) => {
-    const baseDir = path.resolve(projectPath, dirElem.base);
-    fs.readdir(baseDir, (error, data) => {
-      data.forEach((dirName) => {
-        if (dirElem.exclude.includes(dirName)) return;
-        fs.remove(path.join(baseDir, dirName));
+  simpleOptions.forEach((option) => {
+    const baseDir = path.resolve(projectPath, option.base);
+    fs.readdir(baseDir, (error, files) => {
+      files.forEach((fileName) => {
+        if (
+          option.excludes?.find((name) =>
+            new RegExp(`^${name}(.(ts|js|vue|json|jsx|tsx))?$`).test(fileName)
+          )
+        ) {
+          return;
+        }
+        fs.remove(path.join(baseDir, fileName));
       });
     });
-    dirElem.accurate.forEach((el) => {
+    option.accurate?.forEach((el) => {
       fs.remove(path.join(baseDir, el));
     });
   });
