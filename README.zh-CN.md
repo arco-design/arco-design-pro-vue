@@ -38,7 +38,7 @@ Admin 中后台管理页面，创新的多架构方案。
 ## 🌈 Usage
 
 ```bash
-$ npm i @arco-design/arco-cli@latest yarn -g
+$ npm i arco-cli@latest yarn -g
 
 $ arco init my-project
 ```

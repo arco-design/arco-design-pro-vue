@@ -34,7 +34,7 @@ English | [简体中文](./README.zh-CN.md)
 ## 🌈 Usage
 
 ```bash
-$ npm i @arco-design/arco-cli@latest yarn -g
+$ npm i arco-cli@latest yarn -g
 
 $ arco init my-project
 ```
