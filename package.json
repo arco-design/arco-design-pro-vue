@@ -10,7 +10,8 @@
     "gen:cra": "node scripts/cra",
     "gen:vite": "node scripts/vite",
     "gen:vite-simple": "node scripts/vite --simple",
-    "gen:nuxt": "node scripts/nuxt"
+    "gen:nuxt": "node scripts/nuxt",
+    "prepare": "husky install"
   },
   "files": [
     ".arco-cli",
@@ -26,5 +27,10 @@
     "fs-extra": "^10.0.0",
     "minimist": "^1.2.5",
     "prettier": "^2.5.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^12.0.1",
+    "husky": "^7.0.0"
   }
 }
