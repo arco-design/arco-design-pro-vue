@@ -1,5 +1,18 @@
 # Arco Design Pro Vue v2.0
 
+## v2.2.4
+
+`2022-03-01`
+
+### 🐛 bugfix
+
+- Fix the problem that the component does not take effect after switching the language. [#27](https://github.com/arco-design/arco-design-pro-vue/issues/27)
+- Delete easy mode missing files.
+
+### 💎 Optimization
+
+- The basic configuration of vite is extracted.
+
 ## v2.2.3
 
 `2022-02-22`
