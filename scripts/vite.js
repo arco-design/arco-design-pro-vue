@@ -120,7 +120,8 @@ const deleteFiles = () => {
     fs.readdir(baseDir, (error, files) => {
       files.forEach((fileName) => {
         if (
-          option.excludes?.find((name) =>
+          option.excludes &&
+          option.excludes.find((name) =>
             new RegExp(`^${name}(.(ts|js|vue|json|jsx|tsx))?$`).test(fileName)
           )
         ) {
@@ -129,9 +130,11 @@ const deleteFiles = () => {
         fs.remove(path.join(baseDir, fileName));
       });
     });
-    option.accurate?.forEach((el) => {
-      fs.remove(path.join(baseDir, el));
-    });
+    if (option.accurate) {
+      option.accurate.forEach((el) => {
+        fs.remove(path.join(baseDir, el));
+      });
+    }
   });
 };
 
