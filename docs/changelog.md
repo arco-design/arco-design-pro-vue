@@ -1,5 +1,23 @@
 # Arco Design Pro Vue v2.0
 
+## v2.2.5
+
+`2022-03-08`
+
+### 🆕 Feature
+
+- Added the function of setting the corresponding api base URL according to different operating environments. [#29](https://github.com/arco-design/arco-design-pro-vue/pull/29)
+
+### 💎 Optimization
+
+- Responsive processing and small screen display optimization.
+- Route monitoring performance optimization.
+
+### 🐛 bugfix
+
+- Optional chain causes item initialization to fail. [#31](https://github.com/arco-design/arco-design-pro-vue/issues/31)
+- Fixed the bug that i18n did not set allowComposition and could not start under windows.[#32](https://github.com/arco-design/arco-design-pro-vue/pull/32)
+
 ## v2.2.4
 
 `2022-03-01`
