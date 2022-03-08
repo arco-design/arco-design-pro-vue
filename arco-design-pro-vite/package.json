@@ -28,7 +28,6 @@
   },
   "dependencies": {
     "@arco-design/web-vue": "^2.15.1",
-    "@types/mockjs": "^1.0.4",
     "@vueuse/core": "^7.3.0",
     "axios": "^0.24.0",
     "dayjs": "^1.10.7",
@@ -46,6 +45,7 @@
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^12.0.1",
     "@types/lodash": "^4.14.177",
+    "@types/mockjs": "^1.0.4",
     "@types/nprogress": "^0.2.0",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",
