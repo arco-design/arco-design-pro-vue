@@ -6,6 +6,7 @@ import {
   LoginData,
 } from '@/api/user';
 import { setToken, clearToken } from '@/utils/auth';
+import { removeRouteListener } from '@/utils/route-listener';
 import { UserState } from './types';
 
 const useUserStore = defineStore('user', {
@@ -75,6 +76,7 @@ const useUserStore = defineStore('user', {
 
       this.resetInfo();
       clearToken();
+      removeRouteListener();
     },
   },
 });

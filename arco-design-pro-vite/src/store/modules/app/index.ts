@@ -9,6 +9,9 @@ const useAppStore = defineStore('app', {
     appCurrentSetting(state: AppState): AppState {
       return { ...state };
     },
+    appDevice(state: AppState) {
+      return state.device;
+    },
   },
 
   actions: {
@@ -27,6 +30,12 @@ const useAppStore = defineStore('app', {
         this.theme = 'light';
         document.body.removeAttribute('arco-theme');
       }
+    },
+    toggleDevice(device: string) {
+      this.device = device;
+    },
+    toggleMenu(value: boolean) {
+      this.hideMenu = value;
     },
   },
 });

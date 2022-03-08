@@ -1,14 +1,10 @@
 <script lang="tsx">
 import { defineComponent, ref, watch, h, compile, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
-import {
-  useRouter,
-  useRoute,
-  RouteRecordRaw,
-  RouteRecordNormalized,
-} from 'vue-router';
+import { useRouter, RouteRecordRaw, RouteRecordNormalized } from 'vue-router';
 import { useAppStore } from '@/store';
 import usePermission from '@/hooks/permission';
+import { listenerRouteChange } from '@/utils/route-listener';
 
 export default defineComponent({
   emit: ['collapse'],
@@ -17,8 +13,15 @@ export default defineComponent({
     const appStore = useAppStore();
     const permission = usePermission();
     const router = useRouter();
-    const route = useRoute();
-    const collapsed = ref(false);
+    const collapsed = computed({
+      get() {
+        if (appStore.device === 'desktop') return appStore.menuCollapse;
+        return false;
+      },
+      set(value: boolean) {
+        appStore.updateSettings({ menuCollapse: value });
+      },
+    });
     const appRoute = computed(() => {
       return router
         .getRoutes()
@@ -76,29 +79,15 @@ export default defineComponent({
         name: item.name,
       });
     };
-    watch(
-      route,
-      (newVal) => {
-        if (newVal.meta.requiresAuth && !newVal.meta.hideInMenu) {
-          const key = newVal.matched[2]?.name as string;
-          selectedKey.value = [key];
-        }
-      },
-      {
-        immediate: true,
+    listenerRouteChange((newRoute) => {
+      if (newRoute.meta.requiresAuth && !newRoute.meta.hideInMenu) {
+        const key = newRoute.matched[2]?.name as string;
+        selectedKey.value = [key];
       }
-    );
-    watch(
-      () => appStore.menuCollapse,
-      (newVal) => {
-        collapsed.value = newVal;
-      },
-      {
-        immediate: true,
-      }
-    );
+    }, true);
     const setCollapse = (val: boolean) => {
-      appStore.updateSettings({ menuCollapse: val });
+      if (appStore.device === 'desktop')
+        appStore.updateSettings({ menuCollapse: val });
     };
 
     const renderSubMenu = () => {
@@ -135,7 +124,7 @@ export default defineComponent({
     return () => (
       <a-menu
         v-model:collapsed={collapsed.value}
-        show-collapse-button
+        show-collapse-button={appStore.device !== 'mobile'}
         auto-open={false}
         selected-keys={selectedKey.value}
         auto-open-selected={true}

@@ -3,9 +3,11 @@
   "colorWeek": false,
   "navbar": true,
   "menu": true,
+  "hideMenu": false,
   "menuCollapse": false,
   "footer": true,
   "themeColor": "#165DFF",
   "menuWidth": 220,
-  "globalSettings": false
+  "globalSettings": false,
+  "device": "desktop"
 }

@@ -12,6 +12,11 @@
         >
           Arco Pro
         </a-typography-title>
+        <icon-menu-fold
+          v-if="appStore.device === 'mobile'"
+          style="font-size: 22px; cursor: pointer"
+          @click="toggleDrawerMenu"
+        />
       </a-space>
     </div>
     <ul class="right-side">
@@ -158,7 +163,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref } from 'vue';
+import { defineComponent, computed, ref, inject } from 'vue';
 import { Message } from '@arco-design/web-vue';
 import { useDark, useToggle } from '@vueuse/core';
 import { useAppStore, useUserStore } from '@/store';
@@ -223,7 +228,9 @@ export default defineComponent({
       const res = await userStore.switchRoles();
       Message.success(res as string);
     };
+    const toggleDrawerMenu = inject('toggleDrawerMenu');
     return {
+      appStore,
       locales,
       theme,
       avatar,
@@ -236,6 +243,7 @@ export default defineComponent({
       handleLogout,
       setDropDownVisible,
       switchRoles,
+      toggleDrawerMenu,
     };
   },
 });

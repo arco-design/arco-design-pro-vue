@@ -1,15 +1,16 @@
 <template>
-  <a-layout class="layout">
+  <a-layout class="layout" :class="{ mobile: appStore.hideMenu }">
     <div v-if="navbar" class="layout-navbar">
       <NavBar />
     </div>
     <a-layout>
       <a-layout>
         <a-layout-sider
-          v-if="menu"
+          v-if="renderMenu"
+          v-show="!hideMenu"
           class="layout-sider"
-          :breakpoint="'xl'"
-          :collapsed="collapse"
+          breakpoint="xl"
+          :collapsed="collapsed"
           :collapsible="true"
           :width="menuWidth"
           :style="{ paddingTop: navbar ? '60px' : '' }"
@@ -20,6 +21,17 @@
             <Menu />
           </div>
         </a-layout-sider>
+        <a-drawer
+          v-if="hideMenu"
+          :visible="drawerVisible"
+          placement="left"
+          :footer="false"
+          mask-closable
+          :closable="false"
+          @cancel="drawerCancel"
+        >
+          <Menu />
+        </a-drawer>
         <a-layout class="layout-content" :style="paddingStyle">
           <a-layout-content>
             <router-view />
@@ -32,13 +44,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, watch } from 'vue';
+import { defineComponent, ref, computed, watch, provide } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useAppStore, useUserStore } from '@/store';
 import NavBar from '@/components/navbar/index.vue';
 import Menu from '@/components/menu/index.vue';
 import Footer from '@/components/footer/index.vue';
 import usePermission from '@/hooks/permission';
+import useResponsive from '@/hooks/responsive';
 
 export default defineComponent({
   components: {
@@ -52,20 +65,23 @@ export default defineComponent({
     const router = useRouter();
     const route = useRoute();
     const permission = usePermission();
+    useResponsive(true);
     const navbarHeight = `60px`;
     const navbar = computed(() => appStore.navbar);
-    const menu = computed(() => appStore.menu);
+    const renderMenu = computed(() => appStore.menu);
+    const hideMenu = computed(() => appStore.hideMenu);
     const footer = computed(() => appStore.footer);
     const menuWidth = computed(() => {
       return appStore.menuCollapse ? 48 : appStore.menuWidth;
     });
-    const collapse = computed(() => {
+    const collapsed = computed(() => {
       return appStore.menuCollapse;
     });
     const paddingStyle = computed(() => {
-      const paddingLeft = menu.value
-        ? { paddingLeft: `${menuWidth.value}px` }
-        : {};
+      const paddingLeft =
+        renderMenu.value && !hideMenu.value
+          ? { paddingLeft: `${menuWidth.value}px` }
+          : {};
       const paddingTop = navbar.value ? { paddingTop: navbarHeight } : {};
       return { ...paddingLeft, ...paddingTop };
     });
@@ -79,14 +95,25 @@ export default defineComponent({
           router.push({ name: 'notFound' });
       }
     );
+    const drawerVisible = ref(false);
+    const drawerCancel = () => {
+      drawerVisible.value = false;
+    };
+    provide('toggleDrawerMenu', () => {
+      drawerVisible.value = !drawerVisible.value;
+    });
     return {
       navbar,
-      menu,
+      renderMenu,
+      hideMenu,
       footer,
       menuWidth,
       paddingStyle,
-      collapse,
+      collapsed,
+      appStore,
+      drawerVisible,
       setCollapsed,
+      drawerCancel,
     };
   },
 });
@@ -107,7 +134,6 @@ export default defineComponent({
   left: 0;
   z-index: 100;
   width: 100%;
-  min-width: @layout-max-width;
   height: @nav-size-height;
 }
 
@@ -158,10 +184,8 @@ export default defineComponent({
 }
 
 .layout-content {
-  min-width: @layout-max-width;
   min-height: 100vh;
   overflow-y: hidden;
   background-color: var(--color-fill-2);
-  transition: padding-left 0.2s;
 }
 </style>

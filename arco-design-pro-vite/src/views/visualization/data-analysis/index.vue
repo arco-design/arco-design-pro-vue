@@ -9,14 +9,18 @@
           <PublicOpinion />
         </div>
         <div>
-          <a-row :gutter="20">
-            <a-col :span="16">
+          <a-grid :cols="24" :col-gap="16" :row-gap="16">
+            <a-grid-item
+              :span="{ xs: 24, sm: 24, md: 24, lg: 16, xl: 16, xxl: 16 }"
+            >
               <ContentPublishRatio />
-            </a-col>
-            <a-col :span="8">
+            </a-grid-item>
+            <a-grid-item
+              :span="{ xs: 24, sm: 24, md: 24, lg: 8, xl: 8, xxl: 8 }"
+            >
               <PopularAuthor />
-            </a-col>
-          </a-row>
+            </a-grid-item>
+          </a-grid>
         </div>
         <div>
           <ContentPeriodAnalysis />

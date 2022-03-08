@@ -33,17 +33,21 @@ export default defineComponent({
     const { t } = useI18n();
     const { copy } = useClipboard();
     const visible = computed(() => appStore.globalSettings);
-    const contentOpts = [
-      { name: 'settings.navbar', key: 'navbar', defaultVal: true },
-      { name: 'settings.menu', key: 'menu', defaultVal: true },
-      { name: 'settings.footer', key: 'footer', defaultVal: true },
+    const contentOpts = computed(() => [
+      { name: 'settings.navbar', key: 'navbar', defaultVal: appStore.navbar },
+      {
+        name: 'settings.menu',
+        key: 'menu',
+        defaultVal: appStore.menu,
+      },
+      { name: 'settings.footer', key: 'footer', defaultVal: appStore.footer },
       {
         name: 'settings.menuWidth',
         key: 'menuWidth',
         defaultVal: appStore.menuWidth,
         type: 'number',
       },
-    ];
+    ]);
     const othersOpts = [
       { name: 'settings.colorWeek', key: 'colorWeek', defaultVal: false },
     ];
