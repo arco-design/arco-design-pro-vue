@@ -14,8 +14,9 @@ module.exports = {
     },
   },
   env: {
-    browser: true,
-    node: true,
+    'browser': true,
+    'node': true,
+    'vue/setup-compiler-macros': true,
   },
   plugins: ['@typescript-eslint'],
   extends: [
