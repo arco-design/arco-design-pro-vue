@@ -1,5 +1,5 @@
 <script lang="tsx">
-import { defineComponent, ref, watch, h, compile, computed } from 'vue';
+import { defineComponent, ref, h, compile, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRouter, RouteRecordRaw, RouteRecordNormalized } from 'vue-router';
 import { useAppStore } from '@/store';
