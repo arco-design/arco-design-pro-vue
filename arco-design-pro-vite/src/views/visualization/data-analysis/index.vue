@@ -11,12 +11,12 @@
         <div>
           <a-grid :cols="24" :col-gap="16" :row-gap="16">
             <a-grid-item
-              :span="{ xs: 24, sm: 24, md: 24, lg: 16, xl: 16, xxl: 16 }"
+              :span="{ xs: 24, sm: 24, md: 24, lg: 24, xl: 16, xxl: 16 }"
             >
               <ContentPublishRatio />
             </a-grid-item>
             <a-grid-item
-              :span="{ xs: 24, sm: 24, md: 24, lg: 8, xl: 8, xxl: 8 }"
+              :span="{ xs: 24, sm: 24, md: 24, lg: 24, xl: 8, xxl: 8 }"
             >
               <PopularAuthor />
             </a-grid-item>

@@ -70,7 +70,8 @@ export default defineComponent({
 </style>
 
 <style lang="less" scoped>
-.mobile {
+// responsive
+@media (max-width: @screen-lg) {
   .layout {
     flex-wrap: wrap;
     &-left-side {

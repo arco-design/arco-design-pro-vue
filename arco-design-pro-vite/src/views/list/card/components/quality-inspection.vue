@@ -4,7 +4,15 @@
       {{ $t('cardList.tab.title.content') }}
     </a-typography-title>
     <a-row class="list-row" :gutter="24">
-      <a-col :span="6" class="list-col">
+      <a-col
+        :xs="12"
+        :sm="12"
+        :md="12"
+        :lg="6"
+        :xl="6"
+        :xxl="6"
+        class="list-col"
+      >
         <div class="card-wrap empty-wrap">
           <a-card :bordered="false" hoverable>
             <a-result :status="null" :title="$t('cardList.content.action')">
@@ -18,8 +26,13 @@
       <a-col
         v-for="item in renderData"
         :key="item.id"
-        :span="6"
         class="list-col"
+        :xs="12"
+        :sm="12"
+        :md="12"
+        :lg="6"
+        :xl="6"
+        :xxl="6"
       >
         <CardWrap
           :loading="loading"

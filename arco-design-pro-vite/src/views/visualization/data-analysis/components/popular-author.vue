@@ -12,6 +12,7 @@
         :pagination="false"
         :bordered="false"
         style="margin-bottom: 20px"
+        :scroll="{ x: '100%', y: '350px' }"
       >
         <template #columns>
           <a-table-column
@@ -77,6 +78,6 @@ export default defineComponent({
 
 <style scoped lang="less">
 .general-card {
-  min-height: 425px;
+  max-height: 425px;
 }
 </style>
