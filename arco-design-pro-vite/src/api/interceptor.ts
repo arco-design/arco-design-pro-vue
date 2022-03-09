@@ -13,6 +13,9 @@ const whiteList = [
   '/themes/api/open/themes/list',
   '/official-api/themes/api/open/themes/list',
 ];
+if (import.meta.env.VITE_API_BASE_URL) {
+  axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL;
+}
 
 axios.interceptors.request.use(
   (config: AxiosRequestConfig) => {

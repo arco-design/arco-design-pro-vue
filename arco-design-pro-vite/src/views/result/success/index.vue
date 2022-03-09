@@ -81,3 +81,14 @@ export default defineComponent({});
   background-color: rgb(var(--gray-1));
 }
 </style>
+
+<style lang="less" scoped>
+.mobile {
+  .wrapper {
+    padding: 24px 10px;
+    .steps-wrapper {
+      transform: scale(0.8);
+    }
+  }
+}
+</style>

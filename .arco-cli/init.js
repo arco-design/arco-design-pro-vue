@@ -1,18 +1,21 @@
 const { spawnSync } = require('child_process');
 
-const FRAMEWORK_LIST = ['cra', 'nuxt', 'vite'];
+const FRAMEWORK_LIST = ['cra', 'next', 'vite'];
 
 const isWindows = process.platform === 'win32';
 const cmd = isWindows ? 'npm.cmd' : 'npm';
 
-module.exports = function ({ framework, projectPath }) {
+module.exports = function ({ framework, projectPath, simple }) {
   if (FRAMEWORK_LIST.indexOf(framework) > -1) {
-    const { stderr, error } = spawnSync(cmd, [
-      'run',
-      `gen:${framework}`,
-      '--',
-      projectPath,
-    ]);
+    const command = ['run', `gen:${framework}`, '--'];
+    if (projectPath) {
+      command.push(`--projectPath=${projectPath}`);
+    }
+    if (simple) {
+      command.push(`--simple`);
+    }
+
+    const { stderr, error } = spawnSync(cmd, command);
 
     if (error) {
       throw error;

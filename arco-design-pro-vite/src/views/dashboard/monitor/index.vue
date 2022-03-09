@@ -68,3 +68,28 @@ export default defineComponent({
   }
 }
 </style>
+
+<style lang="less" scoped>
+.mobile {
+  .layout {
+    flex-wrap: wrap;
+    &-left-side {
+      flex: 1;
+      flex-basis: 100%;
+      margin-bottom: 16px;
+    }
+
+    &-content {
+      flex: none;
+      flex-basis: 100%;
+      padding: 0;
+      order: -1;
+      margin-bottom: 16px;
+    }
+
+    &-right-side {
+      flex-basis: 100%;
+    }
+  }
+}
+</style>

@@ -20,7 +20,8 @@
               {{ project.description }}
             </a-typography-text>
             <a-space>
-              <a-avatar-group :size="0">
+              <a-avatar-group :size="24">
+                {{ project.contributors }}
                 <a-avatar
                   v-for="(contributor, idx) in project.contributors"
                   :key="idx"

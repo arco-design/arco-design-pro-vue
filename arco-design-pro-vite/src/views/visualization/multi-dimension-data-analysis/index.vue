@@ -7,17 +7,17 @@
       ]"
     />
     <a-space direction="vertical" :size="16" fill>
-      <a-row :gutter="16">
-        <a-col :span="18">
+      <a-grid :cols="24" :col-gap="16" :row-gap="16">
+        <a-grid-item
+          :span="{ xs: 24, sm: 24, md: 24, lg: 18, xl: 18, xxl: 18 }"
+        >
           <DataOverview />
-        </a-col>
-        <a-col :span="6">
-          <a-space direction="vertical" :size="16" fill>
-            <UserActions />
-            <ContentTypeDistribution />
-          </a-space>
-        </a-col>
-      </a-row>
+        </a-grid-item>
+        <a-grid-item :span="{ xs: 24, sm: 24, md: 24, lg: 6, xl: 6, xxl: 6 }">
+          <UserActions style="margin-bottom: 16px" />
+          <ContentTypeDistribution />
+        </a-grid-item>
+      </a-grid>
       <DataChainGrowth />
       <ContentPublishingSource />
     </a-space>

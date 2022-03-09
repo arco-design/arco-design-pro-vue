@@ -34,10 +34,21 @@ English | [简体中文](./README.zh-CN.md)
 ## 🌈 Usage
 
 ```bash
-$ npm i @arco-design/arco-cli@latest yarn -g
+$ npm i arco-cli@latest yarn -g
 
 $ arco init my-project
 ```
+
+## 🔗 Link
+
+- [Arco Design Pro](https://pro.arco.design)
+- [Preview](https://vue-pro.arco.design)
+
+## 💎 Changelog
+
+- [Chinese Version](https://github.com/arco-design/arco-design-pro-vue/blob/main/docs/changelog.zh-CN.md)
+
+- [English Version](https://github.com/arco-design/arco-design-pro-vue/blob/main/docs/changelog.md)
 
 ## LICENSE
 

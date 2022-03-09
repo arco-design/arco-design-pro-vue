@@ -7,7 +7,7 @@
   >
     <a-carousel-item v-for="(src, idx) in imageSrc" :key="idx">
       <div>
-        <img :src="src" style="width: 280px" />
+        <img :src="src" style="width: 100%" />
       </div>
     </a-carousel-item>
   </a-carousel>

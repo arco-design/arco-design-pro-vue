@@ -6,16 +6,20 @@
         <DataPanel />
         <ContentChart />
       </div>
-      <a-row style="margin-top: 16px">
-        <a-col :flex="1" class="panel" style="margin-right: 16px">
+      <a-grid :cols="24" :col-gap="16" :row-gap="16" style="margin-top: 16px">
+        <a-grid-item
+          :span="{ xs: 24, sm: 24, md: 24, lg: 12, xl: 12, xxl: 12 }"
+        >
           <PopularContent />
-        </a-col>
-        <a-col :flex="1" class="panel">
+        </a-grid-item>
+        <a-grid-item
+          :span="{ xs: 24, sm: 24, md: 24, lg: 12, xl: 12, xxl: 12 }"
+        >
           <CateforiesPercent />
-        </a-col>
-      </a-row>
+        </a-grid-item>
+      </a-grid>
     </div>
-    <div class="right-side">
+    <!-- <div class="right-side">
       <div class="panel moduler-wrap">
         <QuickOperation />
         <RecentlyVisited />
@@ -29,6 +33,25 @@
       <div class="panel" style="margin-top: 16px">
         <Docs />
       </div>
+    </div> -->
+    <div class="right-side">
+      <a-grid :cols="24" :row-gap="16">
+        <a-grid-item :span="24">
+          <div class="panel moduler-wrap">
+            <QuickOperation />
+            <RecentlyVisited />
+          </div>
+        </a-grid-item>
+        <a-grid-item class="panel" :span="24">
+          <Carousel />
+        </a-grid-item>
+        <a-grid-item class="panel" :span="24">
+          <Announcement />
+        </a-grid-item>
+        <a-grid-item class="panel" :span="24">
+          <Docs />
+        </a-grid-item>
+      </a-grid>
     </div>
   </div>
 </template>
@@ -130,6 +153,21 @@ export default defineComponent({
     text-align: center;
     background-color: rgb(var(--gray-1));
     border-radius: 4px;
+  }
+}
+</style>
+
+<style lang="less" scoped>
+// responsive
+.mobile {
+  .container {
+    display: block;
+  }
+  .right-side {
+    // display: none;
+    width: 100%;
+    margin-left: 0;
+    margin-top: 16px;
   }
 }
 </style>

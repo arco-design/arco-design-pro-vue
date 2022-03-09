@@ -3,6 +3,7 @@ import localeThemesDialo from '@/components/themes-dialog/locale/en-US';
 import localeLogin from '@/views/login/locale/en-US';
 
 import localeWorkplace from '@/views/dashboard/workplace/locale/en-US';
+/** simple */
 import localeMonitor from '@/views/dashboard/monitor/locale/en-US';
 
 import localeSearchTable from '@/views/list/search-table/locale/en-US';
@@ -25,6 +26,7 @@ import locale500 from '@/views/exception/500/locale/en-US';
 
 import localeUserInfo from '@/views/user/info/locale/en-US';
 import localeUserSetting from '@/views/user/setting/locale/en-US';
+/** simple end */
 import localeSettings from './en-US/settings';
 
 export default {
@@ -43,6 +45,7 @@ export default {
   ...localeThemesDialo,
   ...localeLogin,
   ...localeWorkplace,
+  /** simple */
   ...localeMonitor,
   ...localeSearchTable,
   ...localeCardList,
@@ -58,4 +61,5 @@ export default {
   ...locale500,
   ...localeUserInfo,
   ...localeUserSetting,
+  /** simple end */
 };

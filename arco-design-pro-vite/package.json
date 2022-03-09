@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "vite --config ./config/vite.config.dev.ts",
     "build": "vue-tsc --noEmit && vite build --config ./config/vite.config.prod.ts",
-    "lint-staged": "npx lint-staged"
+    "lint-staged": "npx lint-staged",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": [
@@ -26,13 +27,14 @@
     ]
   },
   "dependencies": {
-    "@arco-design/web-vue": "^2.15.1",
+    "@arco-design/web-vue": "2.18.0",
     "@types/mockjs": "^1.0.4",
     "@vueuse/core": "^7.3.0",
     "axios": "^0.24.0",
     "dayjs": "^1.10.7",
     "echarts": "^5.2.2",
     "lodash": "^4.17.21",
+    "mitt": "^3.0.0",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.9",
     "query-string": "^7.0.1",
@@ -58,6 +60,7 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^8.3.0",
+    "husky": "^7.0.4",
     "less": "^4.1.2",
     "lint-staged": "^11.2.6",
     "mockjs": "^1.1.0",
