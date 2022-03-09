@@ -27,7 +27,12 @@
             {{ $t('workplace.popularContent.video') }}
           </a-radio>
         </a-radio-group>
-        <a-table :data="renderList" :pagination="false" :bordered="false">
+        <a-table
+          :data="renderList"
+          :pagination="false"
+          :bordered="false"
+          :scroll="{ x: '100%', y: '264px' }"
+        >
           <template #columns>
             <a-table-column title="排名" data-index="key"></a-table-column>
             <a-table-column title="内容标题" data-index="title">

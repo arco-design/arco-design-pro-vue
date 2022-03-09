@@ -7,7 +7,12 @@
       <a-col
         v-for="item in renderData"
         :key="item.id"
-        :span="6"
+        :xs="12"
+        :sm="12"
+        :md="12"
+        :lg="6"
+        :xl="6"
+        :xxl="6"
         class="list-col"
         style="min-height: 140px"
       >

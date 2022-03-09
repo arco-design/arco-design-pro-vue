@@ -256,18 +256,22 @@ export default defineComponent({
 </script>
 
 <style scoped lang="less">
+:deep(.arco-card) {
+  border-radius: 4px;
+}
 :deep(.arco-card-body) {
+  width: 100%;
   height: 134px;
+  padding: 0;
 }
 .content-wrap {
-  display: flex;
   width: 100%;
-  justify-content: space-between;
-  align-items: flex-end;
+  padding: 16px;
   white-space: nowrap;
 }
 :deep(.content) {
-  display: inline-block;
+  float: left;
+  width: 108px;
   height: 102px;
 }
 :deep(.arco-statistic) {
@@ -282,9 +286,8 @@ export default defineComponent({
 }
 
 .chart {
-  display: inline-block;
-  // width: calc(100% - 150px);
-  flex: 1;
+  float: right;
+  width: calc(100% - 108px);
   height: 90px;
   vertical-align: bottom;
 }

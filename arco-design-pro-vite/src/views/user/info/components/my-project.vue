@@ -7,7 +7,12 @@
       <a-col
         v-for="(project, index) in projectList"
         :key="index"
-        :span="8"
+        :xs="12"
+        :sm="12"
+        :md="12"
+        :lg="12"
+        :xl="8"
+        :xxl="8"
         class="my-project-item"
       >
         <a-card>
