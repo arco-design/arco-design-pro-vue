@@ -10,6 +10,16 @@ export default mergeConfig(
       fs: {
         strict: true,
       },
+      proxy: {
+        '/official-api/': {
+          target: 'https://arco.design',
+          changeOrigin: true,
+          rewrite: (path) => {
+            console.log(path);
+            return path.replace(/^\/official-api/, '');
+          },
+        },
+      },
     },
     plugins: [
       eslint({
