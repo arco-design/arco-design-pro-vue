@@ -1,8 +1,8 @@
-import { debug, isExternal } from './env';
+import { debug } from './env';
 
 export default function tea(name?: string) {
   (window as any).collectEvent('init', {
-    app_id: isExternal ? 4374 : 263440,
+    app_id: 4374,
     channel: 'cn',
     log: true,
     autotrack: true,
