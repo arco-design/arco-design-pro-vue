@@ -6,6 +6,7 @@ export default {
     locale: 'menu.profile',
     requiresAuth: true,
     icon: 'icon-file',
+    order: 600,
   },
   children: [
     {

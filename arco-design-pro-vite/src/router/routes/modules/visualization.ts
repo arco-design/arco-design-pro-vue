@@ -6,6 +6,7 @@ export default {
     locale: 'menu.visualization',
     requiresAuth: true,
     icon: 'icon-apps',
+    order: 900,
   },
   children: [
     {
