@@ -30,7 +30,7 @@ export default defineComponent({
     const menuTree = computed(() => {
       const copyRouter = JSON.parse(JSON.stringify(appRoute.value.children));
       copyRouter.sort((a: RouteRecordNormalized, b: RouteRecordNormalized) => {
-        return (b.meta.order || 0) - (a.meta.order || 0);
+        return (a.meta.order || 0) - (b.meta.order || 0);
       });
       function travel(_routes: RouteRecordRaw[], layer: number) {
         if (!_routes) return null;

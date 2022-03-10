@@ -6,7 +6,7 @@ export default {
     locale: 'menu.form',
     icon: 'icon-settings',
     requiresAuth: true,
-    order: 700,
+    order: 3,
   },
   children: [
     {

@@ -6,7 +6,7 @@ export default {
     locale: 'menu.result',
     icon: 'icon-check-circle',
     requiresAuth: true,
-    order: 500,
+    order: 5,
   },
   children: [
     {
