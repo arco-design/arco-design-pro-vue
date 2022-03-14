@@ -21,4 +21,5 @@ export default {
   'settings.close': 'Close',
   'settings.color.tooltip':
     '10 gradient colors generated according to the theme color',
+  'settings.menuFromServer': 'Menu From Server',
 };

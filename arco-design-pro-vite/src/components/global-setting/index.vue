@@ -40,6 +40,11 @@ export default defineComponent({
         key: 'menu',
         defaultVal: appStore.menu,
       },
+      {
+        name: 'settings.menuFromServer',
+        key: 'menuFromServer',
+        defaultVal: appStore.menuFromServer,
+      },
       { name: 'settings.footer', key: 'footer', defaultVal: appStore.footer },
       {
         name: 'settings.menuWidth',

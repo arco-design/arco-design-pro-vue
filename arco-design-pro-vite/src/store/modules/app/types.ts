@@ -11,4 +11,5 @@ export interface AppState {
   globalSettings: boolean;
   device: string;
   [key: string]: unknown;
+  menuFromServer: boolean;
 }
