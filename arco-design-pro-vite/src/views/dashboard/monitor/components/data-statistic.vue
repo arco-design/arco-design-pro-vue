@@ -31,33 +31,26 @@
   </a-card>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import DataStatisticList from './data-statistic-list.vue';
-
-export default defineComponent({
-  components: {
-    DataStatisticList,
-  },
-});
+<script lang="ts" setup>
+  import DataStatisticList from './data-statistic-list.vue';
 </script>
 
 <style scoped lang="less">
-.data-statistic {
-  &-content {
-    padding: 20px 0;
-  }
-
-  &-list {
-    &-header {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 16px;
-    }
-
+  .data-statistic {
     &-content {
-      margin-top: 16px;
+      padding: 20px 0;
+    }
+
+    &-list {
+      &-header {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 16px;
+      }
+
+      &-content {
+        margin-top: 16px;
+      }
     }
   }
-}
 </style>

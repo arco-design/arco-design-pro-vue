@@ -66,62 +66,50 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import { queryInspectionList, ServiceRecord } from '@/api/list';
-import useRequest from '@/hooks/request';
-import CardWrap from './card-wrap.vue';
+<script lang="ts" setup>
+  import { queryInspectionList, ServiceRecord } from '@/api/list';
+  import useRequest from '@/hooks/request';
+  import CardWrap from './card-wrap.vue';
 
-export default defineComponent({
-  components: {
-    CardWrap,
-  },
-  setup() {
-    const defaultValue: ServiceRecord[] = new Array(3).fill({});
-    const { loading, response: renderData } = useRequest<ServiceRecord[]>(
-      queryInspectionList,
-      defaultValue
-    );
-    return {
-      loading,
-      renderData,
-    };
-  },
-});
+  const defaultValue: ServiceRecord[] = new Array(3).fill({});
+  const { loading, response: renderData } = useRequest<ServiceRecord[]>(
+    queryInspectionList,
+    defaultValue
+  );
 </script>
 
 <style scoped lang="less">
-.card-wrap {
-  height: 100%;
-  transition: all 0.3s;
-  border: 1px solid var(--color-neutral-3);
-  &:hover {
-    transform: translateY(-4px);
-  }
-  :deep(.arco-card-meta-description) {
-    color: rgb(var(--gray-6));
-    .arco-descriptions-item-label-inline {
-      font-weight: normal;
-      font-size: 12px;
-      color: rgb(var(--gray-6));
-    }
-    .arco-descriptions-item-value-inline {
-      color: rgb(var(--gray-8));
-    }
-  }
-}
-.empty-wrap {
-  height: 200px;
-  border-radius: 4px;
-  :deep(.arco-card) {
+  .card-wrap {
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    .arco-result-title {
+    transition: all 0.3s;
+    border: 1px solid var(--color-neutral-3);
+    &:hover {
+      transform: translateY(-4px);
+    }
+    :deep(.arco-card-meta-description) {
       color: rgb(var(--gray-6));
+      .arco-descriptions-item-label-inline {
+        font-weight: normal;
+        font-size: 12px;
+        color: rgb(var(--gray-6));
+      }
+      .arco-descriptions-item-value-inline {
+        color: rgb(var(--gray-8));
+      }
     }
   }
-}
+  .empty-wrap {
+    height: 200px;
+    border-radius: 4px;
+    :deep(.arco-card) {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      .arco-result-title {
+        color: rgb(var(--gray-6));
+      }
+    }
+  }
 </style>

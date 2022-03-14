@@ -15,61 +15,48 @@
   </a-drawer>
 </template>
 
-<script lang="ts">
-import { defineComponent, computed } from 'vue';
-import { Message } from '@arco-design/web-vue';
-import { useI18n } from 'vue-i18n';
-import { useClipboard } from '@vueuse/core';
-import { useAppStore } from '@/store';
-import Block from './block.vue';
+<script lang="ts" setup>
+  import { computed } from 'vue';
+  import { Message } from '@arco-design/web-vue';
+  import { useI18n } from 'vue-i18n';
+  import { useClipboard } from '@vueuse/core';
+  import { useAppStore } from '@/store';
+  import Block from './block.vue';
 
-export default defineComponent({
-  components: {
-    Block,
-  },
-  emits: ['cancel'],
-  setup(props, { emit }) {
-    const appStore = useAppStore();
-    const { t } = useI18n();
-    const { copy } = useClipboard();
-    const visible = computed(() => appStore.globalSettings);
-    const contentOpts = computed(() => [
-      { name: 'settings.navbar', key: 'navbar', defaultVal: appStore.navbar },
-      {
-        name: 'settings.menu',
-        key: 'menu',
-        defaultVal: appStore.menu,
-      },
-      { name: 'settings.footer', key: 'footer', defaultVal: appStore.footer },
-      {
-        name: 'settings.menuWidth',
-        key: 'menuWidth',
-        defaultVal: appStore.menuWidth,
-        type: 'number',
-      },
-    ]);
-    const othersOpts = [
-      { name: 'settings.colorWeek', key: 'colorWeek', defaultVal: false },
-    ];
+  const emit = defineEmits(['cancel']);
 
-    const cancel = () => {
-      appStore.updateSettings({ globalSettings: false });
-      emit('cancel');
-    };
-    const copySettings = async () => {
-      const text = JSON.stringify(appStore.$state, null, 2);
-      await copy(text);
-      Message.success(t('settings.copySettings.message'));
-    };
-    return {
-      visible,
-      contentOpts,
-      othersOpts,
-      copySettings,
-      cancel,
-    };
-  },
-});
+  const appStore = useAppStore();
+  const { t } = useI18n();
+  const { copy } = useClipboard();
+  const visible = computed(() => appStore.globalSettings);
+  const contentOpts = computed(() => [
+    { name: 'settings.navbar', key: 'navbar', defaultVal: appStore.navbar },
+    {
+      name: 'settings.menu',
+      key: 'menu',
+      defaultVal: appStore.menu,
+    },
+    { name: 'settings.footer', key: 'footer', defaultVal: appStore.footer },
+    {
+      name: 'settings.menuWidth',
+      key: 'menuWidth',
+      defaultVal: appStore.menuWidth,
+      type: 'number',
+    },
+  ]);
+  const othersOpts = [
+    { name: 'settings.colorWeek', key: 'colorWeek', defaultVal: false },
+  ];
+
+  const cancel = () => {
+    appStore.updateSettings({ globalSettings: false });
+    emit('cancel');
+  };
+  const copySettings = async () => {
+    const text = JSON.stringify(appStore.$state, null, 2);
+    await copy(text);
+    Message.success(t('settings.copySettings.message'));
+  };
 </script>
 
 <style scoped lang="less"></style>

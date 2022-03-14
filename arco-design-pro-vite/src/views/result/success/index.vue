@@ -51,44 +51,40 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-export default defineComponent({});
-</script>
+<script lang="ts" setup></script>
 
 <style scoped lang="less">
-.wrapper {
-  padding: 24px 150px;
-  background-color: var(--color-bg-2);
-  border-radius: 4px;
-}
+  .wrapper {
+    padding: 24px 150px;
+    background-color: var(--color-bg-2);
+    border-radius: 4px;
+  }
 
-.result {
-  margin: 150px 0 0 0;
-}
+  .result {
+    margin: 150px 0 0 0;
+  }
 
-.operation-wrap {
-  margin-bottom: 40px;
-  text-align: center;
-}
+  .operation-wrap {
+    margin-bottom: 40px;
+    text-align: center;
+  }
 
-.steps-wrapper {
-  width: 100%;
-  min-width: fit-content;
-  margin-bottom: 150px;
-  padding: 20px;
-  background-color: rgb(var(--gray-1));
-}
+  .steps-wrapper {
+    width: 100%;
+    min-width: fit-content;
+    margin-bottom: 150px;
+    padding: 20px;
+    background-color: rgb(var(--gray-1));
+  }
 </style>
 
 <style lang="less" scoped>
-.mobile {
-  .wrapper {
-    padding: 24px 10px;
-    .steps-wrapper {
-      transform: scale(0.8);
+  .mobile {
+    .wrapper {
+      padding: 24px 10px;
+      .steps-wrapper {
+        transform: scale(0.8);
+      }
     }
   }
-}
 </style>

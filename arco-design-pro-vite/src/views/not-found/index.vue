@@ -7,32 +7,24 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import { useRouter } from 'vue-router';
+<script lang="ts" setup>
+  import { useRouter } from 'vue-router';
 
-export default defineComponent({
-  setup() {
-    const router = useRouter();
-    const back = () => {
-      // warning： Go to the node that has the permission
-      router.push({ name: 'workplace' });
-    };
-    return {
-      back,
-    };
-  },
-});
+  const router = useRouter();
+  const back = () => {
+    // warning： Go to the node that has the permission
+    router.push({ name: 'workplace' });
+  };
 </script>
 
 <style scoped lang="less">
-.content {
-  // padding-top: 100px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-left: -95px;
-  margin-top: -121px;
-  text-align: center;
-}
+  .content {
+    // padding-top: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -95px;
+    margin-top: -121px;
+    text-align: center;
+  }
 </style>

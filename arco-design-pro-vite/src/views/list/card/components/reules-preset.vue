@@ -36,28 +36,16 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import { queryRulesPresetList, ServiceRecord } from '@/api/list';
-import useRequest from '@/hooks/request';
-import CardWrap from './card-wrap.vue';
+<script lang="ts" setup>
+  import { queryRulesPresetList, ServiceRecord } from '@/api/list';
+  import useRequest from '@/hooks/request';
+  import CardWrap from './card-wrap.vue';
 
-export default defineComponent({
-  components: {
-    CardWrap,
-  },
-  setup() {
-    const defaultValue: ServiceRecord[] = new Array(6).fill({});
-    const { loading, response: renderData } = useRequest<ServiceRecord[]>(
-      queryRulesPresetList,
-      defaultValue
-    );
-    return {
-      loading,
-      renderData,
-    };
-  },
-});
+  const defaultValue: ServiceRecord[] = new Array(6).fill({});
+  const { loading, response: renderData } = useRequest<ServiceRecord[]>(
+    queryRulesPresetList,
+    defaultValue
+  );
 </script>
 
 <style scoped lang="less"></style>

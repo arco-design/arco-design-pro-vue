@@ -61,99 +61,88 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, reactive } from 'vue';
-import { useRouter } from 'vue-router';
-import { Message } from '@arco-design/web-vue';
-import { ValidatedError } from '@arco-design/web-vue/es/form/interface';
-import { useI18n } from 'vue-i18n';
-import { useUserStore } from '@/store';
-import useLoading from '@/hooks/loading';
-import { LoginData } from '@/api/user';
+<script lang="ts" setup>
+  import { ref, reactive } from 'vue';
+  import { useRouter } from 'vue-router';
+  import { Message } from '@arco-design/web-vue';
+  import { ValidatedError } from '@arco-design/web-vue/es/form/interface';
+  import { useI18n } from 'vue-i18n';
+  import { useUserStore } from '@/store';
+  import useLoading from '@/hooks/loading';
+  import { LoginData } from '@/api/user';
 
-export default defineComponent({
-  setup() {
-    const router = useRouter();
-    const { t } = useI18n();
-    const errorMessage = ref('');
-    const { loading, setLoading } = useLoading();
-    const userStore = useUserStore();
-    const userInfo = reactive({
-      username: 'admin',
-      password: 'admin',
-    });
-    const handleSubmit = async ({
-      errors,
-      values,
-    }: {
-      errors: Record<string, ValidatedError> | undefined;
-      values: LoginData;
-    }) => {
-      if (!errors) {
-        setLoading(true);
-        try {
-          await userStore.login(values);
-          const { redirect, ...othersQuery } = router.currentRoute.value.query;
-          router.push({
-            name: (redirect as string) || 'workplace',
-            query: {
-              ...othersQuery,
-            },
-          });
-          Message.success(t('login.form.login.success'));
-        } catch (err) {
-          errorMessage.value = (err as Error).message;
-        } finally {
-          setLoading(false);
-        }
+  const router = useRouter();
+  const { t } = useI18n();
+  const errorMessage = ref('');
+  const { loading, setLoading } = useLoading();
+  const userStore = useUserStore();
+  const userInfo = reactive({
+    username: 'admin',
+    password: 'admin',
+  });
+  const handleSubmit = async ({
+    errors,
+    values,
+  }: {
+    errors: Record<string, ValidatedError> | undefined;
+    values: LoginData;
+  }) => {
+    if (!errors) {
+      setLoading(true);
+      try {
+        await userStore.login(values);
+        const { redirect, ...othersQuery } = router.currentRoute.value.query;
+        router.push({
+          name: (redirect as string) || 'workplace',
+          query: {
+            ...othersQuery,
+          },
+        });
+        Message.success(t('login.form.login.success'));
+      } catch (err) {
+        errorMessage.value = (err as Error).message;
+      } finally {
+        setLoading(false);
       }
-    };
-    const setRememberPassword = () => {
-      //
-    };
-    return {
-      loading,
-      userInfo,
-      errorMessage,
-      handleSubmit,
-      setRememberPassword,
-    };
-  },
-});
+    }
+  };
+  const setRememberPassword = () => {
+    //
+  };
 </script>
 
 <style lang="less" scoped>
-.login-form {
-  &-wrapper {
-    width: 320px;
-  }
+  .login-form {
+    &-wrapper {
+      width: 320px;
+    }
 
-  &-title {
-    color: var(--color-text-1);
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 32px;
-  }
+    &-title {
+      color: var(--color-text-1);
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 32px;
+    }
 
-  &-sub-title {
-    color: var(--color-text-3);
-    font-size: 16px;
-    line-height: 24px;
-  }
+    &-sub-title {
+      color: var(--color-text-3);
+      font-size: 16px;
+      line-height: 24px;
+    }
 
-  &-error-msg {
-    height: 32px;
-    color: rgb(var(--red-6));
-    line-height: 32px;
-  }
+    &-error-msg {
+      height: 32px;
+      color: rgb(var(--red-6));
+      line-height: 32px;
+    }
 
-  &-password-actions {
-    display: flex;
-    justify-content: space-between;
-  }
+    &-password-actions {
+      display: flex;
+      justify-content: space-between;
+    }
 
-  &-register-btn {
-    color: var(--color-text-3) !important;
+    &-register-btn {
+      color: var(--color-text-3) !important;
+    }
   }
-}
 </style>

@@ -1,6 +1,6 @@
 <template>
   <a-card class="general-card" :title="$t('monitor.title.studioInfo')">
-    <a-form :model="info" layout="vertical">
+    <a-form :model="{}" layout="vertical">
       <a-form-item :label="$t('monitor.studioInfo.label.studioTitle')" required>
         <a-input
           :placeholder="`王立群${$t(
@@ -31,14 +31,4 @@
   </a-card>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  setup() {
-    return {
-      info: {},
-    };
-  },
-});
-</script>
+<script lang="ts" setup></script>

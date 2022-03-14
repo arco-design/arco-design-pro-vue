@@ -50,68 +50,59 @@
   </a-card>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from 'vue';
-import { FileItem } from '@arco-design/web-vue/es/upload/interfaces';
-import { useUserStore } from '@/store';
+<script lang="ts" setup>
+  import { ref } from 'vue';
+  import { FileItem } from '@arco-design/web-vue/es/upload/interfaces';
+  import { useUserStore } from '@/store';
 
-export default defineComponent({
-  setup() {
-    const userStore = useUserStore();
-    const file = {
-      uid: '-2',
-      name: 'avatar.png',
-      url: userStore.avatar,
-    };
-    const renderData = [
-      {
-        label: 'userSetting.label.name',
-        value: userStore.name,
-      },
-      {
-        label: 'userSetting.label.certification',
-        value: userStore.certification,
-      },
-      {
-        label: 'userSetting.label.accountId',
-        value: userStore.accountId,
-      },
-      {
-        label: 'userSetting.label.phone',
-        value: userStore.phone,
-      },
-      {
-        label: 'userSetting.label.registrationDate',
-        value: userStore.registrationDate,
-      },
-    ];
-    const fileList = ref<FileItem[]>([file]);
-    const uploadChange = (fileItemList: FileItem[], fileItem: FileItem) => {
-      fileList.value = [fileItem];
-    };
-    return {
-      fileList,
-      renderData,
-      uploadChange,
-    };
-  },
-});
+  const userStore = useUserStore();
+  const file = {
+    uid: '-2',
+    name: 'avatar.png',
+    url: userStore.avatar,
+  };
+  const renderData = [
+    {
+      label: 'userSetting.label.name',
+      value: userStore.name,
+    },
+    {
+      label: 'userSetting.label.certification',
+      value: userStore.certification,
+    },
+    {
+      label: 'userSetting.label.accountId',
+      value: userStore.accountId,
+    },
+    {
+      label: 'userSetting.label.phone',
+      value: userStore.phone,
+    },
+    {
+      label: 'userSetting.label.registrationDate',
+      value: userStore.registrationDate,
+    },
+  ];
+  const fileList = ref<FileItem[]>([file]);
+  const uploadChange = (fileItemList: FileItem[], fileItem: FileItem) => {
+    fileList.value = [fileItem];
+  };
 </script>
 
 <style scoped lang="less">
-.arco-card {
-  padding: 14px 0 4px 4px;
-  border-radius: 4px;
-}
-:deep(.arco-avatar-trigger-icon-button) {
-  width: 32px;
-  height: 32px;
-  line-height: 32px;
-  background-color: #e8f3ff;
-  .arco-icon-camera {
-    margin-top: 8px;
-    color: rgb(var(--arcoblue-6));
-    font-size: 14px;
+  .arco-card {
+    padding: 14px 0 4px 4px;
+    border-radius: 4px;
   }
-}
+  :deep(.arco-avatar-trigger-icon-button) {
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    background-color: #e8f3ff;
+    .arco-icon-camera {
+      margin-top: 8px;
+      color: rgb(var(--arcoblue-6));
+      font-size: 14px;
+    }
+  }
 </style>

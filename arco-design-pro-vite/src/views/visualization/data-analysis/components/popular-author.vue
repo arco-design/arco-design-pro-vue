@@ -47,37 +47,29 @@
   </a-spin>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from 'vue';
-import useLoading from '@/hooks/loading';
-import { queryPopularAuthor, PopularAuthorRes } from '@/api/visualization';
+<script lang="ts" setup>
+  import { ref } from 'vue';
+  import useLoading from '@/hooks/loading';
+  import { queryPopularAuthor, PopularAuthorRes } from '@/api/visualization';
 
-export default defineComponent({
-  setup() {
-    const { loading, setLoading } = useLoading();
-    const tableData = ref<PopularAuthorRes>({ list: [] });
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const { data } = await queryPopularAuthor();
-        tableData.value = data;
-      } catch (err) {
-        // you can report use errorHandler or other
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-    return {
-      loading,
-      tableData,
-    };
-  },
-});
+  const { loading, setLoading } = useLoading();
+  const tableData = ref<PopularAuthorRes>({ list: [] });
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      const { data } = await queryPopularAuthor();
+      tableData.value = data;
+    } catch (err) {
+      // you can report use errorHandler or other
+    } finally {
+      setLoading(false);
+    }
+  };
+  fetchData();
 </script>
 
 <style scoped lang="less">
-.general-card {
-  max-height: 425px;
-}
+  .general-card {
+    max-height: 425px;
+  }
 </style>

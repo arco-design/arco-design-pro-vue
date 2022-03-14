@@ -34,40 +34,31 @@
   </a-card>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import { queryMyTeamList, MyTeamRecord } from '@/api/user-center';
-import useRequest from '@/hooks/request';
+<script lang="ts" setup>
+  import { queryMyTeamList, MyTeamRecord } from '@/api/user-center';
+  import useRequest from '@/hooks/request';
 
-export default defineComponent({
-  setup() {
-    const defaultValue: MyTeamRecord[] = new Array(4).fill({});
-    const { loading, response: teamList } = useRequest<MyTeamRecord[]>(
-      queryMyTeamList,
-      defaultValue
-    );
-    return {
-      loading,
-      teamList,
-    };
-  },
-});
+  const defaultValue: MyTeamRecord[] = new Array(4).fill({});
+  const { loading, response: teamList } = useRequest<MyTeamRecord[]>(
+    queryMyTeamList,
+    defaultValue
+  );
 </script>
 
 <style scoped lang="less">
-.general-card {
-  height: 356px;
-  .arco-list-item {
-    height: 72px;
-    padding-left: 0;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--color-neutral-3);
-    &:last-child {
-      border-bottom: none;
-    }
-    .arco-list-item-meta {
-      padding: 0;
+  .general-card {
+    height: 356px;
+    .arco-list-item {
+      height: 72px;
+      padding-left: 0;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--color-neutral-3);
+      &:last-child {
+        border-bottom: none;
+      }
+      .arco-list-item-meta {
+        padding: 0;
+      }
     }
   }
-}
 </style>
