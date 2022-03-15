@@ -1,5 +1,13 @@
 # Arco Design Pro Vue v2.0
 
+## v2.3.1
+
+`2022-03-15`
+
+### 🐛 bugfix
+
+- Fix the problem of unsuccessful initialization caused by vite-plugin-imagemin.
+
 ## v2.3.0
 
 `2022-03-15`
