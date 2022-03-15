@@ -121,234 +121,234 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from 'vue';
-import { Notification, Message } from '@arco-design/web-vue';
-import { useI18n } from 'vue-i18n';
-import useLoading from '@/hooks/loading';
-import { queryThemesList, themesListReq, themesItem } from '@/api/themes';
-import { useAppStore } from '@/store';
-import { NotificationReturn } from '@arco-design/web-vue/es/notification/interface';
+  import { defineComponent, ref, computed } from 'vue';
+  import { Notification, Message } from '@arco-design/web-vue';
+  import { useI18n } from 'vue-i18n';
+  import useLoading from '@/hooks/loading';
+  import { queryThemesList, themesListReq, themesItem } from '@/api/themes';
+  import { useAppStore } from '@/store';
+  import { NotificationReturn } from '@arco-design/web-vue/es/notification/interface';
 
-const defaultCss =
-  'https://cdn.jsdelivr.net/npm/@arco-themes/vue-arco-pro@0.0.1/css/arco.css';
+  const defaultCss =
+    'https://cdn.jsdelivr.net/npm/@arco-themes/vue-arco-pro@0.0.1/css/arco.css';
 
-async function updateCss(url: string) {
-  return new Promise((resolve, reject) => {
-    const currentBodyStyleList = (document.body.getAttribute('style') || '')
-      .split(';')
-      .map((styleItem) => styleItem.trim())
-      .filter((styleItem) => styleItem);
+  async function updateCss(url: string) {
+    return new Promise((resolve, reject) => {
+      const currentBodyStyleList = (document.body.getAttribute('style') || '')
+        .split(';')
+        .map((styleItem) => styleItem.trim())
+        .filter((styleItem) => styleItem);
 
-    const removeColorVariablesStyle = currentBodyStyleList.filter(
-      (styleItem) => {
-        return (
-          !styleItem.startsWith('--arcoblue-') &&
-          !styleItem.startsWith('--primary-')
-        );
-      }
-    );
-
-    document.body.setAttribute('style', removeColorVariablesStyle.join(';'));
-
-    const linkElem = document.getElementById(
-      'pro-custom-theme'
-    ) as HTMLLinkElement;
-    linkElem.parentElement?.removeChild(linkElem);
-    const cloneLink = linkElem.cloneNode(true) as HTMLLinkElement;
-    // clone and remove action for trigger onload event
-    const arcoCss = document.getElementById('arco-css');
-    cloneLink.href = url;
-    cloneLink.onload = () => {
-      resolve('loaded');
-    };
-    cloneLink.onerror = (e) => {
-      reject(e);
-    };
-    arcoCss?.after(cloneLink);
-  });
-}
-
-function getCssLink(name: string, prefix: string) {
-  return `${prefix}${name}/css/arco.css`;
-}
-
-export default defineComponent({
-  setup() {
-    const appStore = useAppStore();
-    const { t } = useI18n();
-    const { loading, setLoading } = useLoading(false);
-    const { loading: installing, setLoading: setInstalling } =
-      useLoading(false);
-    const pageSize = 6;
-    const apiBasename = 'https://arco.design';
-    const themeObj = ref(
-      JSON.parse(localStorage.getItem('arco-pro-theme') || '{}')
-    );
-    const hasCustomTheme = computed(() => {
-      return themeObj.value && themeObj.value.packageName;
-    });
-    const renderData = ref<themesItem[]>([]);
-    const visible = ref(false);
-    const currentPage = ref(1);
-    const total = ref(0);
-    let notifiInstance: NotificationReturn | null = null;
-
-    const fetchData = async (params: themesListReq) => {
-      setLoading(true);
-      try {
-        const result = await queryThemesList(params);
-        renderData.value = result.data.list;
-        total.value = result.data.total;
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    const openDialog = () => {
-      visible.value = true;
-      fetchData({
-        pageSize,
-        currentPage: currentPage.value,
-        depLibrary: '@arco-design/web-vue',
-      });
-    };
-    const closeDialog = () => {
-      visible.value = false;
-    };
-
-    const onChangePagination = (page: number) => {
-      if (loading.value) return;
-      currentPage.value = page;
-      fetchData({
-        pageSize,
-        currentPage: page,
-        depLibrary: '@arco-design/web-vue',
-      });
-    };
-
-    const updateSettings = (themeColor: string) => {
-      appStore.updateSettings({ themeColor });
-    };
-    function onUpdateCssSuccess(item: themesItem) {
-      notifiInstance = Notification.success({
-        id: 'themes',
-        title: t('installTheme'),
-        content: t('installThemeSuccess'),
-        // duration: 2000,
-        closable: true,
-      });
-      setTimeout(() => {
-        // duration is not effective
-        notifiInstance?.close();
-      }, 2000);
-
-      localStorage.setItem(
-        'arco-pro-theme',
-        JSON.stringify({
-          packageName: item.packageName,
-          themeName: item.themeName,
-          unpkgHost: item.unpkgHost,
-          primaryColor: item.primaryColor,
-        })
+      const removeColorVariablesStyle = currentBodyStyleList.filter(
+        (styleItem) => {
+          return (
+            !styleItem.startsWith('--arcoblue-') &&
+            !styleItem.startsWith('--primary-')
+          );
+        }
       );
-      setInstalling(false);
-    }
-    function onUpdateCssFailed() {
-      Notification.error({
-        id: 'themes',
-        title: t('installTheme'),
-        content: t('installThemeError'),
-        duration: 2000,
-        closable: true,
+
+      document.body.setAttribute('style', removeColorVariablesStyle.join(';'));
+
+      const linkElem = document.getElementById(
+        'pro-custom-theme'
+      ) as HTMLLinkElement;
+      linkElem.parentElement?.removeChild(linkElem);
+      const cloneLink = linkElem.cloneNode(true) as HTMLLinkElement;
+      // clone and remove action for trigger onload event
+      const arcoCss = document.getElementById('arco-css');
+      cloneLink.href = url;
+      cloneLink.onload = () => {
+        resolve('loaded');
+      };
+      cloneLink.onerror = (e) => {
+        reject(e);
+      };
+      arcoCss?.after(cloneLink);
+    });
+  }
+
+  function getCssLink(name: string, prefix: string) {
+    return `${prefix}${name}/css/arco.css`;
+  }
+
+  export default defineComponent({
+    setup() {
+      const appStore = useAppStore();
+      const { t } = useI18n();
+      const { loading, setLoading } = useLoading(false);
+      const { loading: installing, setLoading: setInstalling } =
+        useLoading(false);
+      const pageSize = 6;
+      const apiBasename = 'https://arco.design';
+      const themeObj = ref(
+        JSON.parse(localStorage.getItem('arco-pro-theme') || '{}')
+      );
+      const hasCustomTheme = computed(() => {
+        return themeObj.value && themeObj.value.packageName;
       });
-    }
-    const useTheme = async (item: themesItem) => {
-      updateSettings(item.primaryColor);
-      themeObj.value = item;
-      const url = getCssLink(item.packageName, item.unpkgHost);
-      notifiInstance = Notification.success({
-        id: 'themes',
-        title: t('installTheme'),
-        content: t('installingTheme'),
-        duration: 0,
-        closable: true,
-      });
-      try {
-        setInstalling(true);
-        await updateCss(url);
-        onUpdateCssSuccess(item);
-      } catch (error) {
-        onUpdateCssFailed();
-      } finally {
+      const renderData = ref<themesItem[]>([]);
+      const visible = ref(false);
+      const currentPage = ref(1);
+      const total = ref(0);
+      let notifiInstance: NotificationReturn | null = null;
+
+      const fetchData = async (params: themesListReq) => {
+        setLoading(true);
+        try {
+          const result = await queryThemesList(params);
+          renderData.value = result.data.list;
+          total.value = result.data.total;
+        } catch (error) {
+          console.log(error);
+        } finally {
+          setLoading(false);
+        }
+      };
+      const openDialog = () => {
+        visible.value = true;
+        fetchData({
+          pageSize,
+          currentPage: currentPage.value,
+          depLibrary: '@arco-design/web-vue',
+        });
+      };
+      const closeDialog = () => {
+        visible.value = false;
+      };
+
+      const onChangePagination = (page: number) => {
+        if (loading.value) return;
+        currentPage.value = page;
+        fetchData({
+          pageSize,
+          currentPage: page,
+          depLibrary: '@arco-design/web-vue',
+        });
+      };
+
+      const updateSettings = (themeColor: string) => {
+        appStore.updateSettings({ themeColor });
+      };
+      function onUpdateCssSuccess(item: themesItem) {
+        notifiInstance = Notification.success({
+          id: 'themes',
+          title: t('installTheme'),
+          content: t('installThemeSuccess'),
+          // duration: 2000,
+          closable: true,
+        });
+        setTimeout(() => {
+          // duration is not effective
+          notifiInstance?.close();
+        }, 2000);
+
+        localStorage.setItem(
+          'arco-pro-theme',
+          JSON.stringify({
+            packageName: item.packageName,
+            themeName: item.themeName,
+            unpkgHost: item.unpkgHost,
+            primaryColor: item.primaryColor,
+          })
+        );
         setInstalling(false);
       }
-    };
-    if (hasCustomTheme.value) {
-      Message.info(`${t('autoUseTheme')}: ${themeObj.value.themeName}`);
-      updateCss(
-        getCssLink(themeObj.value.packageName, themeObj.value.unpkgHost)
-      );
-      if (
-        themeObj.value.primaryColor &&
-        themeObj.value.primaryColor !== appStore.themeColor
-      ) {
-        updateSettings(themeObj.value.primaryColor);
+      function onUpdateCssFailed() {
+        Notification.error({
+          id: 'themes',
+          title: t('installTheme'),
+          content: t('installThemeError'),
+          duration: 2000,
+          closable: true,
+        });
       }
-    }
-    const resetTheme = () => {
-      updateSettings(`rgb(var(--arcoblue-6))`);
-      updateCss(defaultCss);
-      localStorage.setItem('arco-pro-theme', '{}');
-      themeObj.value = {};
-    };
-    return {
-      apiBasename,
-      loading,
-      installing,
-      hasCustomTheme,
-      themeObj,
-      visible,
-      currentPage,
-      total,
-      renderData,
-      openDialog,
-      closeDialog,
-      onChangePagination,
-      resetTheme,
-      useTheme,
-    };
-  },
-});
+      const useTheme = async (item: themesItem) => {
+        updateSettings(item.primaryColor);
+        themeObj.value = item;
+        const url = getCssLink(item.packageName, item.unpkgHost);
+        notifiInstance = Notification.success({
+          id: 'themes',
+          title: t('installTheme'),
+          content: t('installingTheme'),
+          duration: 0,
+          closable: true,
+        });
+        try {
+          setInstalling(true);
+          await updateCss(url);
+          onUpdateCssSuccess(item);
+        } catch (error) {
+          onUpdateCssFailed();
+        } finally {
+          setInstalling(false);
+        }
+      };
+      if (hasCustomTheme.value) {
+        Message.info(`${t('autoUseTheme')}: ${themeObj.value.themeName}`);
+        updateCss(
+          getCssLink(themeObj.value.packageName, themeObj.value.unpkgHost)
+        );
+        if (
+          themeObj.value.primaryColor &&
+          themeObj.value.primaryColor !== appStore.themeColor
+        ) {
+          updateSettings(themeObj.value.primaryColor);
+        }
+      }
+      const resetTheme = () => {
+        updateSettings(`rgb(var(--arcoblue-6))`);
+        updateCss(defaultCss);
+        localStorage.setItem('arco-pro-theme', '{}');
+        themeObj.value = {};
+      };
+      return {
+        apiBasename,
+        loading,
+        installing,
+        hasCustomTheme,
+        themeObj,
+        visible,
+        currentPage,
+        total,
+        renderData,
+        openDialog,
+        closeDialog,
+        onChangePagination,
+        resetTheme,
+        useTheme,
+      };
+    },
+  });
 </script>
 
 <style scoped lang="less">
-li {
-  display: flex;
-  align-items: center;
-  padding: 0 10px;
-}
-
-a:not(.arco-btn-link) {
-  color: var(--color-text-1);
-  text-decoration: none;
-}
-.nav-btn {
-  border-color: rgb(var(--gray-2));
-  color: rgb(var(--gray-8));
-  font-size: 16px;
-}
-.tb {
-  &-pagination {
+  li {
     display: flex;
-    justify-content: flex-end;
-    margin-top: 20px;
-  }
-
-  &-theme-footer {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
+    padding: 0 10px;
   }
-}
+
+  a:not(.arco-btn-link) {
+    color: var(--color-text-1);
+    text-decoration: none;
+  }
+  .nav-btn {
+    border-color: rgb(var(--gray-2));
+    color: rgb(var(--gray-8));
+    font-size: 16px;
+  }
+  .tb {
+    &-pagination {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 20px;
+    }
+
+    &-theme-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
 </style>

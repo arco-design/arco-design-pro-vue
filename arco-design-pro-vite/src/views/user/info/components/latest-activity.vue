@@ -40,57 +40,49 @@
   </a-card>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from 'vue';
-import { queryLatestActivity, LatestActivity } from '@/api/user-center';
-import useLoading from '@/hooks/loading';
+<script lang="ts" setup>
+  import { ref } from 'vue';
+  import { queryLatestActivity, LatestActivity } from '@/api/user-center';
+  import useLoading from '@/hooks/loading';
 
-export default defineComponent({
-  setup() {
-    const { loading, setLoading } = useLoading(true);
-    const activityList = ref<LatestActivity[]>(new Array(7).fill({}));
-    const fetchData = async () => {
-      try {
-        const { data } = await queryLatestActivity();
-        activityList.value = data;
-      } catch (err) {
-        // you can report use errorHandler or other
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-    return {
-      loading,
-      activityList,
-    };
-  },
-});
+  const { loading, setLoading } = useLoading(true);
+  const activityList = ref<LatestActivity[]>(new Array(7).fill({}));
+  const fetchData = async () => {
+    try {
+      const { data } = await queryLatestActivity();
+      activityList.value = data;
+    } catch (err) {
+      // you can report use errorHandler or other
+    } finally {
+      setLoading(false);
+    }
+  };
+  fetchData();
 </script>
 
 <style scoped lang="less">
-.latest-activity {
-  &-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  .latest-activity {
+    &-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
   }
-}
-.general-card :deep(.arco-list-item) {
-  padding-left: 0;
-  border-bottom: none;
-  .arco-list-item-meta-content {
-    flex: 1;
-    padding-bottom: 27px;
-    border-bottom: 1px solid var(--color-neutral-3);
+  .general-card :deep(.arco-list-item) {
+    padding-left: 0;
+    border-bottom: none;
+    .arco-list-item-meta-content {
+      flex: 1;
+      padding-bottom: 27px;
+      border-bottom: 1px solid var(--color-neutral-3);
+    }
+    .arco-list-item-meta-avatar {
+      padding-bottom: 27px;
+    }
+    .skeleton-item {
+      margin-top: 10px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--color-neutral-3);
+    }
   }
-  .arco-list-item-meta-avatar {
-    padding-bottom: 27px;
-  }
-  .skeleton-item {
-    margin-top: 10px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--color-neutral-3);
-  }
-}
 </style>

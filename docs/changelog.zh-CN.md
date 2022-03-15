@@ -1,5 +1,27 @@
 # Arco Design Pro Vue v2.0
 
+## v2.3.1
+
+`2022-03-15`
+
+### 🐛 问题修复
+
+- 修复 vite-plugin-imagemin 导致的初始化不成功问题。
+
+## v2.3.0
+
+`2022-03-15`
+
+### 🆕 新增功能
+
+- 使用 setup script 进行代码重构。
+- 路由自动导入。
+
+### 💎 功能优化
+
+- 项目打包优化。
+- 响应式处理和小屏显示优化。
+
 ## v2.2.5
 
 `2022-03-08`
@@ -13,7 +35,7 @@
 - 响应式处理和小屏显示优化。
 - 路由监听性能优化。
 
-### 🐛 bugfix
+### 🐛 问题修复
 
 - 可选链导致项目初始化失败。[#31](https://github.com/arco-design/arco-design-pro-vue/issues/31)
 - 修复了i18n未设置allowComposition，在win下无法启动的bug。[#32](https://github.com/arco-design/arco-design-pro-vue/pull/32)
@@ -22,7 +44,7 @@
 
 `2022-03-01`
 
-### 🐛 bugfix
+### 🐛 问题修复
 
 - 修复切换语言后组件内不生效问题。[#27](https://github.com/arco-design/arco-design-pro-vue/issues/27)
 - 删除简易模式遗漏文件。

@@ -27,33 +27,25 @@
   </a-card>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import { useUserStore } from '@/store';
+<script lang="ts" setup>
+  import { useUserStore } from '@/store';
 
-export default defineComponent({
-  setup() {
-    const userStore = useUserStore();
-    return {
-      userInfo: userStore,
-    };
-  },
-});
+  const userInfo = useUserStore();
 </script>
 
 <style scoped lang="less">
-.studio {
-  &-preview {
-    display: block;
-    max-width: 600px;
-    margin: 0 auto;
-    width: 100%;
-  }
+  .studio {
+    &-preview {
+      display: block;
+      max-width: 600px;
+      margin: 0 auto;
+      width: 100%;
+    }
 
-  &-bar {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 16px;
+    &-bar {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 16px;
+    }
   }
-}
 </style>

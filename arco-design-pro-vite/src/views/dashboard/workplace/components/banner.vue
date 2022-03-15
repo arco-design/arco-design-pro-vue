@@ -9,34 +9,27 @@
   </a-col>
 </template>
 
-<script lang="ts">
-import { defineComponent, computed } from 'vue';
-import { useUserStore } from '@/store';
+<script lang="ts" setup>
+  import { computed } from 'vue';
+  import { useUserStore } from '@/store';
 
-export default defineComponent({
-  setup() {
-    const userStore = useUserStore();
-    const userInfo = computed(() => {
-      return {
-        name: userStore.name,
-      };
-    });
+  const userStore = useUserStore();
+  const userInfo = computed(() => {
     return {
-      userInfo,
+      name: userStore.name,
     };
-  },
-});
+  });
 </script>
 
 <style scoped lang="less">
-.banner {
-  width: 100%;
-  padding: 20px 20px 0 20px;
-  background-color: var(--color-bg-2);
-  border-radius: 4px 4px 0 0;
-}
+  .banner {
+    width: 100%;
+    padding: 20px 20px 0 20px;
+    background-color: var(--color-bg-2);
+    border-radius: 4px 4px 0 0;
+  }
 
-:deep(.arco-icon-home) {
-  margin-right: 6px;
-}
+  :deep(.arco-icon-home) {
+    margin-right: 6px;
+  }
 </style>

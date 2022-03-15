@@ -4,7 +4,7 @@ import NProgress from 'nprogress'; // progress bar
 import usePermission from '@/hooks/permission';
 import { useUserStore } from '@/store';
 import { isLogin } from '@/utils/auth';
-import appRoutes from '../modules';
+import appRoutes from '../routes';
 
 export default function setupPermissionGuard(router: Router) {
   router.beforeEach(async (to, from, next) => {

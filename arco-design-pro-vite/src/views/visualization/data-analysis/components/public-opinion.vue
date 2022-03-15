@@ -57,20 +57,9 @@
   </a-card>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import useThemes from '@/hooks/themes';
-import ChainItem from './chain-item.vue';
+<script lang="ts" setup>
+  import useThemes from '@/hooks/themes';
+  import ChainItem from './chain-item.vue';
 
-export default defineComponent({
-  components: {
-    ChainItem,
-  },
-  setup() {
-    const { isDark } = useThemes();
-    return {
-      isDark,
-    };
-  },
-});
+  const { isDark } = useThemes();
 </script>

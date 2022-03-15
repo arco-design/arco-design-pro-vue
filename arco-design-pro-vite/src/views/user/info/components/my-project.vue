@@ -46,55 +46,46 @@
   </a-card>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import { queryMyProjectList, MyProjectRecord } from '@/api/user-center';
-import useRequest from '@/hooks/request';
+<script lang="ts" setup>
+  import { queryMyProjectList, MyProjectRecord } from '@/api/user-center';
+  import useRequest from '@/hooks/request';
 
-export default defineComponent({
-  setup() {
-    const defaultValue = Array(6).fill({} as MyProjectRecord);
-    const { loading, response: projectList } = useRequest<MyProjectRecord[]>(
-      queryMyProjectList,
-      defaultValue
-    );
-    return {
-      loading,
-      projectList,
-    };
-  },
-});
+  const defaultValue = Array(6).fill({} as MyProjectRecord);
+  const { loading, response: projectList } = useRequest<MyProjectRecord[]>(
+    queryMyProjectList,
+    defaultValue
+  );
 </script>
 
 <style scoped lang="less">
-:deep(.arco-card-body) {
-  min-height: 128px;
-  padding-bottom: 0;
-}
-.my-project {
-  &-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+  :deep(.arco-card-body) {
+    min-height: 128px;
+    padding-bottom: 0;
   }
+  .my-project {
+    &-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
 
-  &-title {
-    margin-top: 0 !important;
-    margin-bottom: 18px !important;
-  }
+    &-title {
+      margin-top: 0 !important;
+      margin-bottom: 18px !important;
+    }
 
-  &-list {
-    display: flex;
-    justify-content: space-between;
-  }
+    &-list {
+      display: flex;
+      justify-content: space-between;
+    }
 
-  &-item {
-    // padding-right: 16px;
-    margin-bottom: 16px;
+    &-item {
+      // padding-right: 16px;
+      margin-bottom: 16px;
 
-    &:last-child {
-      padding-right: 0;
+      &:last-child {
+        padding-right: 0;
+      }
     }
   }
-}
 </style>

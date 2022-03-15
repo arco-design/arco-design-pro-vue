@@ -42,28 +42,16 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import { queryTheServiceList, ServiceRecord } from '@/api/list';
-import useRequest from '@/hooks/request';
-import CardWrap from './card-wrap.vue';
+<script lang="ts" setup>
+  import { queryTheServiceList, ServiceRecord } from '@/api/list';
+  import useRequest from '@/hooks/request';
+  import CardWrap from './card-wrap.vue';
 
-export default defineComponent({
-  components: {
-    CardWrap,
-  },
-  setup() {
-    const defaultValue: ServiceRecord[] = new Array(4).fill({});
-    const { loading, response: renderData } = useRequest<ServiceRecord[]>(
-      queryTheServiceList,
-      defaultValue
-    );
-    return {
-      loading,
-      renderData,
-    };
-  },
-});
+  const defaultValue: ServiceRecord[] = new Array(4).fill({});
+  const { loading, response: renderData } = useRequest<ServiceRecord[]>(
+    queryTheServiceList,
+    defaultValue
+  );
 </script>
 
 <style scoped lang="less"></style>

@@ -79,7 +79,7 @@ const simpleOptions = [
     excludes: ['dashboard', 'interceptor', 'user', 'message'],
   },
   {
-    base: 'src/router/modules',
+    base: 'src/router/routes/modules',
     excludes: ['index', 'dashboard', 'login'],
   },
 ];
@@ -92,8 +92,7 @@ const simplifyFiles = [
   'locale/en-US.ts',
   'locale/zh-CN.ts',
   'mock/index.ts',
-  'router/modules/index.ts',
-  'router/modules/dashboard.ts',
+  'router/routes/modules/dashboard.ts',
 ];
 
 const runSimpleMode = () => {

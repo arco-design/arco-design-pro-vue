@@ -52,31 +52,26 @@
   </a-card>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType } from 'vue';
-import { CertificationRecord } from '@/api/user-center';
+<script lang="ts" setup>
+  import { PropType } from 'vue';
+  import { CertificationRecord } from '@/api/user-center';
 
-export default defineComponent({
-  props: {
+  defineProps({
     renderData: {
       type: Array as PropType<CertificationRecord>,
       default() {
         return [];
       },
     },
-  },
-  setup() {
-    //
-  },
-});
+  });
 </script>
 
 <style scoped lang="less">
-:deep(.arco-table-th) {
-  &:last-child {
-    .arco-table-th-item-title {
-      margin-left: 16px;
+  :deep(.arco-table-th) {
+    &:last-child {
+      .arco-table-th-item-title {
+        margin-left: 16px;
+      }
     }
   }
-}
 </style>
