@@ -1,5 +1,19 @@
 # Arco Design Pro Vue v2.0
 
+## v2.3.0
+
+`2022-03-15`
+
+### 🆕 Feature
+
+- Code refactoring using setup script.
+- Routes are automatically imported.
+
+### 💎 Optimization
+
+- Packaging optimization.
+- Responsive processing and small screen display optimization.
+
 ## v2.2.5
 
 `2022-03-08`

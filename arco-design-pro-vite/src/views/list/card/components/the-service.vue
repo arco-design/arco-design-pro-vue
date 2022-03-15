@@ -7,7 +7,12 @@
       <a-col
         v-for="item in renderData"
         :key="item.id"
-        :span="6"
+        :xs="12"
+        :sm="12"
+        :md="12"
+        :lg="6"
+        :xl="6"
+        :xxl="6"
         class="list-col"
         style="min-height: 162px"
       >
@@ -37,28 +42,16 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import { queryTheServiceList, ServiceRecord } from '@/api/list';
-import useRequest from '@/hooks/request';
-import CardWrap from './card-wrap.vue';
+<script lang="ts" setup>
+  import { queryTheServiceList, ServiceRecord } from '@/api/list';
+  import useRequest from '@/hooks/request';
+  import CardWrap from './card-wrap.vue';
 
-export default defineComponent({
-  components: {
-    CardWrap,
-  },
-  setup() {
-    const defaultValue: ServiceRecord[] = new Array(4).fill({});
-    const { loading, response: renderData } = useRequest<ServiceRecord[]>(
-      queryTheServiceList,
-      defaultValue
-    );
-    return {
-      loading,
-      renderData,
-    };
-  },
-});
+  const defaultValue: ServiceRecord[] = new Array(4).fill({});
+  const { loading, response: renderData } = useRequest<ServiceRecord[]>(
+    queryTheServiceList,
+    defaultValue
+  );
 </script>
 
 <style scoped lang="less"></style>

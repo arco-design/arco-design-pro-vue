@@ -9,29 +9,27 @@
   </a-breadcrumb>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType } from 'vue';
+<script lang="ts" setup>
+  import { PropType } from 'vue';
 
-export default defineComponent({
-  props: {
+  defineProps({
     items: {
       type: Array as PropType<string[]>,
       default() {
         return [];
       },
     },
-  },
-});
+  });
 </script>
 
 <style scoped lang="less">
-.container-breadcrumb {
-  margin: 16px 0;
-  :deep(.arco-breadcrumb-item) {
-    color: rgb(var(--gray-6));
-    &:last-child {
-      color: rgb(var(--gray-8));
+  .container-breadcrumb {
+    margin: 16px 0;
+    :deep(.arco-breadcrumb-item) {
+      color: rgb(var(--gray-6));
+      &:last-child {
+        color: rgb(var(--gray-8));
+      }
     }
   }
-}
 </style>

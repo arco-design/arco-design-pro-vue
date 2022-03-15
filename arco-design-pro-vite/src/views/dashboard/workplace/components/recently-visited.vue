@@ -20,31 +20,21 @@
   </a-card>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-const links = [
-  {
-    text: 'workplace.contentManagement',
-    icon: 'icon-storage',
-  },
-  {
-    text: 'workplace.contentStatistical',
-    icon: 'icon-file',
-  },
-  {
-    text: 'workplace.advanced',
-    icon: 'icon-settings',
-  },
-];
-
-export default defineComponent({
-  setup() {
-    return {
-      links,
-    };
-  },
-});
+<script lang="ts" setup>
+  const links = [
+    {
+      text: 'workplace.contentManagement',
+      icon: 'icon-storage',
+    },
+    {
+      text: 'workplace.contentStatistical',
+      icon: 'icon-file',
+    },
+    {
+      text: 'workplace.advanced',
+      icon: 'icon-settings',
+    },
+  ];
 </script>
 
 <style lang="less" scoped></style>

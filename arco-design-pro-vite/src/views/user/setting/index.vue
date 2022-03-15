@@ -24,41 +24,28 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import UserPanel from './components/user-panel.vue';
-import BasicInformation from './components/basic-information.vue';
-import SecuritySettings from './components/security-settings.vue';
-import Certification from './components/certification.vue';
-
-export default defineComponent({
-  components: {
-    UserPanel,
-    BasicInformation,
-    SecuritySettings,
-    Certification,
-  },
-  setup() {
-    return {};
-  },
-});
+<script lang="ts" setup>
+  import UserPanel from './components/user-panel.vue';
+  import BasicInformation from './components/basic-information.vue';
+  import SecuritySettings from './components/security-settings.vue';
+  import Certification from './components/certification.vue';
 </script>
 
 <style scoped lang="less">
-.container {
-  padding: 0 20px 20px 20px;
-}
+  .container {
+    padding: 0 20px 20px 20px;
+  }
 
-.wrapper {
-  padding: 20px 0 0 20px;
-  min-height: 580px;
-  background-color: var(--color-bg-2);
-  border-radius: 4px;
-}
+  .wrapper {
+    padding: 20px 0 0 20px;
+    min-height: 580px;
+    background-color: var(--color-bg-2);
+    border-radius: 4px;
+  }
 
-:deep(.section-title) {
-  margin-top: 0;
-  margin-bottom: 16px;
-  font-size: 14px;
-}
+  :deep(.section-title) {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 14px;
+  }
 </style>

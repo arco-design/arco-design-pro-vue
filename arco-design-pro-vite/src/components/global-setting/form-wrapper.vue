@@ -14,11 +14,8 @@
   />
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  props: {
+<script lang="ts" setup>
+  const props = defineProps({
     type: {
       type: String,
       default: '',
@@ -31,18 +28,12 @@ export default defineComponent({
       type: [String, Boolean, Number],
       default: '',
     },
-  },
-  emits: ['inputChange'],
-  setup(props, { emit }) {
-    const handleChange = (value: unknown) => {
-      emit('inputChange', {
-        value,
-        key: props.name,
-      });
-    };
-    return {
-      handleChange,
-    };
-  },
-});
+  });
+  const emit = defineEmits(['inputChange']);
+  const handleChange = (value: unknown) => {
+    emit('inputChange', {
+      value,
+      key: props.name,
+    });
+  };
 </script>

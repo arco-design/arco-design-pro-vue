@@ -10,5 +10,6 @@ declare module 'vue-router' {
     hideInMenu?: boolean; // If true, it is not displayed in the side menu
     affix?: true; // if set true, the tag will affix in the tab-bar
     tagIcon?: string; // if set key, the icon will show in the tab-bar
+    order?: number; // Sort routing menu items. If set key, the higher the value, the more forward it is
   }
 }

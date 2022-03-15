@@ -22,74 +22,60 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import ChatPanel from './components/chat-panel.vue';
-import Studio from './components/studio.vue';
-import DataStatistic from './components/data-statistic.vue';
-import StudioStatus from './components/studio-status.vue';
-import QuickOperation from './components/quick-operation.vue';
-import StudioInformation from './components/studio-information.vue';
-
-export default defineComponent({
-  components: {
-    ChatPanel,
-    Studio,
-    DataStatistic,
-    StudioStatus,
-    QuickOperation,
-    StudioInformation,
-  },
-  setup() {
-    //
-  },
-});
+<script lang="ts" setup>
+  import ChatPanel from './components/chat-panel.vue';
+  import Studio from './components/studio.vue';
+  import DataStatistic from './components/data-statistic.vue';
+  import StudioStatus from './components/studio-status.vue';
+  import QuickOperation from './components/quick-operation.vue';
+  import StudioInformation from './components/studio-information.vue';
 </script>
 
 <style scoped lang="less">
-.container {
-  padding: 0 20px 20px 20px;
-}
-
-.layout {
-  display: flex;
-
-  &-left-side {
-    flex-basis: 300px;
+  .container {
+    padding: 0 20px 20px 20px;
   }
 
-  &-content {
-    flex: 1;
-    padding: 0 16px;
-  }
-
-  &-right-side {
-    flex-basis: 280px;
-  }
-}
-</style>
-
-<style lang="less" scoped>
-.mobile {
   .layout {
-    flex-wrap: wrap;
+    display: flex;
+
     &-left-side {
-      flex: 1;
-      flex-basis: 100%;
-      margin-bottom: 16px;
+      flex-basis: 300px;
     }
 
     &-content {
-      flex: none;
-      flex-basis: 100%;
-      padding: 0;
-      order: -1;
-      margin-bottom: 16px;
+      flex: 1;
+      padding: 0 16px;
     }
 
     &-right-side {
-      flex-basis: 100%;
+      flex-basis: 280px;
     }
   }
-}
+</style>
+
+<style lang="less" scoped>
+  // responsive
+  @media (max-width: @screen-lg) {
+    .layout {
+      flex-wrap: wrap;
+      &-left-side {
+        flex: 1;
+        flex-basis: 100%;
+        margin-bottom: 16px;
+      }
+
+      &-content {
+        flex: none;
+        flex-basis: 100%;
+        padding: 0;
+        order: -1;
+        margin-bottom: 16px;
+      }
+
+      &-right-side {
+        flex-basis: 100%;
+      }
+    }
+  }
 </style>

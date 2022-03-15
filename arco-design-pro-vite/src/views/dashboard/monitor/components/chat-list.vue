@@ -5,77 +5,72 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType } from 'vue';
-import { ChatRecord } from '@/api/message';
-import ChatItem from './chat-item.vue';
+<script lang="ts" setup>
+  import { PropType } from 'vue';
+  import { ChatRecord } from '@/api/message';
+  import ChatItem from './chat-item.vue';
 
-export default defineComponent({
-  components: {
-    ChatItem,
-  },
-  props: {
+  defineProps({
     renderList: {
       type: Array as PropType<ChatRecord[]>,
       default() {
         return [];
       },
     },
-  },
-});
+  });
 </script>
 
 <style scoped lang="less">
-.chat-item {
-  padding: 8px;
-  font-size: 12px;
-  line-height: 20px;
-  border-radius: 2px;
+  .chat-item {
+    padding: 8px;
+    font-size: 12px;
+    line-height: 20px;
+    border-radius: 2px;
 
-  &-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  &-actions {
-    display: flex;
-    opacity: 0;
-
-    &-item {
+    &-footer {
       display: flex;
       align-items: center;
-      justify-content: center;
-      width: 20px;
-      height: 20px;
-      margin-right: 4px;
-      color: var(--color-text-3);
-      font-size: 14px;
-      border-radius: 50%;
-      cursor: pointer;
+      justify-content: space-between;
+    }
 
-      &:hover {
-        background-color: rgb(var(--gray-3));
+    &-actions {
+      display: flex;
+      opacity: 0;
+
+      &-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+        margin-right: 4px;
+        color: var(--color-text-3);
+        font-size: 14px;
+        border-radius: 50%;
+        cursor: pointer;
+
+        &:hover {
+          background-color: rgb(var(--gray-3));
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
       }
+    }
 
-      &:last-child {
-        margin-right: 0;
+    &-collected {
+      .message-item-actions-collect {
+        color: rgb(var(--gold-6));
+      }
+    }
+
+    &:hover {
+      background-color: rgb(var(--gray-2));
+
+      .message-item-actions {
+        opacity: 1;
       }
     }
   }
-
-  &-collected {
-    .message-item-actions-collect {
-      color: rgb(var(--gold-6));
-    }
-  }
-
-  &:hover {
-    background-color: rgb(var(--gray-2));
-
-    .message-item-actions {
-      opacity: 1;
-    }
-  }
-}
 </style>

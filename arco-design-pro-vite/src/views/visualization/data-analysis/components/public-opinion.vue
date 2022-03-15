@@ -4,8 +4,8 @@
     :title="$t('dataAnalysis.title.publicOpinion')"
     :header-style="{ paddingBottom: '12px' }"
   >
-    <a-row :gutter="12">
-      <a-col :span="6">
+    <a-grid :cols="24" :col-gap="12" :row-gap="12">
+      <a-grid-item :span="{ xs: 12, sm: 12, md: 12, lg: 12, xl: 6, xxl: 6 }">
         <ChainItem
           :title="$t('dataAnalysis.card.title.allVisitors')"
           quota="visitors"
@@ -16,8 +16,8 @@
               : 'linear-gradient(180deg, #f2f9fe 0%, #e6f4fe 100%)',
           }"
         />
-      </a-col>
-      <a-col :span="6">
+      </a-grid-item>
+      <a-grid-item :span="{ xs: 12, sm: 12, md: 12, lg: 12, xl: 6, xxl: 6 }">
         <ChainItem
           :title="$t('dataAnalysis.card.title.contentPublished')"
           quota="published"
@@ -28,8 +28,8 @@
               : 'linear-gradient(180deg, #F5FEF2 0%, #E6FEEE 100%)',
           }"
         />
-      </a-col>
-      <a-col :span="6">
+      </a-grid-item>
+      <a-grid-item :span="{ xs: 12, sm: 12, md: 12, lg: 12, xl: 6, xxl: 6 }">
         <ChainItem
           :title="$t('dataAnalysis.card.title.totalComment')"
           quota="comment"
@@ -40,8 +40,8 @@
               : 'linear-gradient(180deg, #f2f9fe 0%, #e6f4fe 100%)',
           }"
         />
-      </a-col>
-      <a-col :span="6">
+      </a-grid-item>
+      <a-grid-item :span="{ xs: 12, sm: 12, md: 12, lg: 12, xl: 6, xxl: 6 }">
         <ChainItem
           :title="$t('dataAnalysis.card.title.totalShare')"
           quota="share"
@@ -52,25 +52,14 @@
               : 'linear-gradient(180deg, #F7F7FF 0%, #ECECFF 100%)',
           }"
         />
-      </a-col>
-    </a-row>
+      </a-grid-item>
+    </a-grid>
   </a-card>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import useThemes from '@/hooks/themes';
-import ChainItem from './chain-item.vue';
+<script lang="ts" setup>
+  import useThemes from '@/hooks/themes';
+  import ChainItem from './chain-item.vue';
 
-export default defineComponent({
-  components: {
-    ChainItem,
-  },
-  setup() {
-    const { isDark } = useThemes();
-    return {
-      isDark,
-    };
-  },
-});
+  const { isDark } = useThemes();
 </script>

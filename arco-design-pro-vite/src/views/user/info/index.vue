@@ -27,94 +27,55 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import { useI18n } from 'vue-i18n';
-import UserInfoHeader from './components/user-info-header.vue';
-import LatestNotification from './components/latest-notification.vue';
-import MyProject from './components/my-project.vue';
-import LatestActivity from './components/latest-activity.vue';
-import Myteam from './components/my-team.vue';
-
-export default defineComponent({
-  components: {
-    UserInfoHeader,
-    LatestNotification,
-    MyProject,
-    LatestActivity,
-    Myteam,
-  },
-  setup() {
-    const { t } = useI18n();
-
-    const tabList = [
-      {
-        key: 'overview',
-        title: t('userInfo.tab.title.overview'),
-        icon: 'icon-face-smile-fill',
-        component: 'Overview',
-      },
-      {
-        key: 'project',
-        title: t('userInfo.tab.title.project'),
-        icon: 'icon-file',
-        component: 'Overview',
-      },
-      {
-        key: 'team',
-        title: t('userInfo.tab.title.team'),
-        icon: 'icon-user',
-        component: 'Overview',
-      },
-    ];
-    return {
-      tabList,
-    };
-  },
-});
+<script lang="ts" setup>
+  import UserInfoHeader from './components/user-info-header.vue';
+  import LatestNotification from './components/latest-notification.vue';
+  import MyProject from './components/my-project.vue';
+  import LatestActivity from './components/latest-activity.vue';
+  import Myteam from './components/my-team.vue';
 </script>
 
 <style scoped lang="less">
-.container {
-  padding: 0 20px 20px 20px;
-}
+  .container {
+    padding: 0 20px 20px 20px;
+  }
 
-.content {
-  display: flex;
-  margin-top: 12px;
+  .content {
+    display: flex;
+    margin-top: 12px;
 
-  &-left {
-    flex: 1;
-    margin-right: 16px;
-    overflow: hidden;
-    // background-color: var(--color-bg-2);
+    &-left {
+      flex: 1;
+      margin-right: 16px;
+      overflow: hidden;
+      // background-color: var(--color-bg-2);
 
-    :deep(.arco-tabs-nav-tab) {
-      margin-left: 16px;
+      :deep(.arco-tabs-nav-tab) {
+        margin-left: 16px;
+      }
+    }
+
+    &-right {
+      width: 332px;
+    }
+
+    .tab-pane-wrapper {
+      padding: 0 16px 16px 16px;
     }
   }
-
-  &-right {
-    width: 332px;
-  }
-
-  .tab-pane-wrapper {
-    padding: 0 16px 16px 16px;
-  }
-}
 </style>
 
 <style lang="less" scoped>
-.mobile {
-  .content {
-    display: block;
-    &-left {
-      margin-right: 0;
-      margin-bottom: 16px;
-    }
-    &-right {
-      width: 100%;
+  .mobile {
+    .content {
+      display: block;
+      &-left {
+        margin-right: 0;
+        margin-bottom: 16px;
+      }
+      &-right {
+        width: 100%;
+      }
     }
   }
-}
 </style>
