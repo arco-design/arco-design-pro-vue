@@ -50,7 +50,7 @@
           </a-checkbox>
           <a-link>{{ $t('login.form.forgetPassword') }}</a-link>
         </div>
-        <a-button type="primary" html-type="submit" long :loading="loading">
+        <a-button type="primary" long :loading="loading" @click="handleSubmit">
           {{ $t('login.form.login') }}
         </a-button>
         <a-button type="text" long class="login-form-register-btn">
