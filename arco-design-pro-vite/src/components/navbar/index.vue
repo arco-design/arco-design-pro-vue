@@ -119,7 +119,10 @@
       </li>
       <li>
         <a-dropdown trigger="click">
-          <a-avatar :size="32" :style="{ marginRight: '8px' }">
+          <a-avatar
+            :size="32"
+            :style="{ marginRight: '8px', cursor: 'pointer' }"
+          >
             <img alt="avatar" :src="avatar" />
           </a-avatar>
           <template #content>

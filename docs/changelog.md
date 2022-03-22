@@ -1,5 +1,18 @@
 # Arco Design Pro Vue v2.0
 
+## v2.3.2
+
+`2022-03-22`
+
+### 🆕 Feature
+
+- Add multi-tab and page cache。
+
+### 🐛 bugfix
+
+- Fix the problem that the global settings switch is not displayed.
+- Avoid double submit on @keyup.enter. [#42](https://github.com/arco-design/arco-design-pro-vue/pull/42)
+
 ## v2.3.1
 
 `2022-03-15`

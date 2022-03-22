@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import NProgress from 'nprogress'; // progress bar
 import 'nprogress/nprogress.css';
 
-import PageLayout from '@/layout/page-layout.vue';
+import DefaultLayout from '@/layout/default-layout.vue';
 import Login from './routes/modules/login';
 import appRoutes from './routes';
 import createRouteGuard from './guard';
@@ -20,7 +20,7 @@ const router = createRouter({
     {
       name: 'root',
       path: '/',
-      component: PageLayout,
+      component: DefaultLayout,
       children: appRoutes,
     },
     {

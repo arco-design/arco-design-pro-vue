@@ -10,6 +10,7 @@ export default {
   'settings.navbar.theme.toDark': '点击切换为暗黑模式',
   'settings.navbar.alerts': '消息通知',
   'settings.menu': '菜单栏',
+  'settings.tabBar': '多页签',
   'settings.footer': '底部',
   'settings.otherSettings': '其他设置',
   'settings.colorWeek': '色弱模式',

@@ -4,8 +4,4 @@
 
 <script lang="ts" setup></script>
 
-<style lang="less" scoped>
-  .container {
-    padding: 0 20px 20px 20px;
-  }
-</style>
+<style lang="less" scoped></style>
