@@ -40,6 +40,12 @@
   import RulesPreset from './components/reules-preset.vue';
 </script>
 
+<script lang="ts">
+  export default {
+    name: 'Card',
+  };
+</script>
+
 <style scoped lang="less">
   .container {
     padding: 0 20px 20px 20px;

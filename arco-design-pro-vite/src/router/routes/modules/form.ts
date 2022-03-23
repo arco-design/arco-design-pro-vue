@@ -11,7 +11,7 @@ export default {
   children: [
     {
       path: 'step',
-      name: 'step',
+      name: 'Step',
       component: () => import('@/views/form/step/index.vue'),
       meta: {
         locale: 'menu.form.step',
@@ -21,7 +21,7 @@ export default {
     },
     {
       path: 'group',
-      name: 'group',
+      name: 'Group',
       component: () => import('@/views/form/group/index.vue'),
       meta: {
         locale: 'menu.form.group',

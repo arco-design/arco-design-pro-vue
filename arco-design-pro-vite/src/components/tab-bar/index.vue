@@ -8,14 +8,17 @@
               v-for="(tag, index) in tagList"
               :key="tag.fullPath"
               class="arco-tag arco-tag-size-medium arco-tag-checked"
+              :class="{ 'link-actived': tag.fullPath === $route.fullPath }"
+              @click="goto(tag)"
             >
-              <router-link class="tag-link" :to="tag">
+              <span class="tag-link">
                 {{ $t(tag.title) }}
-              </router-link>
+              </span>
               <span
                 class="arco-icon-hover arco-tag-icon-hover arco-icon-hover-size-medium arco-tag-close-btn"
+                @click.stop="tagClose(tag, index)"
               >
-                <icon-close @click="tagClose(tag, index)" />
+                <icon-close />
               </span>
             </span>
           </div>
@@ -61,11 +64,14 @@
     }
   }, true);
   const tagClose = (tag: TagProps, idx: number) => {
-    tabBarStore.deleteTag(idx);
+    tabBarStore.deleteTag(idx, tag);
     if (idx === tagList.value.length) {
       const latest = tagList.value[tagList.value.length - 1];
       router.push({ name: latest.name });
     }
+  };
+  const goto = (tag: TagProps) => {
+    router.push({ ...tag });
   };
 </script>
 
@@ -88,6 +94,7 @@
 
           :deep(.arco-tag) {
             margin-right: 6px;
+            cursor: pointer;
             &:first-child {
               .arco-tag-close-btn {
                 display: none;
@@ -108,8 +115,11 @@
     color: var(--color-text-2);
     text-decoration: none;
   }
-  .router-link-active {
+  .link-actived {
     color: rgb(var(--link-6));
+    .tag-link {
+      color: rgb(var(--link-6));
+    }
     & + .arco-tag-close-btn {
       color: rgb(var(--link-6));
     }

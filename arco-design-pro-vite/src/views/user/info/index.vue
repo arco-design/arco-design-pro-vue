@@ -35,6 +35,12 @@
   import Myteam from './components/my-team.vue';
 </script>
 
+<script lang="ts">
+  export default {
+    name: 'Info',
+  };
+</script>
+
 <style scoped lang="less">
   .container {
     padding: 0 20px 20px 20px;

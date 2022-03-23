@@ -32,6 +32,12 @@
   import ContentPublishingSource from './components/content-publishing-source.vue';
 </script>
 
+<script lang="ts">
+  export default {
+    name: 'MultiDimensionDataAnalysis',
+  };
+</script>
+
 <style scoped lang="less">
   .container {
     padding: 0 20px 20px 20px;

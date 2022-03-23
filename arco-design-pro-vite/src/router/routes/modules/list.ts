@@ -11,7 +11,7 @@ export default {
   children: [
     {
       path: 'search-table', // The midline path complies with SEO specifications
-      name: 'searchTable',
+      name: 'SearchTable',
       component: () => import('@/views/list/search-table/index.vue'),
       meta: {
         locale: 'menu.list.searchTable',
@@ -21,7 +21,7 @@ export default {
     },
     {
       path: 'card',
-      name: 'card',
+      name: 'Card',
       component: () => import('@/views/list/card/index.vue'),
       meta: {
         locale: 'menu.list.cardList',

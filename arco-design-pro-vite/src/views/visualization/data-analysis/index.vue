@@ -37,6 +37,12 @@
   import PopularAuthor from './components/popular-author.vue';
 </script>
 
+<script lang="ts">
+  export default {
+    name: 'DataAnalysis',
+  };
+</script>
+
 <style scoped lang="less">
   .container {
     padding: 0 20px 20px 20px;

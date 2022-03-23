@@ -11,7 +11,7 @@ export default {
   children: [
     {
       path: 'data-analysis',
-      name: 'dataAnalysis',
+      name: 'DataAnalysis',
       component: () => import('@/views/visualization/data-analysis/index.vue'),
       meta: {
         locale: 'menu.visualization.dataAnalysis',
@@ -21,7 +21,7 @@ export default {
     },
     {
       path: 'multi-dimension-data-analysis',
-      name: 'multiDimensionDataAnalysis',
+      name: 'MultiDimensionDataAnalysis',
       component: () =>
         import('@/views/visualization/multi-dimension-data-analysis/index.vue'),
       meta: {

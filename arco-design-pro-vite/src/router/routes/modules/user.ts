@@ -11,7 +11,7 @@ export default {
   children: [
     {
       path: 'info',
-      name: 'info',
+      name: 'Info',
       component: () => import('@/views/user/info/index.vue'),
       meta: {
         locale: 'menu.user.info',
@@ -21,7 +21,7 @@ export default {
     },
     {
       path: 'setting',
-      name: 'setting',
+      name: 'Setting',
       component: () => import('@/views/user/setting/index.vue'),
       meta: {
         locale: 'menu.user.setting',
