@@ -85,10 +85,12 @@
       background-color: var(--color-bg-2);
       border-bottom: 1px solid var(--color-border);
       .tab-bar-scroll {
+        height: 32px;
         flex: 1;
         overflow: hidden;
         .tags-wrap {
           padding: 4px 0;
+          height: 42px;
           white-space: nowrap;
           overflow-x: auto;
 
@@ -107,7 +109,7 @@
 
     .tag-bar-operation {
       width: 100px;
-      height: 33px;
+      height: 32px;
     }
   }
 
