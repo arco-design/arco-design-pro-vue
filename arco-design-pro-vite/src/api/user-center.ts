@@ -75,3 +75,12 @@ export interface UnitCertification {
 export function queryCertification() {
   return axios.post<UnitCertification>('/api/user/certification');
 }
+
+export function userUploadApi(
+  data: FormData,
+  onUploadProgress?: (progressEvent: any) => void
+) {
+  return axios.post('/api/user/upload', data, {
+    onUploadProgress,
+  });
+}

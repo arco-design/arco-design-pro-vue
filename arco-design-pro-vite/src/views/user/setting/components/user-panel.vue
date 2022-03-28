@@ -2,7 +2,7 @@
   <a-card :bordered="false">
     <a-space :size="54">
       <a-upload
-        action="/"
+        :custom-request="customRequest"
         list-type="picture-card"
         :file-list="fileList"
         :show-upload-button="true"
@@ -52,8 +52,12 @@
 
 <script lang="ts" setup>
   import { ref } from 'vue';
-  import { FileItem } from '@arco-design/web-vue/es/upload/interfaces';
+  import {
+    FileItem,
+    RequestOption,
+  } from '@arco-design/web-vue/es/upload/interfaces';
   import { useUserStore } from '@/store';
+  import { userUploadApi } from '@/api/user-center';
 
   const userStore = useUserStore();
   const file = {
@@ -86,6 +90,27 @@
   const fileList = ref<FileItem[]>([file]);
   const uploadChange = (fileItemList: FileItem[], fileItem: FileItem) => {
     fileList.value = [fileItem];
+  };
+  const customRequest = async (options: RequestOption) => {
+    const { onProgress, onError, onSuccess, fileItem, name = 'file' } = options;
+    onProgress(20);
+    const formData = new FormData();
+    formData.append(name as string, fileItem.file as Blob);
+    const onUploadProgress = (event: ProgressEvent) => {
+      let percent;
+      if (event.total > 0) {
+        percent = (event.loaded / event.total) * 100;
+      }
+      onProgress(parseInt(String(percent), 10), event);
+    };
+    try {
+      // https://github.com/axios/axios/issues/1630
+      // https://github.com/nuysoft/Mock/issues/127
+      const res = await userUploadApi(formData, onUploadProgress);
+      onSuccess(res);
+    } catch (error) {
+      onError(error);
+    }
   };
 </script>
 
