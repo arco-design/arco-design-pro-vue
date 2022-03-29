@@ -1,5 +1,18 @@
 # Arco Design Pro Vue v2.0
 
+## v2.3.3
+
+`2022-03-29`
+
+### 🆕 Feature
+
+- Add custom upload case.
+
+### 🐛 bugfix
+
+- Fix the problem that page cache does not take effect.
+- Fix tab bar scrolling style issue. [#44](https://github.com/arco-design/arco-design-pro-vue/pull/44)
+
 ## v2.3.2
 
 `2022-03-22`
