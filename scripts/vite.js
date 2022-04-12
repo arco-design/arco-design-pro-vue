@@ -80,7 +80,7 @@ const simpleOptions = [
   },
   {
     base: 'src/router/routes/modules',
-    excludes: ['index', 'dashboard', 'login'],
+    excludes: ['index', 'dashboard'],
   },
 ];
 
