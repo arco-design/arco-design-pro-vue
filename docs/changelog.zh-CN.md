@@ -1,5 +1,13 @@
 # Arco Design Pro Vue v2.0
 
+## v2.3.4
+
+`2022-04-12`
+
+### 💎 功能优化
+
+- 登录路由配置调整。[#50](https://github.com/arco-design/arco-design-pro-vue/pull/50)
+
 ## v2.3.3
 
 `2022-03-29`
