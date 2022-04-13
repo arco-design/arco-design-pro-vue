@@ -103,7 +103,7 @@
               const icon = element?.meta?.icon
                 ? `<${element?.meta?.icon}/>`
                 : ``;
-              const r = (
+              const r = element?.children ? (
                 <a-sub-menu
                   key={element?.name}
                   v-slots={{
@@ -111,15 +111,13 @@
                     title: () => h(compile(t(element?.meta?.locale || ''))),
                   }}
                 >
-                  {element?.children?.map((elem) => {
-                    return (
-                      <a-menu-item key={elem.name} onClick={() => goto(elem)}>
-                        {t(elem?.meta?.locale || '')}
-                        {travel(elem.children ?? [])}
-                      </a-menu-item>
-                    );
-                  })}
+                  {travel(element?.children)}
                 </a-sub-menu>
+              ) : (
+                <a-menu-item key={element?.name} onClick={() => goto(element)}>
+                  {t(element?.meta?.locale || '')}
+                  {travel(element?.children ?? [])}
+                </a-menu-item>
               );
               nodes.push(r as never);
             });
@@ -128,6 +126,7 @@
         }
         return travel(menuTree.value);
       };
+
       return () => (
         <a-menu
           v-model:collapsed={collapsed.value}
