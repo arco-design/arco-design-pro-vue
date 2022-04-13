@@ -114,7 +114,13 @@
                   {travel(element?.children)}
                 </a-sub-menu>
               ) : (
-                <a-menu-item key={element?.name} onClick={() => goto(element)}>
+                <a-menu-item
+                  key={element?.name}
+                  v-slots={{
+                    icon: () => h(compile(icon)),
+                  }}
+                  onClick={() => goto(element)}
+                >
                   {t(element?.meta?.locale || '')}
                   {travel(element?.children ?? [])}
                 </a-menu-item>
