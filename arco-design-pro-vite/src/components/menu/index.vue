@@ -112,6 +112,9 @@
                   }}
                 >
                   {element?.children?.map((elem) => {
+                    if (elem.meta?.hidden) {
+                      return undefined;
+                    }
                     return (
                       <a-menu-item key={elem.name} onClick={() => goto(elem)}>
                         {t(elem?.meta?.locale || '')}
