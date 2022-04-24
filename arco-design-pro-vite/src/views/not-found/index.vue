@@ -13,7 +13,7 @@
   const router = useRouter();
   const back = () => {
     // warning： Go to the node that has the permission
-    router.push({ name: 'workplace' });
+    router.push({ name: 'Workplace' });
   };
 </script>
 
