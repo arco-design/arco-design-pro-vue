@@ -43,7 +43,11 @@
       </a-form-item>
       <a-space :size="16" direction="vertical">
         <div class="login-form-password-actions">
-          <a-checkbox checked="rememberPassword" @change="setRememberPassword">
+          <a-checkbox
+            checked="rememberPassword"
+            :model-value="loginConfig.rememberPassword"
+            @change="setRememberPassword"
+          >
             {{ $t('login.form.rememberPassword') }}
           </a-checkbox>
           <a-link>{{ $t('login.form.forgetPassword') }}</a-link>
@@ -65,6 +69,7 @@
   import { Message } from '@arco-design/web-vue';
   import { ValidatedError } from '@arco-design/web-vue/es/form/interface';
   import { useI18n } from 'vue-i18n';
+  import { useStorage } from '@vueuse/core';
   import { useUserStore } from '@/store';
   import useLoading from '@/hooks/loading';
   import { LoginData } from '@/api/user';
@@ -74,10 +79,17 @@
   const errorMessage = ref('');
   const { loading, setLoading } = useLoading();
   const userStore = useUserStore();
-  const userInfo = reactive({
-    username: 'admin',
-    password: 'admin',
+
+  const loginConfig = useStorage('login-config', {
+    rememberPassword: true,
+    username: 'admin', // 演示默认值
+    password: 'admin', // demo default value
   });
+  const userInfo = reactive({
+    username: loginConfig.value.username,
+    password: loginConfig.value.password,
+  });
+
   const handleSubmit = async ({
     errors,
     values,
@@ -97,6 +109,12 @@
           },
         });
         Message.success(t('login.form.login.success'));
+        const { rememberPassword } = loginConfig.value;
+        const { username, password } = values;
+        // 实际生产环境需要进行加密存储。
+        // The actual production environment requires encrypted storage.
+        loginConfig.value.username = rememberPassword ? username : '';
+        loginConfig.value.password = rememberPassword ? password : '';
       } catch (err) {
         errorMessage.value = (err as Error).message;
       } finally {
@@ -104,8 +122,8 @@
       }
     }
   };
-  const setRememberPassword = () => {
-    //
+  const setRememberPassword = (value: boolean) => {
+    loginConfig.value.rememberPassword = value;
   };
 </script>
 
