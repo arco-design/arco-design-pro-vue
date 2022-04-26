@@ -19,7 +19,7 @@ const useAppStore = defineStore('tabBar', {
       // Set the first element dynamically as needed
       {
         title: 'menu.dashboard.workplace',
-        name: 'workplace',
+        name: 'Workplace',
         fullPath: '/dashboard/workplace',
       },
     ],
@@ -37,7 +37,9 @@ const useAppStore = defineStore('tabBar', {
   actions: {
     updateTabList(route: RouteLocationNormalized) {
       this.tagList.push(formatTag(route));
-      this.cacheTabList.add(route.name as string);
+      if (!route.meta.ignoreCache) {
+        this.cacheTabList.add(route.name as string);
+      }
     },
     deleteTag(idx: number, tag: TagProps) {
       this.tagList.splice(idx, 1);
