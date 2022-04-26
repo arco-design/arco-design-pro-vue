@@ -1,5 +1,23 @@
 # Arco Design Pro Vue v2.0
 
+## v2.3.5
+
+
+`2022-04-26`
+
+### 🆕 Feature
+
+- Login page remember password function.
+
+### 💎 Optimization
+
+- Menu components added support for top-level items.[#59](https://github.com/arco-design/arco-design-pro-vue/pull/59)
+  
+### 🐛 Bugfix
+
+- Fixed tab bar first click invalid.[#64](https://github.com/arco-design/arco-design-pro-vue/issues/64)
+- Fix not found page redirects.
+
 ## v2.3.4
 
 `2022-04-12`
@@ -16,7 +34,7 @@
 
 - Add custom upload case.
 
-### 🐛 bugfix
+### 🐛 Bugfix
 
 - Fix the problem that page cache does not take effect.
 - Fix tab bar scrolling style issue. [#44](https://github.com/arco-design/arco-design-pro-vue/pull/44)
@@ -29,7 +47,7 @@
 
 - Add multi-tab and page cache。
 
-### 🐛 bugfix
+### 🐛 Bugfix
 
 - Fix the problem that the global settings switch is not displayed.
 - Avoid double submit on @keyup.enter. [#42](https://github.com/arco-design/arco-design-pro-vue/pull/42)
@@ -38,7 +56,7 @@
 
 `2022-03-15`
 
-### 🐛 bugfix
+### 🐛 Bugfix
 
 - Fix the problem of unsuccessful initialization caused by vite-plugin-imagemin.
 
@@ -69,7 +87,7 @@
 - Responsive processing and small screen display optimization.
 - Route monitoring performance optimization.
 
-### 🐛 bugfix
+### 🐛 Bugfix
 
 - Optional chain causes item initialization to fail. [#31](https://github.com/arco-design/arco-design-pro-vue/issues/31)
 - Fixed the bug that i18n did not set allowComposition and could not start under windows.[#32](https://github.com/arco-design/arco-design-pro-vue/pull/32)
@@ -78,7 +96,7 @@
 
 `2022-03-01`
 
-### 🐛 bugfix
+### 🐛 Bugfix
 
 - Fix the problem that the component does not take effect after switching the language. [#27](https://github.com/arco-design/arco-design-pro-vue/issues/27)
 - Delete easy mode missing files.
