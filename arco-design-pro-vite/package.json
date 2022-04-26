@@ -28,7 +28,7 @@
     ]
   },
   "dependencies": {
-    "@arco-design/web-vue": "2.18.0",
+    "@arco-design/web-vue": "^2.25.0",
     "@types/mockjs": "^1.0.4",
     "@vueuse/core": "^7.3.0",
     "axios": "^0.24.0",
