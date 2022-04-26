@@ -1,5 +1,22 @@
 # Arco Design Pro Vue v2.0
 
+## v2.3.5
+
+`2022-04-26`
+
+### 🆕 新增功能
+
+- 登录页记住密码功能。
+
+### 💎 功能优化
+
+- 菜单组件增加顶层单项支持。[#59](https://github.com/arco-design/arco-design-pro-vue/pull/59)
+  
+### 🐛 问题修复
+
+- 修复 tab bar 首项点击无效。[#64](https://github.com/arco-design/arco-design-pro-vue/issues/64)
+- 修复 not found 页面跳转问题。
+
 ## v2.3.4
 
 `2022-04-12`
