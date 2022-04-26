@@ -86,7 +86,8 @@
       };
       listenerRouteChange((newRoute) => {
         if (newRoute.meta.requiresAuth && !newRoute.meta.hideInMenu) {
-          const key = newRoute.matched[2]?.name as string;
+          const key = newRoute.matched[newRoute.matched.length - 1]
+            ?.name as string;
           selectedKey.value = [key];
         }
       }, true);
@@ -101,25 +102,26 @@
             _route.forEach((element) => {
               // This is demo, modify nodes as needed
               const icon = element?.meta?.icon
-                ? `<${element?.meta?.icon}/>`
-                : ``;
-              const r = (
+                ? () => h(compile(`<${element?.meta?.icon}/>`))
+                : null;
+              const r = element?.children ? (
                 <a-sub-menu
                   key={element?.name}
                   v-slots={{
-                    icon: () => h(compile(icon)),
+                    icon,
                     title: () => h(compile(t(element?.meta?.locale || ''))),
                   }}
                 >
-                  {element?.children?.map((elem) => {
-                    return (
-                      <a-menu-item key={elem.name} onClick={() => goto(elem)}>
-                        {t(elem?.meta?.locale || '')}
-                        {travel(elem.children ?? [])}
-                      </a-menu-item>
-                    );
-                  })}
+                  {travel(element?.children)}
                 </a-sub-menu>
+              ) : (
+                <a-menu-item
+                  key={element?.name}
+                  v-slots={{ icon }}
+                  onClick={() => goto(element)}
+                >
+                  {t(element?.meta?.locale || '')}
+                </a-menu-item>
               );
               nodes.push(r as never);
             });
@@ -128,6 +130,7 @@
         }
         return travel(menuTree.value);
       };
+
       return () => (
         <a-menu
           v-model:collapsed={collapsed.value}
