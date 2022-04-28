@@ -1,6 +1,6 @@
 import axios from 'axios';
 import qs from 'query-string';
-import { Options } from '@/types/global';
+import type { DescData } from '@arco-design/web-vue/es/descriptions/interface';
 
 export interface PolicyRecord {
   id: string;
@@ -39,7 +39,7 @@ export interface ServiceRecord {
   name?: string;
   actionType?: string;
   icon?: string;
-  data?: Options[];
+  data?: DescData[];
   enable?: boolean;
   expires?: boolean;
 }

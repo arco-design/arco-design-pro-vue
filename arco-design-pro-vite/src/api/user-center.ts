@@ -78,9 +78,11 @@ export function queryCertification() {
 
 export function userUploadApi(
   data: FormData,
-  onUploadProgress?: (progressEvent: any) => void
+  config: {
+    controller: AbortController;
+    onUploadProgress?: (progressEvent: any) => void;
+  }
 ) {
-  return axios.post('/api/user/upload', data, {
-    onUploadProgress,
-  });
+  // const controller = new AbortController();
+  return axios.post('/api/user/upload', data, config);
 }

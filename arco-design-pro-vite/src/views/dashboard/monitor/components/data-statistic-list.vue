@@ -21,8 +21,8 @@
 <script lang="ts" setup>
   import { computed, h, compile } from 'vue';
   import { useI18n } from 'vue-i18n';
-  import {
-    TableColumn,
+  import type {
+    TableColumnData,
     TableData,
   } from '@arco-design/web-vue/es/table/interface.d';
 
@@ -63,7 +63,7 @@
           rowIndex,
         }: {
           record: TableData;
-          column: TableColumn;
+          column: TableColumnData;
           rowIndex: number;
         }) {
           const tmp = `<span>${rowIndex + 1}</span>`;
@@ -76,7 +76,7 @@
           record,
         }: {
           record: TableData;
-          column: TableColumn;
+          column: TableColumnData;
           rowIndex: number;
         }) {
           const tmp = `<div class='data-statistic-list-cover-wrapper'>

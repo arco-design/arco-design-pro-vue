@@ -58,6 +58,7 @@
   } from '@arco-design/web-vue/es/upload/interfaces';
   import { useUserStore } from '@/store';
   import { userUploadApi } from '@/api/user-center';
+  import type { DescData } from '@arco-design/web-vue/es/descriptions/interface';
 
   const userStore = useUserStore();
   const file = {
@@ -86,31 +87,52 @@
       label: 'userSetting.label.registrationDate',
       value: userStore.registrationDate,
     },
-  ];
+  ] as DescData[];
   const fileList = ref<FileItem[]>([file]);
   const uploadChange = (fileItemList: FileItem[], fileItem: FileItem) => {
     fileList.value = [fileItem];
   };
-  const customRequest = async (options: RequestOption) => {
-    const { onProgress, onError, onSuccess, fileItem, name = 'file' } = options;
-    onProgress(20);
-    const formData = new FormData();
-    formData.append(name as string, fileItem.file as Blob);
-    const onUploadProgress = (event: ProgressEvent) => {
-      let percent;
-      if (event.total > 0) {
-        percent = (event.loaded / event.total) * 100;
+  const customRequest = (options: RequestOption) => {
+    // docs: https://axios-http.com/docs/cancellation
+    const controller = new AbortController();
+
+    (async function requestWrap() {
+      const {
+        onProgress,
+        onError,
+        onSuccess,
+        fileItem,
+        name = 'file',
+      } = options;
+      onProgress(20);
+      const formData = new FormData();
+      formData.append(name as string, fileItem.file as Blob);
+      const onUploadProgress = (event: ProgressEvent) => {
+        let percent;
+        if (event.total > 0) {
+          percent = (event.loaded / event.total) * 100;
+        }
+        onProgress(parseInt(String(percent), 10), event);
+      };
+
+      try {
+        // https://github.com/axios/axios/issues/1630
+        // https://github.com/nuysoft/Mock/issues/127
+
+        const res = await userUploadApi(formData, {
+          controller,
+          onUploadProgress,
+        });
+        onSuccess(res);
+      } catch (error) {
+        onError(error);
       }
-      onProgress(parseInt(String(percent), 10), event);
+    })();
+    return {
+      abort() {
+        controller.abort();
+      },
     };
-    try {
-      // https://github.com/axios/axios/issues/1630
-      // https://github.com/nuysoft/Mock/issues/127
-      const res = await userUploadApi(formData, onUploadProgress);
-      onSuccess(res);
-    } catch (error) {
-      onError(error);
-    }
   };
 </script>
 
