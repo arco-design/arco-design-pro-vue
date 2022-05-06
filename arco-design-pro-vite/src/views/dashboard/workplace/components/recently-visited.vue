@@ -37,4 +37,8 @@
   ];
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+  :deep(.arco-card-header-title) {
+    line-height: inherit;
+  }
+</style>

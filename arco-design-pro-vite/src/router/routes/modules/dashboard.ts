@@ -1,7 +1,9 @@
+import { DEFAULT_LAYOUT } from '@/router/constans';
+
 export default {
-  path: 'dashboard',
+  path: '/dashboard',
   name: 'dashboard',
-  component: () => import('@/views/dashboard/index.vue'),
+  component: DEFAULT_LAYOUT,
   meta: {
     locale: 'menu.dashboard',
     requiresAuth: true,

@@ -1,7 +1,9 @@
+import { DEFAULT_LAYOUT } from '@/router/constans';
+
 export default {
-  path: 'visualization',
+  path: '/visualization',
   name: 'visualization',
-  component: () => import('@/views/visualization/index.vue'),
+  component: DEFAULT_LAYOUT,
   meta: {
     locale: 'menu.visualization',
     requiresAuth: true,
