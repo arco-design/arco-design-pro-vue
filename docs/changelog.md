@@ -1,5 +1,22 @@
 # Arco Design Pro Vue v2.0
 
+## v2.4.0
+
+`2022-05-10`
+
+### 🆕 Feature
+
+- Added server-side menu configuration feature.[#75](https://github.com/arco-design/arco-design-pro-vue/pull/75)
+
+### 💎 Optimization
+
+- The routing level is flattened and page caching is supported.[#74](https://github.com/arco-design/arco-design-pro-vue/pull/74)
+  
+### 🐛 Bugfix
+
+- The problem of building TS errors caused by the upgrade of the arco component library.[#74](https://github.com/arco-design/arco-design-pro-vue/pull/74)
+- The file cannot be found problem caused by the upgrade of the arco component library.[#71](https://github.com/arco-design/arco-design-pro-vue/issues/71)
+
 ## v2.3.6
 
 

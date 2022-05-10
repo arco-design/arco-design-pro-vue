@@ -1,5 +1,21 @@
 # Arco Design Pro Vue v2.0
 
+## v2.4.0
+
+`2022-05-10`
+
+### 🆕 新增功能
+
+- 新增服务端菜单配置功能。[#75](https://github.com/arco-design/arco-design-pro-vue/pull/75)
+
+### 💎 功能优化
+
+- 路由层级扁平化，支持页面缓存。[#74](https://github.com/arco-design/arco-design-pro-vue/pull/74)
+  
+### 🐛 问题修复
+
+- arco组件库升级导致的构建TS报错问题。[#74](https://github.com/arco-design/arco-design-pro-vue/pull/74)
+- arco组件库升级导致的文件找不到问题。[#71](https://github.com/arco-design/arco-design-pro-vue/issues/71)
 ## v2.3.6
 
 `2022-04-26`
