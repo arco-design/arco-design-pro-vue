@@ -11,5 +11,6 @@ export interface AppState {
   globalSettings: boolean;
   device: string;
   tabBar: boolean;
+  menuFromServer: boolean;
   [key: string]: unknown;
 }
