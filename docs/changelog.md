@@ -1,5 +1,13 @@
 # Arco Design Pro Vue v2.0
 
+## v2.4.1
+
+`2022-05-10`
+  
+### 🐛 Bugfix
+
+- Simple mode menu text display problem.
+
 ## v2.4.0
 
 `2022-05-10`
