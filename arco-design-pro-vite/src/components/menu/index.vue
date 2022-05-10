@@ -1,18 +1,18 @@
 <script lang="tsx">
   import { defineComponent, ref, h, compile, computed } from 'vue';
   import { useI18n } from 'vue-i18n';
-  import { useRouter, RouteRecordRaw, RouteRecordNormalized } from 'vue-router';
+  import { useRouter, RouteRecordRaw } from 'vue-router';
   import { useAppStore } from '@/store';
-  import usePermission from '@/hooks/permission';
   import { listenerRouteChange } from '@/utils/route-listener';
+  import useMenuTree from './useMenuTree';
 
   export default defineComponent({
     emit: ['collapse'],
     setup() {
       const { t } = useI18n();
       const appStore = useAppStore();
-      const permission = usePermission();
       const router = useRouter();
+      const { menuTree } = useMenuTree();
       const collapsed = computed({
         get() {
           if (appStore.device === 'desktop') return appStore.menuCollapse;
@@ -22,61 +22,6 @@
           appStore.updateSettings({ menuCollapse: value });
         },
       });
-      const appRoute = computed(() => {
-        return router
-          .getRoutes()
-          .find((el) => el.name === 'root') as RouteRecordNormalized;
-      });
-      const menuTree = computed(() => {
-        const copyRouter = JSON.parse(JSON.stringify(appRoute.value.children));
-        copyRouter.sort(
-          (a: RouteRecordNormalized, b: RouteRecordNormalized) => {
-            return (a.meta.order || 0) - (b.meta.order || 0);
-          }
-        );
-        function travel(_routes: RouteRecordRaw[], layer: number) {
-          if (!_routes) return null;
-          const collector: any = _routes.map((element) => {
-            // no access
-            if (!permission.accessRouter(element)) {
-              return null;
-            }
-
-            // leaf node
-            if (!element.children) {
-              return element;
-            }
-
-            // route filter hideInMenu true
-            element.children = element.children.filter(
-              (x) => x.meta?.hideInMenu !== true
-            );
-
-            // Associated child node
-            const subItem = travel(element.children, layer);
-            if (subItem.length) {
-              element.children = subItem;
-              return element;
-            }
-            // the else logic
-            if (layer > 1) {
-              element.children = subItem;
-              return element;
-            }
-
-            if (element.meta?.hideInMenu === false) {
-              return element;
-            }
-
-            return null;
-          });
-          return collector.filter(Boolean);
-        }
-        return travel(copyRouter, 0);
-      });
-
-      // In this case only two levels of menus are available
-      // You can expand as needed
 
       const selectedKey = ref<string[]>([]);
       const goto = (item: RouteRecordRaw) => {
@@ -104,26 +49,27 @@
               const icon = element?.meta?.icon
                 ? () => h(compile(`<${element?.meta?.icon}/>`))
                 : null;
-              const r = element?.children ? (
-                <a-sub-menu
-                  key={element?.name}
-                  v-slots={{
-                    icon,
-                    title: () => h(compile(t(element?.meta?.locale || ''))),
-                  }}
-                >
-                  {travel(element?.children)}
-                </a-sub-menu>
-              ) : (
-                <a-menu-item
-                  key={element?.name}
-                  v-slots={{ icon }}
-                  onClick={() => goto(element)}
-                >
-                  {t(element?.meta?.locale || '')}
-                </a-menu-item>
-              );
-              nodes.push(r as never);
+              const node =
+                element?.children && element?.children.length !== 0 ? (
+                  <a-sub-menu
+                    key={element?.name}
+                    v-slots={{
+                      icon,
+                      title: () => h(compile(t(element?.meta?.locale || ''))),
+                    }}
+                  >
+                    {travel(element?.children)}
+                  </a-sub-menu>
+                ) : (
+                  <a-menu-item
+                    key={element?.name}
+                    v-slots={{ icon }}
+                    onClick={() => goto(element)}
+                  >
+                    {t(element?.meta?.locale || '')}
+                  </a-menu-item>
+                );
+              nodes.push(node as never);
             });
           }
           return nodes;

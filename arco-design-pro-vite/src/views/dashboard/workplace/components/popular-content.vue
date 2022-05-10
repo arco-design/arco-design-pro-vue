@@ -75,11 +75,12 @@
 <script lang="ts" setup>
   import { ref } from 'vue';
   import useLoading from '@/hooks/loading';
-  import { queryPopularList, PopularRecord } from '@/api/dashboard';
+  import { queryPopularList } from '@/api/dashboard';
+  import type { TableData } from '@arco-design/web-vue/es/table/interface';
 
   const type = ref('text');
   const { loading, setLoading } = useLoading();
-  const renderList = ref<PopularRecord[]>();
+  const renderList = ref<TableData[]>();
   const fetchData = async (contentType: string) => {
     try {
       setLoading(true);

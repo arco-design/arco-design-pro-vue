@@ -226,7 +226,8 @@
   import { useI18n } from 'vue-i18n';
   import useLoading from '@/hooks/loading';
   import { queryPolicyList, PolicyRecord, PolicyParams } from '@/api/list';
-  import { Pagination, Options } from '@/types/global';
+  import { Pagination } from '@/types/global';
+  import type { SelectOptionData } from '@arco-design/web-vue/es/select/interface';
 
   const generateFormModel = () => {
     return {
@@ -249,7 +250,7 @@
   const pagination = reactive({
     ...basePagination,
   });
-  const contentTypeOptions = computed<Options[]>(() => [
+  const contentTypeOptions = computed<SelectOptionData[]>(() => [
     {
       label: t('searchTable.form.contentType.img'),
       value: 'img',
@@ -263,7 +264,7 @@
       value: 'verticalVideo',
     },
   ]);
-  const filterTypeOptions = computed<Options[]>(() => [
+  const filterTypeOptions = computed<SelectOptionData[]>(() => [
     {
       label: t('searchTable.form.filterType.artificial'),
       value: 'artificial',
@@ -273,7 +274,7 @@
       value: 'rules',
     },
   ]);
-  const statusOptions = computed<Options[]>(() => [
+  const statusOptions = computed<SelectOptionData[]>(() => [
     {
       label: t('searchTable.form.status.online'),
       value: 'online',

@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router';
 import NProgress from 'nprogress'; // progress bar
 import 'nprogress/nprogress.css';
 
-import DefaultLayout from '@/layout/default-layout.vue';
 import appRoutes from './routes';
 import createRouteGuard from './guard';
 
@@ -23,12 +22,7 @@ const router = createRouter({
         requiresAuth: false,
       },
     },
-    {
-      name: 'root',
-      path: '/',
-      component: DefaultLayout,
-      children: appRoutes,
-    },
+    ...appRoutes,
     {
       path: '/:pathMatch(.*)*',
       name: 'notFound',

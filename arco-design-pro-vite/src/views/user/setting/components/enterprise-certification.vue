@@ -38,6 +38,7 @@
 <script lang="ts" setup>
   import { PropType, computed } from 'vue';
   import { EnterpriseCertificationModel } from '@/api/user-center';
+  import type { DescData } from '@arco-design/web-vue/es/descriptions/interface';
 
   const props = defineProps({
     enterpriseInfo: {
@@ -94,7 +95,7 @@
         label: 'userSetting.certification.label.organizationCode',
         value: organizationCode,
       },
-    ];
+    ] as DescData[];
   });
 </script>
 

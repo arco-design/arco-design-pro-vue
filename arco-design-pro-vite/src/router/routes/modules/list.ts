@@ -1,7 +1,9 @@
+import { DEFAULT_LAYOUT } from '@/router/constans';
+
 export default {
-  path: 'list',
+  path: '/list',
   name: 'list',
-  component: () => import('@/views/list/index.vue'),
+  component: DEFAULT_LAYOUT,
   meta: {
     locale: 'menu.list',
     requiresAuth: true,

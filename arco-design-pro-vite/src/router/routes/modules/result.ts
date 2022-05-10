@@ -1,7 +1,9 @@
+import { DEFAULT_LAYOUT } from '@/router/constans';
+
 export default {
-  path: 'result',
+  path: '/result',
   name: 'result',
-  component: () => import('@/views/result/index.vue'),
+  component: DEFAULT_LAYOUT,
   meta: {
     locale: 'menu.result',
     icon: 'icon-check-circle',
