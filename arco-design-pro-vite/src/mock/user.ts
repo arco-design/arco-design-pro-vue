@@ -65,5 +65,71 @@ setupMock({
     Mock.mock(new RegExp('/api/user/logout'), () => {
       return successResponseWrap(null);
     });
+
+    // 登出
+    Mock.mock(new RegExp('/api/user/menu'), () => {
+      const menuList = [
+        {
+          path: 'dashboard',
+          name: 'dashboard',
+          meta: {
+            locale: 'menu.dashboard',
+            requiresAuth: true,
+            icon: 'icon-dashboard',
+            order: 1,
+          },
+          children: [
+            {
+              path: 'workplace',
+              name: 'Workplace',
+              meta: {
+                locale: 'menu.dashboard.workplace',
+                requiresAuth: true,
+              },
+            },
+            {
+              path: 'monitor',
+              name: 'Monitor',
+              meta: {
+                locale: 'menu.dashboard.monitor',
+                requiresAuth: true,
+                roles: ['admin'],
+              },
+            },
+          ],
+        },
+        {
+          path: 'visualization',
+          name: 'visualization',
+          meta: {
+            locale: 'menu.visualization',
+            requiresAuth: true,
+            icon: 'icon-apps',
+            order: 2,
+          },
+          children: [
+            {
+              path: 'data-analysis',
+              name: 'DataAnalysis',
+              meta: {
+                locale: 'menu.visualization.dataAnalysis',
+                requiresAuth: true,
+                roles: ['admin'],
+              },
+            },
+            {
+              path: 'multi-dimension-data-analysis',
+              name: 'MultiDimensionDataAnalysis',
+              meta: {
+                locale: 'menu.visualization.multiDimensionDataAnalysis',
+                requiresAuth: true,
+                roles: ['admin'],
+              },
+            },
+          ],
+        },
+      ];
+      return successResponseWrap(menuList);
+    });
   },
 });

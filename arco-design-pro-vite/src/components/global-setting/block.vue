@@ -37,12 +37,18 @@
     },
   });
   const appStore = useAppStore();
-  const handleChange = ({ key, value }: { key: string; value: unknown }) => {
-    if (value && key === 'colorWeek') {
-      document.body.style.filter = 'invert(80%)';
+  const handleChange = async ({
+    key,
+    value,
+  }: {
+    key: string;
+    value: unknown;
+  }) => {
+    if (key === 'colorWeek') {
+      document.body.style.filter = value ? 'invert(80%)' : 'none';
     }
-    if (!value && key === 'colorWeek') {
-      document.body.style.filter = 'none';
+    if (key === 'menuFromServer' && value) {
+      await appStore.fetchServerMenuConfig();
     }
     appStore.updateSettings({ [key]: value });
   };

@@ -22,7 +22,6 @@ declare module '@vue/runtime-core' {
     ACol: typeof import('@arco-design/web-vue')['Col']
     AConfigProvider: typeof import('@arco-design/web-vue')['ConfigProvider']
     ADescriptions: typeof import('@arco-design/web-vue')['Descriptions']
-    ADescriptionsItem: typeof import('@arco-design/web-vue')['DescriptionsItem']
     ADivider: typeof import('@arco-design/web-vue')['Divider']
     ADoption: typeof import('@arco-design/web-vue')['Doption']
     ADrawer: typeof import('@arco-design/web-vue')['Drawer']
@@ -74,6 +73,8 @@ declare module '@vue/runtime-core' {
     ATypographyText: typeof import('@arco-design/web-vue')['TypographyText']
     ATypographyTitle: typeof import('@arco-design/web-vue')['TypographyTitle']
     AUpload: typeof import('@arco-design/web-vue')['Upload']
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
   }
 }
 

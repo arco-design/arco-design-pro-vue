@@ -1,11 +1,16 @@
 import { computed } from 'vue';
 import { useRouter, RouteRecordRaw, RouteRecordNormalized } from 'vue-router';
 import usePermission from '@/hooks/permission';
+import { useAppStore } from '@/store';
 
 export default function useMenuTree() {
   const router = useRouter();
   const permission = usePermission();
+  const appStore = useAppStore();
   const appRoute = computed(() => {
+    if (appStore.menuFromServer) {
+      return appStore.appServerMenuConfig;
+    }
     return router
       .getRoutes()
       .filter((el) => el.meta.requiresAuth && el.meta.order !== undefined);
