@@ -193,7 +193,7 @@
     valueLight: 'light',
     storageKey: 'arco-theme',
     onChanged(dark: boolean) {
-      // overridded default behavior
+      // overridden default behavior
       appStore.toggleTheme(dark);
     },
   });

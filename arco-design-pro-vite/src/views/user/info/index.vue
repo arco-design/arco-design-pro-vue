@@ -16,7 +16,7 @@
       <div class="content-right">
         <a-grid :cols="24" :row-gap="16">
           <a-grid-item :span="24">
-            <Myteam />
+            <MyTeam />
           </a-grid-item>
           <a-grid-item class="panel" :span="24">
             <LatestNotification />
@@ -32,7 +32,7 @@
   import LatestNotification from './components/latest-notification.vue';
   import MyProject from './components/my-project.vue';
   import LatestActivity from './components/latest-activity.vue';
-  import Myteam from './components/my-team.vue';
+  import MyTeam from './components/my-team.vue';
 </script>
 
 <script lang="ts">

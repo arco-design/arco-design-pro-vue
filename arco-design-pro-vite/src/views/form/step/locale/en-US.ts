@@ -45,7 +45,7 @@ export default {
   'stepForm.form.error.advertisingSource.required':
     'Please enter the advertising source',
   'stepForm.form.label.advertisingMedia': 'Advertising Media',
-  'stepForm.placeholder.advertisingMedia': 'Marketing media: CPC, Bannner, EDM',
+  'stepForm.placeholder.advertisingMedia': 'Marketing media: CPC, Banner, EDM',
   'stepForm.form.error.advertisingMedia.required':
     'Please enter the advertising media',
   'stepForm.form.label.keyword': 'keyword',
