@@ -100,7 +100,7 @@
 
 <style scoped lang="less">
   .general-card {
-    min-height: 388px;
+    min-height: 395px;
   }
   :deep(.arco-table-tr) {
     height: 44px;
