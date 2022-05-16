@@ -31,9 +31,13 @@
       };
       listenerRouteChange((newRoute) => {
         if (newRoute.meta.requiresAuth && !newRoute.meta.hideInMenu) {
-          const key = newRoute.matched[newRoute.matched.length - 1]
-            ?.name as string;
-          selectedKey.value = [key];
+          if (newRoute.meta.activeMenu) {
+            selectedKey.value = [newRoute.meta.activeMenu];
+          } else {
+            const key = newRoute.matched[newRoute.matched.length - 1]
+              ?.name as string;
+            selectedKey.value = [key];
+          }
         }
       }, true);
       const setCollapse = (val: boolean) => {
