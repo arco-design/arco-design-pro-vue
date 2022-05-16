@@ -9,6 +9,7 @@
     "dev": "vite --config ./config/vite.config.dev.ts",
     "build": "vue-tsc --noEmit && vite build --config ./config/vite.config.prod.ts",
     "report": "cross-env REPORT=true npm run build",
+    "preview": "npm run build && vite preview --host",
     "lint-staged": "npx lint-staged",
     "prepare": "husky install"
   },
@@ -28,7 +29,7 @@
     ]
   },
   "dependencies": {
-    "@arco-design/web-vue": "^2.25.0",
+    "@arco-design/web-vue": "^2.26.0",
     "@types/mockjs": "^1.0.4",
     "@vueuse/core": "^7.3.0",
     "axios": "^0.24.0",
@@ -81,7 +82,7 @@
     "vite-plugin-imagemin": "^0.6.1",
     "vite-plugin-style-import": "1.4.1",
     "vite-svg-loader": "^3.1.0",
-    "vue-tsc": "^0.30.5"
+    "vue-tsc": "^0.34.15"
   },
   "engines": {
     "node": ">=14.0.0"

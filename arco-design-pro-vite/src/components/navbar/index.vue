@@ -67,7 +67,7 @@
             class="nav-btn"
             type="outline"
             :shape="'circle'"
-            @click="toggleTheme"
+            @click="handleToggleTheme"
           >
             <template #icon>
               <icon-moon-fill v-if="theme === 'dark'" />
@@ -198,6 +198,9 @@
     },
   });
   const toggleTheme = useToggle(isDark);
+  const handleToggleTheme = () => {
+    toggleTheme();
+  };
   const setVisible = () => {
     appStore.updateSettings({ globalSettings: true });
   };
