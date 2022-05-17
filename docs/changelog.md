@@ -7,6 +7,7 @@
 ### 🆕 Feature
 
 - Added full screen function.[#83](https://github.com/arco-design/arco-design-pro-vue/pull/83)
+- Added preview script.
 
 ### 💎 Optimization
 
