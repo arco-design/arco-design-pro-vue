@@ -104,6 +104,27 @@
         </a-popover>
       </li>
       <li>
+        <a-tooltip
+          :content="
+            isFullscreen
+              ? $t('settings.navbar.screen.toExit')
+              : $t('settings.navbar.screen.toFull')
+          "
+        >
+          <a-button
+            class="nav-btn"
+            type="outline"
+            :shape="'circle'"
+            @click="toggleFullScreen"
+          >
+            <template #icon>
+              <icon-fullscreen-exit v-if="isFullscreen" />
+              <icon-fullscreen v-else />
+            </template>
+          </a-button>
+        </a-tooltip>
+      </li>
+      <li>
         <a-tooltip :content="$t('settings.title')">
           <a-button
             class="nav-btn"
@@ -168,7 +189,7 @@
 <script lang="ts" setup>
   import { computed, ref, inject } from 'vue';
   import { Message } from '@arco-design/web-vue';
-  import { useDark, useToggle } from '@vueuse/core';
+  import { useDark, useToggle, useFullscreen } from '@vueuse/core';
   import { useAppStore, useUserStore } from '@/store';
   import { LOCALE_OPTIONS } from '@/locale';
   import useLocale from '@/hooks/locale';
@@ -179,6 +200,7 @@
   const userStore = useUserStore();
   const { logout } = useUser();
   const { changeLocale } = useLocale();
+  const { isFullscreen, toggle: toggleFullScreen } = useFullscreen();
   const locales = [...LOCALE_OPTIONS];
   const avatar = computed(() => {
     return userStore.avatar;
