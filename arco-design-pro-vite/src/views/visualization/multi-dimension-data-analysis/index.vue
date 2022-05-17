@@ -43,7 +43,7 @@
     padding: 0 20px 20px 20px;
   }
 
-  :deep(.section-titile) {
+  :deep(.section-title) {
     margin-top: 0;
     margin-bottom: 16px;
     font-size: 16px;

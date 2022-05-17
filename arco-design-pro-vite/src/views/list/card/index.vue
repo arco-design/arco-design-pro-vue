@@ -37,7 +37,7 @@
 <script lang="ts" setup>
   import QualityInspection from './components/quality-inspection.vue';
   import TheService from './components/the-service.vue';
-  import RulesPreset from './components/reules-preset.vue';
+  import RulesPreset from './components/rules-preset.vue';
 </script>
 
 <script lang="ts">

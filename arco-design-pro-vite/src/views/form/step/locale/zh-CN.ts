@@ -35,7 +35,7 @@ export default {
   'stepForm.placeholder.advertisingSource': '引荐来源地址：sohu、sina',
   'stepForm.form.error.advertisingSource.required': '请输入广告来源',
   'stepForm.form.label.advertisingMedia': '广告媒介',
-  'stepForm.placeholder.advertisingMedia': '营销媒介：cpc、bannner、edm',
+  'stepForm.placeholder.advertisingMedia': '营销媒介：cpc、banner、edm',
   'stepForm.form.error.advertisingMedia.required': '请输入广告媒介',
   'stepForm.form.label.keyword': '关键词',
   'stepForm.placeholder.keyword': '请选择关键词',

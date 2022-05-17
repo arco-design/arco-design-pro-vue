@@ -163,8 +163,8 @@
 
 ### 💎 Optimization
 
-- Echarts configuration hook usage optimization.
-- Eslint reported an error when initializing the project.
+- ECharts configuration hook usage optimization.
+- ESLint reported an error when initializing the project.
 
 ### 🆕 Feature
 

@@ -8,7 +8,7 @@
               v-for="(tag, index) in tagList"
               :key="tag.fullPath"
               class="arco-tag arco-tag-size-medium arco-tag-checked"
-              :class="{ 'link-actived': tag.fullPath === $route.fullPath }"
+              :class="{ 'link-activated': tag.fullPath === $route.fullPath }"
               @click="goto(tag)"
             >
               <span class="tag-link">
@@ -117,7 +117,7 @@
     color: var(--color-text-2);
     text-decoration: none;
   }
-  .link-actived {
+  .link-activated {
     color: rgb(var(--link-6));
     .tag-link {
       color: rgb(var(--link-6));
