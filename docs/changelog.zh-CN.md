@@ -1,5 +1,22 @@
 # Arco Design Pro Vue v2.0
 
+## v2.5.0
+
+`2022-05-10`
+
+### 🆕 新增功能
+
+- 新增全屏功能。[#83](https://github.com/arco-design/arco-design-pro-vue/pull/83)
+
+### 💎 功能优化
+
+- 增加 activeMenu 配置。[#76](https://github.com/arco-design/arco-design-pro-vue/issues/76)[#80](https://github.com/arco-design/arco-design-pro-vue/issues/80)
+  
+### 🐛 问题修复
+
+- 隐藏子级菜单项问题。[#76](https://github.com/arco-design/arco-design-pro-vue/issues/76)
+- 更新vue-tsc版本。[#61](https://github.com/arco-design/arco-design-pro-vue/issues/61)
+
 ## v2.4.1
 
 `2022-05-10`

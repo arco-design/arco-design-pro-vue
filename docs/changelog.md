@@ -1,5 +1,22 @@
 # Arco Design Pro Vue v2.0
 
+## v2.5.0
+
+`2022-05-10`
+
+### 🆕 Feature
+
+- Added full screen function.[#83](https://github.com/arco-design/arco-design-pro-vue/pull/83)
+
+### 💎 Optimization
+
+- Added activeMenu configuration.[#76](https://github.com/arco-design/arco-design-pro-vue/issues/76)[#80](https://github.com/arco-design/arco-design-pro-vue/issues/80)
+
+### 🐛 Bugfix
+
+- Hide child menu items problem.[#76](https://github.com/arco-design/arco-design-pro-vue/issues/76)
+- Update vue-tsc version.	[#61](https://github.com/arco-design/arco-design-pro-vue/issues/61)
+
 ## v2.4.1
 
 `2022-05-10`
