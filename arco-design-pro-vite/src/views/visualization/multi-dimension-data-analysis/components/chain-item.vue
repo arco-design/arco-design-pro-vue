@@ -97,10 +97,10 @@
   const fetchData = async (params: DataChainGrowth) => {
     try {
       const { data } = await queryDataChainGrowth(params);
-      const { chartData } = data;
+      const { chartData: resChartData } = data;
       count.value = data.count;
       growth.value = data.growth;
-      chartData.data.value.forEach((el, idx) => {
+      resChartData.data.value.forEach((el, idx) => {
         if (props.chartType === 'bar') {
           chartData.value.push({
             value: el,
