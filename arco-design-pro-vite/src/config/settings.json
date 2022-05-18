@@ -9,5 +9,8 @@
   "themeColor": "#165DFF",
   "menuWidth": 220,
   "globalSettings": false,
-  "device": "desktop"
+  "device": "desktop",
+  "tabBar": false,
+  "menuFromServer": false,
+  "serverMenu": []
 }

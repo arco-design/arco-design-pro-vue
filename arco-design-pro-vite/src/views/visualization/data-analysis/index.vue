@@ -37,6 +37,12 @@
   import PopularAuthor from './components/popular-author.vue';
 </script>
 
+<script lang="ts">
+  export default {
+    name: 'DataAnalysis',
+  };
+</script>
+
 <style scoped lang="less">
   .container {
     padding: 0 20px 20px 20px;
@@ -52,7 +58,7 @@
     margin: 0 0 12px 0;
     font-size: 14;
   }
-  :deep(.section-titile) {
+  :deep(.section-title) {
     margin: 0 0 12px 0;
     font-size: 14px;
   }

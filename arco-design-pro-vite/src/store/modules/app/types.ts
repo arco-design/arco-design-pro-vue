@@ -10,5 +10,7 @@ export interface AppState {
   menuWidth: number;
   globalSettings: boolean;
   device: string;
+  tabBar: boolean;
+  menuFromServer: boolean;
   [key: string]: unknown;
 }

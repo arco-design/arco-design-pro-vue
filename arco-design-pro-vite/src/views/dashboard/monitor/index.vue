@@ -31,6 +31,12 @@
   import StudioInformation from './components/studio-information.vue';
 </script>
 
+<script lang="ts">
+  export default {
+    name: 'Monitor',
+  };
+</script>
+
 <style scoped lang="less">
   .container {
     padding: 0 20px 20px 20px;

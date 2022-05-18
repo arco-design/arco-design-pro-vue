@@ -8,9 +8,12 @@ export default {
   'settings.menuWidth': '菜单宽度 (px)',
   'settings.navbar.theme.toLight': '点击切换为亮色模式',
   'settings.navbar.theme.toDark': '点击切换为暗黑模式',
+  'settings.navbar.screen.toFull': '点击切换全屏模式',
+  'settings.navbar.screen.toExit': '点击退出全屏模式',
   'settings.navbar.alerts': '消息通知',
   'settings.navbar.skin': '在线试用主题',
   'settings.menu': '菜单栏',
+  'settings.tabBar': '多页签',
   'settings.footer': '底部',
   'settings.otherSettings': '其他设置',
   'settings.colorWeek': '色弱模式',
@@ -22,4 +25,5 @@ export default {
   'settings.close': '关闭',
   'settings.color.tooltip':
     '根据主题颜色生成的 10 个梯度色（将配置复制到项目中，主题色才能对亮色 / 暗黑模式同时生效）',
+  'settings.menuFromServer': '菜单来源于后台',
 };

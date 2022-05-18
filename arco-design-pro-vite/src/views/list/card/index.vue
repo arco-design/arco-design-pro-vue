@@ -37,11 +37,18 @@
 <script lang="ts" setup>
   import QualityInspection from './components/quality-inspection.vue';
   import TheService from './components/the-service.vue';
-  import RulesPreset from './components/reules-preset.vue';
+  import RulesPreset from './components/rules-preset.vue';
+</script>
+
+<script lang="ts">
+  export default {
+    name: 'Card',
+  };
 </script>
 
 <style scoped lang="less">
   .container {
+    padding: 0 20px 20px 20px;
     :deep(.arco-list-content) {
       overflow-x: hidden;
     }

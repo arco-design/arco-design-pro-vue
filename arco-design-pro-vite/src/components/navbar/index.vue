@@ -67,7 +67,7 @@
             class="nav-btn"
             type="outline"
             :shape="'circle'"
-            @click="toggleTheme"
+            @click="handleToggleTheme"
           >
             <template #icon>
               <icon-moon-fill v-if="theme === 'dark'" />
@@ -104,6 +104,27 @@
         </a-popover>
       </li>
       <li>
+        <a-tooltip
+          :content="
+            isFullscreen
+              ? $t('settings.navbar.screen.toExit')
+              : $t('settings.navbar.screen.toFull')
+          "
+        >
+          <a-button
+            class="nav-btn"
+            type="outline"
+            :shape="'circle'"
+            @click="toggleFullScreen"
+          >
+            <template #icon>
+              <icon-fullscreen-exit v-if="isFullscreen" />
+              <icon-fullscreen v-else />
+            </template>
+          </a-button>
+        </a-tooltip>
+      </li>
+      <li>
         <a-tooltip :content="$t('settings.title')">
           <a-button
             class="nav-btn"
@@ -120,7 +141,10 @@
       <ThemesDialog />
       <li>
         <a-dropdown trigger="click">
-          <a-avatar :size="32" :style="{ marginRight: '8px' }">
+          <a-avatar
+            :size="32"
+            :style="{ marginRight: '8px', cursor: 'pointer' }"
+          >
             <img alt="avatar" :src="avatar" />
           </a-avatar>
           <template #content>
@@ -133,7 +157,7 @@
               </a-space>
             </a-doption>
             <a-doption>
-              <a-space @click="$router.push({ name: 'info' })">
+              <a-space @click="$router.push({ name: 'Info' })">
                 <icon-user />
                 <span>
                   {{ $t('messageBox.userCenter') }}
@@ -141,7 +165,7 @@
               </a-space>
             </a-doption>
             <a-doption>
-              <a-space @click="$router.push({ name: 'setting' })">
+              <a-space @click="$router.push({ name: 'Setting' })">
                 <icon-settings />
                 <span>
                   {{ $t('messageBox.userSettings') }}
@@ -166,7 +190,7 @@
 <script lang="ts" setup>
   import { computed, ref, inject } from 'vue';
   import { Message } from '@arco-design/web-vue';
-  import { useDark, useToggle } from '@vueuse/core';
+  import { useDark, useToggle, useFullscreen } from '@vueuse/core';
   import { useAppStore, useUserStore } from '@/store';
   import { LOCALE_OPTIONS } from '@/locale';
   import useLocale from '@/hooks/locale';
@@ -178,6 +202,7 @@
   const userStore = useUserStore();
   const { logout } = useUser();
   const { changeLocale } = useLocale();
+  const { isFullscreen, toggle: toggleFullScreen } = useFullscreen();
   const locales = [...LOCALE_OPTIONS];
   const avatar = computed(() => {
     return userStore.avatar;
@@ -192,11 +217,14 @@
     valueLight: 'light',
     storageKey: 'arco-theme',
     onChanged(dark: boolean) {
-      // overridded default behavior
+      // overridden default behavior
       appStore.toggleTheme(dark);
     },
   });
   const toggleTheme = useToggle(isDark);
+  const handleToggleTheme = () => {
+    toggleTheme();
+  };
   const setVisible = () => {
     appStore.updateSettings({ globalSettings: true });
   };

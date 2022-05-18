@@ -1,7 +1,9 @@
+import { DEFAULT_LAYOUT } from '@/router/constans';
+
 export default {
-  path: 'visualization',
+  path: '/visualization',
   name: 'visualization',
-  component: () => import('@/views/visualization/index.vue'),
+  component: DEFAULT_LAYOUT,
   meta: {
     locale: 'menu.visualization',
     requiresAuth: true,
@@ -11,7 +13,7 @@ export default {
   children: [
     {
       path: 'data-analysis',
-      name: 'dataAnalysis',
+      name: 'DataAnalysis',
       component: () => import('@/views/visualization/data-analysis/index.vue'),
       meta: {
         locale: 'menu.visualization.dataAnalysis',
@@ -21,7 +23,7 @@ export default {
     },
     {
       path: 'multi-dimension-data-analysis',
-      name: 'multiDimensionDataAnalysis',
+      name: 'MultiDimensionDataAnalysis',
       component: () =>
         import('@/views/visualization/multi-dimension-data-analysis/index.vue'),
       meta: {

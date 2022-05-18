@@ -8,7 +8,10 @@
   "scripts": {
     "dev": "vite --config ./config/vite.config.dev.ts",
     "build": "vue-tsc --noEmit && vite build --config ./config/vite.config.prod.ts",
-    "lint-staged": "npx lint-staged"
+    "report": "cross-env REPORT=true npm run build",
+    "preview": "npm run build && vite preview --host",
+    "lint-staged": "npx lint-staged",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": [
@@ -26,7 +29,7 @@
     ]
   },
   "dependencies": {
-    "@arco-design/web-vue": "2.18.0",
+    "@arco-design/web-vue": "^2.26.0",
     "@types/mockjs": "^1.0.4",
     "@vueuse/core": "^7.3.0",
     "axios": "^0.24.0",
@@ -37,10 +40,10 @@
     "nprogress": "^0.2.0",
     "pinia": "^2.0.9",
     "query-string": "^7.0.1",
-    "vue": "^3.2.16",
+    "vue": "^3.2.31",
     "vue-echarts": "^6.0.0",
     "vue-i18n": "^9.2.0-beta.17",
-    "vue-router": "4"
+    "vue-router": "^4.0.14"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
@@ -71,13 +74,14 @@
     "stylelint-config-standard": "^20.0.0",
     "stylelint-order": "^4.1.0",
     "typescript": "^4.5.5",
+    "unplugin-vue-components": "^0.19.3",
     "vite": "^2.6.4",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-eslint": "^1.3.0",
     "vite-plugin-html": "^2.1.2",
     "vite-svg-loader": "^3.1.0",
     "vue-eslint-parser": "^8.0.1",
-    "vue-tsc": "^0.30.5"
+    "vue-tsc": "^0.34.15"
   },
   "engines": {
     "node": ">=14.0.0"

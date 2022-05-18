@@ -1,7 +1,9 @@
+import { DEFAULT_LAYOUT } from '@/router/constans';
+
 export default {
-  path: 'list',
+  path: '/list',
   name: 'list',
-  component: () => import('@/views/list/index.vue'),
+  component: DEFAULT_LAYOUT,
   meta: {
     locale: 'menu.list',
     requiresAuth: true,
@@ -11,7 +13,7 @@ export default {
   children: [
     {
       path: 'search-table', // The midline path complies with SEO specifications
-      name: 'searchTable',
+      name: 'SearchTable',
       component: () => import('@/views/list/search-table/index.vue'),
       meta: {
         locale: 'menu.list.searchTable',
@@ -21,7 +23,7 @@ export default {
     },
     {
       path: 'card',
-      name: 'card',
+      name: 'Card',
       component: () => import('@/views/list/card/index.vue'),
       meta: {
         locale: 'menu.list.cardList',

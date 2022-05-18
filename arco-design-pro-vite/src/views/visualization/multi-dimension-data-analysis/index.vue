@@ -32,12 +32,18 @@
   import ContentPublishingSource from './components/content-publishing-source.vue';
 </script>
 
+<script lang="ts">
+  export default {
+    name: 'MultiDimensionDataAnalysis',
+  };
+</script>
+
 <style scoped lang="less">
   .container {
     padding: 0 20px 20px 20px;
   }
 
-  :deep(.section-titile) {
+  :deep(.section-title) {
     margin-top: 0;
     margin-bottom: 16px;
     font-size: 16px;

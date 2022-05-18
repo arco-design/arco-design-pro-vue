@@ -1,7 +1,9 @@
+import { DEFAULT_LAYOUT } from '@/router/constans';
+
 export default {
-  path: 'form',
+  path: '/form',
   name: 'form',
-  component: () => import('@/views/form/index.vue'),
+  component: DEFAULT_LAYOUT,
   meta: {
     locale: 'menu.form',
     icon: 'icon-settings',
@@ -11,7 +13,7 @@ export default {
   children: [
     {
       path: 'step',
-      name: 'step',
+      name: 'Step',
       component: () => import('@/views/form/step/index.vue'),
       meta: {
         locale: 'menu.form.step',
@@ -21,7 +23,7 @@ export default {
     },
     {
       path: 'group',
-      name: 'group',
+      name: 'Group',
       component: () => import('@/views/form/group/index.vue'),
       meta: {
         locale: 'menu.form.group',

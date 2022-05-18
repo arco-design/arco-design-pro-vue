@@ -1,7 +1,9 @@
+import { DEFAULT_LAYOUT } from '@/router/constans';
+
 export default {
-  path: 'exception',
+  path: '/exception',
   name: 'exception',
-  component: () => import('@/views/exception/index.vue'),
+  component: DEFAULT_LAYOUT,
   meta: {
     locale: 'menu.exception',
     requiresAuth: true,

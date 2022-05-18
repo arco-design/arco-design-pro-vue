@@ -2,8 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router';
 import NProgress from 'nprogress'; // progress bar
 import 'nprogress/nprogress.css';
 
-import PageLayout from '@/layout/page-layout.vue';
-import Login from './routes/modules/login';
 import appRoutes from './routes';
 import createRouteGuard from './guard';
 
@@ -16,13 +14,15 @@ const router = createRouter({
       path: '/',
       redirect: 'login',
     },
-    Login,
     {
-      name: 'root',
-      path: '/',
-      component: PageLayout,
-      children: appRoutes,
+      path: '/login',
+      name: 'login',
+      component: () => import('@/views/login/index.vue'),
+      meta: {
+        requiresAuth: false,
+      },
     },
+    ...appRoutes,
     {
       path: '/:pathMatch(.*)*',
       name: 'notFound',

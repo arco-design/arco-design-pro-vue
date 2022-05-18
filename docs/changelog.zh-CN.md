@@ -1,5 +1,98 @@
 # Arco Design Pro Vue v2.0
 
+## v2.5.0
+
+`2022-05-10`
+
+### 🆕 新增功能
+
+- 新增全屏功能。[#83](https://github.com/arco-design/arco-design-pro-vue/pull/83)
+- 增加打包产物预览命令。
+
+### 💎 功能优化
+
+- 增加 activeMenu 配置。[#76](https://github.com/arco-design/arco-design-pro-vue/issues/76)[#80](https://github.com/arco-design/arco-design-pro-vue/issues/80)
+  
+### 🐛 问题修复
+
+- 隐藏子级菜单项问题。[#76](https://github.com/arco-design/arco-design-pro-vue/issues/76)
+- 更新vue-tsc版本。[#61](https://github.com/arco-design/arco-design-pro-vue/issues/61)
+
+## v2.4.1
+
+`2022-05-10`
+  
+### 🐛 问题修复
+
+- 简易模式菜单文本展示问题
+
+## v2.4.0
+
+`2022-05-10`
+
+### 🆕 新增功能
+
+- 新增服务端菜单配置功能。[#75](https://github.com/arco-design/arco-design-pro-vue/pull/75)
+
+### 💎 功能优化
+
+- 路由层级扁平化，支持页面缓存。[#74](https://github.com/arco-design/arco-design-pro-vue/pull/74)
+  
+### 🐛 问题修复
+
+- arco组件库升级导致的构建TS报错问题。[#74](https://github.com/arco-design/arco-design-pro-vue/pull/74)
+- arco组件库升级导致的文件找不到问题。[#71](https://github.com/arco-design/arco-design-pro-vue/issues/71)
+## v2.3.6
+
+`2022-04-26`
+
+### 🆕 新增功能
+
+- 登录页记住密码功能。
+
+### 💎 功能优化
+
+- 菜单组件增加顶层单项支持。[#59](https://github.com/arco-design/arco-design-pro-vue/pull/59)
+  
+### 🐛 问题修复
+
+- 修复 tab bar 首项点击无效。[#64](https://github.com/arco-design/arco-design-pro-vue/issues/64)
+- 修复 not found 页面跳转问题。
+
+## v2.3.4
+
+`2022-04-12`
+
+### 💎 功能优化
+
+- 登录路由配置调整。[#50](https://github.com/arco-design/arco-design-pro-vue/pull/50)
+
+## v2.3.3
+
+`2022-03-29`
+
+### 🆕 新增功能
+
+- 增加自定义上传案例。
+
+### 🐛 问题修复
+
+- 修复 页面缓存不生效 问题。
+- 修复 tab bar 滚动样式问题。[#44](https://github.com/arco-design/arco-design-pro-vue/pull/44)
+
+## v2.3.2
+
+`2022-03-22`
+
+### 🆕 新增功能
+
+- 增加多页签及页面缓存功能。
+
+### 🐛 问题修复
+
+- 修复 全局设置开关不展示 问题。
+- 避免 @keyup.enter 情况下的多次提交. [#42](https://github.com/arco-design/arco-design-pro-vue/pull/42)
+
 ## v2.3.1
 
 `2022-03-15`

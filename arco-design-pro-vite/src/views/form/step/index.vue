@@ -53,7 +53,7 @@
   const submitForm = async () => {
     setLoading(true);
     try {
-      await submitChannelForm(submitModel.value); // The moack api default success
+      await submitChannelForm(submitModel.value); // The mock api default success
       step.value = 3;
       submitModel.value = {} as UnitChannelModel; // init
     } catch (err) {
@@ -87,7 +87,16 @@
   };
 </script>
 
+<script lang="ts">
+  export default {
+    name: 'Step',
+  };
+</script>
+
 <style scoped lang="less">
+  .container {
+    padding: 0 20px 20px 20px;
+  }
   .wrapper {
     display: flex;
     flex-direction: column;

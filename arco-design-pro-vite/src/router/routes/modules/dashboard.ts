@@ -1,7 +1,9 @@
+import { DEFAULT_LAYOUT } from '@/router/constans';
+
 export default {
-  path: 'dashboard',
+  path: '/dashboard',
   name: 'dashboard',
-  component: () => import('@/views/dashboard/index.vue'),
+  component: DEFAULT_LAYOUT,
   meta: {
     locale: 'menu.dashboard',
     requiresAuth: true,
@@ -11,7 +13,7 @@ export default {
   children: [
     {
       path: 'workplace',
-      name: 'workplace',
+      name: 'Workplace',
       component: () => import('@/views/dashboard/workplace/index.vue'),
       meta: {
         locale: 'menu.dashboard.workplace',
@@ -22,7 +24,7 @@ export default {
     /** simple */
     {
       path: 'monitor',
-      name: 'monitor',
+      name: 'Monitor',
       component: () => import('@/views/dashboard/monitor/index.vue'),
       meta: {
         locale: 'menu.dashboard.monitor',

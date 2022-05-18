@@ -52,7 +52,7 @@
   const count = ref(0);
   const growth = ref(100);
   const isUp = computed(() => growth.value > 50);
-  const chartDatas = ref<any>([]);
+  const chartData = ref<any>([]);
   const { chartOption } = useChartOption(() => {
     return {
       grid: {
@@ -75,7 +75,7 @@
       },
       series: [
         {
-          data: chartDatas.value,
+          data: chartData.value,
           ...(props.chartType === 'bar'
             ? {
                 type: 'bar',
@@ -97,19 +97,19 @@
   const fetchData = async (params: DataChainGrowth) => {
     try {
       const { data } = await queryDataChainGrowth(params);
-      const { chartData } = data;
+      const { chartData: resChartData } = data;
       count.value = data.count;
       growth.value = data.growth;
-      chartData.data.value.forEach((el, idx) => {
+      resChartData.data.value.forEach((el, idx) => {
         if (props.chartType === 'bar') {
-          chartDatas.value.push({
+          chartData.value.push({
             value: el,
             itemStyle: {
               color: idx % 2 ? '#468DFF' : '#86DF6C',
             },
           });
         } else {
-          chartDatas.value.push(el);
+          chartData.value.push(el);
         }
       });
     } catch (err) {

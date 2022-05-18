@@ -130,7 +130,7 @@
   import { NotificationReturn } from '@arco-design/web-vue/es/notification/interface';
 
   const defaultCss =
-    'https://cdn.jsdelivr.net/npm/@arco-themes/vue-arco-pro@0.0.1/css/arco.css';
+    'https://unpkg.com/@arco-themes/vue-arco-pro@0.0.2/css/arco.css';
 
   async function updateCss(url: string) {
     return new Promise((resolve, reject) => {

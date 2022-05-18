@@ -1,7 +1,9 @@
+import { DEFAULT_LAYOUT } from '@/router/constans';
+
 export default {
-  path: 'result',
+  path: '/result',
   name: 'result',
-  component: () => import('@/views/result/index.vue'),
+  component: DEFAULT_LAYOUT,
   meta: {
     locale: 'menu.result',
     icon: 'icon-check-circle',
@@ -11,7 +13,7 @@ export default {
   children: [
     {
       path: 'success',
-      name: 'success',
+      name: 'Success',
       component: () => import('@/views/result/success/index.vue'),
       meta: {
         locale: 'menu.result.success',
@@ -21,7 +23,7 @@ export default {
     },
     {
       path: 'error',
-      name: 'error',
+      name: 'Error',
       component: () => import('@/views/result/error/index.vue'),
       meta: {
         locale: 'menu.result.error',

@@ -1,7 +1,9 @@
+import { DEFAULT_LAYOUT } from '@/router/constans';
+
 export default {
-  path: 'profile',
+  path: '/profile',
   name: 'profile',
-  component: () => import('@/views/profile/index.vue'),
+  component: DEFAULT_LAYOUT,
   meta: {
     locale: 'menu.profile',
     requiresAuth: true,
@@ -11,7 +13,7 @@ export default {
   children: [
     {
       path: 'basic',
-      name: 'basic',
+      name: 'Basic',
       component: () => import('@/views/profile/basic/index.vue'),
       meta: {
         locale: 'menu.profile.basic',

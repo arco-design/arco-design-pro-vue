@@ -6,10 +6,11 @@ declare module 'vue-router' {
     requiresAuth: boolean; // Whether login is required to access the current page (every route must declare)
     icon?: string; // The icon show in the side menu
     locale?: string; // The locale name show in side menu and breadcrumb
-    activeMenu?: string; // if set key, the side menu will highlight you settings when a path is matched
     hideInMenu?: boolean; // If true, it is not displayed in the side menu
-    affix?: true; // if set true, the tag will affix in the tab-bar
-    tagIcon?: string; // if set key, the icon will show in the tab-bar
+    hideChildrenInMenu?: boolean; // if set true, the children are not displayed in the side menu
+    activeMenu?: string; // if set name, the menu will be highlighted according to the name you set
     order?: number; // Sort routing menu items. If set key, the higher the value, the more forward it is
+    noAffix?: boolean; // if set true, the tag will not affix in the tab-bar
+    ignoreCache?: boolean; // if set true, the page will not be cached
   }
 }

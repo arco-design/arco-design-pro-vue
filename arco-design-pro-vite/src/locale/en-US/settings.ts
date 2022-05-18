@@ -8,9 +8,12 @@ export default {
   'settings.menuWidth': 'Menu Width (px)',
   'settings.navbar.theme.toLight': 'Click to use light mode',
   'settings.navbar.theme.toDark': 'Click to use dark mode',
+  'settings.navbar.screen.toFull': 'Click to switch to full screen mode',
+  'settings.navbar.screen.toExit': 'Click to exit the full screen mode',
   'settings.navbar.alerts': 'alerts',
   'settings.navbar.skin': 'Try the theme online',
   'settings.menu': 'Menu',
+  'settings.tabBar': 'Tab Bar',
   'settings.footer': 'Footer',
   'settings.otherSettings': 'Other Settings',
   'settings.colorWeek': 'Color Week',
@@ -22,4 +25,5 @@ export default {
   'settings.close': 'Close',
   'settings.color.tooltip':
     '10 gradient colors generated according to the theme color',
+  'settings.menuFromServer': 'Menu From Server',
 };

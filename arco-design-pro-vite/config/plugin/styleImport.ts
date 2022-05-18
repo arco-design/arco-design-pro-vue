@@ -27,6 +27,7 @@ export default function configStyleImportPlugin() {
             'card-grid',
             'card-meta',
             'collapse-panel',
+            'collapse-item',
             'descriptions-item',
             'list-item',
             'list-item-meta',
@@ -42,6 +43,7 @@ export default function configStyleImportPlugin() {
             'carousel-item',
             'doption',
             'option',
+            'icon',
           ];
           // List of components that need to map imported styles
           // 需要映射引入样式的组件列表
@@ -65,13 +67,13 @@ export default function configStyleImportPlugin() {
             'row': 'grid', // 'grid/row.less'
             'col': 'grid', // 'grid/col.less'
             'avatar-group': 'avatar',
+            'image-preview-group': 'image',
           };
           if (ignoreList.includes(name)) return '';
           // eslint-disable-next-line no-prototype-builtins
           return replaceList.hasOwnProperty(name)
             ? `@arco-design/web-vue/es/${replaceList[name]}/style/css.js`
             : `@arco-design/web-vue/es/${name}/style/css.js`;
-
           // less
           // return `@arco-design/web-vue/es/${name}/style/index.js`;
         },

@@ -51,10 +51,10 @@
             </a-button>
           </template>
           <template v-else>
-            <a-button v-if="open" @click="toggle">
+            <a-button v-if="open" @click="handleToggle">
               {{ closeTxt }}
             </a-button>
-            <a-button v-else-if="!open" type="outline" @click="toggle">
+            <a-button v-else-if="!open" type="outline" @click="handleToggle">
               {{ openTxt }}
             </a-button>
           </template>
@@ -133,6 +133,9 @@
     },
   });
   const [open, toggle] = useToggle(props.defaultValue);
+  const handleToggle = () => {
+    toggle();
+  };
   const isExpires = ref(props.expires);
   const renew = () => {
     isExpires.value = false;
