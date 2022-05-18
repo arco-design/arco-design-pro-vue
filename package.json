@@ -10,8 +10,7 @@
     "gen:cra": "node scripts/cra",
     "gen:vite": "node scripts/vite",
     "gen:vite-simple": "node scripts/vite --simple",
-    "gen:nuxt": "node scripts/nuxt",
-    "prepare": "husky install"
+    "gen:nuxt": "node scripts/nuxt"
   },
   "files": [
     ".arco-cli",
