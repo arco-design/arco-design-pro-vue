@@ -1,6 +1,6 @@
 export interface AppState {
   theme: string;
-  colorWeek: boolean;
+  colorWeak: boolean;
   navbar: boolean;
   menu: boolean;
   hideMenu: boolean;

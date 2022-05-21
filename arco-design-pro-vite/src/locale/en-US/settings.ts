@@ -15,7 +15,7 @@ export default {
   'settings.tabBar': 'Tab Bar',
   'settings.footer': 'Footer',
   'settings.otherSettings': 'Other Settings',
-  'settings.colorWeek': 'Color Week',
+  'settings.colorWeak': 'Color Weak',
   'settings.alertContent':
     'After the configuration is only temporarily effective, if you want to really affect the project, click the "Copy Settings" button below and replace the configuration in settings.json.',
   'settings.copySettings': 'Copy Settings',
