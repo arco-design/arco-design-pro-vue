@@ -4,6 +4,7 @@
   import { useRouter, RouteRecordRaw } from 'vue-router';
   import { useAppStore } from '@/store';
   import { listenerRouteChange } from '@/utils/route-listener';
+  import { openWindow, regexUrl } from '@/utils';
   import useMenuTree from './useMenuTree';
 
   export default defineComponent({
@@ -25,6 +26,11 @@
 
       const selectedKey = ref<string[]>([]);
       const goto = (item: RouteRecordRaw) => {
+        if (regexUrl.test(item.path)) {
+          openWindow(item.path);
+          selectedKey.value = [item.name as string];
+          return;
+        }
         router.push({
           name: item.name,
         });

@@ -13,7 +13,17 @@ export default function useMenuTree() {
     }
     return router
       .getRoutes()
-      .filter((el) => el.meta.requiresAuth && el.meta.order !== undefined);
+      .filter((el) => el.meta.requiresAuth && el.meta.order !== undefined)
+      .map((el) => {
+        const { name, path, meta, redirect, children } = el;
+        return {
+          name,
+          path,
+          meta,
+          redirect,
+          children,
+        };
+      });
   });
   const menuTree = computed(() => {
     const copyRouter = JSON.parse(JSON.stringify(appRoute.value));
