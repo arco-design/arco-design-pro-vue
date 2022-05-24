@@ -43,6 +43,7 @@ export default function configStyleImportPlugin() {
             'carousel-item',
             'doption',
             'option',
+            'Optgroup',
             'icon',
           ];
           // List of components that need to map imported styles
@@ -67,6 +68,7 @@ export default function configStyleImportPlugin() {
             'row': 'grid', // 'grid/row.less'
             'col': 'grid', // 'grid/col.less'
             'avatar-group': 'avatar',
+            'image-preview': 'image',
             'image-preview-group': 'image',
           };
           if (ignoreList.includes(name)) return '';
