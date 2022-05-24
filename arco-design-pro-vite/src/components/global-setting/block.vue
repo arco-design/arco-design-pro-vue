@@ -44,7 +44,7 @@
     key: string;
     value: unknown;
   }) => {
-    if (key === 'colorWeek') {
+    if (key === 'colorWeak') {
       document.body.style.filter = value ? 'invert(80%)' : 'none';
     }
     if (key === 'menuFromServer' && value) {
