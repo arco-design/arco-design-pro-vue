@@ -57,9 +57,13 @@
       type: 'number',
     },
   ]);
-  const othersOpts = [
-    { name: 'settings.colorWeek', key: 'colorWeek', defaultVal: false },
-  ];
+  const othersOpts = computed(() => [
+    {
+      name: 'settings.colorWeak',
+      key: 'colorWeak',
+      defaultVal: appStore.colorWeak,
+    },
+  ]);
 
   const cancel = () => {
     appStore.updateSettings({ globalSettings: false });
@@ -79,7 +83,7 @@
   .fixed-settings {
     position: fixed;
     top: 280px;
-    right: 0px;
+    right: 0;
 
     svg {
       font-size: 18px;

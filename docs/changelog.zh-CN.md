@@ -1,8 +1,34 @@
 # Arco Design Pro Vue v2.0
 
+## v2.5.2
+
+`2022-05-31`
+
+### 💎 功能优化
+
+- 一级菜单外链调整及DEMO。[#102](https://github.com/arco-design/arco-design-pro-vue/pull/102)
+- 页面跳转，自动打开对应父级菜单。[#97](https://github.com/arco-design/arco-design-pro-vue/pull/97)
+  
+### 🐛 问题修复
+
+- 组件库升级导致的构建报错。[#101](https://github.com/arco-design/arco-design-pro-vue/pull/101)
+
+## v2.5.1
+
+`2022-05-24`
+
+### 💎 功能优化
+
+- 菜单支持外链。[#83](https://github.com/arco-design/arco-design-pro-vue/pull/91)
+  
+### 🐛 问题修复
+
+- 修复色弱模式选项初始值始终为 false 的问题。[#87](https://github.com/arco-design/arco-design-pro-vue/pull/87)
+- 切换角色报错问题。[#84](https://github.com/arco-design/arco-design-pro-vue/issues/84)
+
 ## v2.5.0
 
-`2022-05-10`
+`2022-05-17`
 
 ### 🆕 新增功能
 

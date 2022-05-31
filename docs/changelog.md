@@ -1,8 +1,34 @@
 # Arco Design Pro Vue v2.0
 
+## v2.5.2
+
+`2022-05-31`
+
+### 💎 Optimization
+
+- First-level menu chain adjustment and DEMO. [#102](https://github.com/arco-design/arco-design-pro-vue/pull/102)
+- Page jump, automatically open the corresponding parent menu.[#97](https://github.com/arco-design/arco-design-pro-vue/pull/97)
+  
+### 🐛 Bugfix
+
+- Build errors caused by component library upgrades.[#101](https://github.com/arco-design/arco-design-pro-vue/pull/101)
+
+## v2.5.1
+
+`2022-05-24`
+
+### 💎 Optimization
+
+- The menu supports external links. [#83](https://github.com/arco-design/arco-design-pro-vue/pull/91)
+  
+### 🐛 Bugfix
+
+- fix the problem that color weak switch's default value is always false. [#87](https://github.com/arco-design/arco-design-pro-vue/pull/87)
+- Switch role error. [#84](https://github.com/arco-design/arco-design-pro-vue/issues/84)
+
 ## v2.5.0
 
-`2022-05-10`
+`2022-05-17`
 
 ### 🆕 Feature
 

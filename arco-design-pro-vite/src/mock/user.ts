@@ -70,7 +70,7 @@ setupMock({
     Mock.mock(new RegExp('/api/user/menu'), () => {
       const menuList = [
         {
-          path: 'dashboard',
+          path: '/dashboard',
           name: 'dashboard',
           meta: {
             locale: 'menu.server.dashboard',
@@ -94,6 +94,14 @@ setupMock({
                 locale: 'menu.server.monitor',
                 requiresAuth: true,
                 roles: ['admin'],
+              },
+            },
+            {
+              path: 'https://arco.design',
+              name: 'arcoWebsite',
+              meta: {
+                locale: 'menu.arcoWebsite',
+                requiresAuth: true,
               },
             },
           ],

@@ -1,29 +1,17 @@
 import { computed } from 'vue';
-import { useRouter, RouteRecordRaw, RouteRecordNormalized } from 'vue-router';
+import { RouteRecordRaw, RouteRecordNormalized } from 'vue-router';
 import usePermission from '@/hooks/permission';
 import { useAppStore } from '@/store';
+import appClientMenus from '@/router/appMenus';
 
 export default function useMenuTree() {
-  const router = useRouter();
   const permission = usePermission();
   const appStore = useAppStore();
   const appRoute = computed(() => {
     if (appStore.menuFromServer) {
-      return appStore.appServerMenuConfig;
+      return appStore.appAsyncMenus;
     }
-    return router
-      .getRoutes()
-      .filter((el) => el.meta.requiresAuth && el.meta.order !== undefined)
-      .map((el) => {
-        const { name, path, meta, redirect, children } = el;
-        return {
-          name,
-          path,
-          meta,
-          redirect,
-          children,
-        };
-      });
+    return appClientMenus;
   });
   const menuTree = computed(() => {
     const copyRouter = JSON.parse(JSON.stringify(appRoute.value));

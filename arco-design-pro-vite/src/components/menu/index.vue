@@ -4,6 +4,7 @@
   import { useRouter, RouteRecordRaw } from 'vue-router';
   import { useAppStore } from '@/store';
   import { listenerRouteChange } from '@/utils/route-listener';
+  import { openWindow, regexUrl } from '@/utils';
   import useMenuTree from './useMenuTree';
 
   export default defineComponent({
@@ -23,19 +24,32 @@
         },
       });
 
+      const openKeys = ref<string[]>([]);
+
       const selectedKey = ref<string[]>([]);
       const goto = (item: RouteRecordRaw) => {
+        if (regexUrl.test(item.path)) {
+          openWindow(item.path);
+          selectedKey.value = [item.name as string];
+          return;
+        }
         router.push({
           name: item.name,
         });
       };
       listenerRouteChange((newRoute) => {
         if (newRoute.meta.requiresAuth && !newRoute.meta.hideInMenu) {
+          const { matched } = newRoute;
+          if (matched.length > 1) {
+            matched.slice(0, matched.length - 1).forEach(({ name }) => {
+              if (!openKeys.value.includes(name as string))
+                openKeys.value.push(name as string);
+            });
+          }
           if (newRoute.meta.activeMenu) {
             selectedKey.value = [newRoute.meta.activeMenu];
           } else {
-            const key = newRoute.matched[newRoute.matched.length - 1]
-              ?.name as string;
+            const key = matched[matched.length - 1]?.name as string;
             selectedKey.value = [key];
           }
         }
@@ -84,6 +98,7 @@
       return () => (
         <a-menu
           v-model:collapsed={collapsed.value}
+          v-model:open-keys={openKeys.value}
           show-collapse-button={appStore.device !== 'mobile'}
           auto-open={false}
           selected-keys={selectedKey.value}

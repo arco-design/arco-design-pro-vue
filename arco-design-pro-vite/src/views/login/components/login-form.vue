@@ -72,7 +72,7 @@
   import { useStorage } from '@vueuse/core';
   import { useUserStore } from '@/store';
   import useLoading from '@/hooks/loading';
-  import { LoginData } from '@/api/user';
+  import type { LoginData } from '@/api/user';
 
   const router = useRouter();
   const { t } = useI18n();
@@ -95,12 +95,12 @@
     values,
   }: {
     errors: Record<string, ValidatedError> | undefined;
-    values: LoginData;
+    values: Record<string, any>;
   }) => {
     if (!errors) {
       setLoading(true);
       try {
-        await userStore.login(values);
+        await userStore.login(values as LoginData);
         const { redirect, ...othersQuery } = router.currentRoute.value.query;
         router.push({
           name: (redirect as string) || 'Workplace',
