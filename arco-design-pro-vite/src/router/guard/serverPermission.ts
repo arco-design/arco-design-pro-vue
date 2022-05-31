@@ -17,7 +17,7 @@ export default function setupServerPermissionGuard(router: Router) {
     // Refine the permission logic from the server's menu configuration as needed
     const appStore = useAppStore();
     if (appStore.menuFromServer) {
-      const serverMenuConfig = [...appStore.appServerMenuConfig, ...whiteList];
+      const serverMenuConfig = [...appStore.appAsyncMenus, ...whiteList];
       let exist = false;
       while (serverMenuConfig.length) {
         const element = serverMenuConfig.shift();
