@@ -1,5 +1,18 @@
 # Arco Design Pro Vue v2.0
 
+## v2.5.2
+
+`2022-05-31`
+
+### 💎 功能优化
+
+- 一级菜单外链调整及DEMO。[#102](https://github.com/arco-design/arco-design-pro-vue/pull/102)
+- 页面跳转，自动打开对应父级菜单。[#97](https://github.com/arco-design/arco-design-pro-vue/pull/97)
+  
+### 🐛 问题修复
+
+- 组件库升级导致的构建报错。[#101](https://github.com/arco-design/arco-design-pro-vue/pull/101)
+
 ## v2.5.1
 
 `2022-05-24`

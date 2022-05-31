@@ -1,5 +1,18 @@
 # Arco Design Pro Vue v2.0
 
+## v2.5.2
+
+`2022-05-31`
+
+### 💎 Optimization
+
+- First-level menu chain adjustment and DEMO. [#102](https://github.com/arco-design/arco-design-pro-vue/pull/102)
+- Page jump, automatically open the corresponding parent menu.[#97](https://github.com/arco-design/arco-design-pro-vue/pull/97)
+  
+### 🐛 Bugfix
+
+- Build errors caused by component library upgrades.[#101](https://github.com/arco-design/arco-design-pro-vue/pull/101)
+
 ## v2.5.1
 
 `2022-05-24`
