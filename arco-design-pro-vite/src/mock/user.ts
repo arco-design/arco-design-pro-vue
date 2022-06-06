@@ -66,7 +66,7 @@ setupMock({
       return successResponseWrap(null);
     });
 
-    // 登出
+    // 获得服务端下发的用户菜单
     Mock.mock(new RegExp('/api/user/menu'), () => {
       const menuList = [
         {
