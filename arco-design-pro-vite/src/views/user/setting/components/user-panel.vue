@@ -52,7 +52,7 @@
 
 <script lang="ts" setup>
   import { ref } from 'vue';
-  import {
+  import type {
     FileItem,
     RequestOption,
   } from '@arco-design/web-vue/es/upload/interfaces';
