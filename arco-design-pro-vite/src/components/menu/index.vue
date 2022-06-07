@@ -1,7 +1,7 @@
 <script lang="tsx">
   import { defineComponent, ref, h, compile, computed } from 'vue';
   import { useI18n } from 'vue-i18n';
-  import { useRouter, RouteRecordRaw } from 'vue-router';
+  import { useRoute, useRouter, RouteRecordRaw } from 'vue-router';
   import { useAppStore } from '@/store';
   import { listenerRouteChange } from '@/utils/route-listener';
   import { openWindow, regexUrl } from '@/utils';
@@ -13,6 +13,7 @@
       const { t } = useI18n();
       const appStore = useAppStore();
       const router = useRouter();
+      const route = useRoute();
       const { menuTree } = useMenuTree();
       const collapsed = computed({
         get() {
@@ -30,6 +31,10 @@
       const goto = (item: RouteRecordRaw) => {
         if (regexUrl.test(item.path)) {
           openWindow(item.path);
+          selectedKey.value = [item.name as string];
+          return;
+        }
+        if (route.name === item.name) {
           selectedKey.value = [item.name as string];
           return;
         }
