@@ -1,5 +1,18 @@
 # Arco Design Pro Vue v2.0
 
+## v2.5.3
+
+`2022-06-07`
+
+### 💎 功能优化
+
+- 调整ts接口导入方式。[#110](https://github.com/arco-design/arco-design-pro-vue/pull/110)  
+
+### 🐛 问题修复
+
+- 点击外链后菜单项无法点击问题。[#111](https://github.com/arco-design/arco-design-pro-vue/pull/111)
+- 菜单展开及配置问题修复。[#114](https://github.com/arco-design/arco-design-pro-vue/pull/114)
+
 ## v2.5.2
 
 `2022-05-31`

@@ -1,5 +1,18 @@
 # Arco Design Pro Vue v2.0
 
+## v2.5.3
+
+`2022-06-07`
+
+### 💎 Optimization
+
+- Adjust the import method of the ts interface.[#110](https://github.com/arco-design/arco-design-pro-vue/pull/110)  
+
+### 🐛 Bugfix
+
+- The problem that the menu item cannot be clicked after clicking the external link.[#111](https://github.com/arco-design/arco-design-pro-vue/pull/111)
+- Menu expansion and configuration issues fixed.[#114](https://github.com/arco-design/arco-design-pro-vue/pull/114)
+
 ## v2.5.2
 
 `2022-05-31`
