@@ -1,5 +1,13 @@
 # Arco Design Pro Vue v2.0
 
+## v2.5.4
+
+`2022-06-14` 
+### 🐛 Bugfix
+
+- The server menu function does not work. [#121](https://github.com/arco-design/arco-design-pro-vue/pull/121)
+- Variable naming correction. [#122](https://github.com/arco-design/arco-design-pro-vue/pull/122)
+
 ## v2.5.3
 
 `2022-06-07`
