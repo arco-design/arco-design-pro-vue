@@ -2,7 +2,7 @@
   <VCharts
     v-if="renderChart"
     :option="options"
-    :autoresize="autoresize"
+    :auto-resize="autoResize"
     :style="{ width, height }"
   />
 </template>
@@ -19,7 +19,7 @@
         return {};
       },
     },
-    autoresize: {
+    autoResize: {
       type: Boolean,
       default: true,
     },

@@ -1,4 +1,4 @@
-import { DEFAULT_LAYOUT } from '@/router/constans';
+import { DEFAULT_LAYOUT } from '@/router/constants';
 
 export default {
   path: '/profile',

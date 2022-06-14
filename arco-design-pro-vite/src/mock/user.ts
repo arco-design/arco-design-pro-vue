@@ -61,12 +61,13 @@ setupMock({
       }
       return failResponseWrap(null, '账号或者密码错误', 50000);
     });
+
     // 登出
     Mock.mock(new RegExp('/api/user/logout'), () => {
       return successResponseWrap(null);
     });
 
-    // 登出
+    // 用户的服务端菜单
     Mock.mock(new RegExp('/api/user/menu'), () => {
       const menuList = [
         {
