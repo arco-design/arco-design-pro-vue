@@ -45,28 +45,31 @@ const useAppStore = defineStore('app', {
       this.hideMenu = value;
     },
     async fetchServerMenuConfig() {
-      let notifiInstance: NotificationReturn | null = null;
+      let notifyInstance: NotificationReturn | null = null;
       try {
-        notifiInstance = Notification.info({
+        notifyInstance = Notification.info({
           id: 'menuNotice', // Keep the instance id the same
           content: 'loading',
           closable: true,
         });
         const { data } = await getMenuList();
         this.serverMenu = data;
-        notifiInstance = Notification.success({
+        notifyInstance = Notification.success({
           id: 'menuNotice',
           content: 'success',
           closable: true,
         });
       } catch (error) {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        notifiInstance = Notification.error({
+        notifyInstance = Notification.error({
           id: 'menuNotice',
           content: 'error',
           closable: true,
         });
       }
+    },
+    clearServerMenu() {
+      this.serverMenu = [];
     },
   },
 });

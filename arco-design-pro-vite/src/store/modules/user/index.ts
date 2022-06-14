@@ -8,6 +8,7 @@ import {
 import { setToken, clearToken } from '@/utils/auth';
 import { removeRouteListener } from '@/utils/route-listener';
 import { UserState } from './types';
+import useAppStore from '../app';
 
 const useUserStore = defineStore('user', {
   state: (): UserState => ({
@@ -69,14 +70,20 @@ const useUserStore = defineStore('user', {
         throw err;
       }
     },
-
-    // Logout
-    async logout() {
-      await userLogout();
-
+    logoutCallBack() {
+      const appStore = useAppStore();
       this.resetInfo();
       clearToken();
       removeRouteListener();
+      appStore.clearServerMenu();
+    },
+    // Logout
+    async logout() {
+      try {
+        await userLogout();
+      } finally {
+        this.logoutCallBack();
+      }
     },
   },
 });
