@@ -4,7 +4,7 @@ import NProgress from 'nprogress'; // progress bar
 import usePermission from '@/hooks/permission';
 import { useUserStore, useAppStore } from '@/store';
 import { appRoutes } from '../routes';
-import { WHITE_LIST, NOT_FOUND } from '../constans';
+import { WHITE_LIST, NOT_FOUND } from '../constants';
 
 export default function setupPermissionGuard(router: Router) {
   router.beforeEach(async (to, from, next) => {
@@ -27,7 +27,7 @@ export default function setupPermissionGuard(router: Router) {
       const serverMenuConfig = [...appStore.appAsyncMenus, ...WHITE_LIST];
 
       let exist = false;
-      while (serverMenuConfig.length) {
+      while (serverMenuConfig.length && !exist) {
         const element = serverMenuConfig.shift();
         if (element?.name === to.name) exist = true;
 
