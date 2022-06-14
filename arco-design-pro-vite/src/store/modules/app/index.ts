@@ -68,6 +68,9 @@ const useAppStore = defineStore('app', {
         });
       }
     },
+    clearServerMenu() {
+      this.serverMenu = [];
+    },
   },
 });
 
