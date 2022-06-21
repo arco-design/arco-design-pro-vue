@@ -1,5 +1,13 @@
 # Arco Design Pro Vue v2.0
 
+## v2.5.5
+
+`2022-06-21` 
+### 🐛 Bugfix
+
+- Multi-tab Tag style adjustment.
+- Remove redundant mock data.
+
 ## v2.5.4
 
 `2022-06-14` 
