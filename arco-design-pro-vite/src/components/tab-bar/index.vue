@@ -95,6 +95,8 @@
           overflow-x: auto;
 
           :deep(.arco-tag) {
+            display: inline-flex;
+            align-items: center;
             margin-right: 6px;
             cursor: pointer;
             &:first-child {
