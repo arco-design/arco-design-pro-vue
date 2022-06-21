@@ -89,15 +89,6 @@ setupMock({
               },
             },
             {
-              path: 'monitor',
-              name: 'Monitor',
-              meta: {
-                locale: 'menu.server.monitor',
-                requiresAuth: true,
-                roles: ['admin'],
-              },
-            },
-            {
               path: 'https://arco.design',
               name: 'arcoWebsite',
               meta: {
