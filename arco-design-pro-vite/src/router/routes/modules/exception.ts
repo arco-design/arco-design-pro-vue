@@ -1,6 +1,7 @@
 import { DEFAULT_LAYOUT } from '@/router/constants';
+import { AppRouteRecordRaw } from '../types';
 
-export default {
+const EXCEPTION: AppRouteRecordRaw = {
   path: '/exception',
   name: 'exception',
   component: DEFAULT_LAYOUT,
@@ -43,3 +44,5 @@ export default {
     },
   ],
 };
+
+export default EXCEPTION;

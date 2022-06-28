@@ -1,6 +1,7 @@
 import { DEFAULT_LAYOUT } from '@/router/constants';
+import { AppRouteRecordRaw } from '../types';
 
-export default {
+const RESULT: AppRouteRecordRaw = {
   path: '/result',
   name: 'result',
   component: DEFAULT_LAYOUT,
@@ -33,3 +34,5 @@ export default {
     },
   ],
 };
+
+export default RESULT;
