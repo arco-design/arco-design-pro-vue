@@ -1,5 +1,13 @@
 # Arco Design Pro Vue v2.0
 
+## v2.5.6
+
+`2022-06-28` 
+
+### 💎 Optimization
+
+- Improve the routing configuration item Typescript type definition.
+
 ## v2.5.5
 
 `2022-06-21` 
