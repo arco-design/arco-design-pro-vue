@@ -21,3 +21,13 @@ export const appExternalRoutes: RouteRecordNormalized[] = formatModules(
   externalModules,
   []
 );
+
+// Avoid circular references, put here
+
+export const DEFAULT_ROUTE_NAME = 'Workplace';
+
+export const DEFAULT_ROUTE = {
+  title: 'menu.dashboard.workplace',
+  name: DEFAULT_ROUTE_NAME,
+  fullPath: '/dashboard/workplace',
+};

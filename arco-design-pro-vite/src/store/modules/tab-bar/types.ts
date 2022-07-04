@@ -3,6 +3,7 @@ export interface TagProps {
   name: string;
   fullPath: string;
   query?: any;
+  ignoreCache?: boolean;
 }
 
 export interface TabBarState {
