@@ -8,7 +8,7 @@
               v-for="(tag, index) in tagList"
               :key="tag.fullPath"
               :index="index"
-              :render-data="tag"
+              :item-data="tag"
             />
           </div>
         </div>

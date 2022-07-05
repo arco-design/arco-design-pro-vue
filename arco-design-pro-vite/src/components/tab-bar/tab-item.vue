@@ -2,15 +2,15 @@
   <a-dropdown trigger="contextMenu" @select="actionSelect">
     <span
       class="arco-tag arco-tag-size-medium arco-tag-checked"
-      :class="{ 'link-activated': renderData.fullPath === $route.fullPath }"
-      @click="goto(renderData)"
+      :class="{ 'link-activated': itemData.fullPath === $route.fullPath }"
+      @click="goto(itemData)"
     >
       <span class="tag-link">
-        {{ $t(renderData.title) }}
+        {{ $t(itemData.title) }}
       </span>
       <span
         class="arco-icon-hover arco-tag-icon-hover arco-icon-hover-size-medium arco-tag-close-btn"
-        @click.stop="tagClose(renderData, index)"
+        @click.stop="tagClose(itemData, index)"
       >
         <icon-close />
       </span>
@@ -57,7 +57,7 @@
   }
 
   const props = defineProps({
-    renderData: {
+    itemData: {
       type: Object as PropType<TagProps>,
       default() {
         return [];
@@ -94,33 +94,42 @@
 
   const tagClose = (tag: TagProps, idx: number) => {
     tabBarStore.deleteTag(idx, tag);
-    if (props.renderData.fullPath === route.fullPath) {
+    if (props.itemData.fullPath === route.fullPath) {
       const latest = tagList.value[idx - 1]; // 获取队列的前一个tab
       router.push({ name: latest.name });
     }
   };
 
+  const findCurrentRouteIndex = () => {
+    return tagList.value.findIndex((el) => el.fullPath === route.fullPath);
+  };
   const actionSelect = (value: any) => {
-    const { renderData, index } = props;
+    const { itemData, index } = props;
     const copyTagList = [...tagList.value];
     if (value === Eaction.current) {
-      tagClose(renderData, index);
+      tagClose(itemData, index);
     } else if (value === Eaction.left) {
+      const currentRouteIdx = findCurrentRouteIndex();
       copyTagList.splice(1, props.index - 1);
 
       tabBarStore.freshTabList(copyTagList);
-      router.push({ name: renderData.name });
+      if (currentRouteIdx < index) {
+        router.push({ name: itemData.name });
+      }
     } else if (value === Eaction.right) {
-      copyTagList.splice(props.index);
+      const currentRouteIdx = findCurrentRouteIndex();
+      copyTagList.splice(props.index + 1);
 
       tabBarStore.freshTabList(copyTagList);
-      router.push({ name: renderData.name });
+      if (currentRouteIdx > index) {
+        router.push({ name: itemData.name });
+      }
     } else if (value === Eaction.others) {
       const filterList = tagList.value.filter((el, idx) => {
         return idx === 0 || idx === props.index;
       });
       tabBarStore.freshTabList(filterList);
-      router.push({ name: renderData.name });
+      router.push({ name: itemData.name });
     } else {
       tabBarStore.resetTabList();
       router.push({ name: DEFAULT_ROUTE_NAME });
