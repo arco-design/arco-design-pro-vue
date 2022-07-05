@@ -1,5 +1,5 @@
 import { mergeConfig } from 'vite';
-import baseConig from './vite.config.base';
+import baseConfig from './vite.config.base';
 
 export default mergeConfig(
   {
@@ -17,5 +17,5 @@ export default mergeConfig(
       chunkSizeWarningLimit: 2000,
     },
   },
-  baseConig
+  baseConfig
 );

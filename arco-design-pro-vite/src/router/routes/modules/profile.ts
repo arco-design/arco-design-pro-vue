@@ -1,6 +1,7 @@
-import { DEFAULT_LAYOUT } from '@/router/constans';
+import { DEFAULT_LAYOUT } from '@/router/constants';
+import { AppRouteRecordRaw } from '../types';
 
-export default {
+const PROFILE: AppRouteRecordRaw = {
   path: '/profile',
   name: 'profile',
   component: DEFAULT_LAYOUT,
@@ -23,3 +24,5 @@ export default {
     },
   ],
 };
+
+export default PROFILE;

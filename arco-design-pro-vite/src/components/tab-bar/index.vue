@@ -4,23 +4,12 @@
       <div class="tab-bar-box">
         <div class="tab-bar-scroll">
           <div class="tags-wrap">
-            <span
+            <tab-item
               v-for="(tag, index) in tagList"
               :key="tag.fullPath"
-              class="arco-tag arco-tag-size-medium arco-tag-checked"
-              :class="{ 'link-activated': tag.fullPath === $route.fullPath }"
-              @click="goto(tag)"
-            >
-              <span class="tag-link">
-                {{ $t(tag.title) }}
-              </span>
-              <span
-                class="arco-icon-hover arco-tag-icon-hover arco-icon-hover-size-medium arco-tag-close-btn"
-                @click.stop="tagClose(tag, index)"
-              >
-                <icon-close />
-              </span>
-            </span>
+              :index="index"
+              :item-data="tag"
+            />
           </div>
         </div>
         <div class="tag-bar-operation"></div>
@@ -31,16 +20,14 @@
 
 <script lang="ts" setup>
   import { ref, computed, watch } from 'vue';
-  import { useRouter } from 'vue-router';
   import type { RouteLocationNormalized } from 'vue-router';
   import { listenerRouteChange } from '@/utils/route-listener';
   import { useAppStore, useTabBarStore } from '@/store';
-  import type { TagProps } from '@/store/modules/tab-bar/types';
+  import tabItem from './tab-item.vue';
 
   const appStore = useAppStore();
   const tabBarStore = useTabBarStore();
 
-  const router = useRouter();
   const affixRef = ref();
   const tagList = computed(() => {
     return tabBarStore.getTabList;
@@ -63,16 +50,6 @@
       tabBarStore.updateTabList(route);
     }
   }, true);
-  const tagClose = (tag: TagProps, idx: number) => {
-    tabBarStore.deleteTag(idx, tag);
-    if (idx === tagList.value.length) {
-      const latest = tagList.value[tagList.value.length - 1];
-      router.push({ name: latest.name });
-    }
-  };
-  const goto = (tag: TagProps) => {
-    router.push({ ...tag });
-  };
 </script>
 
 <style scoped lang="less">
@@ -90,11 +67,13 @@
         overflow: hidden;
         .tags-wrap {
           padding: 4px 0;
-          height: 42px;
+          height: 48px;
           white-space: nowrap;
           overflow-x: auto;
 
           :deep(.arco-tag) {
+            display: inline-flex;
+            align-items: center;
             margin-right: 6px;
             cursor: pointer;
             &:first-child {
@@ -111,24 +90,5 @@
       width: 100px;
       height: 32px;
     }
-  }
-
-  .tag-link {
-    color: var(--color-text-2);
-    text-decoration: none;
-  }
-  .link-activated {
-    color: rgb(var(--link-6));
-    .tag-link {
-      color: rgb(var(--link-6));
-    }
-    & + .arco-tag-close-btn {
-      color: rgb(var(--link-6));
-    }
-  }
-  :deep(.arco-affix) {
-    z-index: 90;
-    background-color: var(--color-bg-2);
-    overflow-x: auto;
   }
 </style>

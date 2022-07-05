@@ -1,7 +1,8 @@
 <script lang="tsx">
   import { defineComponent, ref, h, compile, computed } from 'vue';
   import { useI18n } from 'vue-i18n';
-  import { useRouter, RouteRecordRaw } from 'vue-router';
+  import { useRoute, useRouter, RouteRecordRaw } from 'vue-router';
+  import type { RouteMeta } from 'vue-router';
   import { useAppStore } from '@/store';
   import { listenerRouteChange } from '@/utils/route-listener';
   import { openWindow, regexUrl } from '@/utils';
@@ -13,6 +14,7 @@
       const { t } = useI18n();
       const appStore = useAppStore();
       const router = useRouter();
+      const route = useRoute();
       const { menuTree } = useMenuTree();
       const collapsed = computed({
         get() {
@@ -25,33 +27,64 @@
       });
 
       const openKeys = ref<string[]>([]);
-
       const selectedKey = ref<string[]>([]);
+
       const goto = (item: RouteRecordRaw) => {
+        // Open external link
         if (regexUrl.test(item.path)) {
           openWindow(item.path);
           selectedKey.value = [item.name as string];
           return;
         }
+        // Eliminate external link side effects
+        const { hideInMenu, activeMenu } = item.meta as RouteMeta;
+        if (route.name === item.name && !hideInMenu && !activeMenu) {
+          selectedKey.value = [item.name as string];
+          return;
+        }
+        // Trigger router change
         router.push({
           name: item.name,
         });
       };
-      listenerRouteChange((newRoute) => {
-        if (newRoute.meta.requiresAuth && !newRoute.meta.hideInMenu) {
-          const { matched } = newRoute;
-          if (matched.length > 1) {
-            matched.slice(0, matched.length - 1).forEach(({ name }) => {
-              if (!openKeys.value.includes(name as string))
-                openKeys.value.push(name as string);
+      const findMenuOpenKeys = (name: string) => {
+        const result: string[] = [];
+        let isFind = false;
+        const backtrack = (
+          item: RouteRecordRaw,
+          keys: string[],
+          target: string
+        ) => {
+          if (item.name === target) {
+            isFind = true;
+            result.push(...keys, item.name as string);
+            return;
+          }
+          if (item.children?.length) {
+            item.children.forEach((el) => {
+              backtrack(el, [...keys], target);
             });
           }
-          if (newRoute.meta.activeMenu) {
-            selectedKey.value = [newRoute.meta.activeMenu];
-          } else {
-            const key = matched[matched.length - 1]?.name as string;
-            selectedKey.value = [key];
-          }
+        };
+        menuTree.value.forEach((el: RouteRecordRaw) => {
+          if (isFind) return; // Performance optimization
+          backtrack(el, [el.name as string], name);
+        });
+        return result;
+      };
+      listenerRouteChange((newRoute) => {
+        const { requiresAuth, activeMenu, hideInMenu } = newRoute.meta;
+        if (requiresAuth && (!hideInMenu || activeMenu)) {
+          const menuOpenKeys = findMenuOpenKeys(
+            (activeMenu || newRoute.name) as string
+          );
+
+          const keySet = new Set([...menuOpenKeys, ...openKeys.value]);
+          openKeys.value = [...keySet];
+
+          selectedKey.value = [
+            activeMenu || menuOpenKeys[menuOpenKeys.length - 1],
+          ];
         }
       }, true);
       const setCollapse = (val: boolean) => {

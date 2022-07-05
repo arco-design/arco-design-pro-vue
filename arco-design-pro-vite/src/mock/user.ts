@@ -61,12 +61,13 @@ setupMock({
       }
       return failResponseWrap(null, '账号或者密码错误', 50000);
     });
+
     // 登出
     Mock.mock(new RegExp('/api/user/logout'), () => {
       return successResponseWrap(null);
     });
 
-    // 登出
+    // 用户的服务端菜单
     Mock.mock(new RegExp('/api/user/menu'), () => {
       const menuList = [
         {
@@ -85,15 +86,6 @@ setupMock({
               meta: {
                 locale: 'menu.server.workplace',
                 requiresAuth: true,
-              },
-            },
-            {
-              path: 'monitor',
-              name: 'Monitor',
-              meta: {
-                locale: 'menu.server.monitor',
-                requiresAuth: true,
-                roles: ['admin'],
               },
             },
             {

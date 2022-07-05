@@ -1,5 +1,50 @@
 # Arco Design Pro Vue v2.0
 
+## v2.5.7
+
+`2022-07-05` 
+
+### 💎 Optimization
+
+- Multi-tab optimization, add left-click operation.
+
+## v2.5.6
+
+`2022-06-28` 
+
+### 💎 Optimization
+
+- Improve the routing configuration item Typescript type definition.
+
+## v2.5.5
+
+`2022-06-21` 
+### 🐛 Bugfix
+
+- Multi-tab Tag style adjustment.
+- Remove redundant mock data.
+
+## v2.5.4
+
+`2022-06-14` 
+### 🐛 Bugfix
+
+- The server menu function does not work. [#121](https://github.com/arco-design/arco-design-pro-vue/pull/121)
+- Variable naming correction. [#122](https://github.com/arco-design/arco-design-pro-vue/pull/122)
+
+## v2.5.3
+
+`2022-06-07`
+
+### 💎 Optimization
+
+- Adjust the import method of the ts interface.[#110](https://github.com/arco-design/arco-design-pro-vue/pull/110)  
+
+### 🐛 Bugfix
+
+- The problem that the menu item cannot be clicked after clicking the external link.[#111](https://github.com/arco-design/arco-design-pro-vue/pull/111)
+- Menu expansion and configuration issues fixed.[#114](https://github.com/arco-design/arco-design-pro-vue/pull/114)
+
 ## v2.5.2
 
 `2022-05-31`

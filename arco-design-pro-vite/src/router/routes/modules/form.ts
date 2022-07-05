@@ -1,6 +1,7 @@
-import { DEFAULT_LAYOUT } from '@/router/constans';
+import { DEFAULT_LAYOUT } from '@/router/constants';
+import { AppRouteRecordRaw } from '../types';
 
-export default {
+const FORM: AppRouteRecordRaw = {
   path: '/form',
   name: 'form',
   component: DEFAULT_LAYOUT,
@@ -33,3 +34,5 @@ export default {
     },
   ],
 };
+
+export default FORM;

@@ -43,7 +43,7 @@ export default function configStyleImportPlugin() {
             'carousel-item',
             'doption',
             'option',
-            'Optgroup',
+            'optgroup',
             'icon',
           ];
           // List of components that need to map imported styles
