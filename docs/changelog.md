@@ -1,5 +1,13 @@
 # Arco Design Pro Vue v2.0
 
+## v2.5.7
+
+`2022-07-05` 
+
+### 💎 Optimization
+
+- Multi-tab optimization, add left-click operation.
+
 ## v2.5.6
 
 `2022-06-28` 

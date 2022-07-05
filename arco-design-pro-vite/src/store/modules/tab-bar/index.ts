@@ -1,5 +1,6 @@
 import type { RouteLocationNormalized } from 'vue-router';
 import { defineStore } from 'pinia';
+import { DEFAULT_ROUTE, DEFAULT_ROUTE_NAME } from '@/router/routes/index';
 import { TabBarState, TagProps } from './types';
 
 const formatTag = (route: RouteLocationNormalized): TagProps => {
@@ -9,20 +10,14 @@ const formatTag = (route: RouteLocationNormalized): TagProps => {
     name: String(name),
     fullPath,
     query,
+    ignoreCache: meta.ignoreCache,
   };
 };
 
 const useAppStore = defineStore('tabBar', {
   state: (): TabBarState => ({
-    cacheTabList: new Set(),
-    tagList: [
-      // Set the first element dynamically as needed
-      {
-        title: 'menu.dashboard.workplace',
-        name: 'Workplace',
-        fullPath: '/dashboard/workplace',
-      },
-    ],
+    cacheTabList: new Set([DEFAULT_ROUTE_NAME]),
+    tagList: [DEFAULT_ROUTE],
   }),
 
   getters: {
@@ -44,6 +39,20 @@ const useAppStore = defineStore('tabBar', {
     deleteTag(idx: number, tag: TagProps) {
       this.tagList.splice(idx, 1);
       this.cacheTabList.delete(tag.name);
+    },
+    freshTabList(tags: TagProps[]) {
+      this.tagList = tags;
+      this.cacheTabList.clear();
+      // 要先判断ignoreCache
+      this.tagList
+        .filter((el) => !el.ignoreCache)
+        .map((el) => el.name)
+        .forEach((x) => this.cacheTabList.add(x));
+    },
+    resetTabList() {
+      this.tagList = [DEFAULT_ROUTE];
+      this.cacheTabList.clear();
+      this.cacheTabList.add(DEFAULT_ROUTE_NAME);
     },
   },
 });
