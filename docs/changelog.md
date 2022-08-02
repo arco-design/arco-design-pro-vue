@@ -1,5 +1,14 @@
 # Arco Design Pro Vue v2.0
 
+## v2.5.8
+
+`2022-08-02` 
+
+### 💎 Optimization
+
+- Component library dependency upgrades.
+- Added useVisible hook.
+
 ## v2.5.7
 
 `2022-07-05` 
