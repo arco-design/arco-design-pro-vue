@@ -1,5 +1,14 @@
 # Arco Design Pro Vue v2.0
 
+## v2.5.9
+
+`2022-08-10` 
+
+### 💎 Optimization
+
+- Multi-tab page reloading feature. [#150](https://github.com/arco-design/arco-design-pro-vue/issues/150)
+- Preprocessing of user information error capture redirection. [#153](https://github.com/arco-design/arco-design-pro-vue/pull/153)
+
 ## v2.5.8
 
 `2022-08-02` 
