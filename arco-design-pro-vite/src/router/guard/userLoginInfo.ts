@@ -16,6 +16,7 @@ export default function setupUserLoginInfoGuard(router: Router) {
           await userStore.info();
           next();
         } catch (error) {
+          await userStore.logout();
           next({
             name: 'login',
             query: {
