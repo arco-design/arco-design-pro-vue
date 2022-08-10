@@ -1,5 +1,9 @@
 <template>
-  <a-dropdown trigger="contextMenu" @select="actionSelect">
+  <a-dropdown
+    trigger="contextMenu"
+    :popup-max-height="false"
+    @select="actionSelect"
+  >
     <span
       class="arco-tag arco-tag-size-medium arco-tag-checked"
       :class="{ 'link-activated': itemData.fullPath === $route.fullPath }"
@@ -16,7 +20,15 @@
       </span>
     </span>
     <template #content>
-      <a-doption :disabled="disabledCurrent" :value="Eaction.current">
+      <a-doption :disabled="disabledReload" :value="Eaction.reload">
+        <icon-refresh />
+        <span>重新加载</span>
+      </a-doption>
+      <a-doption
+        class="sperate-line"
+        :disabled="disabledCurrent"
+        :value="Eaction.current"
+      >
         <icon-close />
         <span>关闭当前标签页</span>
       </a-doption>
@@ -24,7 +36,11 @@
         <icon-to-left />
         <span>关闭左侧标签页</span>
       </a-doption>
-      <a-doption :disabled="disabledRight" :value="Eaction.right">
+      <a-doption
+        class="sperate-line"
+        :disabled="disabledRight"
+        :value="Eaction.right"
+      >
         <icon-to-right />
         <span>关闭右侧标签页</span>
       </a-doption>
@@ -45,10 +61,11 @@
   import { useRouter, useRoute } from 'vue-router';
   import { useTabBarStore } from '@/store';
   import type { TagProps } from '@/store/modules/tab-bar/types';
-  import { DEFAULT_ROUTE_NAME } from '@/router/routes/index';
+  import { DEFAULT_ROUTE_NAME, REDIRECT_ROUTE_NAME } from '@/router/constants';
 
   // eslint-disable-next-line no-shadow
   enum Eaction {
+    reload = 'reload',
     current = 'current',
     left = 'left',
     right = 'right',
@@ -78,6 +95,10 @@
   };
   const tagList = computed(() => {
     return tabBarStore.getTabList;
+  });
+
+  const disabledReload = computed(() => {
+    return props.itemData.fullPath !== route.fullPath;
   });
 
   const disabledCurrent = computed(() => {
@@ -130,6 +151,13 @@
       });
       tabBarStore.freshTabList(filterList);
       router.push({ name: itemData.name });
+    } else if (value === Eaction.reload) {
+      router.push({
+        name: REDIRECT_ROUTE_NAME,
+        params: {
+          path: route.fullPath,
+        },
+      });
     } else {
       tabBarStore.resetTabList();
       router.push({ name: DEFAULT_ROUTE_NAME });
@@ -163,5 +191,8 @@
     .arco-tag-close-btn {
       color: rgb(var(--danger-6));
     }
+  }
+  .sperate-line {
+    border-bottom: 1px solid var(--color-neutral-3);
   }
 </style>

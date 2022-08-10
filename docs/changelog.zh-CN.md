@@ -1,5 +1,14 @@
 # Arco Design Pro Vue v2.0
 
+## v2.5.9
+
+`2022-08-10` 
+
+### 💎 功能优化
+
+- 多页签页面重载功能。[#150](https://github.com/arco-design/arco-design-pro-vue/issues/150)
+- 用户信息错误捕获重定向的前置处理。[#153](https://github.com/arco-design/arco-design-pro-vue/pull/153)
+
 ## v2.5.8
 
 `2022-08-02` 
