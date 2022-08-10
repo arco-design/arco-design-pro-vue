@@ -1,4 +1,4 @@
-import { DEFAULT_LAYOUT } from '@/router/constants';
+import { DEFAULT_LAYOUT } from '../base';
 import { AppRouteRecordRaw } from '../types';
 
 const LIST: AppRouteRecordRaw = {
