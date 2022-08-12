@@ -6,7 +6,7 @@
   import { useAppStore } from '@/store';
   import { listenerRouteChange } from '@/utils/route-listener';
   import { openWindow, regexUrl } from '@/utils';
-  import useMenuTree from './useMenuTree';
+  import useMenuTree from './use-menu-tree';
 
   export default defineComponent({
     emit: ['collapse'],
