@@ -34,6 +34,9 @@ export default function useMenuTree() {
         }
 
         // route filter hideInMenu true
+        if (element.meta?.hideInMenu) {
+          return null;
+        }
         element.children = element.children.filter(
           (x) => x.meta?.hideInMenu !== true
         );
