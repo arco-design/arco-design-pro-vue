@@ -1,5 +1,14 @@
 # Arco Design Pro Vue v2.0
 
+## v2.5.10
+
+`2022-08-16` 
+
+### 🐛 Bugfix
+
+- Supplementary cache cleaning for page reloads.[#159](https://github.com/arco-design/arco-design-pro-vue/issues/159)
+- Login logic can execute while loading.[#160](https://github.com/arco-design/arco-design-pro-vue/pull/160)
+
 ## v2.5.9
 
 `2022-08-10` 

@@ -124,7 +124,7 @@
   const findCurrentRouteIndex = () => {
     return tagList.value.findIndex((el) => el.fullPath === route.fullPath);
   };
-  const actionSelect = (value: any) => {
+  const actionSelect = async (value: any) => {
     const { itemData, index } = props;
     const copyTagList = [...tagList.value];
     if (value === Eaction.current) {
@@ -152,12 +152,14 @@
       tabBarStore.freshTabList(filterList);
       router.push({ name: itemData.name });
     } else if (value === Eaction.reload) {
-      router.push({
+      tabBarStore.deleteCache(itemData);
+      await router.push({
         name: REDIRECT_ROUTE_NAME,
         params: {
           path: route.fullPath,
         },
       });
+      tabBarStore.addCache(itemData.name);
     } else {
       tabBarStore.resetTabList();
       router.push({ name: DEFAULT_ROUTE_NAME });
