@@ -1,5 +1,14 @@
 # Arco Design Pro Vue v2.0
 
+## v2.5.10
+
+`2022-08-16` 
+
+### 🐛 问题修复
+
+- 补充页面重载的缓存清理。[#159](https://github.com/arco-design/arco-design-pro-vue/issues/159)
+- 登录按钮点击后加载时可以重复点击发送请求。[#160](https://github.com/arco-design/arco-design-pro-vue/pull/160)
+
 ## v2.5.9
 
 `2022-08-10` 
