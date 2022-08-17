@@ -19,9 +19,9 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref, computed, watch } from 'vue';
+  import { ref, computed, watch, onUnmounted } from 'vue';
   import type { RouteLocationNormalized } from 'vue-router';
-  import { listenerRouteChange } from '@/utils/route-listener';
+  import { listenerRouteChange, removeRouteListener } from '@/utils/route-listener';
   import { useAppStore, useTabBarStore } from '@/store';
   import tabItem from './tab-item.vue';
 
@@ -50,6 +50,10 @@
       tabBarStore.updateTabList(route);
     }
   }, true);
+
+  onUnmounted(() => {
+    removeRouteListener();
+  });
 </script>
 
 <style scoped lang="less">
