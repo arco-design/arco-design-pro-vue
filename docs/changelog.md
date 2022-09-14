@@ -1,5 +1,14 @@
 # Arco Design Pro Vue v2.0
 
+## v2.5.11
+
+`2022-09-14` 
+
+### 🐛 Bugfix
+
+- Vue-echarts auto resize problem. [#174](https://github.com/arco-design/arco-design-pro-vue/pull/174)
+- Multi times route change listen. [#162](https://github.com/arco-design/arco-design-pro-vue/pull/162)
+
 ## v2.5.10
 
 `2022-08-16` 

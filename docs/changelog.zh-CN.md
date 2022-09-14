@@ -1,5 +1,14 @@
 # Arco Design Pro Vue v2.0
 
+## v2.5.11
+
+`2022-09-14` 
+
+### 🐛 问题修复
+
+- 修复图表组件缩放问题。[#174](https://github.com/arco-design/arco-design-pro-vue/pull/174)
+- 多次路由改变监听。[#162](https://github.com/arco-design/arco-design-pro-vue/pull/162)
+
 ## v2.5.10
 
 `2022-08-16` 
