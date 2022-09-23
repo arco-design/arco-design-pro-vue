@@ -22,6 +22,7 @@ export default {
   'searchTable.operation.import': 'Import',
   'searchTable.operation.download': 'Download',
   // columns
+  'searchTable.columns.index': '#',
   'searchTable.columns.number': 'Set Number',
   'searchTable.columns.name': 'Set Name',
   'searchTable.columns.contentType': 'Content Type',
@@ -31,4 +32,13 @@ export default {
   'searchTable.columns.status': 'Status',
   'searchTable.columns.operations': 'Operations',
   'searchTable.columns.operations.view': 'View',
+  // size
+  'searchTable.size.mini': 'mini',
+  'searchTable.size.small': 'small',
+  'searchTable.size.medium': 'middle',
+  'searchTable.size.large': 'large',
+  // actions
+  'searchTable.actions.refresh': 'refresh',
+  'searchTable.actions.density': 'density',
+  'searchTable.actions.columnSetting': 'columnSetting',
 };
