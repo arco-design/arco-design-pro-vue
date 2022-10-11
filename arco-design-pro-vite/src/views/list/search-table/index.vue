@@ -164,15 +164,16 @@
                     <div style="margin-right: 4px; cursor: move">
                       <icon-drag-arrow />
                     </div>
-                    <div
-                      ><a-checkbox
+                    <div>
+                      <a-checkbox
                         v-model="item.checked"
-                        @change="handleChange($event, item, index)"
-                      ></a-checkbox
-                    ></div>
-                    <div class="title">{{
-                      item.title === '#' ? '序列号' : item.title
-                    }}</div>
+                        @change="handleChange($event, item as TableColumnData, index)"
+                      >
+                      </a-checkbox>
+                    </div>
+                    <div class="title">
+                      {{ item.title === '#' ? '序列号' : item.title }}
+                    </div>
                   </div>
                 </div>
               </template>
@@ -184,7 +185,7 @@
         row-key="id"
         :loading="loading"
         :pagination="pagination"
-        :columns="cloneColumns"
+        :columns="(cloneColumns as TableColumnData[])"
         :data="renderData"
         :bordered="false"
         :size="size"
@@ -449,7 +450,7 @@
   const popupVisibleChange = (val: boolean) => {
     if (val) {
       nextTick(() => {
-        const el = document.getElementById('tableSetting');
+        const el = document.getElementById('tableSetting') as HTMLElement;
         const sortable = new Sortable(el, {
           onEnd(e: any) {
             const { oldIndex, newIndex } = e;
