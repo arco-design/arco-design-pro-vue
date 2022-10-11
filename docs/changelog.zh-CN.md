@@ -1,8 +1,20 @@
 # Arco Design Pro Vue v2.0
 
+## v2.5.12
+
+`2022-10-11`
+
+### 💎 功能优化
+
+- 查询表格页面功能补充。[#181](https://github.com/arco-design/arco-design-pro-vue/pull/181)
+
+### 🐛 问题修复
+
+- 更新依赖包版本。[#179](https://github.com/arco-design/arco-design-pro-vue/issues/179)
+
 ## v2.5.11
 
-`2022-09-14` 
+`2022-09-14`
 
 ### 🐛 问题修复
 
@@ -11,7 +23,7 @@
 
 ## v2.5.10
 
-`2022-08-16` 
+`2022-08-16`
 
 ### 🐛 问题修复
 
@@ -20,7 +32,7 @@
 
 ## v2.5.9
 
-`2022-08-10` 
+`2022-08-10`
 
 ### 💎 功能优化
 
@@ -29,7 +41,7 @@
 
 ## v2.5.8
 
-`2022-08-02` 
+`2022-08-02`
 
 ### 💎 功能优化
 
@@ -38,7 +50,7 @@
 
 ## v2.5.7
 
-`2022-07-05` 
+`2022-07-05`
 
 ### 💎 功能优化
 
@@ -46,15 +58,16 @@
 
 ## v2.5.6
 
-`2022-06-28` 
+`2022-06-28`
 
 ### 💎 功能优化
 
-- 完善路由配置项Typescript类型定义。
+- 完善路由配置项 Typescript 类型定义。
 
 ## v2.5.5
 
-`2022-06-21` 
+`2022-06-21`
+
 ### 🐛 问题修复
 
 - 多页签 Tag 样式调整。
@@ -62,7 +75,8 @@
 
 ## v2.5.4
 
-`2022-06-14` 
+`2022-06-14`
+
 ### 🐛 问题修复
 
 - 服务端菜单功能不生效问题。[#121](https://github.com/arco-design/arco-design-pro-vue/pull/121)
@@ -74,7 +88,7 @@
 
 ### 💎 功能优化
 
-- 调整ts接口导入方式。[#110](https://github.com/arco-design/arco-design-pro-vue/pull/110)  
+- 调整 ts 接口导入方式。[#110](https://github.com/arco-design/arco-design-pro-vue/pull/110)
 
 ### 🐛 问题修复
 
@@ -87,9 +101,9 @@
 
 ### 💎 功能优化
 
-- 一级菜单外链调整及DEMO。[#102](https://github.com/arco-design/arco-design-pro-vue/pull/102)
+- 一级菜单外链调整及 DEMO。[#102](https://github.com/arco-design/arco-design-pro-vue/pull/102)
 - 页面跳转，自动打开对应父级菜单。[#97](https://github.com/arco-design/arco-design-pro-vue/pull/97)
-  
+
 ### 🐛 问题修复
 
 - 组件库升级导致的构建报错。[#101](https://github.com/arco-design/arco-design-pro-vue/pull/101)
@@ -101,7 +115,7 @@
 ### 💎 功能优化
 
 - 菜单支持外链。[#83](https://github.com/arco-design/arco-design-pro-vue/pull/91)
-  
+
 ### 🐛 问题修复
 
 - 修复色弱模式选项初始值始终为 false 的问题。[#87](https://github.com/arco-design/arco-design-pro-vue/pull/87)
@@ -119,16 +133,16 @@
 ### 💎 功能优化
 
 - 增加 activeMenu 配置。[#76](https://github.com/arco-design/arco-design-pro-vue/issues/76)[#80](https://github.com/arco-design/arco-design-pro-vue/issues/80)
-  
+
 ### 🐛 问题修复
 
 - 隐藏子级菜单项问题。[#76](https://github.com/arco-design/arco-design-pro-vue/issues/76)
-- 更新vue-tsc版本。[#61](https://github.com/arco-design/arco-design-pro-vue/issues/61)
+- 更新 vue-tsc 版本。[#61](https://github.com/arco-design/arco-design-pro-vue/issues/61)
 
 ## v2.4.1
 
 `2022-05-10`
-  
+
 ### 🐛 问题修复
 
 - 简易模式菜单文本展示问题
@@ -144,11 +158,12 @@
 ### 💎 功能优化
 
 - 路由层级扁平化，支持页面缓存。[#74](https://github.com/arco-design/arco-design-pro-vue/pull/74)
-  
+
 ### 🐛 问题修复
 
-- arco组件库升级导致的构建TS报错问题。[#74](https://github.com/arco-design/arco-design-pro-vue/pull/74)
-- arco组件库升级导致的文件找不到问题。[#71](https://github.com/arco-design/arco-design-pro-vue/issues/71)
+- arco 组件库升级导致的构建 TS 报错问题。[#74](https://github.com/arco-design/arco-design-pro-vue/pull/74)
+- arco 组件库升级导致的文件找不到问题。[#71](https://github.com/arco-design/arco-design-pro-vue/issues/71)
+
 ## v2.3.6
 
 `2022-04-26`
@@ -160,7 +175,7 @@
 ### 💎 功能优化
 
 - 菜单组件增加顶层单项支持。[#59](https://github.com/arco-design/arco-design-pro-vue/pull/59)
-  
+
 ### 🐛 问题修复
 
 - 修复 tab bar 首项点击无效。[#64](https://github.com/arco-design/arco-design-pro-vue/issues/64)
@@ -238,7 +253,7 @@
 ### 🐛 问题修复
 
 - 可选链导致项目初始化失败。[#31](https://github.com/arco-design/arco-design-pro-vue/issues/31)
-- 修复了i18n未设置allowComposition，在win下无法启动的bug。[#32](https://github.com/arco-design/arco-design-pro-vue/pull/32)
+- 修复了 i18n 未设置 allowComposition，在 win 下无法启动的 bug。[#32](https://github.com/arco-design/arco-design-pro-vue/pull/32)
 
 ## v2.2.4
 
@@ -265,20 +280,18 @@
 
 - 初始化项目支持简易模式。 (**需要将 `@arco-design/arco-cli` 升级至 `1.26.0`**)
 
-
 ## v2.2.0
 
 `2022-01-25`
 
 ### 💎 功能优化
 
-- icon替换。
+- icon 替换。
 
 ### 🆕 新增功能
 
 - 增加权限管理。
-- 支持jsx语法。
-
+- 支持 jsx 语法。
 
 ## v2.1.0
 
@@ -286,10 +299,9 @@
 
 ### 💎 功能优化
 
-- 图表配置hook用法优化。
-- 项目初始化eslint报错。
+- 图表配置 hook 用法优化。
+- 项目初始化 eslint 报错。
 
 ### 🆕 新增功能
 
 - 使用 Pinia 替换 Vuex ([#7](https://github.com/arco-design/arco-design-pro-vue/pull/7))
-

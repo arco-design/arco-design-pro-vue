@@ -1,8 +1,20 @@
 # Arco Design Pro Vue v2.0
 
+## v2.5.12
+
+`2022-10-11`
+
+### 💎 Optimization
+
+- The query form page function is added. [#181](https://github.com/arco-design/arco-design-pro-vue/pull/181)
+
+### 🐛 Bugfix
+
+- Update the dependency package version. [#179](https://github.com/arco-design/arco-design-pro-vue/issues/179)
+
 ## v2.5.11
 
-`2022-09-14` 
+`2022-09-14`
 
 ### 🐛 Bugfix
 
@@ -11,7 +23,7 @@
 
 ## v2.5.10
 
-`2022-08-16` 
+`2022-08-16`
 
 ### 🐛 Bugfix
 
@@ -20,7 +32,7 @@
 
 ## v2.5.9
 
-`2022-08-10` 
+`2022-08-10`
 
 ### 💎 Optimization
 
@@ -29,7 +41,7 @@
 
 ## v2.5.8
 
-`2022-08-02` 
+`2022-08-02`
 
 ### 💎 Optimization
 
@@ -38,7 +50,7 @@
 
 ## v2.5.7
 
-`2022-07-05` 
+`2022-07-05`
 
 ### 💎 Optimization
 
@@ -46,7 +58,7 @@
 
 ## v2.5.6
 
-`2022-06-28` 
+`2022-06-28`
 
 ### 💎 Optimization
 
@@ -54,7 +66,8 @@
 
 ## v2.5.5
 
-`2022-06-21` 
+`2022-06-21`
+
 ### 🐛 Bugfix
 
 - Multi-tab Tag style adjustment.
@@ -62,7 +75,8 @@
 
 ## v2.5.4
 
-`2022-06-14` 
+`2022-06-14`
+
 ### 🐛 Bugfix
 
 - The server menu function does not work. [#121](https://github.com/arco-design/arco-design-pro-vue/pull/121)
@@ -74,7 +88,7 @@
 
 ### 💎 Optimization
 
-- Adjust the import method of the ts interface.[#110](https://github.com/arco-design/arco-design-pro-vue/pull/110)  
+- Adjust the import method of the ts interface.[#110](https://github.com/arco-design/arco-design-pro-vue/pull/110)
 
 ### 🐛 Bugfix
 
@@ -89,7 +103,7 @@
 
 - First-level menu chain adjustment and DEMO. [#102](https://github.com/arco-design/arco-design-pro-vue/pull/102)
 - Page jump, automatically open the corresponding parent menu.[#97](https://github.com/arco-design/arco-design-pro-vue/pull/97)
-  
+
 ### 🐛 Bugfix
 
 - Build errors caused by component library upgrades.[#101](https://github.com/arco-design/arco-design-pro-vue/pull/101)
@@ -101,7 +115,7 @@
 ### 💎 Optimization
 
 - The menu supports external links. [#83](https://github.com/arco-design/arco-design-pro-vue/pull/91)
-  
+
 ### 🐛 Bugfix
 
 - fix the problem that color weak switch's default value is always false. [#87](https://github.com/arco-design/arco-design-pro-vue/pull/87)
@@ -123,12 +137,12 @@
 ### 🐛 Bugfix
 
 - Hide child menu items problem.[#76](https://github.com/arco-design/arco-design-pro-vue/issues/76)
-- Update vue-tsc version.	[#61](https://github.com/arco-design/arco-design-pro-vue/issues/61)
+- Update vue-tsc version. [#61](https://github.com/arco-design/arco-design-pro-vue/issues/61)
 
 ## v2.4.1
 
 `2022-05-10`
-  
+
 ### 🐛 Bugfix
 
 - Simple mode menu text display problem.
@@ -144,14 +158,13 @@
 ### 💎 Optimization
 
 - The routing level is flattened and page caching is supported.[#74](https://github.com/arco-design/arco-design-pro-vue/pull/74)
-  
+
 ### 🐛 Bugfix
 
 - The problem of building TS errors caused by the upgrade of the arco component library.[#74](https://github.com/arco-design/arco-design-pro-vue/pull/74)
 - The file cannot be found problem caused by the upgrade of the arco component library.[#71](https://github.com/arco-design/arco-design-pro-vue/issues/71)
 
 ## v2.3.6
-
 
 `2022-04-26`
 
@@ -162,7 +175,7 @@
 ### 💎 Optimization
 
 - Menu components added support for top-level items.[#59](https://github.com/arco-design/arco-design-pro-vue/pull/59)
-  
+
 ### 🐛 Bugfix
 
 - Fixed tab bar first click invalid.[#64](https://github.com/arco-design/arco-design-pro-vue/issues/64)
@@ -267,7 +280,6 @@
 
 - Initializing projects supports simple mode. (**Need to upgrade `@arco-design/arco-cli` to `1.26.0`**)
 
-
 ## v2.2.0
 
 `2022-01-25`
@@ -280,7 +292,6 @@
 
 - Add permission management.
 - Support jsx syntax.
-
 
 ## v2.1.0
 
