@@ -1,5 +1,14 @@
 # Arco Design Pro Vue v2.0
 
+## v2.5.13
+
+`2022-10-17`
+
+### 🐛 问题修复
+
+- yarn.lock source modification. [#188](https://github.com/arco-design/arco-design-pro-vue/issues/188)
+- import.meta.glob migrations. [#187](https://github.com/arco-design/arco-design-pro-vue/pull/187)
+
 ## v2.5.12
 
 `2022-10-11`
