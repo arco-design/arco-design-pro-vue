@@ -234,25 +234,25 @@
       },
       series: [
         generateSeries(
-          '活跃用户数',
+          '内容生产量',
           '#722ED1',
           '#F5E8FF',
           contentProductionData.value
         ),
         generateSeries(
-          '内容生产量',
+          '内容点击量',
           '#F77234',
           '#FFE4BA',
           contentClickData.value
         ),
         generateSeries(
-          '内容点击量',
+          '内容曝光量',
           '#33D1C9',
           '#E8FFFB',
           contentExposureData.value
         ),
         generateSeries(
-          '内容曝光量',
+          '活跃用户数',
           '#3469FF',
           '#E8F3FF',
           activeUsersData.value
