@@ -1,5 +1,14 @@
 # Arco Design Pro Vue v2.0
 
+## v2.5.14
+
+`2022-11-15`
+
+### 🐛 Bugfix
+
+- Menu data copy function property in route object is lost. [#200](https://github.com/arco-design/arco-design-pro-vue/pull/200)
+- Chart data content does not match.[#189](https://github.com/arco-design/arco-design-pro-vue/pull/189)
+
 ## v2.5.13
 
 `2022-10-17`

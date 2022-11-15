@@ -1,5 +1,14 @@
 # Arco Design Pro Vue v2.0
 
+## v2.5.14
+
+`2022-11-15`
+
+### 🐛 问题修复
+
+- 菜单数据拷贝 route 对象中的函数属性丢失。[#200](https://github.com/arco-design/arco-design-pro-vue/pull/200)
+- 图表数据内容不匹配。[#189](https://github.com/arco-design/arco-design-pro-vue/pull/189)
+
 ## v2.5.13
 
 `2022-10-17`
