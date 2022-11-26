@@ -453,6 +453,7 @@
         const el = document.getElementById('tableSetting') as HTMLElement;
         const sortable = new Sortable(el, {
           onEnd(e: any) {
+            // debugger;
             const { oldIndex, newIndex } = e;
             exchangeArray(cloneColumns.value, oldIndex, newIndex);
             exchangeArray(showColumns.value, oldIndex, newIndex);

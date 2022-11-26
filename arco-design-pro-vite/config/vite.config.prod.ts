@@ -4,17 +4,33 @@ import configCompressPlugin from './plugin/compress';
 import configVisualizerPlugin from './plugin/visualizer';
 import configArcoResolverPlugin from './plugin/arcoResolver';
 import configStyleImportPlugin from './plugin/styleImport';
-import configImageminPlugin from './plugin/imagemin';
+// import configImageminPlugin from './plugin/imagemin';
+// "vite-plugin-imagemin": "^0.6.1",
+import eslint from 'vite-plugin-eslint';
 
 export default mergeConfig(
   {
-    mode: 'production',
+    mode: 'development',
+    server: {
+      open: true,
+      fs: {
+        strict: true,
+      },
+    },
     plugins: [
+      eslint({
+        cache: false,
+        include: ['src/**/*.ts', 'src/**/*.tsx', 'src/**/*.vue'],
+        exclude: ['node_modules'],
+      }),
+    // ],
+    // mode: 'production',
+    // plugins: [
       configCompressPlugin('gzip'),
       configVisualizerPlugin(),
       configArcoResolverPlugin(),
       configStyleImportPlugin(),
-      configImageminPlugin(),
+      // configImageminPlugin(),
     ],
     build: {
       rollupOptions: {

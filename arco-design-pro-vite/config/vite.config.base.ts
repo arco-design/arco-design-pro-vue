@@ -1,11 +1,20 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import legacy from "@vitejs/plugin-legacy";
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import svgLoader from 'vite-svg-loader';
 
 export default defineConfig({
-  plugins: [vue(), vueJsx(), svgLoader({ svgoConfig: {} })],
+  plugins: [
+    vue(),
+    legacy({
+      targets: ["chrome 52"], // 需要兼容的目标列表，可以设置多个
+      additionalLegacyPolyfills: ["regenerator-runtime/runtime"], // 面向IE11时需要此插件
+    }),
+    vueJsx(), 
+    svgLoader({ svgoConfig: {} })
+  ],
   resolve: {
     alias: [
       {
