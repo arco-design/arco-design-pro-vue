@@ -36,6 +36,18 @@
     "resize-observer-polyfill" "^1.5.1"
     "scroll-into-view-if-needed" "^2.2.28"
 
+"@arco-plugins/vite-vue@^1.4.2":
+  "integrity" "sha512-NJ6LsUdBoAsCRwV/zHmjQKNCb2sIYJ9M1cPzCMQ9T4ued+9846r/FGSEoAWtNQ6OPLAXV6krwKWHg1jbEaEZBw=="
+  "resolved" "https://registry.npmmirror.com/@arco-plugins/vite-vue/-/vite-vue-1.4.2.tgz"
+  "version" "1.4.2"
+  dependencies:
+    "@babel/generator" "^7.12.11"
+    "@babel/helper-module-imports" "^7.12.5"
+    "@babel/parser" "^7.12.11"
+    "@babel/traverse" "^7.12.12"
+    "@babel/types" "^7.12.12"
+    "@types/node" "^16.11.10"
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.18.6":
   "integrity" "sha512-TDCmlK5eOvH+eH7cdAFlNXeVJqWIQ7gW9tY1GJIpUtFb6CmjVyq2VM3u71bOyR8CRihcCgMUYoDNyLXao3+70Q=="
   "resolved" "https://registry.npmmirror.com/@babel/code-frame/-/code-frame-7.18.6.tgz"
@@ -69,7 +81,7 @@
     "json5" "^2.2.1"
     "semver" "^6.3.0"
 
-"@babel/generator@^7.20.1", "@babel/generator@^7.20.2":
+"@babel/generator@^7.12.11", "@babel/generator@^7.20.1", "@babel/generator@^7.20.2":
   "integrity" "sha512-luCf7yk/cm7yab6CAW1aiFnmEfBJplb/JojV56MYEK7ziWfGmFlTfmL9Ehwfy4gFhbjBfWO1wj7/TuSbVNEEtA=="
   "resolved" "https://registry.npmmirror.com/@babel/generator/-/generator-7.20.4.tgz"
   "version" "7.20.4"
@@ -135,7 +147,7 @@
   dependencies:
     "@babel/types" "^7.18.9"
 
-"@babel/helper-module-imports@^7.0.0", "@babel/helper-module-imports@^7.18.6":
+"@babel/helper-module-imports@^7.0.0", "@babel/helper-module-imports@^7.12.5", "@babel/helper-module-imports@^7.18.6":
   "integrity" "sha512-0NFvs3VkuSYbFi1x2Vd6tKrywq+z/cLeYC/RJNFrIX/30Bf5aiGYbtvGXolEktzJH8o5E5KJ3tT+nkxuuZFVlA=="
   "resolved" "https://registry.npmmirror.com/@babel/helper-module-imports/-/helper-module-imports-7.18.6.tgz"
   "version" "7.18.6"
@@ -226,7 +238,7 @@
     "chalk" "^2.0.0"
     "js-tokens" "^4.0.0"
 
-"@babel/parser@^7.15.8", "@babel/parser@^7.16.4", "@babel/parser@^7.18.10", "@babel/parser@^7.20.1", "@babel/parser@^7.20.2":
+"@babel/parser@^7.12.11", "@babel/parser@^7.15.8", "@babel/parser@^7.16.4", "@babel/parser@^7.18.10", "@babel/parser@^7.20.1", "@babel/parser@^7.20.2":
   "integrity" "sha512-OP/s5a94frIPXwjzEcv5S/tpQfc6XhxYUnmWpgdqMWGgYCuErA3SzozaRAMQgSZWKeTJxht9aWAkUY+0UzvOFg=="
   "resolved" "https://registry.npmmirror.com/@babel/parser/-/parser-7.20.3.tgz"
   "version" "7.20.3"
@@ -268,7 +280,7 @@
     "@babel/parser" "^7.18.10"
     "@babel/types" "^7.18.10"
 
-"@babel/traverse@^7.0.0", "@babel/traverse@^7.19.1", "@babel/traverse@^7.20.1":
+"@babel/traverse@^7.0.0", "@babel/traverse@^7.12.12", "@babel/traverse@^7.19.1", "@babel/traverse@^7.20.1":
   "integrity" "sha512-d3tN8fkVJwFLkHkBN479SOsw4DMZnz8cdbL/gvuDuzy3TS6Nfw80HuQqhw1pITbIruHyh7d1fMA47kWzmcUEGA=="
   "resolved" "https://registry.npmmirror.com/@babel/traverse/-/traverse-7.20.1.tgz"
   "version" "7.20.1"
@@ -284,7 +296,7 @@
     "debug" "^4.1.0"
     "globals" "^11.1.0"
 
-"@babel/types@^7.0.0", "@babel/types@^7.18.10", "@babel/types@^7.18.6", "@babel/types@^7.18.9", "@babel/types@^7.19.0", "@babel/types@^7.20.0", "@babel/types@^7.20.2":
+"@babel/types@^7.0.0", "@babel/types@^7.12.12", "@babel/types@^7.18.10", "@babel/types@^7.18.6", "@babel/types@^7.18.9", "@babel/types@^7.19.0", "@babel/types@^7.20.0", "@babel/types@^7.20.2":
   "integrity" "sha512-FnnvsNWgZCr232sqtXggapvlkk/tuwR/qhGzcmxI0GXLCjmPYQPzio2FbdlWuY6y1sHFfQKk+rRbUZ9VStQMog=="
   "resolved" "https://registry.npmmirror.com/@babel/types/-/types-7.20.2.tgz"
   "version" "7.20.2"
@@ -754,6 +766,11 @@
   "integrity" "sha512-qelS/Ra6sacc4loe/3MSjXNL1dNQ/GjxNHVzuChwMfmk7HuycRLVQN2qNY3XahK+fZc5E2szqQSKUyAF0E+2bg=="
   "resolved" "https://registry.npmmirror.com/@types/node/-/node-14.18.33.tgz"
   "version" "14.18.33"
+
+"@types/node@^16.11.10":
+  "integrity" "sha512-jh6m0QUhIRcZpNv7Z/rpN+ZWXOicUUQbSoWks7Htkbb9IjFQj4kzcX/xFCkjstCj5flMsN8FiSvt+q+Tcs4Llg=="
+  "resolved" "https://registry.npmmirror.com/@types/node/-/node-16.18.3.tgz"
+  "version" "16.18.3"
 
 "@types/normalize-package-data@^2.4.0":
   "integrity" "sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw=="

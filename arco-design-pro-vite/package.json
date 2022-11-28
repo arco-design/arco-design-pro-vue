@@ -46,6 +46,7 @@
     "vue-router": "^4.0.14"
   },
   "devDependencies": {
+    "@arco-plugins/vite-vue": "^1.4.2",
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
     "@types/lodash": "^4.14.186",
@@ -54,9 +55,9 @@
     "@types/sortablejs": "^1.15.0",
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.40.0",
+    "@vitejs/plugin-legacy": "^2",
     "@vitejs/plugin-vue": "^3.1.2",
     "@vitejs/plugin-vue-jsx": "^2.0.1",
-    "@vitejs/plugin-legacy": "^2",
     "@vue/babel-plugin-jsx": "^1.1.1",
     "cross-env": "^7.0.3",
     "eslint": "^8.25.0",
