@@ -43,6 +43,11 @@
       key: 'menu',
       defaultVal: appStore.menu,
     },
+    {
+      name: 'settings.accordion',
+      key: 'menuAccordion',
+      defaultVal: appStore.menuAccordion,
+    },
     { name: 'settings.footer', key: 'footer', defaultVal: appStore.footer },
     { name: 'settings.tabBar', key: 'tabBar', defaultVal: appStore.tabBar },
     {
