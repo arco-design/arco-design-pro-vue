@@ -50,8 +50,6 @@
     if (key === 'menuFromServer' && value) {
       await appStore.fetchServerMenuConfig();
     }
-    console.log('----key---11---', key);
-    console.log('----value--22----', value);
     appStore.updateSettings({ [key]: value });
   };
 </script>
