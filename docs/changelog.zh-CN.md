@@ -1,5 +1,14 @@
 # Arco Design Pro Vue v2.0
 
+## v2.5.15
+
+`2022-12-20`
+
+### 🐛 问题修复
+
+- 多级菜单展开问题。[#177](https://github.com/arco-design/arco-design-pro-vue/pull/177)
+- 相关依赖及打包配置更新。[#224](https://github.com/arco-design/arco-design-pro-vue/pull/224)
+
 ## v2.5.14
 
 `2022-11-15`
