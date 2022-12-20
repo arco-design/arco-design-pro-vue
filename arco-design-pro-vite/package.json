@@ -30,7 +30,7 @@
     ]
   },
   "dependencies": {
-    "@arco-design/web-vue": "^2.37.4",
+    "@arco-design/web-vue": "^2.40.0",
     "@vueuse/core": "^9.3.0",
     "axios": "^0.24.0",
     "dayjs": "^1.11.5",
@@ -39,7 +39,7 @@
     "mitt": "^3.0.0",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.23",
-    "query-string": "^7.1.1",
+    "query-string": "^8.0.3",
     "sortablejs": "^1.15.0",
     "vue": "^3.2.40",
     "vue-echarts": "^6.2.3",
@@ -55,9 +55,10 @@
     "@types/sortablejs": "^1.15.0",
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.40.0",
-    "@vitejs/plugin-vue": "^3.1.2",
-    "@vitejs/plugin-vue-jsx": "^2.0.1",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "@vitejs/plugin-vue-jsx": "^3.0.0",
     "@vue/babel-plugin-jsx": "^1.1.1",
+    "consola": "^2.15.3",
     "cross-env": "^7.0.3",
     "eslint": "^8.25.0",
     "eslint-config-airbnb-base": "^15.0.0",
@@ -76,17 +77,17 @@
     "stylelint": "^14.13.0",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-rational-order": "^0.1.2",
-    "stylelint-config-standard": "^28.0.0",
+    "stylelint-config-standard": "^29.0.0",
     "stylelint-order": "^5.0.0",
     "typescript": "^4.8.4",
     "unplugin-vue-components": "^0.22.8",
-    "vite": "^3.1.7",
+    "vite": "^4.0.1",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-imagemin": "^0.6.1",
     "vite-plugin-style-import": "1.4.1",
     "vite-svg-loader": "^3.6.0",
-    "vue-tsc": "^1.0.3"
+    "vue-tsc": "^1.0.14"
   },
   "engines": {
     "node": ">=14.0.0"

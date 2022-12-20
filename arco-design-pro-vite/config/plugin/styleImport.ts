@@ -70,6 +70,7 @@ export default function configStyleImportPlugin() {
             'avatar-group': 'avatar',
             'image-preview': 'image',
             'image-preview-group': 'image',
+            'cascader-panel': 'cascader',
           };
           if (ignoreList.includes(name)) return '';
           // eslint-disable-next-line no-prototype-builtins
