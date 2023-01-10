@@ -1,5 +1,18 @@
 # Arco Design Pro Vue v2.0
 
+## v2.6.0
+
+`2023-01-10`
+
+### 🆕 新增功能
+
+- 添加顶部菜单栏。[#236](https://github.com/arco-design/arco-design-pro-vue/pull/236)
+
+### 🐛 问题修复
+
+- 依赖升级导致的 Commit 失败问题。[#235](https://github.com/arco-design/arco-design-pro-vue/issues/235)
+- 升级 Vite 导致的构建资源未注入 Html 问题。[#225](https://github.com/arco-design/arco-design-pro-vue/issues/225)
+
 ## v2.5.15
 
 `2022-12-20`
