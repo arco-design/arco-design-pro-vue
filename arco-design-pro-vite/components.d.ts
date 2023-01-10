@@ -20,7 +20,6 @@ declare module '@vue/runtime-core' {
     ACarousel: typeof import('@arco-design/web-vue')['Carousel']
     ACarouselItem: typeof import('@arco-design/web-vue')['CarouselItem']
     ACascader: typeof import('@arco-design/web-vue')['Cascader']
-    ACascaderPanel: typeof import('@arco-design/web-vue')['CascaderPanel']
     ACheckbox: typeof import('@arco-design/web-vue')['Checkbox']
     ACol: typeof import('@arco-design/web-vue')['Col']
     AConfigProvider: typeof import('@arco-design/web-vue')['ConfigProvider']

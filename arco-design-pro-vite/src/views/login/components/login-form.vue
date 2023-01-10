@@ -46,7 +46,7 @@
           <a-checkbox
             checked="rememberPassword"
             :model-value="loginConfig.rememberPassword"
-            @change="(setRememberPassword as any)"
+            @change="setRememberPassword as any"
           >
             {{ $t('login.form.rememberPassword') }}
           </a-checkbox>
