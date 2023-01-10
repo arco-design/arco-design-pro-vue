@@ -1,5 +1,18 @@
 # Arco Design Pro Vue v2.0
 
+## v2.6.0
+
+`2023-01-10`
+
+### 🆕 Feature
+
+- Add a top menu bar.[#236](https://github.com/arco-design/arco-design-pro-vue/pull/236)
+
+### 🐛 Bugfix
+
+- Commit failure caused by dependency upgrade.[#235](https://github.com/arco-design/arco-design-pro-vue/issues/235)
+- Build resources not injected into Html caused by upgrading Vite.[#225](https://github.com/arco-design/arco-design-pro-vue/issues/225)
+
 ## v2.5.15
 
 `2022-12-20`
