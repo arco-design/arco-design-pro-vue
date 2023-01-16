@@ -53,6 +53,9 @@
               :key="item.value"
               :value="item.value"
             >
+              <template #icon>
+                <icon-check v-show="item.value === currentLocale" />
+              </template>
               {{ item.label }}
             </a-doption>
           </template>
@@ -203,7 +206,7 @@
   const appStore = useAppStore();
   const userStore = useUserStore();
   const { logout } = useUser();
-  const { changeLocale } = useLocale();
+  const { changeLocale, currentLocale } = useLocale();
   const { isFullscreen, toggle: toggleFullScreen } = useFullscreen();
   const locales = [...LOCALE_OPTIONS];
   const avatar = computed(() => {
