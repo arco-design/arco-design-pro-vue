@@ -23,8 +23,8 @@ const LIST: AppRouteRecordRaw = {
       },
     },
     {
-      path: 'card-parent',
-      name: 'MuiltCardParent',
+      path: 'mutil-card-parent',
+      name: 'MuiltCardParentParent',
       component: DEFAULT_PARENT_LAYOUT,
       meta: {
         locale: 'menu.list.cardList',
@@ -33,8 +33,8 @@ const LIST: AppRouteRecordRaw = {
       },
       children: [
         {
-          path: 'search-table', // The midline path complies with SEO specifications
-          name: 'MuiltSearchTable',
+          path: 'mutil-search-table-three', // The midline path complies with SEO specifications
+          name: 'MuiltSearchTableThree',
           component: () => import('@/views/list/search-table/index.vue'),
           meta: {
             locale: 'menu.list.searchTable',
@@ -43,8 +43,8 @@ const LIST: AppRouteRecordRaw = {
           },
         },
         {
-          path: 'card',
-          name: 'MuiltCard',
+          path: 'mutil-card-three',
+          name: 'MuiltCardThree',
           component: () => import('@/views/list/card/index.vue'),
           meta: {
             locale: 'menu.list.cardList',
