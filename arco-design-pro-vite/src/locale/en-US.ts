@@ -34,6 +34,7 @@ export default {
   'menu.server.workplace': 'Workplace-Server',
   'menu.server.monitor': 'Monitor-Server',
   'menu.list': 'List',
+  'mutilMenu.list': 'Mutil Router',
   'menu.result': 'Result',
   'menu.exception': 'Exception',
   'menu.form': 'Form',

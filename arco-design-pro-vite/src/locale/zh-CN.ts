@@ -34,6 +34,7 @@ export default {
   'menu.server.workplace': '工作台-服务端',
   'menu.server.monitor': '实时监控-服务端',
   'menu.list': '列表页',
+  'mutilMenu.list': '多级路由',
   'menu.result': '结果页',
   'menu.exception': '异常页',
   'menu.form': '表单页',

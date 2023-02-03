@@ -2,6 +2,7 @@ import type { RouteRecordRaw } from 'vue-router';
 import { REDIRECT_ROUTE_NAME } from '@/router/constants';
 
 export const DEFAULT_LAYOUT = () => import('@/layout/default-layout.vue');
+export const DEFAULT_PARENT_LAYOUT = () => import('@/layout/default-parent-layout.vue');
 
 export const REDIRECT_MAIN: RouteRecordRaw = {
   path: '/redirect',
