@@ -1,5 +1,19 @@
 # Arco Design Pro Vue v2.0
 
+## v2.6.1
+
+`2023-02-07`
+
+### 💎 功能优化
+
+- Added the status of the language switch button in the top navigation bar.[#243](https://github.com/arco-design/arco-design-pro-vue/pull/243)
+
+### 🐛 问题修复
+
+- Using Npm to install dependencies fails.
+- Plug-in build error problem. [#224](https://github.com/arco-design/arco-design-pro-vue/pull/244)
+- MenuCollapse configuration does not take effect. [#232](https://github.com/arco-design/arco-design-pro-vue/issues/232)
+
 ## v2.6.0
 
 `2023-01-10`

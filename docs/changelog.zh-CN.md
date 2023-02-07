@@ -1,5 +1,19 @@
 # Arco Design Pro Vue v2.0
 
+## v2.6.1
+
+`2023-02-07`
+
+### 💎 功能优化
+
+- 增添顶部导航栏语言切换按钮状态。[#243](https://github.com/arco-design/arco-design-pro-vue/pull/243)
+
+### 🐛 问题修复
+
+- 使用 Npm 安装依赖失败问题。
+- 插件构建报错问题。[#224](https://github.com/arco-design/arco-design-pro-vue/pull/244)
+- MenuCollapse 配置不生效 [#232](https://github.com/arco-design/arco-design-pro-vue/issues/232)
+
 ## v2.6.0
 
 `2023-01-10`
