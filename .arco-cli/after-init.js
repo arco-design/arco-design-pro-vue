@@ -1,7 +1,7 @@
 const { spawnSync } = require('child_process');
 
 const isWindows = process.platform === 'win32';
-const cmd = isWindows ? 'yarn.cmd' : 'yarn';
+const cmd = isWindows ? 'pnpm.cmd' : 'pnpm';
 
 const logInfo = (messages) => {
   messages.forEach((m) => {
@@ -20,7 +20,7 @@ module.exports = ({ projectName }) => {
     '******************************************************************************',
     '  Read README.md for help information. Execute following command to start',
     `    $ cd ${projectName}`,
-    '    $ yarn dev',
+    '    $ pnpm run dev',
     '******************************************************************************',
   ]);
 };
