@@ -1,5 +1,17 @@
 # Arco Design Pro Vue v2.0
 
+## v2.7.0
+
+`2023-03-21`
+
+### 🆕 新增功能
+
+- 使用 pnpm 替换 yarn。[#247](https://github.com/arco-design/arco-design-pro-vue/pull/247)
+
+### 🐛 问题修复
+
+- i18n 增加 legacy 配置。[#253](https://github.com/arco-design/arco-design-pro-vue/pull/253)
+
 ## v2.6.1
 
 `2023-02-07`
