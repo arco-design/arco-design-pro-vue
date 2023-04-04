@@ -1,5 +1,14 @@
 # Arco Design Pro Vue v2.0
 
+## v2.7.1
+
+`2023-04-04`
+
+### 🐛 问题修复
+
+- 环境参数调整。[#253](https://github.com/arco-design/arco-design-pro-vue/pull/253)
+- 更新 unplugin-vue-components 插件及组件库。[#275](https://github.com/arco-design/arco-design-pro-vue/issues/275)
+
 ## v2.7.0
 
 `2023-03-21`
