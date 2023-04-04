@@ -30,7 +30,7 @@
     ]
   },
   "dependencies": {
-    "@arco-design/web-vue": "^2.40.0",
+    "@arco-design/web-vue": "^2.44.7",
     "@vueuse/core": "^9.3.0",
     "axios": "^0.24.0",
     "dayjs": "^1.11.5",
@@ -82,7 +82,7 @@
     "stylelint-config-standard": "^29.0.0",
     "stylelint-order": "^5.0.0",
     "typescript": "^4.8.4",
-    "unplugin-vue-components": "^0.22.8",
+    "unplugin-vue-components": "^0.24.1",
     "vite": "^3.2.5",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-eslint": "^1.8.1",
