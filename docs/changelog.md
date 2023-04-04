@@ -1,14 +1,21 @@
 # Arco Design Pro Vue v2.0
 
+`2023-04-04`
+
+### 🐛 Bugfix
+
+- Environmental parameter adjustment.[#253](https://github.com/arco-design/arco-design-pro-vue/pull/253)
+- Update the unplugin-vue-components plugin and component library.[#275](https://github.com/arco-design/arco-design-pro-vue/issues/275)
+
 ## v2.7.0
 
 `2023-03-21`
 
-### 🆕 新增功能
+### 🆕 Feature
 
 - Replace yarn with pnpm. [#247](https://github.com/arco-design/arco-design-pro-vue/pull/247)
 
-### 🐛 问题修复
+### 🐛 Bugfix
 
 - Added legacy configuration to i18n.[#253](https://github.com/arco-design/arco-design-pro-vue/pull/253)
 
@@ -16,11 +23,11 @@
 
 `2023-02-07`
 
-### 💎 功能优化
+### 💎 Optimization
 
 - Added the status of the language switch button in the top navigation bar.[#243](https://github.com/arco-design/arco-design-pro-vue/pull/243)
 
-### 🐛 问题修复
+### 🐛 Bugfix
 
 - Using Npm to install dependencies fails.
 - Plug-in build error problem. [#224](https://github.com/arco-design/arco-design-pro-vue/pull/244)
