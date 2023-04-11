@@ -1,5 +1,13 @@
 # Arco Design Pro Vue v2.0
 
+## v2.7.2
+
+`2023-04-11`
+
+### 🐛 Bugfix
+
+- Use @arco-plugins/vite-vue to replace vite-plugin-style-import.
+
 `2023-04-04`
 
 ### 🐛 Bugfix
