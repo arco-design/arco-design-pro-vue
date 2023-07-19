@@ -10,6 +10,7 @@
           v-show="!hideMenu"
           class="layout-sider"
           breakpoint="xl"
+          :theme="theme"
           :collapsed="collapsed"
           :collapsible="true"
           :width="menuWidth"
@@ -64,6 +65,10 @@
   const permission = usePermission();
   useResponsive(true);
   const navbarHeight = `60px`;
+  const theme = computed(() => {
+    if (appStore.theme === 'dark') return 'dark';
+    return 'light';
+  });
   const navbar = computed(() => appStore.navbar);
   const renderMenu = computed(() => appStore.menu && !appStore.topMenu);
   const hideMenu = computed(() => appStore.hideMenu);
