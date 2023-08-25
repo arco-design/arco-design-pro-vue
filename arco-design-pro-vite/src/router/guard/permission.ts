@@ -29,7 +29,11 @@ export default function setupPermissionGuard(router: Router) {
       let exist = false;
       while (serverMenuConfig.length && !exist) {
         const element = serverMenuConfig.shift();
-        if (element?.name === to.name) exist = true;
+        if (element?.name === to.name) {
+          exist = true;
+          // 使用服务端传来的 meta 覆盖路由上的 meta 信息
+          Object.assign(to.meta, element.meta);
+        }
 
         if (element?.children) {
           serverMenuConfig.push(
