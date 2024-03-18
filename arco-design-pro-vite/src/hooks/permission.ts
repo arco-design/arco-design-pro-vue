@@ -17,8 +17,8 @@ export default function usePermission() {
       while (cloneRouters.length) {
         const firstElement = cloneRouters.shift();
         if (
-          firstElement?.meta?.roles?.find((el: string[]) => {
-            return el.includes('*') || el.includes(role);
+          firstElement?.meta?.roles?.find((el: string) => {
+            return el.includes('*') || el === role;
           })
         )
           return { name: firstElement.name };
