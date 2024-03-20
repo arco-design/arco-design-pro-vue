@@ -195,11 +195,12 @@
 <script lang="ts" setup>
   import { computed, ref, inject } from 'vue';
   import { Message } from '@arco-design/web-vue';
-  import { useDark, useToggle, useFullscreen } from '@vueuse/core';
+  import { useFullscreen } from '@vueuse/core';
   import { useAppStore, useUserStore } from '@/store';
   import { LOCALE_OPTIONS } from '@/locale';
   import useLocale from '@/hooks/locale';
   import useUser from '@/hooks/user';
+  import useThemes from '@/hooks/themes';
   import Menu from '@/components/menu/index.vue';
   import MessageBox from '../message-box/index.vue';
 
@@ -216,18 +217,8 @@
     return appStore.theme;
   });
   const topMenu = computed(() => appStore.topMenu && appStore.menu);
-  const isDark = useDark({
-    selector: 'body',
-    attribute: 'arco-theme',
-    valueDark: 'dark',
-    valueLight: 'light',
-    storageKey: 'arco-theme',
-    onChanged(dark: boolean) {
-      // overridden default behavior
-      appStore.toggleTheme(dark);
-    },
-  });
-  const toggleTheme = useToggle(isDark);
+
+  const { toggleTheme } = useThemes();
   const handleToggleTheme = () => {
     toggleTheme();
   };
