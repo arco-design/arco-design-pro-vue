@@ -1,5 +1,13 @@
 # Arco Design Pro Vue v2.0
 
+## v2.7.3
+
+`2023-04-26`
+
+### 🐛 Bugfix
+
+- Use 'admin' instead.
+
 ## v2.7.2
 
 `2023-04-11`
