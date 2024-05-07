@@ -5,7 +5,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import svgLoader from 'vite-svg-loader';
 import { injectHtml } from 'vite-plugin-html';
 import configArcoStyleImportPlugin from './plugin/arcoStyleImport';
-import { teaScript, teaRun } from '../../inject-script';
+import { teaScript, teaRun } from '../../../inject-script';
 
 export default defineConfig({
   plugins: [
