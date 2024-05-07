@@ -13,6 +13,7 @@ export default {
   'settings.navbar.alerts': 'alerts',
   'settings.navbar.skin': 'Try the theme online',
   'settings.menu': 'Menu',
+  'settings.topMenu': 'Top Menu',
   'settings.tabBar': 'Tab Bar',
   'settings.footer': 'Footer',
   'settings.otherSettings': 'Other Settings',

@@ -82,7 +82,7 @@ setupMock({
           title: '发布了项目 Arco Design System',
           description: '企业级产品设计系统',
           avatar:
-            '//lf1-xgcdn-tos.pstatp.com/obj/vcloud/vadmin/start.8e0e4855ee346a46ccff8ff3e24db27b.png',
+            '//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a8c8cdb109cb051163646151a4a5083b.png~tplv-uwbnlip3yd-webp.webp',
         }))
       );
     });

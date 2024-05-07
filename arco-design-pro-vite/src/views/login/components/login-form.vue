@@ -46,7 +46,7 @@
           <a-checkbox
             checked="rememberPassword"
             :model-value="loginConfig.rememberPassword"
-            @change="(setRememberPassword as any)"
+            @change="setRememberPassword as any"
           >
             {{ $t('login.form.rememberPassword') }}
           </a-checkbox>
@@ -97,6 +97,7 @@
     errors: Record<string, ValidatedError> | undefined;
     values: Record<string, any>;
   }) => {
+    if (loading.value) return;
     if (!errors) {
       setLoading(true);
       try {
