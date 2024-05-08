@@ -203,6 +203,7 @@
   import useUser from '@/hooks/user';
   import Menu from '@/components/menu/index.vue';
   import MessageBox from '../message-box/index.vue';
+  import ThemesDialog from '../themes-dialog/index.vue';
 
   const appStore = useAppStore();
   const userStore = useUserStore();
